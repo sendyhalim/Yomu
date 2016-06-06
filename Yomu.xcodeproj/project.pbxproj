@@ -1,0 +1,390 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		798454CA1D05CF3600BB7262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798454C91D05CF3600BB7262 /* AppDelegate.swift */; };
+		798454CC1D05CF3600BB7262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798454CB1D05CF3600BB7262 /* Assets.xcassets */; };
+		798454CF1D05CF3600BB7262 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 798454CD1D05CF3600BB7262 /* MainMenu.xib */; };
+		798454DA1D05CF3600BB7262 /* YomuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798454D91D05CF3600BB7262 /* YomuTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		798454D61D05CF3600BB7262 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 798454BE1D05CF3500BB7262 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 798454C51D05CF3500BB7262;
+			remoteInfo = Yomu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		798454C61D05CF3600BB7262 /* Yomu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yomu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		798454C91D05CF3600BB7262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		798454CB1D05CF3600BB7262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		798454CE1D05CF3600BB7262 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		798454D01D05CF3600BB7262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		798454D51D05CF3600BB7262 /* YomuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YomuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		798454D91D05CF3600BB7262 /* YomuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomuTests.swift; sourceTree = "<group>"; };
+		798454DB1D05CF3600BB7262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		798454C31D05CF3500BB7262 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		798454D21D05CF3600BB7262 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		798454BD1D05CF3500BB7262 = {
+			isa = PBXGroup;
+			children = (
+				798454C81D05CF3600BB7262 /* Yomu */,
+				798454D81D05CF3600BB7262 /* YomuTests */,
+				798454C71D05CF3600BB7262 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		798454C71D05CF3600BB7262 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				798454C61D05CF3600BB7262 /* Yomu.app */,
+				798454D51D05CF3600BB7262 /* YomuTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		798454C81D05CF3600BB7262 /* Yomu */ = {
+			isa = PBXGroup;
+			children = (
+				798454C91D05CF3600BB7262 /* AppDelegate.swift */,
+				798454CB1D05CF3600BB7262 /* Assets.xcassets */,
+				798454CD1D05CF3600BB7262 /* MainMenu.xib */,
+				798454D01D05CF3600BB7262 /* Info.plist */,
+			);
+			path = Yomu;
+			sourceTree = "<group>";
+		};
+		798454D81D05CF3600BB7262 /* YomuTests */ = {
+			isa = PBXGroup;
+			children = (
+				798454D91D05CF3600BB7262 /* YomuTests.swift */,
+				798454DB1D05CF3600BB7262 /* Info.plist */,
+			);
+			path = YomuTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		798454C51D05CF3500BB7262 /* Yomu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 798454DE1D05CF3600BB7262 /* Build configuration list for PBXNativeTarget "Yomu" */;
+			buildPhases = (
+				798454C21D05CF3500BB7262 /* Sources */,
+				798454C31D05CF3500BB7262 /* Frameworks */,
+				798454C41D05CF3500BB7262 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Yomu;
+			productName = Yomu;
+			productReference = 798454C61D05CF3600BB7262 /* Yomu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		798454D41D05CF3600BB7262 /* YomuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 798454E11D05CF3600BB7262 /* Build configuration list for PBXNativeTarget "YomuTests" */;
+			buildPhases = (
+				798454D11D05CF3600BB7262 /* Sources */,
+				798454D21D05CF3600BB7262 /* Frameworks */,
+				798454D31D05CF3600BB7262 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				798454D71D05CF3600BB7262 /* PBXTargetDependency */,
+			);
+			name = YomuTests;
+			productName = YomuTests;
+			productReference = 798454D51D05CF3600BB7262 /* YomuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		798454BE1D05CF3500BB7262 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Sendy Halim";
+				TargetAttributes = {
+					798454C51D05CF3500BB7262 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					798454D41D05CF3600BB7262 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 798454C51D05CF3500BB7262;
+					};
+				};
+			};
+			buildConfigurationList = 798454C11D05CF3500BB7262 /* Build configuration list for PBXProject "Yomu" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 798454BD1D05CF3500BB7262;
+			productRefGroup = 798454C71D05CF3600BB7262 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				798454C51D05CF3500BB7262 /* Yomu */,
+				798454D41D05CF3600BB7262 /* YomuTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		798454C41D05CF3500BB7262 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				798454CC1D05CF3600BB7262 /* Assets.xcassets in Resources */,
+				798454CF1D05CF3600BB7262 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		798454D31D05CF3600BB7262 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		798454C21D05CF3500BB7262 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				798454CA1D05CF3600BB7262 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		798454D11D05CF3600BB7262 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				798454DA1D05CF3600BB7262 /* YomuTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		798454D71D05CF3600BB7262 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 798454C51D05CF3500BB7262 /* Yomu */;
+			targetProxy = 798454D61D05CF3600BB7262 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		798454CD1D05CF3600BB7262 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				798454CE1D05CF3600BB7262 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		798454DC1D05CF3600BB7262 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		798454DD1D05CF3600BB7262 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		798454DF1D05CF3600BB7262 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Yomu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendyhalim.Yomu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		798454E01D05CF3600BB7262 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Yomu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendyhalim.Yomu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		798454E21D05CF3600BB7262 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = YomuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendyhalim.YomuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yomu.app/Contents/MacOS/Yomu";
+			};
+			name = Debug;
+		};
+		798454E31D05CF3600BB7262 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = YomuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendyhalim.YomuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yomu.app/Contents/MacOS/Yomu";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		798454C11D05CF3500BB7262 /* Build configuration list for PBXProject "Yomu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				798454DC1D05CF3600BB7262 /* Debug */,
+				798454DD1D05CF3600BB7262 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		798454DE1D05CF3600BB7262 /* Build configuration list for PBXNativeTarget "Yomu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				798454DF1D05CF3600BB7262 /* Debug */,
+				798454E01D05CF3600BB7262 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		798454E11D05CF3600BB7262 /* Build configuration list for PBXNativeTarget "YomuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				798454E21D05CF3600BB7262 /* Debug */,
+				798454E31D05CF3600BB7262 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 798454BE1D05CF3500BB7262 /* Project object */;
+}
