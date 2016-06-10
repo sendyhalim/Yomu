@@ -10,19 +10,25 @@ import Foundation
 import Argo
 import Curry
 
+///  JSON mapping of Manga Eden API.
+///  Example: https://www.mangaeden.com/api/manga/4e70ea90c092255ef70074a7/
 private struct MangaJSONMapping {
   static let id = "i"
-  static let slug = "s"
-  static let title = "t"
-  static let image = "im"
-  static let categories = "c"
+  static let slug = "alias"
+  static let title = "title"
+  static let author = "author"
+  static let image = "image"
+  static let releasedYear = "released"
+  static let categories = "categories"
 }
 
 struct Manga: Decodable {
   let id: String
   let slug: String
   let title: String
+  let author: String
   let image: ImageURL
+  let releasedYear: Int
   let categories: [String]
 
   static func decode(json: JSON) -> Decoded<Manga> {
@@ -30,7 +36,9 @@ struct Manga: Decodable {
       <^> json <| MangaJSONMapping.id
       <*> json <| MangaJSONMapping.slug
       <*> json <| MangaJSONMapping.title
+      <*> json <| MangaJSONMapping.author
       <*> json <| MangaJSONMapping.image
+      <*> json <| MangaJSONMapping.releasedYear
       <*> json <|| MangaJSONMapping.categories
   }
 }
