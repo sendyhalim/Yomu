@@ -19,7 +19,7 @@ private struct MangaJSONMapping {
 struct Manga: Decodable {
   let id: String
   let title: String
-  let image: String // TODO: change to NSURL
+  let image: ImageURL
 
   static func decode(json: JSON) -> Decoded<Manga> {
     return curry(Manga.init)
