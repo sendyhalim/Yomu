@@ -307,7 +307,9 @@
 			<key>buildActionMask</key>
 			<string>2147483647</string>
 			<key>files</key>
-			<array/>
+			<array>
+				<string>79E85D851D0B380D0029FDA6</string>
+			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
@@ -318,7 +320,10 @@
 			<key>buildActionMask</key>
 			<string>2147483647</string>
 			<key>files</key>
-			<array/>
+			<array>
+				<string>79E85D7E1D0B378C0029FDA6</string>
+				<string>79E85D7F1D0B378C0029FDA6</string>
+			</array>
 			<key>isa</key>
 			<string>PBXFrameworksBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
@@ -344,6 +349,7 @@
 				<string>798454D11D05CF3600BB7262</string>
 				<string>798454D21D05CF3600BB7262</string>
 				<string>798454D31D05CF3600BB7262</string>
+				<string>79E85D801D0B37B70029FDA6</string>
 			</array>
 			<key>buildRules</key>
 			<array/>
@@ -401,6 +407,7 @@
 		<dict>
 			<key>children</key>
 			<array>
+				<string>79E85D831D0B37EF0029FDA6</string>
 				<string>798454DB1D05CF3600BB7262</string>
 			</array>
 			<key>isa</key>
@@ -666,8 +673,15 @@
 			<dict>
 				<key>BUNDLE_LOADER</key>
 				<string>$(TEST_HOST)</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
 				<key>COMBINE_HIDPI_IMAGES</key>
 				<string>YES</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>$(PROJECT_DIR)/Carthage/Build/Mac</string>
+				</array>
 				<key>INFOPLIST_FILE</key>
 				<string>YomuTests/Info.plist</string>
 				<key>LD_RUNPATH_SEARCH_PATHS</key>
@@ -676,6 +690,8 @@
 				<string>com.sendyhalim.YomuTests</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
 				<key>TEST_HOST</key>
 				<string>$(BUILT_PRODUCTS_DIR)/Yomu.app/Contents/MacOS/Yomu</string>
 			</dict>
@@ -690,8 +706,15 @@
 			<dict>
 				<key>BUNDLE_LOADER</key>
 				<string>$(TEST_HOST)</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
 				<key>COMBINE_HIDPI_IMAGES</key>
 				<string>YES</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>$(PROJECT_DIR)/Carthage/Build/Mac</string>
+				</array>
 				<key>INFOPLIST_FILE</key>
 				<string>YomuTests/Info.plist</string>
 				<key>LD_RUNPATH_SEARCH_PATHS</key>
@@ -744,6 +767,8 @@
 		<dict>
 			<key>children</key>
 			<array>
+				<string>79E85D7C1D0B378C0029FDA6</string>
+				<string>79E85D7D1D0B378C0029FDA6</string>
 				<string>79AF719A1D072C9B00608518</string>
 				<string>79AF719B1D072C9B00608518</string>
 				<string>79AF719C1D072C9B00608518</string>
@@ -1105,6 +1130,129 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>79E85D7A1D0B2C110029FDA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79E85D7C1D0B378C0029FDA6</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Quick.framework</string>
+			<key>path</key>
+			<string>Carthage/Build/Mac/Quick.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79E85D7D1D0B378C0029FDA6</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Nimble.framework</string>
+			<key>path</key>
+			<string>Carthage/Build/Mac/Nimble.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79E85D7E1D0B378C0029FDA6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79E85D7C1D0B378C0029FDA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79E85D7F1D0B378C0029FDA6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79E85D7D1D0B378C0029FDA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79E85D801D0B37B70029FDA6</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>dstPath</key>
+			<string></string>
+			<key>dstSubfolderSpec</key>
+			<string>10</string>
+			<key>files</key>
+			<array>
+				<string>79E85D811D0B37E00029FDA6</string>
+				<string>79E85D821D0B37E00029FDA6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXCopyFilesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>79E85D811D0B37E00029FDA6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79E85D7C1D0B378C0029FDA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>CodeSignOnCopy</string>
+					<string>RemoveHeadersOnCopy</string>
+				</array>
+			</dict>
+		</dict>
+		<key>79E85D821D0B37E00029FDA6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79E85D7D1D0B378C0029FDA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>CodeSignOnCopy</string>
+					<string>RemoveHeadersOnCopy</string>
+				</array>
+			</dict>
+		</dict>
+		<key>79E85D831D0B37EF0029FDA6</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>79E85D841D0B380D0029FDA6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Models</string>
+			<key>path</key>
+			<string>Models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79E85D841D0B380D0029FDA6</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MangaChapterSpec.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79E85D851D0B380D0029FDA6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79E85D841D0B380D0029FDA6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
