@@ -21,6 +21,7 @@
 		79AF71AD1D072C9B00608518 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AF71A21D072C9B00608518 /* RxSwift.framework */; };
 		79AF71AF1D072C9B00608518 /* Swiftz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AF71A41D072C9B00608518 /* Swiftz.framework */; };
 		79AF71B31D072DB100608518 /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF71B21D072DB100608518 /* Manga.swift */; };
+		79E85D771D0B22C50029FDA6 /* NSURL+Argo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E85D761D0B22C50029FDA6 /* NSURL+Argo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		79AF71A21D072C9B00608518 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 		79AF71A41D072C9B00608518 /* Swiftz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swiftz.framework; path = Carthage/Build/Mac/Swiftz.framework; sourceTree = "<group>"; };
 		79AF71B21D072DB100608518 /* Manga.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
+		79E85D761D0B22C50029FDA6 /* NSURL+Argo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Argo.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		798454C81D05CF3600BB7262 /* Yomu */ = {
 			isa = PBXGroup;
 			children = (
+				79E85D741D0B22A80029FDA6 /* Extensions */,
 				79AF71B11D072D9900608518 /* Models */,
 				798454C91D05CF3600BB7262 /* AppDelegate.swift */,
 				798454CB1D05CF3600BB7262 /* Assets.xcassets */,
@@ -144,6 +147,22 @@
 				79AF71B21D072DB100608518 /* Manga.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		79E85D741D0B22A80029FDA6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				79E85D751D0B22B80029FDA6 /* NSURL */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		79E85D751D0B22B80029FDA6 /* NSURL */ = {
+			isa = PBXGroup;
+			children = (
+				79E85D761D0B22C50029FDA6 /* NSURL+Argo.swift */,
+			);
+			name = NSURL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +310,7 @@
 			files = (
 				79AF71B31D072DB100608518 /* Manga.swift in Sources */,
 				798454CA1D05CF3600BB7262 /* AppDelegate.swift in Sources */,
+				79E85D771D0B22C50029FDA6 /* NSURL+Argo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
