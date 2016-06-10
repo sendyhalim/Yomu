@@ -105,6 +105,7 @@
 				<string>798454CA1D05CF3600BB7262</string>
 				<string>79E85D771D0B22C50029FDA6</string>
 				<string>79E85D791D0B287D0029FDA6</string>
+				<string>79E85D7B1D0B2C110029FDA6</string>
 			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
@@ -992,6 +993,7 @@ fi</string>
 			<array>
 				<string>79E85D781D0B287D0029FDA6</string>
 				<string>79AF71B21D072DB100608518</string>
+				<string>79E85D7A1D0B2C110029FDA6</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1083,6 +1085,26 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>79E85D781D0B287D0029FDA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79E85D7A1D0B2C110029FDA6</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MangaChapter.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79E85D7B1D0B2C110029FDA6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79E85D7A1D0B2C110029FDA6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
