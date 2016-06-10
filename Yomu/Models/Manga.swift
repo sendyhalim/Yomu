@@ -11,20 +11,26 @@ import Argo
 import Curry
 
 private struct MangaJSONMapping {
-  static let id = "id"
-  static let title = "title"
-  static let image = "image"
+  static let id = "i"
+  static let slug = "s"
+  static let title = "t"
+  static let image = "im"
+  static let categories = "c"
 }
 
 struct Manga: Decodable {
   let id: String
+  let slug: String
   let title: String
   let image: ImageURL
+  let categories: [String]
 
   static func decode(json: JSON) -> Decoded<Manga> {
     return curry(Manga.init)
       <^> json <| MangaJSONMapping.id
+      <*> json <| MangaJSONMapping.slug
       <*> json <| MangaJSONMapping.title
       <*> json <| MangaJSONMapping.image
+      <*> json <|| MangaJSONMapping.categories
   }
 }
