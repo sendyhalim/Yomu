@@ -9,6 +9,8 @@
 import Foundation
 import Argo
 
+///  A data structure that represents image url that points to Mangaeden api
+///  docs: http://www.mangaeden.com/api/
 struct ImageURL: CustomStringConvertible {
   let endpoint: String
 
