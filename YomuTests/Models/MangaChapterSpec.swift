@@ -18,18 +18,7 @@ class MangaChapterSpec: QuickSpec {
     describe("[Argo] When loaded from json") {
       let jsonString = "[700, 1415346745.0, \"Uzumaki Naruto!!\", \"545c7a3945b9ef92f1e256f7\"]"
       let json: AnyObject = JSONDataFromString(jsonString)!
-      var chapter: MangaChapter?
-
-      beforeEach {
-        switch MangaChapter.decode(JSON(json)) {
-        case .Success(let _chapter):
-          chapter = _chapter
-
-        case .Failure(let error):
-          print(error)
-          return
-        }
-      }
+      let chapter: MangaChapter? = decode(json)
 
       it("should decode chapter id") {
         expect(chapter?.id) == "545c7a3945b9ef92f1e256f7"
