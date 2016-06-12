@@ -14,6 +14,13 @@ import Quick
 
 class MangaSpec: QuickSpec {
   override func spec() {
-    
+    describe("[Argo Decodable] When decoded from json") {
+      let json = JSONDataFromFile("manga")!
+      let manga: Manga = decode(json)!
+
+      it("Should set manga title") {
+        expect(manga.title) == "Naruto"
+      }
+    }
   }
 }

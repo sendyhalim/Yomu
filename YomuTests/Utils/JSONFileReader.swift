@@ -17,10 +17,7 @@ func JSONDataFromString(jsonString: String) -> AnyObject? {
 func JSONDataFromFile(filename: String) -> AnyObject? {
   return NSBundle(forClass: JSONFileReader.self)
     .pathForResource(filename, ofType: "json")
-    .flatMap {
-      print($0)
-      return try? String(contentsOfFile: $0)
-    }
+    .flatMap { try? String(contentsOfFile: $0) }
     .flatMap(JSONDataFromString)
 }
 
