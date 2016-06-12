@@ -19,6 +19,7 @@ private struct MangaJSONMapping {
   static let author = "author"
   static let image = "image"
   static let releasedYear = "released"
+  static let description = "description"
   static let categories = "categories"
 }
 
@@ -29,6 +30,7 @@ struct Manga: Decodable {
   let author: String
   let image: ImageURL
   let releasedYear: Int
+  let description: String
   let categories: [String]
 
   static func decode(json: JSON) -> Decoded<Manga> {
@@ -39,6 +41,7 @@ struct Manga: Decodable {
       <*> json <| MangaJSONMapping.author
       <*> json <| MangaJSONMapping.image
       <*> json <| MangaJSONMapping.releasedYear
+      <*> json <| MangaJSONMapping.description
       <*> json <|| MangaJSONMapping.categories
   }
 }

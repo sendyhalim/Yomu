@@ -41,6 +41,10 @@ class MangaSpec: QuickSpec {
         expect(manga.releasedYear) == 1999
       }
 
+      it("should set manga description") {
+        expect(manga.description) == "Test description"
+      }
+
       it("should set manga categories") {
         expect(manga.categories) == [
           "Shounen",
