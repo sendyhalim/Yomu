@@ -9,7 +9,6 @@
 import Argo
 import Nimble
 import Quick
-import Swiftz
 
 @testable import Yomu
 

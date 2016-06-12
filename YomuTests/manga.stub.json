@@ -1,0 +1,57 @@
+{
+  "aka": [
+    "&#28779;&#24433;&#24525;&#32773;",
+    "NARUTO&#8213;&#12490;&#12523;&#12488;&#8213;",
+    "&#1053;&#1072;&#1088;&#1091;&#1090;&#1086;"
+  ],
+  "aka-alias": [
+    "28779244332452532773",
+    "naruto82131249012523124888213",
+    "105310721088109110901086"
+  ],
+  "alias": "naruto",
+  "artist": "KISHIMOTO Masashi",
+  "artist_kw": [
+    "kishimoto",
+    "masashi"
+  ],
+  "author": "KISHIMOTO Masashi",
+  "author_kw": [
+    "kishimoto",
+    "masashi"
+  ],
+  "baka": true,
+  "categories": [
+    "Azione",
+    "Shounen",
+    "Avventura"
+  ],
+  "chapters": [
+    [
+      700,
+      1415346745.0,
+      "Uzumaki Naruto!!",
+      "545c7a3945b9ef92f1e256f7"
+    ]
+  ],
+  "chapters_len": 402,
+  "created": 1316022928.0,
+  "description": "Il villaggio della foglia, Konoha, &egrave; stato attaccato da un orrendo demone, la volpe a nove code, scatenando una terribile guerra.",
+  "hits": 264841747,
+  "image": "d1/d1cd664cefc4d19ec99603983d4e0b934e8bce91c3fccda3914ac029.png",
+  "language": 1,
+  "last_chapter_date": 1415346745.0,
+  "random": [
+    0.38797162079832315,
+    0
+  ],
+  "released": 1999,
+  "startsWith": "n",
+  "status": 2,
+  "title": "Naruto",
+  "title_kw": [
+    "naruto"
+  ],
+  "type": 0,
+  "updatedKeywords": true
+}
