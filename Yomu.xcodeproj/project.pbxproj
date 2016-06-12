@@ -12,7 +12,7 @@
 		798454CA1D05CF3600BB7262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798454C91D05CF3600BB7262 /* AppDelegate.swift */; };
 		798454CC1D05CF3600BB7262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798454CB1D05CF3600BB7262 /* Assets.xcassets */; };
 		798454CF1D05CF3600BB7262 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 798454CD1D05CF3600BB7262 /* MainMenu.xib */; };
-		79A10E651D0D9FFD00B9C4B7 /* manga.stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 79A10E641D0D9FFD00B9C4B7 /* manga.stub.json */; };
+		79A10E651D0D9FFD00B9C4B7 /* manga.json in Resources */ = {isa = PBXBuildFile; fileRef = 79A10E641D0D9FFD00B9C4B7 /* manga.json */; };
 		79AF71A51D072C9B00608518 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AF719A1D072C9B00608518 /* Alamofire.framework */; };
 		79AF71A61D072C9B00608518 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AF719B1D072C9B00608518 /* Argo.framework */; };
 		79AF71A71D072C9B00608518 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AF719C1D072C9B00608518 /* Curry.framework */; };
@@ -68,7 +68,7 @@
 		798454D01D05CF3600BB7262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		798454D51D05CF3600BB7262 /* YomuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YomuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		798454DB1D05CF3600BB7262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		79A10E641D0D9FFD00B9C4B7 /* manga.stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manga.stub.json; sourceTree = "<group>"; };
+		79A10E641D0D9FFD00B9C4B7 /* manga.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manga.json; sourceTree = "<group>"; };
 		79AF719A1D072C9B00608518 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		79AF719B1D072C9B00608518 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/Mac/Argo.framework; sourceTree = "<group>"; };
 		79AF719C1D072C9B00608518 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/Mac/Curry.framework; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		79A10E631D0D9FEF00B9C4B7 /* stubs */ = {
 			isa = PBXGroup;
 			children = (
-				79A10E641D0D9FFD00B9C4B7 /* manga.stub.json */,
+				79A10E641D0D9FFD00B9C4B7 /* manga.json */,
 			);
 			name = stubs;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A10E651D0D9FFD00B9C4B7 /* manga.stub.json in Resources */,
+				79A10E651D0D9FFD00B9C4B7 /* manga.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
