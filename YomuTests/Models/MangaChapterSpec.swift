@@ -17,13 +17,10 @@ class MangaChapterSpec: QuickSpec {
   override func spec() {
     describe("[Argo] When loaded from json") {
       let jsonString = "[700, 1415346745.0, \"Uzumaki Naruto!!\", \"545c7a3945b9ef92f1e256f7\"]"
-      let jsonData = jsonString.dataUsingEncoding(NSUTF8StringEncoding)!
-      var json: AnyObject!
+      let json: AnyObject = JSONDataFromString(jsonString)!
       var chapter: MangaChapter?
 
       beforeEach {
-        json = try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
-
         switch MangaChapter.decode(JSON(json)) {
         case .Success(let _chapter):
           chapter = _chapter
