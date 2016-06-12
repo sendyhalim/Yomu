@@ -23,7 +23,7 @@ private struct MangaJSONMapping {
 }
 
 struct Manga: Decodable {
-  let id: String
+  let id: String?
   let slug: String
   let title: String
   let author: String
@@ -33,7 +33,7 @@ struct Manga: Decodable {
 
   static func decode(json: JSON) -> Decoded<Manga> {
     return curry(Manga.init)
-      <^> json <| MangaJSONMapping.id
+      <^> json <|? MangaJSONMapping.id
       <*> json <| MangaJSONMapping.slug
       <*> json <| MangaJSONMapping.title
       <*> json <| MangaJSONMapping.author
