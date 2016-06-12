@@ -43,9 +43,12 @@ class MangaSpec: QuickSpec {
 
       it("should set manga categories") {
         expect(manga.categories) == [
-          "Azione",
           "Shounen",
-          "Avventura"
+          "Comedy",
+          "Fantasy",
+          "Adventure",
+          "Drama",
+          "Action"
         ]
       }
     }
