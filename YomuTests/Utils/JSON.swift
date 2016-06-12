@@ -13,3 +13,10 @@ func JSONDataFromString(jsonString: String) -> AnyObject? {
 
   return try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
 }
+
+func JSONDataFromFile(filename: String) -> AnyObject? {
+  let path = NSBundle.mainBundle().pathForResource(filename, ofType: "json")!
+  let jsonString = try? String(contentsOfFile: path)
+
+  return JSONDataFromString(jsonString!)
+}
