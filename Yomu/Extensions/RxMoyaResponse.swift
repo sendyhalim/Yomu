@@ -57,3 +57,20 @@ extension Response {
     }
   }
 }
+
+extension ObservableType where E == RxMoya.Response {
+  func map<T: Decodable where T == T.DecodedType>(type: T.Type) -> Observable<T> {
+    return map {
+      try $0.map()
+    }
+  }
+
+  func map<T: Decodable where T == T.DecodedType>(
+    type: T.Type,
+    withRootKey rootKey: String
+  ) -> Observable<T> {
+    return map {
+      try $0.map(withRootKey: rootKey)
+    }
+  }
+}
