@@ -798,8 +798,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>stubs</string>
 			<key>path</key>
 			<string>stubs</string>
 			<key>sourceTree</key>
@@ -1145,25 +1143,12 @@ fi</string>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>79E85D751D0B22B80029FDA6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Extensions</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>79E85D751D0B22B80029FDA6</key>
-		<dict>
-			<key>children</key>
-			<array>
 				<string>79E85D761D0B22C50029FDA6</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>path</key>
-			<string>NSURL</string>
+			<string>Extensions</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1175,8 +1160,10 @@ fi</string>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>NSURL.swift</string>
 			<key>path</key>
-			<string>NSURL+Argo.swift</string>
+			<string>NSURL.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
