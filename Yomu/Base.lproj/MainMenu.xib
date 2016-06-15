@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Yomu" customModuleProvider="target">
             <connections>
+                <outlet property="splitView" destination="jQB-cT-a7d" id="ZsS-Hw-Nlu"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -675,6 +676,31 @@
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQB-cT-a7d">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                        <subviews>
+                            <customView fixedFrame="YES" id="kLC-ih-6Ni">
+                                <rect key="frame" x="0.0" y="0.0" width="236.5" height="360"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </customView>
+                            <customView fixedFrame="YES" id="RWN-bG-ODH">
+                                <rect key="frame" x="247" y="0.0" width="234" height="360"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </customView>
+                        </subviews>
+                        <holdingPriorities>
+                            <real value="250"/>
+                            <real value="250"/>
+                        </holdingPriorities>
+                    </splitView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="jQB-cT-a7d" secondAttribute="trailing" id="7Nw-A3-Gf1"/>
+                    <constraint firstItem="jQB-cT-a7d" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="fEK-N3-h5g"/>
+                    <constraint firstAttribute="bottom" secondItem="jQB-cT-a7d" secondAttribute="bottom" id="h81-uT-fS6"/>
+                    <constraint firstItem="jQB-cT-a7d" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="jLK-a8-Svc"/>
+                </constraints>
             </view>
         </window>
     </objects>

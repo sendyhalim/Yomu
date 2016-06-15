@@ -826,8 +826,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>xibs</string>
 			<key>path</key>
 			<string>xibs</string>
 			<key>sourceTree</key>
@@ -841,8 +839,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Implementations</string>
 			<key>path</key>
 			<string>Implementations</string>
 			<key>sourceTree</key>
@@ -856,8 +852,6 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>MangaCollectionViewItem.swift</string>
 			<key>path</key>
 			<string>MangaCollectionViewItem.swift</string>
 			<key>sourceTree</key>

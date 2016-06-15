@@ -12,10 +12,17 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
   @IBOutlet weak var window: NSWindow!
-
+  @IBOutlet weak var splitView: NSSplitView!
 
   func applicationDidFinishLaunching(aNotification: NSNotification) {
     // Insert code here to initialize your application
+
+    let mangaViewController = MangaCollectionViewController(
+      nibName: "MangaCollectionView",
+      bundle: nil
+    )!
+
+    splitView.addSubview(mangaViewController.view)
   }
 
   func applicationWillTerminate(aNotification: NSNotification) {
