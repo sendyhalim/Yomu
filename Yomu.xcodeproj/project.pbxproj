@@ -160,6 +160,7 @@
 				<string>79FF941B1D10776D00A7E450</string>
 				<string>79E85D771D0B22C50029FDA6</string>
 				<string>79E85D791D0B287D0029FDA6</string>
+				<string>798865EA1D11A1A400093761</string>
 				<string>79E85D7B1D0B2C110029FDA6</string>
 			</array>
 			<key>isa</key>
@@ -197,6 +198,7 @@
 			<array>
 				<string>798454CC1D05CF3600BB7262</string>
 				<string>798454CF1D05CF3600BB7262</string>
+				<string>798865E61D119BA500093761</string>
 				<string>79F094891D118D4F0029FB41</string>
 			</array>
 			<key>isa</key>
@@ -795,6 +797,79 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
+		<key>798865E51D119BA500093761</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>MangaCollectionViewItem.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>798865E61D119BA500093761</key>
+		<dict>
+			<key>fileRef</key>
+			<string>798865E51D119BA500093761</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>798865E71D11A16F00093761</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>79F094881D118D4F0029FB41</string>
+				<string>798865E51D119BA500093761</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>xibs</string>
+			<key>path</key>
+			<string>xibs</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>798865E81D11A18400093761</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>798865E91D11A1A400093761</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Implementations</string>
+			<key>path</key>
+			<string>Implementations</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>798865E91D11A1A400093761</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>MangaCollectionViewItem.swift</string>
+			<key>path</key>
+			<string>MangaCollectionViewItem.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>798865EA1D11A1A400093761</key>
+		<dict>
+			<key>fileRef</key>
+			<string>798865E91D11A1A400093761</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>79A10E631D0D9FEF00B9C4B7</key>
 		<dict>
 			<key>children</key>
@@ -1344,7 +1419,8 @@ fi</string>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>79F094881D118D4F0029FB41</string>
+				<string>798865E81D11A18400093761</string>
+				<string>798865E71D11A16F00093761</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1381,8 +1457,6 @@ fi</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Controllers</string>
 			<key>path</key>
 			<string>Controllers</string>
 			<key>sourceTree</key>
