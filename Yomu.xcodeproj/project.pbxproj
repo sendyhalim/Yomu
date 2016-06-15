@@ -155,6 +155,7 @@
 			<key>files</key>
 			<array>
 				<string>79AF71B31D072DB100608518</string>
+				<string>798866181D11AB4300093761</string>
 				<string>79F0948C1D1198F60029FB41</string>
 				<string>798454CA1D05CF3600BB7262</string>
 				<string>79FF941B1D10776D00A7E450</string>
@@ -264,9 +265,11 @@
 		<dict>
 			<key>children</key>
 			<array>
+				<string>798866161D11AB2100093761</string>
 				<string>79F0948A1D1198C80029FB41</string>
 				<string>79E85D741D0B22A80029FDA6</string>
 				<string>79AF71B11D072D9900608518</string>
+				<string>798866191D11ADD800093761</string>
 				<string>79F094871D118B300029FB41</string>
 				<string>798454C91D05CF3600BB7262</string>
 				<string>798454CB1D05CF3600BB7262</string>
@@ -863,6 +866,54 @@
 			<string>798865E91D11A1A400093761</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>798866161D11AB2100093761</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>798866171D11AB4300093761</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>API</string>
+			<key>path</key>
+			<string>API</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>798866171D11AB4300093761</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MangaEdenAPI.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>798866181D11AB4300093761</key>
+		<dict>
+			<key>fileRef</key>
+			<string>798866171D11AB4300093761</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>798866191D11ADD800093761</key>
+		<dict>
+			<key>children</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ViewModels</string>
+			<key>path</key>
+			<string>ViewModels</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>79A10E631D0D9FEF00B9C4B7</key>
 		<dict>

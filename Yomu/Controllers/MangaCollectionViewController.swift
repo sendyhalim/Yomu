@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RxMoya
 
 class MangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
