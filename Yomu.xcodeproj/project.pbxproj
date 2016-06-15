@@ -155,6 +155,7 @@
 			<key>files</key>
 			<array>
 				<string>79AF71B31D072DB100608518</string>
+				<string>79F0948C1D1198F60029FB41</string>
 				<string>798454CA1D05CF3600BB7262</string>
 				<string>79FF941B1D10776D00A7E450</string>
 				<string>79E85D771D0B22C50029FDA6</string>
@@ -261,6 +262,7 @@
 		<dict>
 			<key>children</key>
 			<array>
+				<string>79F0948A1D1198C80029FB41</string>
 				<string>79E85D741D0B22A80029FDA6</string>
 				<string>79AF71B11D072D9900608518</string>
 				<string>79F094871D118B300029FB41</string>
@@ -1346,8 +1348,6 @@ fi</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Views</string>
 			<key>path</key>
 			<string>Views</string>
 			<key>sourceTree</key>
@@ -1370,6 +1370,41 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>79F094881D118D4F0029FB41</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79F0948A1D1198C80029FB41</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>79F0948B1D1198F60029FB41</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Controllers</string>
+			<key>path</key>
+			<string>Controllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79F0948B1D1198F60029FB41</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MangaCollectionViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79F0948C1D1198F60029FB41</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79F0948B1D1198F60029FB41</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
