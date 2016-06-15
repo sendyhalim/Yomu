@@ -101,9 +101,9 @@ extension ObservableType where E == RxMoya.Response {
   func mapArray<T: Decodable where T == T.DecodedType>(
     type: T.Type,
     withRootKey rootKey: String
-  ) -> Observable<[T]>{
+  ) -> Observable<[T]> {
     return map {
-      try $0.mapArray(withRootKey: rootKey)
+      return try $0.mapArray(withRootKey: rootKey)
     }
   }
 }

@@ -25,13 +25,17 @@ private struct MangaChapterJSONMapping {
 struct MangaChapter {
   let id: String
   let number: Int
-  let title: String
+  let title: String?
 }
 
 extension MangaChapter: Decodable {
   static func decode(json: JSON) -> Decoded<MangaChapter> {
     switch json {
-    case JSON.Array(let jsonStrings):
+    case JSON.Array(var jsonStrings):
+      if case JSON.Null = jsonStrings[MangaChapterJSONMapping.title] {
+        jsonStrings[MangaChapterJSONMapping.title] = JSON.String("")
+      }
+
       return curry(MangaChapter.init)
         <^> String.decode(jsonStrings[MangaChapterJSONMapping.id])
         <*> Int.decode(jsonStrings[MangaChapterJSONMapping.number])
