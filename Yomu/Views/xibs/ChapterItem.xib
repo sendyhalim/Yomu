@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ChapterItem" customModule="Yomu" customModuleProvider="target">
+            <connections>
+                <outlet property="chapterPreview" destination="Pqb-As-9nw" id="jYz-uN-x5N"/>
+                <outlet property="view" destination="c22-O7-iKe" id="xJZ-Tv-1di"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pqb-As-9nw">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Y88-yv-fup"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Pqb-As-9nw" secondAttribute="bottom" id="b7K-Zq-5w7"/>
+                <constraint firstAttribute="trailing" secondItem="Pqb-As-9nw" secondAttribute="trailing" id="iJ8-oH-Hxd"/>
+                <constraint firstItem="Pqb-As-9nw" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="ofY-pb-Tq9"/>
+                <constraint firstItem="Pqb-As-9nw" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="qPh-dW-g9M"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>

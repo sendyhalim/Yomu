@@ -11,6 +11,8 @@
 		794CF82D1D0D9B51008761DF /* MangaSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794CF82C1D0D9B51008761DF /* MangaSpec.swift */; };
 		796048621D12FBEB006571B3 /* MangaChapterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796048611D12FBEB006571B3 /* MangaChapterCollectionViewController.swift */; };
 		796048651D13062E006571B3 /* DisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796048641D13062E006571B3 /* DisposeBag.swift */; };
+		796048671D1306F7006571B3 /* ChapterItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796048661D1306F7006571B3 /* ChapterItem.xib */; };
+		796048691D130887006571B3 /* ChapterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796048681D130887006571B3 /* ChapterItem.swift */; };
 		796052371D12EA2100CF0074 /* MangaChapterCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796052361D12EA2100CF0074 /* MangaChapterCollectionView.xib */; };
 		798454CA1D05CF3600BB7262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798454C91D05CF3600BB7262 /* AppDelegate.swift */; };
 		798454CC1D05CF3600BB7262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798454CB1D05CF3600BB7262 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 		794CF82C1D0D9B51008761DF /* MangaSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangaSpec.swift; sourceTree = "<group>"; };
 		796048611D12FBEB006571B3 /* MangaChapterCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangaChapterCollectionViewController.swift; sourceTree = "<group>"; };
 		796048641D13062E006571B3 /* DisposeBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisposeBag.swift; sourceTree = "<group>"; };
+		796048661D1306F7006571B3 /* ChapterItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterItem.xib; sourceTree = "<group>"; };
+		796048681D130887006571B3 /* ChapterItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterItem.swift; sourceTree = "<group>"; };
 		796052361D12EA2100CF0074 /* MangaChapterCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MangaChapterCollectionView.xib; sourceTree = "<group>"; };
 		798454C61D05CF3600BB7262 /* Yomu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yomu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		798454C91D05CF3600BB7262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 				79F094881D118D4F0029FB41 /* MangaCollectionView.xib */,
 				798865E51D119BA500093761 /* MangaCollectionViewItem.xib */,
 				796052361D12EA2100CF0074 /* MangaChapterCollectionView.xib */,
+				796048661D1306F7006571B3 /* ChapterItem.xib */,
 			);
 			path = xibs;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				798865E91D11A1A400093761 /* MangaCollectionViewItem.swift */,
+				796048681D130887006571B3 /* ChapterItem.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				796048671D1306F7006571B3 /* ChapterItem.xib in Resources */,
 				798454CC1D05CF3600BB7262 /* Assets.xcassets in Resources */,
 				798454CF1D05CF3600BB7262 /* MainMenu.xib in Resources */,
 				796052371D12EA2100CF0074 /* MangaChapterCollectionView.xib in Resources */,
@@ -465,6 +472,7 @@
 				79E85D771D0B22C50029FDA6 /* NSURL.swift in Sources */,
 				79E85D791D0B287D0029FDA6 /* ImageURL.swift in Sources */,
 				7988661B1D11ADF900093761 /* MangaChaptersViewModel.swift in Sources */,
+				796048691D130887006571B3 /* ChapterItem.swift in Sources */,
 				796048651D13062E006571B3 /* DisposeBag.swift in Sources */,
 				798865EA1D11A1A400093761 /* MangaCollectionViewItem.swift in Sources */,
 				796048621D12FBEB006571B3 /* MangaChapterCollectionViewController.swift in Sources */,
