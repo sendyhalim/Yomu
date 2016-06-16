@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MangaCollectionViewItem: NSCollectionViewItem {
+class MangaItem: NSCollectionViewItem {
   @IBOutlet weak var mangaImageView: NSImageView!
   @IBOutlet weak var titleTextField: NSTextField!
 }
