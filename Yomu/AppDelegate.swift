@@ -14,15 +14,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   @IBOutlet weak var window: NSWindow!
   @IBOutlet weak var splitView: NSSplitView!
 
+  var mangaViewController: MangaCollectionViewController!
+  var mangaChaptersViewController: MangaChapterCollectionViewController!
+
   func applicationDidFinishLaunching(aNotification: NSNotification) {
     // Insert code here to initialize your application
 
-    let mangaViewController = MangaCollectionViewController(
-      nibName: "MangaCollectionView",
+    mangaViewController = MangaCollectionViewController(
+      nibName: "MangaCollection",
       bundle: nil
-    )!
+    )
+
+    mangaChaptersViewController = MangaChapterCollectionViewController(
+      nibName: "ChapterCollection",
+      bundle: nil
+    )
 
     splitView.addArrangedSubview(mangaViewController.view)
+    splitView.addArrangedSubview(mangaChaptersViewController.view)
   }
 
   func applicationWillTerminate(aNotification: NSNotification) {

@@ -10,6 +10,6 @@ import RxSwift
 
 infix operator >>> { precedence 200 }
 
-func >>>(disposable: Disposable, disposeBag: DisposeBag) {
+func >>> (disposable: Disposable, disposeBag: DisposeBag) {
   disposable.addDisposableTo(disposeBag)
 }
