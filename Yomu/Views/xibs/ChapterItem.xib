@@ -7,27 +7,50 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ChapterItem" customModule="Yomu" customModuleProvider="target">
             <connections>
-                <outlet property="chapterPreview" destination="Pqb-As-9nw" id="jYz-uN-x5N"/>
                 <outlet property="view" destination="c22-O7-iKe" id="xJZ-Tv-1di"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="200" height="57"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pqb-As-9nw">
-                    <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Y88-yv-fup"/>
-                </imageView>
+                <textField horizontalHuggingPriority="252" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WfT-bO-tEJ">
+                    <rect key="frame" x="18" y="20" width="50" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="0V9-Fy-5Po"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="XPB-2c-zFK">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5FA-gW-Nc9">
+                    <rect key="frame" x="72" y="20" width="110" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="qTK-ST-JWq">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Pqb-As-9nw" secondAttribute="bottom" id="b7K-Zq-5w7"/>
-                <constraint firstAttribute="trailing" secondItem="Pqb-As-9nw" secondAttribute="trailing" id="iJ8-oH-Hxd"/>
-                <constraint firstItem="Pqb-As-9nw" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="ofY-pb-Tq9"/>
-                <constraint firstItem="Pqb-As-9nw" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="qPh-dW-g9M"/>
+                <constraint firstItem="5FA-gW-Nc9" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="74" id="21Q-Hq-NwF"/>
+                <constraint firstItem="WfT-bO-tEJ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="SzA-Au-HTn"/>
+                <constraint firstItem="5FA-gW-Nc9" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="aOj-ur-3Qb"/>
+                <constraint firstItem="WfT-bO-tEJ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="odg-Jq-PV3"/>
+                <constraint firstAttribute="trailing" secondItem="5FA-gW-Nc9" secondAttribute="trailing" constant="20" id="xKK-y6-Z0m"/>
+                <constraint firstItem="5FA-gW-Nc9" firstAttribute="leading" secondItem="WfT-bO-tEJ" secondAttribute="trailing" constant="8" id="yz8-LI-pEf"/>
             </constraints>
+            <point key="canvasLocation" x="356" y="257.5"/>
         </customView>
+        <collectionViewItem id="nPj-BH-w00" customClass="ChapterItem" customModule="Yomu" customModuleProvider="target">
+            <connections>
+                <outlet property="chapterNumber" destination="WfT-bO-tEJ" id="Rh4-Hs-Uut"/>
+                <outlet property="chapterTitle" destination="5FA-gW-Nc9" id="Rnx-JG-2Om"/>
+            </connections>
+        </collectionViewItem>
     </objects>
 </document>
