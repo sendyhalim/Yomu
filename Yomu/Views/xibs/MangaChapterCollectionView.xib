@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MangaChapterCollectionViewController" customModule="Yomu" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="uQp-Ji-eXt" id="cyN-J9-tBB"/>
+                <outlet property="view" destination="c22-O7-iKe" id="Dpq-uX-G6r"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFs-JW-OGC">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                    <clipView key="contentView" id="dx7-Iy-LZN">
+                        <rect key="frame" x="1" y="1" width="478" height="270"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView id="uQp-Ji-eXt">
+                                <rect key="frame" x="0.0" y="0.0" width="478" height="270"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="hg9-OF-rUn">
+                        <rect key="frame" x="1" y="144" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="boi-K4-AR3">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="YFs-JW-OGC" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="7x3-qQ-4bm"/>
+                <constraint firstItem="YFs-JW-OGC" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="WLg-Ln-Izg"/>
+                <constraint firstAttribute="bottom" secondItem="YFs-JW-OGC" secondAttribute="bottom" id="fJ8-dC-1v7"/>
+                <constraint firstAttribute="trailing" secondItem="YFs-JW-OGC" secondAttribute="trailing" id="iZB-KB-Us2"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>
