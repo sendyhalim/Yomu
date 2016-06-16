@@ -25,7 +25,7 @@ private struct MangaChapterJSONMapping {
 struct MangaChapter {
   let id: String
   let number: Int
-  let title: String?
+  let title: String
 }
 
 extension MangaChapter: Decodable {
