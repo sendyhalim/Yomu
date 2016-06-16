@@ -37,4 +37,8 @@ struct MangaChaptersViewModel {
       }
       .addDisposableTo(disposeBag)
   }
+
+  subscript(index: Int) -> MangaChapter {
+    return _chapters.value[UInt(index)]
+  }
 }
