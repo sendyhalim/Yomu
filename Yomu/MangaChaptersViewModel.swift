@@ -8,6 +8,7 @@
 
 import RxMoya
 import RxSwift
+import RxCocoa
 import Swiftz
 
 struct MangaChaptersViewModel {
@@ -15,8 +16,8 @@ struct MangaChaptersViewModel {
   private let provider = RxMoyaProvider<MangaEdenAPI>()
   private let disposeBag = DisposeBag()
 
-  var chapters: Observable<List<MangaChapter>> {
-    return _chapters.asObservable()
+  var chapters: Driver<List<MangaChapter>> {
+    return _chapters.asDriver()
   }
 
   var count: Int {
@@ -34,8 +35,7 @@ struct MangaChaptersViewModel {
       .mapArray(MangaChapter.self, withRootKey: "chapters")
       .subscribeNext {
         self._chapters.value = List<MangaChapter>(fromArray: $0)
-      }
-      .addDisposableTo(disposeBag)
+      } >>> disposeBag
   }
 
   subscript(index: Int) -> MangaChapter {
