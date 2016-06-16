@@ -677,22 +677,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQB-cT-a7d">
+                    <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQB-cT-a7d">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                        <subviews>
-                            <customView fixedFrame="YES" id="kLC-ih-6Ni">
-                                <rect key="frame" x="0.0" y="0.0" width="236.5" height="360"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </customView>
-                            <customView fixedFrame="YES" id="RWN-bG-ODH">
-                                <rect key="frame" x="247" y="0.0" width="234" height="360"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </customView>
-                        </subviews>
-                        <holdingPriorities>
-                            <real value="250"/>
-                            <real value="250"/>
-                        </holdingPriorities>
                     </splitView>
                 </subviews>
                 <constraints>

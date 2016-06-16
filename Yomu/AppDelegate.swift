@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       bundle: nil
     )!
 
-    splitView.subviews.first!.addSubview(mangaViewController.view)
+    splitView.addArrangedSubview(mangaViewController.view)
   }
 
   func applicationWillTerminate(aNotification: NSNotification) {
