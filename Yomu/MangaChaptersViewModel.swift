@@ -19,6 +19,10 @@ struct MangaChaptersViewModel {
     return _chapters.asObservable()
   }
 
+  var count: Int {
+    return _chapters.value.count
+  }
+
   let id: String
 
   func fetch() {
