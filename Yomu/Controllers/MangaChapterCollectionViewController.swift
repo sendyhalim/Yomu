@@ -12,7 +12,7 @@ import RxSwift
 import Swiftz
 
 class MangaChapterCollectionViewController: NSViewController {
-  @IBOutlet weak var collectionView: NSCollectionView!
+  @IBOutlet weak var tableView: NSTableView!
 
   let vm = MangaChaptersViewModel(id: "4e70ea03c092255ef70046f0")
   let disposeBag = DisposeBag()
@@ -20,35 +20,40 @@ class MangaChapterCollectionViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    collectionView.dataSource = self
+    let chapterItemNib = NSNib(nibNamed: "ChapterItem", bundle: nil)
+    tableView.registerNib(chapterItemNib, forIdentifier: "ChapterItem")
+    tableView.setDelegate(self)
+    tableView.setDataSource(self)
 
     vm.chapters
       .driveNext { [weak self] chapters in
-        self!.collectionView.reloadData()
+        self!.tableView.reloadData()
       } >>> disposeBag
 
     vm.fetch()
   }
 }
 
-extension MangaChapterCollectionViewController: NSCollectionViewDataSource {
-  func collectionView(
-    collectionView: NSCollectionView,
-    numberOfItemsInSection section: Int
-  ) -> Int {
+extension MangaChapterCollectionViewController: NSTableViewDataSource, NSTableViewDelegate {
+  func numberOfRowsInTableView(tableView: NSTableView) -> Int {
     return vm.count
   }
 
-  func collectionView(
-    collectionView: NSCollectionView,
-    itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath
-  ) -> NSCollectionViewItem {
-    let item = collectionView.makeItemWithIdentifier(
+  func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+    return 57
+  }
+
+  func tableView(
+    tableView: NSTableView,
+    viewForTableColumn tableColumn: NSTableColumn?,
+    row: Int
+  ) -> NSView? {
+    let item = tableView.makeViewWithIdentifier(
       "ChapterItem",
-      forIndexPath: indexPath
+      owner: self
     ) as! ChapterItem
 
-    let chapter = vm[indexPath.item]
+    let chapter = vm[row]
     item.chapterNumber.stringValue = "\(chapter.number)"
     item.chapterTitle.stringValue = chapter.title
 
