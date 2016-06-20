@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   @IBOutlet weak var splitView: NSSplitView!
 
   var mangaViewController: MangaCollectionViewController!
-  var mangaChaptersViewController: MangaChapterCollectionViewController!
+  var chaptersViewController: ChapterCollectionViewController!
 
   func applicationDidFinishLaunching(aNotification: NSNotification) {
     // Insert code here to initialize your application
@@ -25,13 +25,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       bundle: nil
     )
 
-    mangaChaptersViewController = MangaChapterCollectionViewController(
+    chaptersViewController = ChapterCollectionViewController(
       nibName: "ChapterCollection",
       bundle: nil
     )
 
     splitView.addArrangedSubview(mangaViewController.view)
-    splitView.addArrangedSubview(mangaChaptersViewController.view)
+    splitView.addArrangedSubview(chaptersViewController.view)
   }
 
   func applicationWillTerminate(aNotification: NSNotification) {

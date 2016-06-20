@@ -1,5 +1,5 @@
 //
-//  MangaChapterCollectionViewController.swift
+//  ChapterCollectionViewController.swift
 //  Yomu
 //
 //  Created by Sendy Halim on 6/16/16.
@@ -11,10 +11,10 @@ import Kingfisher
 import RxSwift
 import Swiftz
 
-class MangaChapterCollectionViewController: NSViewController {
+class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var tableView: NSTableView!
 
-  let vm = MangaChaptersViewModel(id: "4e70ea03c092255ef70046f0")
+  let vm = ChaptersViewModel(id: "4e70ea03c092255ef70046f0")
   let disposeBag = DisposeBag()
 
   override func viewDidLoad() {
@@ -34,7 +34,7 @@ class MangaChapterCollectionViewController: NSViewController {
   }
 }
 
-extension MangaChapterCollectionViewController: NSTableViewDataSource, NSTableViewDelegate {
+extension ChapterCollectionViewController: NSTableViewDataSource, NSTableViewDelegate {
   func numberOfRowsInTableView(tableView: NSTableView) -> Int {
     return vm.count
   }

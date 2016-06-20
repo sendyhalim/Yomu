@@ -11,12 +11,12 @@ import RxSwift
 import RxCocoa
 import Swiftz
 
-struct MangaChaptersViewModel {
-  private let _chapters = Variable(List<MangaChapter>())
+struct ChaptersViewModel {
+  private let _chapters = Variable(List<Chapter>())
   private let provider = RxMoyaProvider<MangaEdenAPI>()
   private let disposeBag = DisposeBag()
 
-  var chapters: Driver<List<MangaChapter>> {
+  var chapters: Driver<List<Chapter>> {
     return _chapters.asDriver()
   }
 
@@ -32,13 +32,13 @@ struct MangaChaptersViewModel {
     provider
       .request(api)
       .filterSuccessfulStatusCodes()
-      .mapArray(MangaChapter.self, withRootKey: "chapters")
+      .mapArray(Chapter.self, withRootKey: "chapters")
       .subscribeNext {
-        self._chapters.value = List<MangaChapter>(fromArray: $0)
+        self._chapters.value = List<Chapter>(fromArray: $0)
       } >>> disposeBag
   }
 
-  subscript(index: Int) -> MangaChapter {
+  subscript(index: Int) -> Chapter {
     return _chapters.value[UInt(index)]
   }
 }

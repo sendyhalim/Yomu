@@ -1,5 +1,5 @@
 //
-//  MangaChapter.swift
+//  Chapter.swift
 //  Yomu
 //
 //  Created by Sendy Halim on 6/11/16.
@@ -16,30 +16,30 @@ import Curry
 ///   "Uzumaki Naruto!!",        // Title
 ///   "545c7a3945b9ef92f1e256f7" // ID
 ///  ],
-private struct MangaChapterJSONMapping {
+private struct ChapterJSONMapping {
   static let id = 3
   static let number = 0
   static let title = 2
 }
 
-struct MangaChapter {
+struct Chapter {
   let id: String
   let number: Int
   let title: String
 }
 
-extension MangaChapter: Decodable {
-  static func decode(json: JSON) -> Decoded<MangaChapter> {
+extension Chapter: Decodable {
+  static func decode(json: JSON) -> Decoded<Chapter> {
     switch json {
     case JSON.Array(var jsonStrings):
-      if case JSON.Null = jsonStrings[MangaChapterJSONMapping.title] {
-        jsonStrings[MangaChapterJSONMapping.title] = JSON.String("")
+      if case JSON.Null = jsonStrings[ChapterJSONMapping.title] {
+        jsonStrings[ChapterJSONMapping.title] = JSON.String("")
       }
 
-      return curry(MangaChapter.init)
-        <^> String.decode(jsonStrings[MangaChapterJSONMapping.id])
-        <*> Int.decode(jsonStrings[MangaChapterJSONMapping.number])
-        <*> String.decode(jsonStrings[MangaChapterJSONMapping.title])
+      return curry(Chapter.init)
+        <^> String.decode(jsonStrings[ChapterJSONMapping.id])
+        <*> Int.decode(jsonStrings[ChapterJSONMapping.number])
+        <*> String.decode(jsonStrings[ChapterJSONMapping.title])
 
     default:
       return .typeMismatch("Array of JSON String", actual: json)
