@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
+import Cocoa
 import RxCocoa
 import RxMoya
 import RxSwift
@@ -14,11 +15,14 @@ import Swiftz
 struct ChapterPagesViewModel {
   let chapterId: String
   let provider = RxMoyaProvider<MangaEdenAPI>()
-  let disposeBag = DisposeBag()
   let _chapterPages = Variable(List<ChapterPage>())
 
   var chapterPages: Driver<List<ChapterPage>> {
     return _chapterPages.asDriver()
+  }
+
+  var chapterImagePreviewURL: ImageURL? {
+    return _chapterPages.value.first?.image
   }
 
   func fetch() -> Disposable {
