@@ -33,7 +33,7 @@ struct ChapterPagesViewModel {
         let sortedPages = $0.sort {
           let (x, y) = $0
 
-          return x.number > y.number
+          return x.number < y.number
         }
 
         self._chapterPages.value = List<ChapterPage>(fromArray: sortedPages)
