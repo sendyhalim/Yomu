@@ -30,7 +30,7 @@ class ChapterCollectionViewController: NSViewController {
         self!.tableView.reloadData()
       } >>> disposeBag
 
-    vm.fetch()
+    vm.fetch() >>> disposeBag
   }
 }
 

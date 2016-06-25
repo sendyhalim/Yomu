@@ -14,7 +14,6 @@ import Swiftz
 struct ChaptersViewModel {
   private let _chapters = Variable(List<Chapter>())
   private let provider = RxMoyaProvider<MangaEdenAPI>()
-  private let disposeBag = DisposeBag()
 
   var chapters: Driver<List<Chapter>> {
     return _chapters.asDriver()
@@ -26,16 +25,16 @@ struct ChaptersViewModel {
 
   let id: String
 
-  func fetch() {
+  func fetch() -> Disposable {
     let api = MangaEdenAPI.MangaDetail(id)
 
-    provider
+    return provider
       .request(api)
       .filterSuccessfulStatusCodes()
       .mapArray(Chapter.self, withRootKey: "chapters")
       .subscribeNext {
         self._chapters.value = List<Chapter>(fromArray: $0)
-      } >>> disposeBag
+      }
   }
 
   subscript(index: Int) -> Chapter {
