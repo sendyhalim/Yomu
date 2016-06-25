@@ -26,7 +26,13 @@ struct ChapterPagesViewModel {
       .request(MangaEdenAPI.ChapterDetail(chapterId))
       .mapArray(ChapterPage.self, withRootKey: "images")
       .subscribeNext {
-        self._chapterPages.value = List<ChapterPage>(fromArray: $0)
+        let sortedPages = $0.sort {
+          let (x, y) = $0
+
+          return x.number > y.number
+        }
+
+        self._chapterPages.value = List<ChapterPage>(fromArray: sortedPages)
       }
   }
 }
