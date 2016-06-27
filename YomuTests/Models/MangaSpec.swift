@@ -34,7 +34,7 @@ class MangaSpec: QuickSpec {
         let endpoint = "d1/d1cd664cefc4d19ec99603983d4e0b934e8bce91c3fccda3914ac029.png"
 
         expect(manga.image.endpoint) == endpoint
-        expect(manga.image.description) == "\(ImageURL.prefix)/\(endpoint)"
+        expect(manga.image.description) == "\(ChapterImage.prefix)/\(endpoint)"
       }
 
       it("should set manga released year") {

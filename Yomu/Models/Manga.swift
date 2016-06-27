@@ -28,7 +28,7 @@ struct Manga: Decodable {
   let slug: String
   let title: String
   let author: String
-  let image: ImageURL
+  let image: ChapterImage
   let releasedYear: Int
   let description: String
   let categories: [String]

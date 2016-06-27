@@ -21,7 +21,7 @@ struct ChapterPagesViewModel {
     return _chapterPages.asDriver()
   }
 
-  var chapterImagePreviewURL: ImageURL? {
+  var chapterImage: ChapterImage? {
     return _chapterPages.value.isEmpty ? .None : _chapterPages.value.first!.image
   }
 

@@ -58,8 +58,6 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>ChapterPagesViewModel.swift</string>
 			<key>path</key>
 			<string>ChapterPagesViewModel.swift</string>
 			<key>sourceTree</key>
@@ -153,8 +151,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Utils</string>
 			<key>path</key>
 			<string>Utils</string>
 			<key>sourceTree</key>
@@ -1112,8 +1108,6 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>ChaptersViewModel.swift</string>
 			<key>path</key>
 			<string>ChaptersViewModel.swift</string>
 			<key>sourceTree</key>
@@ -1445,8 +1439,8 @@ fi</string>
 			<key>children</key>
 			<array>
 				<string>79E85D7A1D0B2C110029FDA6</string>
-				<string>7916A2051D1844DF007CA1BD</string>
 				<string>79E85D781D0B287D0029FDA6</string>
+				<string>7916A2051D1844DF007CA1BD</string>
 				<string>79AF71B21D072DB100608518</string>
 			</array>
 			<key>isa</key>
@@ -1519,7 +1513,7 @@ fi</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
 			<key>path</key>
-			<string>ImageURL.swift</string>
+			<string>ChapterImage.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>

@@ -56,8 +56,8 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource, NSCollect
     chapterPageVm
       .chapterPages
       .driveNext { _ in
-        guard let imageUrl = chapterPageVm.chapterImagePreviewURL else { return }
-        item.chapterPreview.kf_setImageWithURL(imageUrl.url)
+        guard let image = chapterPageVm.chapterImage else { return }
+        item.chapterPreview.kf_setImageWithURL(image.url)
       } >>> disposeBag
 
     // item.chapterNumber.stringValue = "\(chapter.number)"
