@@ -12,49 +12,52 @@ import RxSwift
 import Swiftz
 
 class ChapterCollectionViewController: NSViewController {
-  @IBOutlet weak var tableView: NSTableView!
+  @IBOutlet weak var collectionView: NSCollectionView!
 
   let vm = ChaptersViewModel(id: "4e70ea03c092255ef70046f0")
   let disposeBag = DisposeBag()
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  override func awakeFromNib() {
+    super.awakeFromNib()
 
-    let chapterItemNib = NSNib(nibNamed: "ChapterItem", bundle: nil)
-    tableView.registerNib(chapterItemNib, forIdentifier: "ChapterItem")
-    tableView.setDelegate(self)
-    tableView.setDataSource(self)
+    collectionView.delegate = self
+    collectionView.dataSource = self
 
     vm.chapters
       .driveNext { [weak self] chapters in
-        self!.tableView.reloadData()
+        self!.collectionView.reloadData()
       } >>> disposeBag
 
     vm.fetch() >>> disposeBag
   }
 }
 
-extension ChapterCollectionViewController: NSTableViewDataSource, NSTableViewDelegate {
-  func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+extension ChapterCollectionViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
+  func collectionView(
+    collectionView: NSCollectionView,
+    numberOfItemsInSection section: Int
+  ) -> Int {
     return vm.count
   }
 
-  func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-    return 57
-  }
-
-  func tableView(
-    tableView: NSTableView,
-    viewForTableColumn tableColumn: NSTableColumn?,
-    row: Int
-  ) -> NSView? {
-    let item = tableView.makeViewWithIdentifier(
+  func collectionView(
+    collectionView: NSCollectionView,
+    itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath
+  ) -> NSCollectionViewItem {
+    let item = collectionView.makeItemWithIdentifier(
       "ChapterItem",
-      owner: self
+      forIndexPath: indexPath
     ) as! ChapterItem
 
-    let chapter = vm[row]
-    item.chapterNumber.stringValue = "\(chapter.number)"
+    let chapter = vm[indexPath.item]
+    let chapterPageVm = ChapterPagesViewModel(chapterId: chapter.id)
+
+    chapterPageVm.fetch()
+    chapterPageVm.chapterPages.driveNext { _ in
+      print(chapter.title, chapterPageVm.chapterImagePreviewURL)
+    } >>> disposeBag
+
+    // item.chapterNumber.stringValue = "\(chapter.number)"
     item.chapterTitle.stringValue = chapter.title
 
     return item

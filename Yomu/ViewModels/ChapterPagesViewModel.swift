@@ -22,7 +22,7 @@ struct ChapterPagesViewModel {
   }
 
   var chapterImagePreviewURL: ImageURL? {
-    return _chapterPages.value.first?.image
+    return _chapterPages.value.isEmpty ? .None : _chapterPages.value.first!.image
   }
 
   func fetch() -> Disposable {

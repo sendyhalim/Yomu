@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ChapterItem: NSTableCellView {
+class ChapterItem: NSCollectionViewItem {
   @IBOutlet weak var chapterTitle: NSTextField!
   @IBOutlet weak var chapterNumber: NSTextField!
 }
