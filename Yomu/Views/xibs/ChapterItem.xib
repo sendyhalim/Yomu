@@ -10,18 +10,19 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <collectionViewItem id="RQl-YB-U4K" customClass="ChapterItem" customModule="Yomu" customModuleProvider="target">
             <connections>
+                <outlet property="chapterPreview" destination="vLh-9l-vEe" id="t9Y-Ns-680"/>
                 <outlet property="chapterTitle" destination="M9R-o0-cPD" id="FSs-TC-Cwp"/>
                 <outlet property="view" destination="3mi-IM-HZU" id="cfD-hy-Qvm"/>
             </connections>
         </collectionViewItem>
         <customView id="3mi-IM-HZU">
-            <rect key="frame" x="0.0" y="0.0" width="245" height="74"/>
+            <rect key="frame" x="0.0" y="0.0" width="229" height="325"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9R-o0-cPD">
-                    <rect key="frame" x="18" y="20" width="209" height="34"/>
+                    <rect key="frame" x="18" y="20" width="193" height="34"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="34" id="PbA-2H-5nr"/>
+                        <constraint firstAttribute="height" constant="34" id="ipY-I8-nhd"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Y7l-0P-ysa">
                         <font key="font" metaFont="system"/>
@@ -29,13 +30,21 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vLh-9l-vEe">
+                    <rect key="frame" x="20" y="62" width="189" height="243"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Aqs-zV-WH8"/>
+                </imageView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="M9R-o0-cPD" secondAttribute="trailing" constant="20" symbolic="YES" id="RgX-by-uB7"/>
-                <constraint firstItem="M9R-o0-cPD" firstAttribute="top" secondItem="3mi-IM-HZU" secondAttribute="top" constant="20" symbolic="YES" id="jKt-QR-uTR"/>
-                <constraint firstItem="M9R-o0-cPD" firstAttribute="leading" secondItem="3mi-IM-HZU" secondAttribute="leading" constant="20" symbolic="YES" id="uf2-TW-Htr"/>
+                <constraint firstItem="vLh-9l-vEe" firstAttribute="leading" secondItem="M9R-o0-cPD" secondAttribute="leading" id="6ZR-RI-mvZ"/>
+                <constraint firstItem="vLh-9l-vEe" firstAttribute="trailing" secondItem="M9R-o0-cPD" secondAttribute="trailing" id="AQf-dt-c6h"/>
+                <constraint firstItem="M9R-o0-cPD" firstAttribute="top" secondItem="vLh-9l-vEe" secondAttribute="bottom" constant="8" symbolic="YES" id="OdE-eT-kOn"/>
+                <constraint firstItem="M9R-o0-cPD" firstAttribute="leading" secondItem="3mi-IM-HZU" secondAttribute="leading" constant="20" symbolic="YES" id="Sze-xv-ycN"/>
+                <constraint firstAttribute="bottom" secondItem="M9R-o0-cPD" secondAttribute="bottom" constant="20" symbolic="YES" id="WuV-sc-IiH"/>
+                <constraint firstItem="vLh-9l-vEe" firstAttribute="top" secondItem="3mi-IM-HZU" secondAttribute="top" constant="20" symbolic="YES" id="iJz-mi-2jX"/>
+                <constraint firstAttribute="trailing" secondItem="M9R-o0-cPD" secondAttribute="trailing" constant="20" symbolic="YES" id="lfr-eg-brf"/>
             </constraints>
-            <point key="canvasLocation" x="375.5" y="329"/>
+            <point key="canvasLocation" x="374.5" y="328.5"/>
         </customView>
     </objects>
 </document>

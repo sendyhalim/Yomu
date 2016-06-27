@@ -11,4 +11,5 @@ import Cocoa
 class ChapterItem: NSCollectionViewItem {
   @IBOutlet weak var chapterTitle: NSTextField!
   @IBOutlet weak var chapterNumber: NSTextField!
+  @IBOutlet weak var chapterPreview: NSImageView!
 }

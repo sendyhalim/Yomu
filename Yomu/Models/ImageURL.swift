@@ -18,6 +18,10 @@ struct ImageURL: CustomStringConvertible {
   var description: String {
     return "\(ImageURL.prefix)/\(endpoint)"
   }
+
+  var url: NSURL {
+    return NSURL(string: self.description)!
+  }
 }
 
 extension ImageURL: Decodable {
