@@ -57,6 +57,11 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource, NSCollect
       .chapterPages
       .driveNext { _ in
         guard let image = chapterPageVm.chapterImage else { return }
+
+        // TODO: There's a possibility of race condition, when this lamda function is called,
+        // we can't guarantee that the execution context is still within the previous chapter item
+        // because if user scrolls fast and the cells are re-used then 
+        // there will be race conditions.
         item.chapterPreview.kf_setImageWithURL(image.url)
       } >>> disposeBag
 
