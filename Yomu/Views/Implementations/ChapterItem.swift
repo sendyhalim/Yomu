@@ -7,9 +7,16 @@
 //
 
 import Cocoa
+import RxSwift
 
 class ChapterItem: NSCollectionViewItem {
   @IBOutlet weak var chapterTitle: NSTextField!
   @IBOutlet weak var chapterNumber: NSTextField!
   @IBOutlet weak var chapterPreview: NSImageView!
+
+  var disposeBag = DisposeBag()
+
+  func didEndDisplaying() {
+    disposeBag = DisposeBag()
+  }
 }
