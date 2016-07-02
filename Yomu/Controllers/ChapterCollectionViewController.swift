@@ -32,7 +32,7 @@ class ChapterCollectionViewController: NSViewController {
   }
 }
 
-extension ChapterCollectionViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
+extension ChapterCollectionViewController: NSCollectionViewDataSource {
   func collectionView(
     collectionView: NSCollectionView,
     numberOfItemsInSection section: Int
@@ -71,9 +71,20 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource, NSCollect
         item.chapterPreview.kf_setImageWithURL(image.url)
       } >>> item.disposeBag
 
-    // item.chapterNumber.stringValue = "\(chapter.number)"
     item.chapterTitle.stringValue = chapter.title
 
     return item
+  }
+}
+
+extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
+  func collectionView(
+    collectionView: NSCollectionView,
+    didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
+  ) {
+    let index = indexPaths.first!.item
+    let chapterId = vm[index].id
+
+    print(chapterId)
   }
 }
