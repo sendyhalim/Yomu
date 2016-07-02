@@ -10,33 +10,11 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-  @IBOutlet weak var window: NSWindow!
-  @IBOutlet weak var splitView: NSSplitView!
-
-  var mangaViewController: MangaCollectionViewController!
-  var chaptersViewController: ChapterCollectionViewController!
-
   func applicationDidFinishLaunching(aNotification: NSNotification) {
-    // Insert code here to initialize your application
 
-    mangaViewController = MangaCollectionViewController(
-      nibName: "MangaCollection",
-      bundle: nil
-    )
-
-    chaptersViewController = ChapterCollectionViewController(
-      nibName: "ChapterCollection",
-      bundle: nil
-    )
-
-    splitView.addArrangedSubview(mangaViewController.view)
-    splitView.addArrangedSubview(chaptersViewController.view)
   }
 
   func applicationWillTerminate(aNotification: NSNotification) {
     // Insert code here to tear down your application
   }
-
-
 }

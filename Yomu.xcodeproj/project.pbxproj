@@ -216,26 +216,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>796052361D12EA2100CF0074</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>ChapterCollection.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>796052371D12EA2100CF0074</key>
-		<dict>
-			<key>fileRef</key>
-			<string>796052361D12EA2100CF0074</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
 		<key>798454BD1D05CF3500BB7262</key>
 		<dict>
 			<key>children</key>
@@ -376,10 +356,9 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>79F7CF711D27A31A005B135B</string>
 				<string>7960486D1D133230006571B3</string>
 				<string>798454CC1D05CF3600BB7262</string>
-				<string>798454CF1D05CF3600BB7262</string>
-				<string>796052371D12EA2100CF0074</string>
 				<string>798865E61D119BA500093761</string>
 				<string>79F094891D118D4F0029FB41</string>
 			</array>
@@ -450,13 +429,13 @@
 				<string>79F0948A1D1198C80029FB41</string>
 				<string>79E85D741D0B22A80029FDA6</string>
 				<string>79AF71B11D072D9900608518</string>
+				<string>79F7CF6F1D27A2F7005B135B</string>
 				<string>796048631D130620006571B3</string>
 				<string>798866191D11ADD800093761</string>
 				<string>79F094871D118B300029FB41</string>
 				<string>798454C91D05CF3600BB7262</string>
 				<string>798454CB1D05CF3600BB7262</string>
 				<string>798454D01D05CF3600BB7262</string>
-				<string>798454CD1D05CF3600BB7262</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -498,41 +477,6 @@
 		<dict>
 			<key>fileRef</key>
 			<string>798454CB1D05CF3600BB7262</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>798454CD1D05CF3600BB7262</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>798454CE1D05CF3600BB7262</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>MainMenu.xib</string>
-			<key>path</key>
-			<string>.</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>798454CE1D05CF3600BB7262</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/MainMenu.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>798454CF1D05CF3600BB7262</key>
-		<dict>
-			<key>fileRef</key>
-			<string>798454CD1D05CF3600BB7262</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1007,7 +951,6 @@
 		<dict>
 			<key>children</key>
 			<array>
-				<string>796052361D12EA2100CF0074</string>
 				<string>7960486C1D133230006571B3</string>
 				<string>79F094881D118D4F0029FB41</string>
 				<string>798865E51D119BA500093761</string>
@@ -1732,6 +1675,41 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>79F0948B1D1198F60029FB41</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79F7CF6F1D27A2F7005B135B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>79F7CF701D27A31A005B135B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Storyboards</string>
+			<key>path</key>
+			<string>Storyboards</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79F7CF701D27A31A005B135B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79F7CF711D27A31A005B135B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79F7CF701D27A31A005B135B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
