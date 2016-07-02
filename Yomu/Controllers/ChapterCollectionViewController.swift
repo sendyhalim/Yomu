@@ -47,7 +47,6 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource, NSCollect
   ) {
     let _item = item as! ChapterItem
 
-    _item.chapterPreview.image = .None
     _item.didEndDisplaying()
   }
 

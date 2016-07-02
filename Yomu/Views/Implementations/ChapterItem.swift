@@ -17,6 +17,8 @@ class ChapterItem: NSCollectionViewItem {
   var disposeBag = DisposeBag()
 
   func didEndDisplaying() {
+    chapterPreview.image = .None
+
     disposeBag = DisposeBag()
   }
 }
