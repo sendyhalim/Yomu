@@ -20,20 +20,20 @@ class ChapterCollectionViewController: NSViewController {
   func setupConstraints() {
     let width = NSLayoutConstraint(
       item: view,
-      attribute: NSLayoutAttribute.Width,
+      attribute: .Width,
       relatedBy: .GreaterThanOrEqual,
       toItem: nil,
-      attribute: NSLayoutAttribute.NotAnAttribute,
+      attribute: .NotAnAttribute,
       multiplier: 1,
       constant: 450
     )
 
     let height = NSLayoutConstraint(
       item: view,
-      attribute: NSLayoutAttribute.Height,
+      attribute: .Height,
       relatedBy: .GreaterThanOrEqual,
       toItem: nil,
-      attribute: NSLayoutAttribute.NotAnAttribute,
+      attribute: .NotAnAttribute,
       multiplier: 1,
       constant: 300
     )
