@@ -403,55 +403,25 @@
             <objects>
                 <splitViewController id="1f7-wi-oaL" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="hyr-q7-eIU"/>
+                        <splitViewItem id="4SS-qJ-fvO"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="LSj-TI-8xg">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
                     <connections>
-                        <segue destination="4Gn-XN-0Ex" kind="relationship" relationship="splitItems" id="62d-OT-JK6"/>
+                        <segue destination="25p-NU-ITg" kind="relationship" relationship="splitItems" id="62d-OT-JK6"/>
                     </connections>
                 </splitViewController>
                 <customObject id="Nel-gT-hPV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-190" y="926"/>
         </scene>
-        <!--Chapter Collection View Controller-->
-        <scene sceneID="o0x-cD-JEP">
+        <!--ChapterCollection-->
+        <scene sceneID="n6g-Mr-GJ3">
             <objects>
-                <viewController id="4Gn-XN-0Ex" customClass="ChapterCollectionViewController" customModule="Yomu" customModuleProvider="target" sceneMemberID="viewController">
-                    <scrollView key="view" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="S51-Oj-8SQ">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" id="nia-G3-9Ba">
-                            <rect key="frame" x="1" y="1" width="448" height="298"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <collectionView selectable="YES" id="biS-7e-MeC">
-                                    <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="esm-QN-8AA">
-                                        <size key="itemSize" width="228.5" height="325"/>
-                                    </collectionViewFlowLayout>
-                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </collectionView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="MdD-wn-mJa">
-                            <rect key="frame" x="1" y="144" width="233" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yDf-JG-Evq">
-                            <rect key="frame" x="234" y="1" width="15" height="143"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                    <connections>
-                        <outlet property="collectionView" destination="biS-7e-MeC" id="rZz-v5-Zkg"/>
-                    </connections>
-                </viewController>
-                <customObject id="YOv-6f-CDj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <controllerPlaceholder storyboardName="ChapterCollection" id="25p-NU-ITg" sceneMemberID="viewController"/>
+                <customObject id="Gay-9t-9Lc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="511" y="926"/>
         </scene>
