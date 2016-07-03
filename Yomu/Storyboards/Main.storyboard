@@ -386,38 +386,56 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="jrt-Xu-LYb">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="600" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-                        <value key="minSize" type="size" width="480" height="270"/>
+                        <value key="minSize" type="size" width="600" height="300"/>
                     </window>
                     <connections>
-                        <segue destination="1f7-wi-oaL" kind="relationship" relationship="window.shadowedContentViewController" id="GkN-Ho-nhy"/>
+                        <segue destination="WqN-Xl-LRz" kind="relationship" relationship="window.shadowedContentViewController" id="DID-uB-QOl"/>
                     </connections>
                 </windowController>
                 <customObject id="wpQ-mo-XJM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-190" y="436"/>
         </scene>
-        <!--Split View Controller-->
-        <scene sceneID="npy-JA-U6E">
+        <!--Manga Container View Controller-->
+        <scene sceneID="cw1-9S-LGm">
             <objects>
-                <splitViewController id="1f7-wi-oaL" sceneMemberID="viewController">
-                    <splitViewItems>
-                        <splitViewItem id="BmT-Mf-oif" userLabel="Chapter Collection View"/>
-                        <splitViewItem id="C6I-hV-SBC"/>
-                    </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="LSj-TI-8xg">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                <viewController id="WqN-Xl-LRz" customClass="MangaContainerViewController" customModule="Yomu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="N6e-zS-YWK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </splitView>
-                    <connections>
-                        <segue destination="kdd-ew-6Py" kind="relationship" relationship="splitItems" id="iqr-9a-U4q"/>
-                        <segue destination="25p-NU-ITg" kind="relationship" relationship="splitItems" id="2x4-AY-bxY"/>
-                    </connections>
-                </splitViewController>
-                <customObject id="Nel-gT-hPV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="qLH-Oa-Cr0">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Vy1-Fo-5OB"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="kdd-ew-6Py" kind="embed" id="2MW-Do-6eD"/>
+                                </connections>
+                            </containerView>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="SUK-I3-fgq">
+                                <rect key="frame" x="250" y="0.0" width="350" height="300"/>
+                                <connections>
+                                    <segue destination="25p-NU-ITg" kind="embed" id="adg-Vy-V5s"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="qLH-Oa-Cr0" firstAttribute="leading" secondItem="N6e-zS-YWK" secondAttribute="leading" id="1fy-kL-Bd7"/>
+                            <constraint firstAttribute="bottom" secondItem="SUK-I3-fgq" secondAttribute="bottom" id="4J4-i8-hqv"/>
+                            <constraint firstAttribute="bottom" secondItem="qLH-Oa-Cr0" secondAttribute="bottom" id="5fC-qP-0ha"/>
+                            <constraint firstItem="qLH-Oa-Cr0" firstAttribute="top" secondItem="N6e-zS-YWK" secondAttribute="top" id="5kT-7h-A6Q"/>
+                            <constraint firstItem="SUK-I3-fgq" firstAttribute="leading" secondItem="qLH-Oa-Cr0" secondAttribute="trailing" id="KLb-8L-PBT"/>
+                            <constraint firstItem="SUK-I3-fgq" firstAttribute="top" secondItem="N6e-zS-YWK" secondAttribute="top" id="jkk-nG-pdH"/>
+                            <constraint firstAttribute="trailing" secondItem="SUK-I3-fgq" secondAttribute="trailing" id="tcJ-ML-q72"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="9Ov-n9-7al" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="926"/>
+            <point key="canvasLocation" x="-190" y="1170"/>
         </scene>
         <!--ChapterCollection-->
         <scene sceneID="n6g-Mr-GJ3">
@@ -425,7 +443,7 @@
                 <controllerPlaceholder storyboardName="ChapterCollection" id="25p-NU-ITg" sceneMemberID="viewController"/>
                 <customObject id="Gay-9t-9Lc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="511" y="926"/>
+            <point key="canvasLocation" x="-42" y="1535"/>
         </scene>
         <!--MangaCollection-->
         <scene sceneID="e0M-U1-Qjy">
@@ -433,7 +451,7 @@
                 <controllerPlaceholder storyboardName="MangaCollection" id="kdd-ew-6Py" sceneMemberID="viewController"/>
                 <customObject id="NR2-sH-oAb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-88" y="1438"/>
+            <point key="canvasLocation" x="-322" y="1540"/>
         </scene>
     </scenes>
 </document>
