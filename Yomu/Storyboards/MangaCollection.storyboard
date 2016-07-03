@@ -22,6 +22,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="addManga:" target="liK-Ty-kLj" id="eki-BV-fag"/>
+                                        </connections>
                                     </button>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zww-Uh-zQw">
                                         <rect key="frame" x="20" y="12" width="337" height="22"/>
@@ -76,11 +79,12 @@
                     </customView>
                     <connections>
                         <outlet property="collectionView" destination="K0r-ZV-3RE" id="Dcg-9g-L1N"/>
+                        <outlet property="mangaIdField" destination="zww-Uh-zQw" id="O61-tA-fuD"/>
                     </connections>
                 </viewController>
                 <customObject id="3VB-yk-Vlm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-88" y="1438"/>
+            <point key="canvasLocation" x="-443" y="1541"/>
         </scene>
     </scenes>
 </document>

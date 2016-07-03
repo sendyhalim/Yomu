@@ -11,11 +11,12 @@ import RxMoya
 import RxSwift
 
 protocol MangaSelectionDelegate {
-  func mangaDidSelected(mangaVM: Manga)
+  func mangaDidSelected(manga: Manga)
 }
 
 class MangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
+  @IBOutlet weak var mangaIdField: NSTextField!
 
   var mangaSelectionDelegate: MangaSelectionDelegate?
   let vm = MangaCollectionViewModel()
@@ -26,7 +27,12 @@ class MangaCollectionViewController: NSViewController {
 
     vm.mangas
       .driveNext { [weak self] _ in
+        print("reloaded")
         self?.collectionView.reloadData()
       } >>> disposeBag
+  }
+
+  @IBAction func addManga(sender: NSButton) {
+    vm.fetch(mangaIdField.stringValue)
   }
 }

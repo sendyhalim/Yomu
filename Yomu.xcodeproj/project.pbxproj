@@ -359,10 +359,10 @@
 			<key>files</key>
 			<array>
 				<string>79C8B75A1D294D8F0072F2D3</string>
-				<string>79F7CF711D27A31A005B135B</string>
 				<string>7960486D1D133230006571B3</string>
 				<string>79C8B7561D29416B0072F2D3</string>
 				<string>798454CC1D05CF3600BB7262</string>
+				<string>79C8B7601D29756B0072F2D3</string>
 				<string>798865E61D119BA500093761</string>
 				<string>79F094891D118D4F0029FB41</string>
 			</array>
@@ -1498,6 +1498,26 @@ fi</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>79C8B75F1D29756B0072F2D3</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79C8B7601D29756B0072F2D3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79C8B75F1D29756B0072F2D3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>79E85D741D0B22A80029FDA6</key>
 		<dict>
 			<key>children</key>
@@ -1769,7 +1789,7 @@ fi</string>
 			<key>children</key>
 			<array>
 				<string>79C8B7551D29416B0072F2D3</string>
-				<string>79F7CF701D27A31A005B135B</string>
+				<string>79C8B75F1D29756B0072F2D3</string>
 				<string>79C8B7591D294D8F0072F2D3</string>
 			</array>
 			<key>isa</key>
@@ -1778,26 +1798,6 @@ fi</string>
 			<string>Storyboards</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>79F7CF701D27A31A005B135B</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>path</key>
-			<string>Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>79F7CF711D27A31A005B135B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>79F7CF701D27A31A005B135B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
 		</dict>
 		<key>79FF941A1D10776D00A7E450</key>
 		<dict>
