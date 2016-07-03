@@ -24,7 +24,9 @@ private struct MangaJSONMapping {
 }
 
 struct Manga {
-  let id: String
+  // Id is an optional because manga eden API does not return manga id
+  // when we requested manga detail API
+  var id: String?
   let slug: String
   let title: String
   let author: String
@@ -37,7 +39,7 @@ struct Manga {
 extension Manga: Decodable {
   static func decode(json: JSON) -> Decoded<Manga> {
     return curry(Manga.init)
-      <^> json <| MangaJSONMapping.id
+      <^> json <|? MangaJSONMapping.id
       <*> json <| MangaJSONMapping.slug
       <*> json <| MangaJSONMapping.title
       <*> json <| MangaJSONMapping.author
@@ -50,12 +52,12 @@ extension Manga: Decodable {
 
 extension Manga: Hashable {
   var hashValue: Int {
-    return id.hashValue
+    return id!.hashValue
   }
 }
 
 extension Manga: Equatable { }
 
-func ==(lhs: Manga, rhs: Manga) -> Bool {
+func == (lhs: Manga, rhs: Manga) -> Bool {
   return lhs.id == rhs.id
 }
