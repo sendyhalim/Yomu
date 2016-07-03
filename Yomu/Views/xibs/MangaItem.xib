@@ -9,18 +9,18 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="275" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-eP-m62">
-                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    <rect key="frame" x="0.0" y="0.0" width="75" height="100"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="fky-5s-8IN"/>
+                        <constraint firstAttribute="width" constant="75" id="fky-5s-8IN"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="k2U-9a-r5Z"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-mk-txx">
-                    <rect key="frame" x="106" y="63" width="356" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-mk-txx">
+                    <rect key="frame" x="81" y="42" width="151" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="qHK-Rj-0lS">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -29,19 +29,20 @@
                 </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="rIw-mk-txx" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="1w0-qG-7oP"/>
                 <constraint firstItem="rIw-mk-txx" firstAttribute="leading" secondItem="CHo-eP-m62" secondAttribute="trailing" constant="8" symbolic="YES" id="EB8-m7-x6o"/>
-                <constraint firstItem="rIw-mk-txx" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="MsB-H5-RvN"/>
                 <constraint firstItem="CHo-eP-m62" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="fDX-9P-ORl"/>
                 <constraint firstAttribute="trailing" secondItem="rIw-mk-txx" secondAttribute="trailing" constant="20" symbolic="YES" id="fZI-bO-TMd"/>
                 <constraint firstItem="CHo-eP-m62" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="i5d-Gy-DCv"/>
                 <constraint firstAttribute="bottom" secondItem="CHo-eP-m62" secondAttribute="bottom" id="snW-8O-80b"/>
             </constraints>
         </customView>
-        <customObject id="oeZ-OD-eEe" customClass="MangaCollectionViewItem" customModule="Yomu" customModuleProvider="target">
+        <collectionViewItem id="mb3-6Q-snP" customClass="MangaItem" customModule="Yomu" customModuleProvider="target">
             <connections>
-                <outlet property="mangaImageView" destination="CHo-eP-m62" id="lvV-go-BiC"/>
-                <outlet property="titleTextField" destination="rIw-mk-txx" id="d2K-7c-GAc"/>
+                <outlet property="mangaImageView" destination="CHo-eP-m62" id="fsv-jP-dTv"/>
+                <outlet property="titleTextField" destination="rIw-mk-txx" id="IGG-49-Z2T"/>
+                <outlet property="view" destination="c22-O7-iKe" id="Y9V-zn-zIE"/>
             </connections>
-        </customObject>
+        </collectionViewItem>
     </objects>
 </document>
