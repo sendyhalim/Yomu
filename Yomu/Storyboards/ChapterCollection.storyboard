@@ -36,7 +36,7 @@
                         </scroller>
                     </scrollView>
                     <connections>
-                        <outlet property="collectionView" destination="biS-7e-MeC" id="rZz-v5-Zkg"/>
+                        <outlet property="collectionView" destination="biS-7e-MeC" id="0Pv-HU-5na"/>
                     </connections>
                 </viewController>
                 <customObject id="YOv-6f-CDj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

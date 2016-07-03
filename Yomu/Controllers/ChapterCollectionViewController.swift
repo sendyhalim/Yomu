@@ -17,8 +17,8 @@ class ChapterCollectionViewController: NSViewController {
   let vm = ChaptersViewModel(id: "4e70ea03c092255ef70046f0")
   let disposeBag = DisposeBag()
 
-  override func awakeFromNib() {
-    super.awakeFromNib()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
     collectionView.delegate = self
     collectionView.dataSource = self
