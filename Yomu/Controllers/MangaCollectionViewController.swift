@@ -8,9 +8,18 @@
 
 import Cocoa
 import RxMoya
+import RxSwift
+
+protocol MangaSelectionDelegate {
+  func mangaDidSelected(mangaVM: Manga)
+}
 
 class MangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
+
+  var mangaSelectionDelegate: MangaSelectionDelegate?
+  let vm = MangaCollectionViewModel()
+  let disposeBag = DisposeBag()
 
   func setupConstraints() {
     let width = NSLayoutConstraint(
@@ -30,5 +39,10 @@ class MangaCollectionViewController: NSViewController {
     super.viewDidLoad()
 
     setupConstraints()
+
+    vm.mangas
+      .driveNext { [weak self] _ in
+        self?.collectionView.reloadData()
+      } >>> disposeBag
   }
 }
