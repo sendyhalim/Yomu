@@ -17,8 +17,37 @@ class ChapterCollectionViewController: NSViewController {
   let vm = ChaptersViewModel(id: "4e70ea03c092255ef70046f0")
   let disposeBag = DisposeBag()
 
+  func setupConstraints() {
+    let width = NSLayoutConstraint(
+      item: view,
+      attribute: NSLayoutAttribute.Width,
+      relatedBy: .GreaterThanOrEqual,
+      toItem: nil,
+      attribute: NSLayoutAttribute.NotAnAttribute,
+      multiplier: 1,
+      constant: 450
+    )
+
+    let height = NSLayoutConstraint(
+      item: view,
+      attribute: NSLayoutAttribute.Height,
+      relatedBy: .GreaterThanOrEqual,
+      toItem: nil,
+      attribute: NSLayoutAttribute.NotAnAttribute,
+      multiplier: 1,
+      constant: 300
+    )
+
+    NSLayoutConstraint.activateConstraints([
+      width,
+      height
+    ])
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    setupConstraints()
 
     collectionView.delegate = self
     collectionView.dataSource = self
