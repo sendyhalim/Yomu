@@ -26,6 +26,7 @@ class MangaCollectionViewController: NSViewController {
     super.viewDidLoad()
 
     collectionView.dataSource = self
+    collectionView.delegate = self
 
     vm.mangas
       .driveNext { [weak self] _ in
@@ -65,5 +66,17 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
     cell.titleTextField.stringValue = manga.title
 
     return cell
+  }
+}
+
+extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
+  func collectionView(
+    collectionView: NSCollectionView,
+    didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
+  ) {
+    let indexPath = indexPaths.first!
+    let manga = vm[indexPath.item]
+
+    mangaSelectionDelegate?.mangaDidSelected(manga)
   }
 }
