@@ -12,7 +12,7 @@ import RxMoya
 import RxSwift
 import Swiftz
 
-struct ChapterPagesViewModel {
+struct ChapterPageCollectionViewModel {
   let chapterId: String
   let provider = RxMoyaProvider<MangaEdenAPI>()
   let _chapterPages = Variable(List<ChapterPage>())

@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import Swiftz
 
-struct ChaptersViewModel {
+struct ChapterCollectionViewModel {
   private let _chapters = Variable(List<Chapter>())
   private let provider = RxMoyaProvider<MangaEdenAPI>()
 

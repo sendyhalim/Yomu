@@ -14,7 +14,7 @@ import Swiftz
 class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
 
-  let vm = ChaptersViewModel()
+  let vm = ChapterCollectionViewModel()
   var disposeBag = DisposeBag()
 
   func setupConstraints() {
@@ -87,7 +87,7 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     ) as! ChapterItem
 
     let chapter = vm[indexPath.item]
-    let chapterPageVm = ChapterPagesViewModel(chapterId: chapter.id)
+    let chapterPageVm = ChapterPageCollectionViewModel(chapterId: chapter.id)
 
     chapterPageVm.fetch()
     chapterPageVm
