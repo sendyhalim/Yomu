@@ -679,13 +679,13 @@
                                     <constraint firstAttribute="width" constant="260" id="c2K-2S-zoD"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="Fad-rL-4Yb" kind="embed" id="gLY-Rh-C8Z"/>
+                                    <segue destination="Fad-rL-4Yb" kind="embed" identifier="EmbedMangaCollectionSegue" id="gLY-Rh-C8Z"/>
                                 </connections>
                             </containerView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="k9q-VZ-e6L">
                                 <rect key="frame" x="260" y="0.0" width="340" height="300"/>
                                 <connections>
-                                    <segue destination="LEd-Sg-0wu" kind="embed" id="IQ6-hb-We2"/>
+                                    <segue destination="LEd-Sg-0wu" kind="embed" identifier="EmbedChapterCollectionSegue" id="IQ6-hb-We2"/>
                                 </connections>
                             </containerView>
                         </subviews>
