@@ -117,3 +117,9 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
     print(chapterId)
   }
 }
+
+extension ChapterCollectionViewController: MangaSelectionDelegate {
+  func mangaDidSelected(manga: Manga) {
+    print(manga)
+  }
+}

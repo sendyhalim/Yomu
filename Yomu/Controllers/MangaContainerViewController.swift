@@ -11,5 +11,10 @@ import Cocoa
 class MangaContainerViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    let mangaCollectionViewController = childViewControllers[0] as! MangaCollectionViewController
+    let chapterCollectionViewController = childViewControllers[1] as! ChapterCollectionViewController
+
+    mangaCollectionViewController.mangaSelectionDelegate = chapterCollectionViewController
   }
 }
