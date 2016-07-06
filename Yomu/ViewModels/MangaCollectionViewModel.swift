@@ -12,24 +12,31 @@ import RxSwift
 import Swiftz
 
 struct MangaCollectionViewModel {
-  private let _mangas = Variable(Set<Manga>())
+  private var _mangas = Variable(Set<Manga>())
+  private let mangaViewModels = Variable(List<MangaViewModel>())
   private let provider = RxMoyaProvider<MangaEdenAPI>()
 
-  var mangas: Driver<List<Manga>> {
-    return _mangas.asDriver().map {
-      return List(fromArray: $0.flatMap(identity))
-    }
+  var mangas: Driver<List<MangaViewModel>> {
+    return mangaViewModels.asDriver()
   }
 
   var count: Int {
-    return _mangas.value.count
+    return mangaViewModels.value.count
   }
 
-  subscript(index: Int) -> Manga {
-    let mangas = _mangas.value
-    let _index = mangas.startIndex.advancedBy(index)
+  var disposeBag = DisposeBag()
 
-    return mangas[_index]
+  subscript(index: Int) -> MangaViewModel {
+    return mangaViewModels.value[UInt(index)]
+  }
+
+  init() {
+    _mangas
+      .asDriver()
+      .driveNext { $0
+        let viewModels = $0.flatMap(MangaViewModel.init)
+        self.mangaViewModels.value = List(fromArray: viewModels)
+      } >>> disposeBag
   }
 
   func fetch(id: String) -> Disposable {

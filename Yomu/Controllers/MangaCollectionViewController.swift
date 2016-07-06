@@ -60,10 +60,12 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
       forIndexPath: indexPath
     ) as! MangaItem
 
-    let manga = vm[indexPath.item]
+    let mangaViewModel = vm[indexPath.item]
 
-    cell.mangaImageView.kf_setImageWithURL(manga.image.url)
-    cell.titleTextField.stringValue = manga.title
+    mangaViewModel.title.drive(cell.titleTextField.rx_text) >>> disposeBag
+    mangaViewModel.previewUrl.driveNext {
+      cell.mangaImageView.kf_setImageWithURL($0)
+    } >>> disposeBag
 
     return cell
   }
@@ -75,8 +77,8 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
   ) {
     let indexPath = indexPaths.first!
-    let manga = vm[indexPath.item]
+    let viewModel = vm[indexPath.item]
 
-    mangaSelectionDelegate?.mangaDidSelected(manga)
+    mangaSelectionDelegate?.mangaDidSelected(viewModel.manga)
   }
 }
