@@ -12,10 +12,10 @@ import RxCocoa
 import Swiftz
 
 struct ChapterCollectionViewModel {
-  private let _chapters = Variable(List<Chapter>())
+  private let _chapters = Variable(List<ChapterViewModel>())
   private let provider = RxMoyaProvider<MangaEdenAPI>()
 
-  var chapters: Driver<List<Chapter>> {
+  var chapters: Driver<List<ChapterViewModel>> {
     return _chapters.asDriver()
   }
 
@@ -30,12 +30,15 @@ struct ChapterCollectionViewModel {
       .request(api)
       .filterSuccessfulStatusCodes()
       .mapArray(Chapter.self, withRootKey: "chapters")
+      .map {
+        $0.map(ChapterViewModel.init)
+      }
       .subscribeNext {
-        self._chapters.value = List<Chapter>(fromArray: $0)
+        self._chapters.value = List<ChapterViewModel>(fromArray: $0)
       }
   }
 
-  subscript(index: Int) -> Chapter {
+  subscript(index: Int) -> ChapterViewModel {
     return _chapters.value[UInt(index)]
   }
 }

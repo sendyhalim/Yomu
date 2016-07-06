@@ -1,5 +1,5 @@
 //
-//  ChapterImage.swift
+//  ImageUrl.swift
 //  Yomu
 //
 //  Created by Sendy Halim on 6/10/16.
@@ -11,12 +11,12 @@ import Argo
 
 ///  A data structure that represents image url that points to Mangaeden api
 ///  docs: http://www.mangaeden.com/api/
-struct ChapterImage: CustomStringConvertible {
+struct ImageUrl: CustomStringConvertible {
   static let prefix = "https://cdn.mangaeden.com/mangasimg"
   let endpoint: String
 
   var description: String {
-    return "\(ChapterImage.prefix)/\(endpoint)"
+    return "\(ImageUrl.prefix)/\(endpoint)"
   }
 
   var url: NSURL {
@@ -24,11 +24,11 @@ struct ChapterImage: CustomStringConvertible {
   }
 }
 
-extension ChapterImage: Decodable {
-  static func decode(json: JSON) -> Decoded<ChapterImage> {
+extension ImageUrl: Decodable {
+  static func decode(json: JSON) -> Decoded<ImageUrl> {
     switch json {
     case JSON.String(let endpoint):
-      return pure(ChapterImage(endpoint: endpoint))
+      return pure(ImageUrl(endpoint: endpoint))
 
     default:
       return .typeMismatch("String endpoint", actual: json)

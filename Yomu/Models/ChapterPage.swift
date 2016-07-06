@@ -25,7 +25,7 @@ private struct ChapterPageJSONMapping {
 
 struct ChapterPage {
   let number: Int
-  let image: ChapterImage
+  let image: ImageUrl
   let width: Int
   let height: Int
 }
@@ -36,7 +36,7 @@ extension ChapterPage: Decodable {
     case .Array(let details):
       return curry(ChapterPage.init)
         <^> Int.decode(details[ChapterPageJSONMapping.number])
-        <*> ChapterImage.decode(details[ChapterPageJSONMapping.image])
+        <*> ImageUrl.decode(details[ChapterPageJSONMapping.image])
         <*> Int.decode(details[ChapterPageJSONMapping.width])
         <*> Int.decode(details[ChapterPageJSONMapping.height])
     default:

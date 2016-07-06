@@ -9,6 +9,7 @@
 import Cocoa
 import Kingfisher
 import RxSwift
+import RxCocoa
 import Swiftz
 
 class ChapterCollectionViewController: NSViewController {
@@ -51,9 +52,12 @@ class ChapterCollectionViewController: NSViewController {
 
     collectionView.delegate = self
     collectionView.dataSource = self
+    setupSubscriptions()
+  }
 
+  func setupSubscriptions() {
     vm.chapters
-      .driveNext { [weak self] chapters in
+      .driveNext { [weak self] _ in
         self!.collectionView.reloadData()
       } >>> disposeBag
   }
@@ -87,18 +91,9 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     ) as! ChapterItem
 
     let chapter = vm[indexPath.item]
-    let chapterPageVm = ChapterPageCollectionViewModel(chapterId: chapter.id)
-
-    chapterPageVm.fetch()
-    chapterPageVm
-      .chapterPages
-      .driveNext { _ in
-        guard let image = chapterPageVm.chapterImage else { return }
-
-        item.chapterPreview.kf_setImageWithURL(image.url)
-      } >>> item.disposeBag
-
-    item.chapterTitle.stringValue = chapter.title
+    chapter.fetchPreview() >>> item.disposeBag
+    chapter.title.drive(item.chapterTitle.rx_text) >>> item.disposeBag
+    chapter.previewUrl.driveNext { item.chapterPreview.kf_setImageWithURL($0) } >>> item.disposeBag
 
     return item
   }
@@ -110,15 +105,14 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
     didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
   ) {
     let index = indexPaths.first!.item
-    let chapterId = vm[index].id
-
-    print(chapterId)
+    print(index)
   }
 }
 
 extension ChapterCollectionViewController: MangaSelectionDelegate {
   func mangaDidSelected(manga: Manga) {
     disposeBag = DisposeBag()
+    setupSubscriptions()
 
     // At this point we are sure that manga.id will 100% available
     vm.fetch(manga.id!) >>> disposeBag

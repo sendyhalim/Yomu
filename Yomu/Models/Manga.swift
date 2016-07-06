@@ -30,7 +30,7 @@ struct Manga {
   let slug: String
   let title: String
   let author: String
-  let image: ChapterImage
+  let image: ImageUrl
   let releasedYear: Int
   let description: String
   let categories: [String]

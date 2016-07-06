@@ -21,7 +21,7 @@ struct ChapterPageCollectionViewModel {
     return _chapterPages.asDriver()
   }
 
-  var chapterImage: ChapterImage? {
+  var chapterImage: ImageUrl? {
     return _chapterPages.value.isEmpty ? .None : _chapterPages.value.first!.image
   }
 
