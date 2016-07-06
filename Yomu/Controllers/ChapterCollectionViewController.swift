@@ -14,8 +14,8 @@ import Swiftz
 class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
 
-  let vm = ChaptersViewModel(id: "4e70ea03c092255ef70046f0")
-  let disposeBag = DisposeBag()
+  let vm = ChaptersViewModel()
+  var disposeBag = DisposeBag()
 
   func setupConstraints() {
     let width = NSLayoutConstraint(
@@ -56,8 +56,6 @@ class ChapterCollectionViewController: NSViewController {
       .driveNext { [weak self] chapters in
         self!.collectionView.reloadData()
       } >>> disposeBag
-
-    vm.fetch() >>> disposeBag
   }
 }
 
@@ -120,6 +118,9 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
 
 extension ChapterCollectionViewController: MangaSelectionDelegate {
   func mangaDidSelected(manga: Manga) {
-    print(manga)
+    disposeBag = DisposeBag()
+
+    // At this point we are sure that manga.id will 100% available
+    vm.fetch(manga.id!) >>> disposeBag
   }
 }

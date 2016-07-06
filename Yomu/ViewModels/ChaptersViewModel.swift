@@ -23,9 +23,7 @@ struct ChaptersViewModel {
     return _chapters.value.count
   }
 
-  let id: String
-
-  func fetch() -> Disposable {
+  func fetch(id: String) -> Disposable {
     let api = MangaEdenAPI.MangaDetail(id)
 
     return provider
