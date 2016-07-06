@@ -314,6 +314,7 @@
 				<string>79318B921D1EF91A006E6CF8</string>
 				<string>79C8B75C1D29514A0072F2D3</string>
 				<string>79F0948C1D1198F60029FB41</string>
+				<string>79E35F851D2D7384006765E0</string>
 				<string>798454CA1D05CF3600BB7262</string>
 				<string>79FF941B1D10776D00A7E450</string>
 				<string>79E85D771D0B22C50029FDA6</string>
@@ -1562,10 +1563,31 @@ fi</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>79E35F841D2D7384006765E0</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>NSImageView.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79E35F851D2D7384006765E0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79E35F841D2D7384006765E0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>79E85D741D0B22A80029FDA6</key>
 		<dict>
 			<key>children</key>
 			<array>
+				<string>79E35F841D2D7384006765E0</string>
 				<string>79E85D761D0B22C50029FDA6</string>
 				<string>79FF941A1D10776D00A7E450</string>
 			</array>

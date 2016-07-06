@@ -63,9 +63,7 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
     let mangaViewModel = vm[indexPath.item]
 
     mangaViewModel.title.drive(cell.titleTextField.rx_text) >>> disposeBag
-    mangaViewModel.previewUrl.driveNext {
-      cell.mangaImageView.kf_setImageWithURL($0)
-    } >>> disposeBag
+    mangaViewModel.previewUrl.drive(onNext: cell.mangaImageView.setImageWithUrl) >>> disposeBag
 
     return cell
   }

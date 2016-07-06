@@ -93,7 +93,7 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     let chapter = vm[indexPath.item]
     chapter.fetchPreview() >>> item.disposeBag
     chapter.title.drive(item.chapterTitle.rx_text) >>> item.disposeBag
-    chapter.previewUrl.driveNext { item.chapterPreview.kf_setImageWithURL($0) } >>> item.disposeBag
+    chapter.previewUrl.drive(onNext: item.chapterPreview.setImageWithUrl) >>> disposeBag
 
     return item
   }
