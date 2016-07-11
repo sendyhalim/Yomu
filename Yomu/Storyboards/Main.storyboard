@@ -670,23 +670,22 @@
             <objects>
                 <viewController id="Qhp-rp-OOh" customClass="MangaContainerViewController" customModule="Yomu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="WuG-f5-vtI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="710" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ieg-Qo-7il">
                                 <rect key="frame" x="0.0" y="0.0" width="260" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="c2K-2S-zoD"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="oV6-fm-nUs"/>
                                 </constraints>
-                                <connections>
-                                    <segue destination="Fad-rL-4Yb" kind="embed" identifier="EmbedMangaCollectionSegue" id="gLY-Rh-C8Z"/>
-                                </connections>
                             </containerView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="k9q-VZ-e6L">
-                                <rect key="frame" x="260" y="0.0" width="340" height="300"/>
-                                <connections>
-                                    <segue destination="LEd-Sg-0wu" kind="embed" identifier="EmbedChapterCollectionSegue" id="IQ6-hb-We2"/>
-                                </connections>
+                                <rect key="frame" x="260" y="0.0" width="450" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="450" id="aEh-EW-JUp"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="uH0-pQ-1v4"/>
+                                </constraints>
                             </containerView>
                         </subviews>
                         <constraints>
@@ -696,29 +695,17 @@
                             <constraint firstAttribute="bottom" secondItem="ieg-Qo-7il" secondAttribute="bottom" id="KFS-37-Mjm"/>
                             <constraint firstItem="ieg-Qo-7il" firstAttribute="leading" secondItem="WuG-f5-vtI" secondAttribute="leading" id="KJg-nJ-9RV"/>
                             <constraint firstItem="k9q-VZ-e6L" firstAttribute="leading" secondItem="ieg-Qo-7il" secondAttribute="trailing" id="pNv-MA-BWT"/>
-                            <constraint firstAttribute="trailing" secondItem="k9q-VZ-e6L" secondAttribute="trailing" id="uoO-AZ-ghv"/>
+                            <constraint firstItem="k9q-VZ-e6L" firstAttribute="trailing" secondItem="WuG-f5-vtI" secondAttribute="trailing" id="uoO-AZ-ghv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="chapterContainerView" destination="k9q-VZ-e6L" id="I2G-cA-66r"/>
+                        <outlet property="mangaContainerView" destination="ieg-Qo-7il" id="nvc-go-Rdh"/>
+                    </connections>
                 </viewController>
                 <customObject id="uPc-1X-fYj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="718"/>
-        </scene>
-        <!--ChapterCollection-->
-        <scene sceneID="dXb-u4-qJI">
-            <objects>
-                <controllerPlaceholder storyboardName="ChapterCollection" id="LEd-Sg-0wu" sceneMemberID="viewController"/>
-                <customObject id="xfK-ia-hJ3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="291" y="1041"/>
-        </scene>
-        <!--MangaCollection-->
-        <scene sceneID="Bv4-g5-5lA">
-            <objects>
-                <controllerPlaceholder storyboardName="MangaCollection" id="Fad-rL-4Yb" sceneMemberID="viewController"/>
-                <customObject id="fa2-li-tSi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="11" y="1046"/>
+            <point key="canvasLocation" x="130" y="718"/>
         </scene>
     </scenes>
 </document>

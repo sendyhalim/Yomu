@@ -7,46 +7,82 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MangaCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="oeq-yG-POa" id="415-fj-5Og"/>
-                <outlet property="view" destination="c22-O7-iKe" id="wof-rJ-265"/>
+                <outlet property="collectionView" destination="9Vo-y1-T4n" id="d50-KY-54b"/>
+                <outlet property="mangaIdField" destination="5Xr-Tu-mil" id="4Qn-g3-7bh"/>
+                <outlet property="view" destination="SBL-jH-eqD" id="RTN-Fv-hC2"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="488" height="301"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="SBL-jH-eqD">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="300"/>
             <subviews>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8v-gC-f8B">
-                    <rect key="frame" x="0.0" y="0.0" width="488" height="301"/>
-                    <clipView key="contentView" id="MsM-6O-bPx">
-                        <rect key="frame" x="1" y="1" width="486" height="299"/>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="lL5-mC-Rt1" userLabel="Add Manga Input Container">
+                    <rect key="frame" x="0.0" y="255" width="260" height="45"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WiD-4H-5fY">
+                            <rect key="frame" x="169" y="5" width="77" height="32"/>
+                            <buttonCell key="cell" type="push" title="Add +" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nIp-xi-J5M">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="addManga:" target="-2" id="YvE-Kv-stA"/>
+                            </connections>
+                        </button>
+                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-Tu-mil">
+                            <rect key="frame" x="20" y="12" width="147" height="22"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="F6i-px-wtL">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="WiD-4H-5fY" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="8" id="GAB-ny-s7J"/>
+                        <constraint firstAttribute="trailing" secondItem="WiD-4H-5fY" secondAttribute="trailing" constant="20" symbolic="YES" id="TMe-al-UCS"/>
+                        <constraint firstItem="WiD-4H-5fY" firstAttribute="centerY" secondItem="5Xr-Tu-mil" secondAttribute="centerY" id="Ycm-lK-J3w"/>
+                        <constraint firstItem="5Xr-Tu-mil" firstAttribute="leading" secondItem="lL5-mC-Rt1" secondAttribute="leading" constant="20" id="hGG-9I-oTO"/>
+                        <constraint firstItem="5Xr-Tu-mil" firstAttribute="centerY" secondItem="lL5-mC-Rt1" secondAttribute="centerY" id="we4-Mw-K8j"/>
+                        <constraint firstAttribute="height" constant="45" id="zSi-fs-wz7"/>
+                    </constraints>
+                </customView>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ker-t1-Qy5">
+                    <rect key="frame" x="0.0" y="0.0" width="260" height="255"/>
+                    <clipView key="contentView" id="6RL-sY-8uh">
+                        <rect key="frame" x="1" y="1" width="258" height="253"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView id="oeq-yG-POa">
-                                <rect key="frame" x="0.0" y="0.0" width="486" height="299"/>
+                            <collectionView selectable="YES" id="9Vo-y1-T4n">
+                                <rect key="frame" x="0.0" y="0.0" width="258" height="253"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Mnv-gB-wXm">
+                                    <size key="itemSize" width="250" height="100"/>
+                                </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </collectionView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="tQc-3S-kuR">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cFV-OJ-d0F">
                         <rect key="frame" x="1" y="144" width="233" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="EEM-ed-9mV">
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="BVc-u1-9dE">
                         <rect key="frame" x="234" y="1" width="15" height="143"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="S8v-gC-f8B" secondAttribute="trailing" id="7sq-Bj-CrC"/>
-                <constraint firstAttribute="bottom" secondItem="S8v-gC-f8B" secondAttribute="bottom" id="OQG-3R-L2a"/>
-                <constraint firstItem="S8v-gC-f8B" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="pr7-Jt-Yvh"/>
-                <constraint firstItem="S8v-gC-f8B" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="vIV-fy-YWm"/>
+                <constraint firstItem="lL5-mC-Rt1" firstAttribute="top" secondItem="SBL-jH-eqD" secondAttribute="top" id="95H-rh-8Cm"/>
+                <constraint firstItem="ker-t1-Qy5" firstAttribute="leading" secondItem="SBL-jH-eqD" secondAttribute="leading" id="Oiz-Dv-3Pq"/>
+                <constraint firstAttribute="bottom" secondItem="ker-t1-Qy5" secondAttribute="bottom" id="QMK-Uc-XDP"/>
+                <constraint firstItem="ker-t1-Qy5" firstAttribute="top" secondItem="lL5-mC-Rt1" secondAttribute="top" constant="45" id="U4G-Jz-CX8"/>
+                <constraint firstItem="lL5-mC-Rt1" firstAttribute="leading" secondItem="SBL-jH-eqD" secondAttribute="leading" id="ane-mX-UU8"/>
+                <constraint firstAttribute="trailing" secondItem="lL5-mC-Rt1" secondAttribute="trailing" id="gS3-Xe-tt6"/>
+                <constraint firstAttribute="trailing" secondItem="ker-t1-Qy5" secondAttribute="trailing" id="qrH-as-3R8"/>
             </constraints>
-            <point key="canvasLocation" x="326" y="291.5"/>
         </customView>
     </objects>
 </document>

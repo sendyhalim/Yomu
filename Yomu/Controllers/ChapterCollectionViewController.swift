@@ -19,41 +19,22 @@ protocol ChapterSelectionDelegate {
 class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
 
-  let vm = ChapterCollectionViewModel()
+  let vm: ChapterCollectionViewModel
   var chapterSelectionDelegate: ChapterSelectionDelegate?
   var disposeBag = DisposeBag()
 
-  func setupConstraints() {
-    let width = NSLayoutConstraint(
-      item: view,
-      attribute: .Width,
-      relatedBy: .GreaterThanOrEqual,
-      toItem: nil,
-      attribute: .NotAnAttribute,
-      multiplier: 1,
-      constant: 450
-    )
+  init(viewModel: ChapterCollectionViewModel) {
+    vm = viewModel
 
-    let height = NSLayoutConstraint(
-      item: view,
-      attribute: .Height,
-      relatedBy: .GreaterThanOrEqual,
-      toItem: nil,
-      attribute: .NotAnAttribute,
-      multiplier: 1,
-      constant: 300
-    )
+    super.init(nibName: "ChapterCollection", bundle: nil)!
+  }
 
-    NSLayoutConstraint.activateConstraints([
-      width,
-      height
-    ])
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    setupConstraints()
 
     collectionView.delegate = self
     collectionView.dataSource = self
