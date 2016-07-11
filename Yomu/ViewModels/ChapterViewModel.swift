@@ -39,7 +39,7 @@ struct ChapterViewModel {
     let id = _chapter.value.id
 
     return provider
-      .request(MangaEdenAPI.ChapterDetail(id))
+      .request(MangaEdenAPI.ChapterPages(id))
       .mapArray(ChapterPage.self, withRootKey: "images")
       .subscribeNext {
         let sortedPages = $0.sort {

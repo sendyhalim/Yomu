@@ -10,7 +10,7 @@ import RxMoya
 
 enum MangaEdenAPI {
   case MangaDetail(String)
-  case ChapterDetail(String)
+  case ChapterPages(String)
 }
 
 extension MangaEdenAPI: TargetType {
@@ -21,7 +21,7 @@ extension MangaEdenAPI: TargetType {
     case .MangaDetail(let id):
       return "/manga/\(id)"
 
-    case .ChapterDetail(let id):
+    case .ChapterPages(let id):
       return "/chapter/\(id)"
     }
   }

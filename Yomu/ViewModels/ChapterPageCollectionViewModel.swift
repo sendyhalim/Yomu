@@ -27,7 +27,7 @@ struct ChapterPageCollectionViewModel {
 
   func fetch() -> Disposable {
     return provider
-      .request(MangaEdenAPI.ChapterDetail(chapterId))
+      .request(MangaEdenAPI.ChapterPages(chapterId))
       .mapArray(ChapterPage.self, withRootKey: "images")
       .subscribeNext {
         let sortedPages = $0.sort {
