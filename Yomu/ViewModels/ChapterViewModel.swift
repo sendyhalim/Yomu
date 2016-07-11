@@ -19,20 +19,24 @@ struct ChapterViewModel {
   }
 
   var title: Driver<String> {
-    return chapter.asDriver().map { $0.title }
+    return _chapter.asDriver().map { $0.title }
+  }
+
+  var chapter: Chapter {
+    return _chapter.value
   }
 
   private let provider = RxMoyaProvider<MangaEdenAPI>()
-  private let chapter: Variable<Chapter>
+  private let _chapter: Variable<Chapter>
   private let _previewUrl: Variable<ImageUrl>
 
-  init(_chapter: Chapter) {
-    chapter = Variable(_chapter)
+  init(chapter: Chapter) {
+    _chapter = Variable(chapter)
     _previewUrl = Variable(ImageUrl(endpoint: ""))
   }
 
   func fetchPreview() -> Disposable {
-    let id = chapter.value.id
+    let id = _chapter.value.id
 
     return provider
       .request(MangaEdenAPI.ChapterDetail(id))

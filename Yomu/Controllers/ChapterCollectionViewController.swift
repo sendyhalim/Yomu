@@ -12,10 +12,15 @@ import RxSwift
 import RxCocoa
 import Swiftz
 
+protocol ChapterSelectionDelegate {
+  func chapterDidSelected(chapter: Chapter)
+}
+
 class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
 
   let vm = ChapterCollectionViewModel()
+  var chapterSelectionDelegate: ChapterSelectionDelegate?
   var disposeBag = DisposeBag()
 
   func setupConstraints() {
@@ -105,7 +110,9 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
     didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
   ) {
     let index = indexPaths.first!.item
-    print(index)
+    let chapterVm = vm[index]
+
+    chapterSelectionDelegate?.chapterDidSelected(chapterVm.chapter)
   }
 }
 
