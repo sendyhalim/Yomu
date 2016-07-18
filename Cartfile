@@ -1,7 +1,7 @@
 github "onevcat/Kingfisher" "master"
 github "typelift/Swiftz" "master"
-github "ReactiveX/RxSwift" == 2.4.0
-github "Moya/Moya"
+github "ReactiveX/RxSwift" ~> 2.6.0
+github "Moya/Moya" "master"
 github "Thoughtbot/Argo" ~> 3.0.1
 github "Thoughtbot/Curry" ~> 2.3.0
 github "robb/Cartography" "master"

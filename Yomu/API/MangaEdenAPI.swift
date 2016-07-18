@@ -34,6 +34,10 @@ extension MangaEdenAPI: TargetType {
     return [:]
   }
 
+  var multipartBody: [MultipartFormData]? {
+    return .None
+  }
+
   var sampleData: NSData {
     return "{}".UTF8EncodedData
   }
