@@ -51,6 +51,7 @@
 		79E85D821D0B37E00029FDA6 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 79E85D7D1D0B378C0029FDA6 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		79E85D851D0B380D0029FDA6 /* ChapterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E85D841D0B380D0029FDA6 /* ChapterSpec.swift */; };
 		79F0948C1D1198F60029FB41 /* MangaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0948B1D1198F60029FB41 /* MangaCollectionViewController.swift */; };
+		79FB7EA01D3D378300A1CB12 /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FB7E9F1D3D378300A1CB12 /* Cartography.framework */; };
 		79FF941B1D10776D00A7E450 /* RxMoyaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FF941A1D10776D00A7E450 /* RxMoyaResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		79E85D7D1D0B378C0029FDA6 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
 		79E85D841D0B380D0029FDA6 /* ChapterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterSpec.swift; sourceTree = "<group>"; };
 		79F0948B1D1198F60029FB41 /* MangaCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangaCollectionViewController.swift; sourceTree = "<group>"; };
+		79FB7E9F1D3D378300A1CB12 /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = Carthage/Build/Mac/Cartography.framework; sourceTree = "<group>"; };
 		79FF941A1D10776D00A7E450 /* RxMoyaResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxMoyaResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79FB7EA01D3D378300A1CB12 /* Cartography.framework in Frameworks */,
 				79AF71A51D072C9B00608518 /* Alamofire.framework in Frameworks */,
 				79AF71A61D072C9B00608518 /* Argo.framework in Frameworks */,
 				79AF71A71D072C9B00608518 /* Curry.framework in Frameworks */,
@@ -273,6 +276,7 @@
 		79AF71991D072C8300608518 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79FB7E9F1D3D378300A1CB12 /* Cartography.framework */,
 				79E85D7C1D0B378C0029FDA6 /* Quick.framework */,
 				79E85D7D1D0B378C0029FDA6 /* Nimble.framework */,
 				79AF719A1D072C9B00608518 /* Alamofire.framework */,
@@ -467,6 +471,7 @@
 				"$(SRCROOT)/Carthage/Build/Mac/RxMoya.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/Swiftz.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Cartography.framework",
 			);
 			name = "[Run Script - Carthage] Copy Frameworks";
 			outputPaths = (

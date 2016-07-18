@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Cartography
 
 class MangaContainerViewController: NSViewController {
   @IBOutlet weak var mangaContainerView: NSView!
@@ -32,100 +33,24 @@ class MangaContainerViewController: NSViewController {
   }
 
   func setupConstraints() {
-    NSLayoutConstraint.activateConstraints([
-      NSLayoutConstraint(
-        item: mangaCollectionVC.view,
-        attribute: .Top,
-        relatedBy: .Equal,
-        toItem: mangaContainerView,
-        attribute: .Top,
-        multiplier: 1,
-        constant: 0
-      ),
-      NSLayoutConstraint(
-        item: mangaCollectionVC.view,
-        attribute: .Height,
-        relatedBy: .GreaterThanOrEqual,
-        toItem: nil,
-        attribute: .NotAnAttribute,
-        multiplier: 1,
-        constant: 300
-      ),
-      NSLayoutConstraint(
-        item: mangaCollectionVC.view,
-        attribute: .Width,
-        relatedBy: .GreaterThanOrEqual,
-        toItem: nil,
-        attribute: .NotAnAttribute,
-        multiplier: 1,
-        constant: 260
-      ),
-      NSLayoutConstraint(
-        item: mangaCollectionVC.view,
-        attribute: .Bottom,
-        relatedBy: .Equal,
-        toItem: mangaContainerView,
-        attribute: .Bottom,
-        multiplier: 1,
-        constant: 0
-      )
-    ])
+    constrain(mangaCollectionVC.view, mangaContainerView) {
+      mangaCollectionView, mangaContainerView in
+      mangaCollectionView.top == mangaContainerView.top
+      mangaCollectionView.bottom == mangaContainerView.bottom
 
-    NSLayoutConstraint.activateConstraints([
-      NSLayoutConstraint(
-        item: chapterCollectionVC.view,
-        attribute: .Width,
-        relatedBy: .GreaterThanOrEqual,
-        toItem: nil,
-        attribute: .NotAnAttribute,
-        multiplier: 1,
-        constant: 450
-      ),
-      NSLayoutConstraint(
-        item: chapterCollectionVC.view,
-        attribute: .Height,
-        relatedBy: .GreaterThanOrEqual,
-        toItem: nil,
-        attribute: .NotAnAttribute,
-        multiplier: 1,
-        constant: 300
-      ),
-      NSLayoutConstraint(
-        item: chapterCollectionVC.view,
-        attribute: .Top,
-        relatedBy: .Equal,
-        toItem: chapterContainerView,
-        attribute: .Top,
-        multiplier: 1,
-        constant: 0
-      ),
-      NSLayoutConstraint(
-        item: chapterCollectionVC.view,
-        attribute: .Bottom,
-        relatedBy: .Equal,
-        toItem: chapterContainerView,
-        attribute: .Bottom,
-        multiplier: 1,
-        constant: 0
-      ),
-      NSLayoutConstraint(
-        item: chapterCollectionVC.view,
-        attribute: .Trailing,
-        relatedBy: .Equal,
-        toItem: chapterContainerView,
-        attribute: .Trailing,
-        multiplier: 1,
-        constant: 0
-      ),
-      NSLayoutConstraint(
-        item: chapterCollectionVC.view,
-        attribute: .Leading,
-        relatedBy: .Equal,
-        toItem: chapterContainerView,
-        attribute: .Leading,
-        multiplier: 1,
-        constant: 0
-      )
-    ])
+      mangaCollectionView.width >= 260
+      mangaCollectionView.height >= 300
+    }
+
+    constrain(chapterCollectionVC.view, chapterContainerView) {
+      chapterCollectionView, chapterContainerView in
+      chapterCollectionView.top == chapterContainerView.top
+      chapterCollectionView.bottom == chapterContainerView.bottom
+      chapterCollectionView.trailing == chapterContainerView.trailing
+      chapterCollectionView.leading == chapterContainerView.leading
+
+      chapterCollectionView.width >= 450
+      chapterCollectionView.height >= 300
+    }
   }
 }
