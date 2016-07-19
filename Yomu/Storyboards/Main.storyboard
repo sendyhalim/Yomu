@@ -687,25 +687,48 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="uH0-pQ-1v4"/>
                                 </constraints>
                             </containerView>
+                            <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5e-FU-OMp" userLabel="Chapter Page Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="710" height="300"/>
+                                <connections>
+                                    <segue destination="RCX-3h-cTv" kind="embed" id="zXS-NT-NeM"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ieg-Qo-7il" firstAttribute="top" secondItem="WuG-f5-vtI" secondAttribute="top" id="94X-L5-xP6"/>
                             <constraint firstAttribute="bottom" secondItem="k9q-VZ-e6L" secondAttribute="bottom" id="AeX-EY-VcU"/>
+                            <constraint firstItem="s5e-FU-OMp" firstAttribute="bottom" secondItem="k9q-VZ-e6L" secondAttribute="bottom" id="ELW-KE-T37"/>
                             <constraint firstItem="k9q-VZ-e6L" firstAttribute="top" secondItem="WuG-f5-vtI" secondAttribute="top" id="G60-UP-0aR"/>
                             <constraint firstAttribute="bottom" secondItem="ieg-Qo-7il" secondAttribute="bottom" id="KFS-37-Mjm"/>
                             <constraint firstItem="ieg-Qo-7il" firstAttribute="leading" secondItem="WuG-f5-vtI" secondAttribute="leading" id="KJg-nJ-9RV"/>
+                            <constraint firstItem="s5e-FU-OMp" firstAttribute="top" secondItem="k9q-VZ-e6L" secondAttribute="top" id="Sav-tv-Zjp"/>
                             <constraint firstItem="k9q-VZ-e6L" firstAttribute="leading" secondItem="ieg-Qo-7il" secondAttribute="trailing" id="pNv-MA-BWT"/>
+                            <constraint firstItem="s5e-FU-OMp" firstAttribute="trailing" secondItem="k9q-VZ-e6L" secondAttribute="trailing" id="qfF-m6-V10"/>
                             <constraint firstItem="k9q-VZ-e6L" firstAttribute="trailing" secondItem="WuG-f5-vtI" secondAttribute="trailing" id="uoO-AZ-ghv"/>
+                            <constraint firstItem="s5e-FU-OMp" firstAttribute="leading" secondItem="ieg-Qo-7il" secondAttribute="leading" id="xyZ-11-Kh0"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="chapterContainerView" destination="k9q-VZ-e6L" id="I2G-cA-66r"/>
+                        <outlet property="chapterPageContainerView" destination="s5e-FU-OMp" id="YZx-69-Ji8"/>
                         <outlet property="mangaContainerView" destination="ieg-Qo-7il" id="nvc-go-Rdh"/>
                     </connections>
                 </viewController>
                 <customObject id="uPc-1X-fYj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="130" y="718"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="IFC-za-Tku">
+            <objects>
+                <viewController id="RCX-3h-cTv" sceneMemberID="viewController">
+                    <view key="view" id="rfo-ST-r8M">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="K17-4W-clC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>

@@ -12,12 +12,15 @@ import Cartography
 class MangaContainerViewController: NSViewController {
   @IBOutlet weak var mangaContainerView: NSView!
   @IBOutlet weak var chapterContainerView: NSView!
+  @IBOutlet weak var chapterPageContainerView: NSView!
 
   let mangaCollectionVM = MangaCollectionViewModel()
   var mangaCollectionVC: MangaCollectionViewController!
 
   let chapterCollectionVM = ChapterCollectionViewModel()
   var chapterCollectionVC: ChapterCollectionViewController!
+
+  var chapterPageCollectionVC: ChapterPageCollectionViewController?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,6 +31,10 @@ class MangaContainerViewController: NSViewController {
     mangaContainerView.addSubview(mangaCollectionVC.view)
     chapterContainerView.addSubview(chapterCollectionVC.view)
     mangaCollectionVC.mangaSelectionDelegate = chapterCollectionVC
+    chapterCollectionVC.chapterSelectionDelegate = self
+
+    chapterPageContainerView.wantsLayer = true
+    chapterPageContainerView.layer?.backgroundColor = NSColor.whiteColor().CGColor
 
     setupConstraints()
   }
@@ -51,6 +58,31 @@ class MangaContainerViewController: NSViewController {
 
       chapterCollectionView.width >= 450
       chapterCollectionView.height >= 300
+    }
+  }
+}
+
+extension MangaContainerViewController: ChapterSelectionDelegate {
+  func chapterDidSelected(chapter: Chapter) {
+    if chapterPageCollectionVC != nil {
+      chapterPageCollectionVC!.view.removeFromSuperview()
+    }
+
+    let pageVM = ChapterPageCollectionViewModel(chapterId: chapter.id)
+    chapterPageCollectionVC = ChapterPageCollectionViewController(viewModel: pageVM)
+    chapterPageContainerView.addSubview(chapterPageCollectionVC!.view)
+
+    setupChapterPageCollectionConstraints()
+    chapterPageContainerView.hidden = false
+  }
+
+  func setupChapterPageCollectionConstraints() {
+    constrain(chapterPageCollectionVC!.view, chapterPageContainerView) {
+      chapterPageCollectionView, chapterPageContainerView in
+      chapterPageCollectionView.top == chapterPageContainerView.top
+      chapterPageCollectionView.bottom == chapterPageContainerView.bottom
+      chapterPageCollectionView.left == chapterPageContainerView.left
+      chapterPageCollectionView.right == chapterPageContainerView.right
     }
   }
 }
