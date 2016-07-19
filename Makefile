@@ -1,4 +1,9 @@
+platform = --platform osx
+
 bootstrap:
-	carthage update --platform osx
+	carthage bootstrap $(platform)
+
+update:
+	carthage update $(platform)
 
 .PHONY: carthage
