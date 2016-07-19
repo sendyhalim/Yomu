@@ -10,7 +10,7 @@ import Cocoa
 import RxMoya
 import RxSwift
 
-protocol MangaSelectionDelegate {
+protocol MangaSelectionDelegate: class {
   func mangaDidSelected(manga: Manga)
 }
 
@@ -18,7 +18,7 @@ class MangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var mangaIdField: NSTextField!
 
-  var mangaSelectionDelegate: MangaSelectionDelegate?
+  weak var mangaSelectionDelegate: MangaSelectionDelegate?
   let vm: MangaCollectionViewModel
   let disposeBag = DisposeBag()
 

@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import Swiftz
 
-protocol ChapterSelectionDelegate {
+protocol ChapterSelectionDelegate: class {
   func chapterDidSelected(chapter: Chapter)
 }
 
@@ -20,7 +20,7 @@ class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
 
   let vm: ChapterCollectionViewModel
-  var chapterSelectionDelegate: ChapterSelectionDelegate?
+  weak var chapterSelectionDelegate: ChapterSelectionDelegate?
   var disposeBag = DisposeBag()
 
   init(viewModel: ChapterCollectionViewModel) {
