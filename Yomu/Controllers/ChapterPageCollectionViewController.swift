@@ -7,9 +7,13 @@
 //
 
 import Cocoa
+import RxSwift
 
 class ChapterPageCollectionViewController: NSViewController {
+  @IBOutlet weak var collectionView: NSCollectionView!
+
   let vm: ChapterPageCollectionViewModel
+  let disposeBag = DisposeBag()
 
   init(viewModel: ChapterPageCollectionViewModel) {
     vm = viewModel
@@ -23,6 +27,43 @@ class ChapterPageCollectionViewController: NSViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do view setup here.
+
+    collectionView.dataSource = self
+
+    vm.chapterPages
+      .driveNext { [weak self] _ in
+        self?.collectionView.reloadData()
+      } >>> disposeBag
+
+    vm.fetch() >>> disposeBag
+  }
+}
+
+extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
+  func numberOfSectionsInCollectionView(collectionView: NSCollectionView) -> Int {
+    return 1
+  }
+
+  func collectionView(
+    collectionView: NSCollectionView,
+    numberOfItemsInSection section: Int
+  ) -> Int {
+    return vm.count
+  }
+
+  func collectionView(
+    collectionView: NSCollectionView,
+    itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath
+  ) -> NSCollectionViewItem {
+    let cell = collectionView.makeItemWithIdentifier(
+      "ChapterPageItem",
+      forIndexPath: indexPath
+    ) as! ChapterPageItem
+
+    let pageViewModel = vm[indexPath.item]
+
+    pageViewModel.imageUrl.driveNext(cell.pageImageView.setImageWithUrl) >>> disposeBag
+
+    return cell
   }
 }
