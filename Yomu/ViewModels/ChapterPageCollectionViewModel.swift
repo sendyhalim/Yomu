@@ -13,9 +13,10 @@ import RxSwift
 import Swiftz
 
 struct ChapterPageCollectionViewModel {
+  private let provider = RxMoyaProvider<MangaEdenAPI>()
+  private let _chapterPages = Variable(List<ChapterPage>())
+
   let chapterId: String
-  let provider = RxMoyaProvider<MangaEdenAPI>()
-  let _chapterPages = Variable(List<ChapterPage>())
 
   var chapterPages: Driver<List<ChapterPage>> {
     return _chapterPages.asDriver()
@@ -23,6 +24,16 @@ struct ChapterPageCollectionViewModel {
 
   var chapterImage: ImageUrl? {
     return _chapterPages.value.isEmpty ? .None : _chapterPages.value.first!.image
+  }
+
+  var count: Int {
+    return _chapterPages.value.count
+  }
+
+  subscript(index: Int) -> ChapterPageViewModel {
+    let page = _chapterPages.value[UInt(index)]
+
+    return ChapterPageViewModel(page: page)
   }
 
   func fetch() -> Disposable {

@@ -11,6 +11,10 @@ import RxMoya
 import RxSwift
 
 struct ChapterViewModel {
+  private let provider = RxMoyaProvider<MangaEdenAPI>()
+  private let _chapter: Variable<Chapter>
+  private let _previewUrl: Variable<ImageUrl>
+
   var previewUrl: Driver<NSURL> {
     return _previewUrl
       .asDriver()
@@ -25,10 +29,6 @@ struct ChapterViewModel {
   var chapter: Chapter {
     return _chapter.value
   }
-
-  private let provider = RxMoyaProvider<MangaEdenAPI>()
-  private let _chapter: Variable<Chapter>
-  private let _previewUrl: Variable<ImageUrl>
 
   init(chapter: Chapter) {
     _chapter = Variable(chapter)
