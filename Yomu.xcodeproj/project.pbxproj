@@ -256,6 +256,46 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>7973B35C1D3FD5DA00E2B0FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>path</key>
+			<string>ChapterPageItem.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7973B35D1D3FD5DA00E2B0FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7973B35C1D3FD5DA00E2B0FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7973B35E1D3FD78400E2B0FC</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ChapterPageItem.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7973B35F1D3FD78400E2B0FC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7973B35E1D3FD78400E2B0FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>798454BD1D05CF3500BB7262</key>
 		<dict>
 			<key>children</key>
@@ -356,6 +396,7 @@
 				<string>79F0948C1D1198F60029FB41</string>
 				<string>79E35F851D2D7384006765E0</string>
 				<string>798454CA1D05CF3600BB7262</string>
+				<string>7973B35F1D3FD78400E2B0FC</string>
 				<string>79FF941B1D10776D00A7E450</string>
 				<string>7997321D1D3EA21000FC3B01</string>
 				<string>79E85D771D0B22C50029FDA6</string>
@@ -410,6 +451,7 @@
 				<string>7997321F1D3EA4D200FC3B01</string>
 				<string>79065F3D1D3412EA005DB5AE</string>
 				<string>798865E61D119BA500093761</string>
+				<string>7973B35D1D3FD5DA00E2B0FC</string>
 			</array>
 			<key>isa</key>
 			<string>PBXResourcesBuildPhase</string>
@@ -1003,6 +1045,7 @@
 				<string>79065F3E1D34147C005DB5AE</string>
 				<string>7960486C1D133230006571B3</string>
 				<string>7997321E1D3EA4D200FC3B01</string>
+				<string>7973B35C1D3FD5DA00E2B0FC</string>
 				<string>79065F3C1D3412EA005DB5AE</string>
 				<string>798865E51D119BA500093761</string>
 			</array>
@@ -1018,6 +1061,7 @@
 			<key>children</key>
 			<array>
 				<string>796048681D130887006571B3</string>
+				<string>7973B35E1D3FD78400E2B0FC</string>
 				<string>798865E91D11A1A400093761</string>
 			</array>
 			<key>isa</key>
