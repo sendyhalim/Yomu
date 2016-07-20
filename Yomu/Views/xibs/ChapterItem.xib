@@ -12,10 +12,10 @@
             <connections>
                 <outlet property="chapterPreview" destination="vLh-9l-vEe" id="t9Y-Ns-680"/>
                 <outlet property="chapterTitle" destination="M9R-o0-cPD" id="FSs-TC-Cwp"/>
-                <outlet property="view" destination="3mi-IM-HZU" id="cfD-hy-Qvm"/>
+                <outlet property="view" destination="3mi-IM-HZU" id="Cbn-Zk-cAl"/>
             </connections>
         </collectionViewItem>
-        <customView id="3mi-IM-HZU">
+        <customView id="3mi-IM-HZU" userLabel="Chapter Item View">
             <rect key="frame" x="0.0" y="0.0" width="230" height="325"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -44,6 +44,7 @@
                 <constraint firstItem="vLh-9l-vEe" firstAttribute="top" secondItem="3mi-IM-HZU" secondAttribute="top" constant="20" symbolic="YES" id="iJz-mi-2jX"/>
                 <constraint firstAttribute="trailing" secondItem="M9R-o0-cPD" secondAttribute="trailing" constant="20" symbolic="YES" id="lfr-eg-brf"/>
             </constraints>
+            <accessibility identifier="sdfsf"/>
             <point key="canvasLocation" x="374.5" y="328.5"/>
         </customView>
     </objects>
