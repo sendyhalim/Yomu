@@ -16,14 +16,14 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe" userLabel="Chapter Collection View">
             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
             <subviews>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOx-C6-3Tl">
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOx-C6-3Tl">
                     <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                     <clipView key="contentView" id="gHa-tB-PY2">
-                        <rect key="frame" x="1" y="1" width="448" height="298"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" id="dfe-Ib-Wgi">
-                                <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="LbZ-xK-IQ1">
                                     <size key="itemSize" width="228.5" height="325"/>
@@ -31,6 +31,7 @@
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </collectionView>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cnO-fh-RDf">
                         <rect key="frame" x="1" y="144" width="233" height="15"/>
