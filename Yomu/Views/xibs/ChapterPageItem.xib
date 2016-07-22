@@ -12,14 +12,14 @@
             <rect key="frame" x="0.0" y="0.0" width="400" height="570"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="2" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmi-ne-6ln">
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" maxMagnification="2" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmi-ne-6ln">
                     <rect key="frame" x="0.0" y="0.0" width="400" height="570"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dCn-eX-CeM">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bG7-Bx-h8e">
-                                <rect key="frame" x="-1" y="1" width="400" height="570"/>
+                            <view translatesAutoresizingMaskIntoConstraints="NO" id="bG7-Bx-h8e">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="570"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S2L-Pz-apb">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="570"/>
@@ -62,6 +62,7 @@
         <customObject id="6i0-jh-KRc" customClass="ChapterPageItem" customModule="Yomu" customModuleProvider="target">
             <connections>
                 <outlet property="pageImageView" destination="S2L-Pz-apb" id="jUf-KR-SWa"/>
+                <outlet property="scrollView" destination="gmi-ne-6ln" id="3ec-2r-acj"/>
                 <outlet property="view" destination="c22-O7-iKe" id="qhq-zh-kqc"/>
             </connections>
         </customObject>

@@ -7,7 +7,26 @@
 //
 
 import Cocoa
+import RxSwift
 
 class ChapterPageItem: NSCollectionViewItem {
   @IBOutlet weak var pageImageView: NSImageView!
+  @IBOutlet weak var scrollView: NSScrollView!
+
+  var viewModel: ChapterPageViewModel!
+  var disposeBag = DisposeBag()
+
+  override func viewWillAppear() {
+    viewModel.imageUrl.driveNext(pageImageView.setImageWithUrl) >>> disposeBag
+
+    viewModel
+      .scale
+      .driveNext { [weak self] in
+        self?.scrollView.magnification = $0
+      } >>> disposeBag
+  }
+
+  override func viewDidDisappear() {
+    disposeBag = DisposeBag()
+  }
 }

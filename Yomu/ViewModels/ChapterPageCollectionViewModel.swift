@@ -15,6 +15,7 @@ import Swiftz
 struct ChapterPageCollectionViewModel {
   private let provider = RxMoyaProvider<MangaEdenAPI>()
   private let _chapterPages = Variable(List<ChapterPage>())
+  private let scale = Variable<CGFloat>(1.0)
 
   let chapterId: String
 
@@ -33,7 +34,7 @@ struct ChapterPageCollectionViewModel {
   subscript(index: Int) -> ChapterPageViewModel {
     let page = _chapterPages.value[UInt(index)]
 
-    return ChapterPageViewModel(page: page)
+    return ChapterPageViewModel(page: page, scale: scale.asDriver())
   }
 
   func fetch() -> Disposable {
@@ -49,5 +50,9 @@ struct ChapterPageCollectionViewModel {
 
         self._chapterPages.value = List<ChapterPage>(fromArray: sortedPages)
       }
+  }
+
+  func incrementScale(scale: CGFloat) {
+    self.scale.value = self.scale.value + scale
   }
 }
