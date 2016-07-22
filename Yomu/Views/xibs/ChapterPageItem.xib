@@ -9,24 +9,59 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" userLabel="Chapter Page Item View">
-            <rect key="frame" x="0.0" y="0.0" width="345" height="490"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="570"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tmM-gr-gY2">
-                    <rect key="frame" x="0.0" y="0.0" width="345" height="490"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="6VD-Dz-L5c"/>
-                </imageView>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="2" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmi-ne-6ln">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="570"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dCn-eX-CeM">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="570"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bG7-Bx-h8e">
+                                <rect key="frame" x="-1" y="1" width="400" height="570"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S2L-Pz-apb">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="570"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="FLa-hx-muq"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="S2L-Pz-apb" secondAttribute="bottom" id="8Jp-3E-0fg"/>
+                                    <constraint firstAttribute="trailing" secondItem="S2L-Pz-apb" secondAttribute="trailing" id="8dh-bp-g9N"/>
+                                    <constraint firstItem="S2L-Pz-apb" firstAttribute="leading" secondItem="bG7-Bx-h8e" secondAttribute="leading" id="HUd-t1-8We"/>
+                                    <constraint firstItem="S2L-Pz-apb" firstAttribute="top" secondItem="bG7-Bx-h8e" secondAttribute="top" id="mEa-jD-l41"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </clipView>
+                    <constraints>
+                        <constraint firstItem="bG7-Bx-h8e" firstAttribute="leading" secondItem="gmi-ne-6ln" secondAttribute="leading" id="0rw-Zo-E2t"/>
+                        <constraint firstItem="bG7-Bx-h8e" firstAttribute="top" secondItem="gmi-ne-6ln" secondAttribute="top" id="enO-93-F07"/>
+                        <constraint firstAttribute="bottom" secondItem="bG7-Bx-h8e" secondAttribute="bottom" id="h4v-gs-hca"/>
+                        <constraint firstAttribute="trailing" secondItem="bG7-Bx-h8e" secondAttribute="trailing" id="oM9-ah-auA"/>
+                    </constraints>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="Kx1-56-Ve5">
+                        <rect key="frame" x="1" y="553" width="398" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="0sa-yC-Tgi">
+                        <rect key="frame" x="383" y="1" width="16" height="568"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <constraints>
-                <constraint firstItem="tmM-gr-gY2" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="H09-NI-tmR"/>
-                <constraint firstItem="tmM-gr-gY2" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="QUP-Ab-WyK"/>
-                <constraint firstAttribute="bottom" secondItem="tmM-gr-gY2" secondAttribute="bottom" id="V9U-ap-TJd"/>
-                <constraint firstAttribute="trailing" secondItem="tmM-gr-gY2" secondAttribute="trailing" id="qeP-hk-pF7"/>
+                <constraint firstItem="gmi-ne-6ln" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="3nq-Gm-QKk"/>
+                <constraint firstAttribute="bottom" secondItem="gmi-ne-6ln" secondAttribute="bottom" id="3yJ-a4-TJu"/>
+                <constraint firstItem="gmi-ne-6ln" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="CSH-3Y-5hI"/>
+                <constraint firstAttribute="trailing" secondItem="gmi-ne-6ln" secondAttribute="trailing" id="vGa-tW-9GC"/>
             </constraints>
         </customView>
         <customObject id="6i0-jh-KRc" customClass="ChapterPageItem" customModule="Yomu" customModuleProvider="target">
             <connections>
-                <outlet property="pageImageView" destination="tmM-gr-gY2" id="bEV-L6-lb2"/>
+                <outlet property="pageImageView" destination="S2L-Pz-apb" id="jUf-KR-SWa"/>
                 <outlet property="view" destination="c22-O7-iKe" id="qhq-zh-kqc"/>
             </connections>
         </customObject>
