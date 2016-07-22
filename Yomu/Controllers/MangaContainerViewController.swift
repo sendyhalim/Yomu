@@ -45,7 +45,7 @@ class MangaContainerViewController: NSViewController {
       mangaCollectionView.top == mangaContainerView.top
       mangaCollectionView.bottom == mangaContainerView.bottom
 
-      mangaCollectionView.width >= 260
+      mangaCollectionView.width >= 290
       mangaCollectionView.height >= 300
     }
 
@@ -56,7 +56,7 @@ class MangaContainerViewController: NSViewController {
       chapterCollectionView.trailing == chapterContainerView.trailing
       chapterCollectionView.leading == chapterContainerView.leading
 
-      chapterCollectionView.width >= 450
+      chapterCollectionView.width >= 470
       chapterCollectionView.height >= 300
     }
   }
@@ -74,6 +74,8 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
 
     setupChapterPageCollectionConstraints()
     chapterPageContainerView.hidden = false
+    mangaContainerView.hidden = true
+    chapterContainerView.hidden = true
   }
 
   func setupChapterPageCollectionConstraints() {

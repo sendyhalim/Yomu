@@ -16,10 +16,7 @@ struct ChapterPageViewModel {
     return chapterPage.asDriver().map { $0.image.url }
   }
 
-  let scale: Driver<CGFloat>
-
-  init(page: ChapterPage, scale: Driver<CGFloat>) {
+  init(page: ChapterPage) {
     chapterPage = Variable(page)
-    self.scale = scale
   }
 }

@@ -60,12 +60,10 @@ extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
       forIndexPath: indexPath
     ) as! ChapterPageItem
 
-    cell.viewModel = vm[indexPath.item]
+    let pageViewModel = vm[indexPath.item]
+
+    pageViewModel.imageUrl.driveNext(cell.pageImageView.setImageWithUrl) >>> disposeBag
 
     return cell
-  }
-
-  override func magnifyWithEvent(event: NSEvent) {
-    vm.incrementScale(event.magnification)
   }
 }

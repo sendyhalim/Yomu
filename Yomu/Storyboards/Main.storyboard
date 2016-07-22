@@ -670,25 +670,25 @@
             <objects>
                 <viewController id="Qhp-rp-OOh" customClass="MangaContainerViewController" customModule="Yomu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="WuG-f5-vtI">
-                        <rect key="frame" x="0.0" y="0.0" width="710" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="760" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ieg-Qo-7il">
-                                <rect key="frame" x="0.0" y="0.0" width="260" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="c2K-2S-zoD"/>
+                                    <constraint firstAttribute="width" constant="290" id="c2K-2S-zoD"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="oV6-fm-nUs"/>
                                 </constraints>
                             </containerView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="k9q-VZ-e6L">
-                                <rect key="frame" x="260" y="0.0" width="450" height="300"/>
+                                <rect key="frame" x="290" y="0.0" width="470" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="450" id="aEh-EW-JUp"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="470" id="aEh-EW-JUp"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="uH0-pQ-1v4"/>
                                 </constraints>
                             </containerView>
                             <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5e-FU-OMp" userLabel="Chapter Page Container View">
-                                <rect key="frame" x="0.0" y="0.0" width="710" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="760" height="300"/>
                                 <connections>
                                     <segue destination="RCX-3h-cTv" kind="embed" id="zXS-NT-NeM"/>
                                 </connections>
