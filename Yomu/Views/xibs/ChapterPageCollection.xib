@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ChapterPageCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
+                <outlet property="close" destination="hYB-6H-HIJ" id="wV0-Yo-ZSa"/>
                 <outlet property="collectionView" destination="IEp-r8-DMM" id="eZ6-Qc-gUP"/>
                 <outlet property="view" destination="c22-O7-iKe" id="TTh-Zp-q8q"/>
             </connections>
@@ -17,13 +18,13 @@
             <rect key="frame" x="0.0" y="0.0" width="730" height="1040"/>
             <subviews>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" maxMagnification="2" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TQ-NO-ws1">
-                    <rect key="frame" x="0.0" y="0.0" width="730" height="1040"/>
+                    <rect key="frame" x="0.0" y="0.0" width="730" height="986"/>
                     <clipView key="contentView" drawsBackground="NO" id="2gG-07-Sgl">
-                        <rect key="frame" x="1" y="1" width="728" height="1038"/>
+                        <rect key="frame" x="1" y="1" width="728" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView id="IEp-r8-DMM">
-                                <rect key="frame" x="0.0" y="0.0" width="728" height="1038"/>
+                                <rect key="frame" x="0.0" y="0.0" width="728" height="984"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10000" minimumLineSpacing="10" id="7LO-xd-Ucf">
                                     <size key="itemSize" width="730" height="1040"/>
@@ -34,20 +35,29 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="spl-5U-Njf">
-                        <rect key="frame" x="1" y="1023" width="728" height="16"/>
+                        <rect key="frame" x="1" y="969" width="728" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mtm-Lg-qcF">
-                        <rect key="frame" x="714" y="1" width="15" height="1038"/>
+                        <rect key="frame" x="713" y="1" width="16" height="984"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hYB-6H-HIJ">
+                    <rect key="frame" x="678" y="985" width="39" height="38"/>
+                    <buttonCell key="cell" type="round" title="x" bezelStyle="circular" alignment="center" borderStyle="border" inset="2" id="lzJ-1p-FAI">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5TQ-NO-ws1" secondAttribute="trailing" id="7Ci-o6-e3V"/>
                 <constraint firstAttribute="bottom" secondItem="5TQ-NO-ws1" secondAttribute="bottom" id="Umt-w5-Bxo"/>
+                <constraint firstItem="hYB-6H-HIJ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="aY3-YQ-3oa"/>
                 <constraint firstItem="5TQ-NO-ws1" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="ch7-8y-YXD"/>
-                <constraint firstItem="5TQ-NO-ws1" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="tb8-Rm-qq4"/>
+                <constraint firstAttribute="trailing" secondItem="hYB-6H-HIJ" secondAttribute="trailing" constant="20" symbolic="YES" id="nWi-Ej-ENV"/>
+                <constraint firstItem="5TQ-NO-ws1" firstAttribute="top" secondItem="hYB-6H-HIJ" secondAttribute="bottom" constant="8" symbolic="YES" id="wG7-mH-erq"/>
             </constraints>
         </customView>
     </objects>

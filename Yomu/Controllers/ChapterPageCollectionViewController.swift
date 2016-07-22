@@ -8,9 +8,17 @@
 
 import Cocoa
 import RxSwift
+import Swiftz
+
+protocol ChapterPageCollectionViewDelegate: class {
+  func closeChapterPage()
+}
 
 class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
+  @IBOutlet weak var close: NSButton!
+
+  weak var delegate: ChapterPageCollectionViewDelegate?
 
   let vm: ChapterPageCollectionViewModel
   let disposeBag = DisposeBag()
@@ -29,6 +37,8 @@ class ChapterPageCollectionViewController: NSViewController {
     super.viewDidLoad()
 
     collectionView.dataSource = self
+
+    delegate?.closeChapterPage >>- close.rx_tap.subscribeNext
 
     vm.chapterPages
       .driveNext { [weak self] _ in

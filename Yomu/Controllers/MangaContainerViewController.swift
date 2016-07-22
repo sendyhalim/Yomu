@@ -70,6 +70,7 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
 
     let pageVM = ChapterPageCollectionViewModel(chapterId: chapter.id)
     chapterPageCollectionVC = ChapterPageCollectionViewController(viewModel: pageVM)
+    chapterPageCollectionVC!.delegate = self
     chapterPageContainerView.addSubview(chapterPageCollectionVC!.view)
 
     setupChapterPageCollectionConstraints()
@@ -86,5 +87,13 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
       chapterPageCollectionView.left == chapterPageContainerView.left
       chapterPageCollectionView.right == chapterPageContainerView.right
     }
+  }
+}
+
+extension MangaContainerViewController: ChapterPageCollectionViewDelegate {
+  func closeChapterPage() {
+    chapterPageContainerView.hidden = true
+    mangaContainerView.hidden = false
+    chapterContainerView.hidden = false
   }
 }
