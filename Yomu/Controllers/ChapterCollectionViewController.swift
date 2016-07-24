@@ -103,6 +103,12 @@ extension ChapterCollectionViewController: MangaSelectionDelegate {
     disposeBag = DisposeBag()
     setupSubscriptions()
 
+    if !vm.isEmpty {
+      let index = NSIndexPath(forItem: 0, inSection: 0)
+      let indexPaths = Set(arrayLiteral: index)
+      collectionView.scrollToItemsAtIndexPaths(indexPaths, scrollPosition: .Top)
+    }
+
     // At this point we are sure that manga.id will 100% available
     vm.fetch(manga.id!) >>> disposeBag
   }

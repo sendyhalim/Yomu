@@ -23,6 +23,10 @@ struct ChapterCollectionViewModel {
     return _chapters.value.count
   }
 
+  var isEmpty: Bool {
+    return count == 0
+  }
+
   func fetch(id: String) -> Disposable {
     let api = MangaEdenAPI.MangaDetail(id)
 
