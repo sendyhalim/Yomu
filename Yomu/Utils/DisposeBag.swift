@@ -8,7 +8,7 @@
 
 import RxSwift
 
-infix operator >>> { precedence 200 }
+infix operator >>> { precedence 90 }
 
 func >>> (disposable: Disposable, disposeBag: DisposeBag) {
   disposable.addDisposableTo(disposeBag)

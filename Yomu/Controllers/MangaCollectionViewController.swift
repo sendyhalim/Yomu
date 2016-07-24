@@ -38,10 +38,9 @@ class MangaCollectionViewController: NSViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
 
-    vm.mangas
-      .driveNext { [weak self] _ in
-        self?.collectionView.reloadData()
-      } >>> disposeBag
+    vm.mangas ~> { [weak self] _ in
+      self?.collectionView.reloadData()
+    } >>> disposeBag
   }
 
   @IBAction func addManga(sender: NSButton) {
@@ -72,8 +71,8 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
 
     let mangaViewModel = vm[indexPath.item]
 
-    mangaViewModel.title.drive(cell.titleTextField.rx_text) >>> disposeBag
-    mangaViewModel.previewUrl.driveNext(cell.mangaImageView.setImageWithUrl) >>> disposeBag
+    mangaViewModel.title ~> cell.titleTextField.rx_text >>> disposeBag
+    mangaViewModel.previewUrl ~> cell.mangaImageView.setImageWithUrl >>> disposeBag
 
     return cell
   }

@@ -42,10 +42,9 @@ class ChapterCollectionViewController: NSViewController {
   }
 
   func setupSubscriptions() {
-    vm.chapters
-      .driveNext { [weak self] _ in
-        self!.collectionView.reloadData()
-      } >>> disposeBag
+    vm.chapters ~> { [weak self] _ in
+      self!.collectionView.reloadData()
+    } >>> disposeBag
   }
 }
 
@@ -78,8 +77,8 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
 
     let chapter = vm[indexPath.item]
     chapter.fetchPreview() >>> item.disposeBag
-    chapter.title.drive(item.chapterTitle.rx_text) >>> item.disposeBag
-    chapter.previewUrl.driveNext(item.chapterPreview.setImageWithUrl) >>> item.disposeBag
+    chapter.title ~> item.chapterTitle.rx_text >>> item.disposeBag
+    chapter.previewUrl ~> item.chapterPreview.setImageWithUrl >>> item.disposeBag
 
     return item
   }

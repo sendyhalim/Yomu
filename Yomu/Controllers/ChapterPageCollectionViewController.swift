@@ -40,10 +40,9 @@ class ChapterPageCollectionViewController: NSViewController {
 
     delegate?.closeChapterPage >>- close.rx_tap.subscribeNext
 
-    vm.chapterPages
-      .driveNext { [weak self] _ in
-        self?.collectionView.reloadData()
-      } >>> disposeBag
+    vm.chapterPages ~> { [weak self] _ in
+      self?.collectionView.reloadData()
+    } >>> disposeBag
 
     vm.fetch() >>> disposeBag
   }
@@ -72,7 +71,9 @@ extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
 
     let pageViewModel = vm[indexPath.item]
 
-    pageViewModel.imageUrl.driveNext(cell.pageImageView.setImageWithUrl) >>> disposeBag
+    pageViewModel.imageUrl
+      ~> cell.pageImageView.setImageWithUrl
+      >>> disposeBag
 
     return cell
   }
