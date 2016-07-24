@@ -79,7 +79,7 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     let chapter = vm[indexPath.item]
     chapter.fetchPreview() >>> item.disposeBag
     chapter.title.drive(item.chapterTitle.rx_text) >>> item.disposeBag
-    chapter.previewUrl.driveNext(item.chapterPreview.setImageWithUrl) >>> disposeBag
+    chapter.previewUrl.driveNext(item.chapterPreview.setImageWithUrl) >>> item.disposeBag
 
     return item
   }
@@ -99,6 +99,7 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
 
 extension ChapterCollectionViewController: MangaSelectionDelegate {
   func mangaDidSelected(manga: Manga) {
+    // Cleanup first, triggering `deinit` on the current `disposeBag`
     disposeBag = DisposeBag()
     setupSubscriptions()
 
