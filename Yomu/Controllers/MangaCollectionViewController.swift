@@ -46,6 +46,7 @@ class MangaCollectionViewController: NSViewController {
         self?.progressIndicator.startAnimation(self)
       } else {
         self?.progressIndicator.stopAnimation(self)
+        self?.mangaIdField.stringValue = ""
       }
     } >>> disposeBag
 
