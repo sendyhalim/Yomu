@@ -17,6 +17,8 @@ protocol MangaSelectionDelegate: class {
 class MangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var mangaIdField: NSTextField!
+  @IBOutlet weak var progressIndicator: NSProgressIndicator!
+  @IBOutlet weak var addMangaButton: NSButton!
 
   weak var mangaSelectionDelegate: MangaSelectionDelegate?
   let vm: MangaCollectionViewModel
@@ -37,6 +39,15 @@ class MangaCollectionViewController: NSViewController {
 
     collectionView.dataSource = self
     collectionView.delegate = self
+
+    vm.fetching ~> addMangaButton.rx_hidden >>> disposeBag
+    vm.fetching ~> { [weak self] in
+      if $0 {
+        self?.progressIndicator.startAnimation(self)
+      } else {
+        self?.progressIndicator.stopAnimation(self)
+      }
+    } >>> disposeBag
 
     vm.mangas ~> { [weak self] _ in
       self?.collectionView.reloadData()

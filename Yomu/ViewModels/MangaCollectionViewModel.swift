@@ -12,6 +12,7 @@ import RxSwift
 import Swiftz
 
 struct MangaCollectionViewModel {
+  private var _fetching = Variable(false)
   private var _mangas = Variable(Set<Manga>())
   private let mangaViewModels = Variable(List<MangaViewModel>())
   private let provider = RxMoyaProvider<MangaEdenAPI>()
@@ -24,26 +25,22 @@ struct MangaCollectionViewModel {
     return mangaViewModels.value.count
   }
 
-  var disposeBag = DisposeBag()
+  var fetching: Driver<Bool> {
+    return _fetching.asDriver()
+  }
 
   subscript(index: Int) -> MangaViewModel {
     return mangaViewModels.value[UInt(index)]
   }
 
-  init() {
-    _mangas
-      .asDriver()
-      .driveNext { $0
-        let viewModels = $0.flatMap(MangaViewModel.init)
-        self.mangaViewModels.value = List(fromArray: viewModels)
-      } >>> disposeBag
-  }
-
   func fetch(id: String) -> Disposable {
     let api = MangaEdenAPI.MangaDetail(id)
 
+    _fetching.value = true
+
     return provider
       .request(api)
+      .doOn { self._fetching.value = !$0.isStopEvent }
       .filterSuccessfulStatusCodes()
       .map(Manga.self)
       .subscribeNext {
@@ -56,6 +53,8 @@ struct MangaCollectionViewModel {
         }
 
         self._mangas.value.insert(manga)
+        let viewModels = self._mangas.value.flatMap(MangaViewModel.init)
+        self.mangaViewModels.value = List(fromArray: viewModels)
       }
   }
 }

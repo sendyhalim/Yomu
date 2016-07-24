@@ -7,8 +7,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MangaCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
+                <outlet property="addMangaButton" destination="WiD-4H-5fY" id="ma5-pj-lqc"/>
                 <outlet property="collectionView" destination="9Vo-y1-T4n" id="d50-KY-54b"/>
                 <outlet property="mangaIdField" destination="5Xr-Tu-mil" id="4Qn-g3-7bh"/>
+                <outlet property="progressIndicator" destination="cQR-BH-ucW" id="M1y-I8-9Fp"/>
                 <outlet property="view" destination="SBL-jH-eqD" id="RTN-Fv-hC2"/>
             </connections>
         </customObject>
@@ -21,8 +23,8 @@
                     <rect key="frame" x="0.0" y="255" width="260" height="45"/>
                     <subviews>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WiD-4H-5fY">
-                            <rect key="frame" x="169" y="5" width="77" height="32"/>
-                            <buttonCell key="cell" type="push" title="Add +" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nIp-xi-J5M">
+                            <rect key="frame" x="181" y="5" width="65" height="32"/>
+                            <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nIp-xi-J5M">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -31,19 +33,24 @@
                             </connections>
                         </button>
                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-Tu-mil">
-                            <rect key="frame" x="20" y="12" width="147" height="22"/>
+                            <rect key="frame" x="20" y="11" width="159" height="22"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="F6i-px-wtL">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
+                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="cQR-BH-ucW">
+                            <rect key="frame" x="205" y="14.5" width="16" height="16"/>
+                        </progressIndicator>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="WiD-4H-5fY" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="8" id="GAB-ny-s7J"/>
+                        <constraint firstItem="5Xr-Tu-mil" firstAttribute="leading" secondItem="lL5-mC-Rt1" secondAttribute="leading" constant="20" symbolic="YES" id="BpY-I9-p8I"/>
+                        <constraint firstItem="WiD-4H-5fY" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="8" symbolic="YES" id="GAB-ny-s7J"/>
+                        <constraint firstItem="cQR-BH-ucW" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="26" id="NHc-aR-hcT"/>
                         <constraint firstAttribute="trailing" secondItem="WiD-4H-5fY" secondAttribute="trailing" constant="20" symbolic="YES" id="TMe-al-UCS"/>
                         <constraint firstItem="WiD-4H-5fY" firstAttribute="centerY" secondItem="5Xr-Tu-mil" secondAttribute="centerY" id="Ycm-lK-J3w"/>
-                        <constraint firstItem="5Xr-Tu-mil" firstAttribute="leading" secondItem="lL5-mC-Rt1" secondAttribute="leading" constant="20" id="hGG-9I-oTO"/>
+                        <constraint firstItem="cQR-BH-ucW" firstAttribute="centerY" secondItem="lL5-mC-Rt1" secondAttribute="centerY" id="uYh-xg-tQ9"/>
                         <constraint firstItem="5Xr-Tu-mil" firstAttribute="centerY" secondItem="lL5-mC-Rt1" secondAttribute="centerY" id="we4-Mw-K8j"/>
                         <constraint firstAttribute="height" constant="45" id="zSi-fs-wz7"/>
                     </constraints>
