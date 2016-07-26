@@ -689,9 +689,6 @@
                             </containerView>
                             <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5e-FU-OMp" userLabel="Chapter Page Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="760" height="300"/>
-                                <connections>
-                                    <segue destination="RCX-3h-cTv" kind="embed" id="zXS-NT-NeM"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <constraints>
@@ -717,18 +714,6 @@
                 <customObject id="uPc-1X-fYj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="130" y="718"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="IFC-za-Tku">
-            <objects>
-                <viewController id="RCX-3h-cTv" sceneMemberID="viewController">
-                    <view key="view" id="rfo-ST-r8M">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="K17-4W-clC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
 </document>
