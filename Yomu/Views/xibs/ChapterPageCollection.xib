@@ -17,7 +17,7 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe" userLabel="Chapter Page Collection View">
             <rect key="frame" x="0.0" y="0.0" width="730" height="1040"/>
             <subviews>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" maxMagnification="2" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TQ-NO-ws1">
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" maxMagnification="2" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TQ-NO-ws1">
                     <rect key="frame" x="0.0" y="0.0" width="730" height="986"/>
                     <clipView key="contentView" drawsBackground="NO" id="2gG-07-Sgl">
                         <rect key="frame" x="1" y="1" width="728" height="984"/>
@@ -34,12 +34,12 @@
                             </collectionView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="spl-5U-Njf">
-                        <rect key="frame" x="1" y="969" width="728" height="16"/>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="spl-5U-Njf">
+                        <rect key="frame" x="-100" y="-100" width="728" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mtm-Lg-qcF">
-                        <rect key="frame" x="713" y="1" width="16" height="984"/>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mtm-Lg-qcF">
+                        <rect key="frame" x="-100" y="-100" width="15" height="984"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>

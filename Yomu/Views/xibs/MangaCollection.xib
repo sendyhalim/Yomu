@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MangaCollectionViewController" customModule="Yomu" customModuleProvider="target">
@@ -19,50 +20,56 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="SBL-jH-eqD" userLabel="Manga Collection View">
             <rect key="frame" x="0.0" y="0.0" width="260" height="300"/>
             <subviews>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="lL5-mC-Rt1" userLabel="Add Manga Input Container">
-                    <rect key="frame" x="0.0" y="255" width="260" height="45"/>
-                    <subviews>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WiD-4H-5fY">
-                            <rect key="frame" x="181" y="5" width="65" height="32"/>
-                            <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nIp-xi-J5M">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="addManga:" target="-2" id="YvE-Kv-stA"/>
-                            </connections>
-                        </button>
-                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-Tu-mil">
-                            <rect key="frame" x="20" y="11" width="159" height="22"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="F6i-px-wtL">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="cQR-BH-ucW">
-                            <rect key="frame" x="205" y="14.5" width="16" height="16"/>
-                        </progressIndicator>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="5Xr-Tu-mil" firstAttribute="leading" secondItem="lL5-mC-Rt1" secondAttribute="leading" constant="20" symbolic="YES" id="BpY-I9-p8I"/>
-                        <constraint firstItem="WiD-4H-5fY" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="8" symbolic="YES" id="GAB-ny-s7J"/>
-                        <constraint firstItem="cQR-BH-ucW" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="26" id="NHc-aR-hcT"/>
-                        <constraint firstAttribute="trailing" secondItem="WiD-4H-5fY" secondAttribute="trailing" constant="20" symbolic="YES" id="TMe-al-UCS"/>
-                        <constraint firstItem="WiD-4H-5fY" firstAttribute="centerY" secondItem="5Xr-Tu-mil" secondAttribute="centerY" id="Ycm-lK-J3w"/>
-                        <constraint firstItem="cQR-BH-ucW" firstAttribute="centerY" secondItem="lL5-mC-Rt1" secondAttribute="centerY" id="uYh-xg-tQ9"/>
-                        <constraint firstItem="5Xr-Tu-mil" firstAttribute="centerY" secondItem="lL5-mC-Rt1" secondAttribute="centerY" id="we4-Mw-K8j"/>
-                        <constraint firstAttribute="height" constant="45" id="zSi-fs-wz7"/>
-                    </constraints>
-                </customView>
+                <box title="Manga Input Container" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="GeZ-cP-xZs">
+                    <rect key="frame" x="0.0" y="248" width="260" height="52"/>
+                    <view key="contentView" id="B7G-E5-W8G">
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="52"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WiD-4H-5fY">
+                                <rect key="frame" x="181" y="9" width="65" height="32"/>
+                                <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nIp-xi-J5M">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addManga:" target="-2" id="YvE-Kv-stA"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-Tu-mil">
+                                <rect key="frame" x="20" y="15" width="159" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="F6i-px-wtL">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="cQR-BH-ucW">
+                                <rect key="frame" x="204" y="18" width="16" height="16"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="WiD-4H-5fY" firstAttribute="top" secondItem="B7G-E5-W8G" secondAttribute="top" constant="15" id="3YY-xb-Uf5"/>
+                            <constraint firstAttribute="bottom" secondItem="5Xr-Tu-mil" secondAttribute="bottom" constant="15" id="GD3-fH-KXg"/>
+                            <constraint firstItem="cQR-BH-ucW" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="25" id="Kl4-tW-Crk"/>
+                            <constraint firstItem="WiD-4H-5fY" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="8" symbolic="YES" id="OSu-BV-CJc"/>
+                            <constraint firstAttribute="trailing" secondItem="WiD-4H-5fY" secondAttribute="trailing" constant="20" symbolic="YES" id="XcY-KE-wZY"/>
+                            <constraint firstItem="cQR-BH-ucW" firstAttribute="top" secondItem="B7G-E5-W8G" secondAttribute="top" constant="18" id="czu-S5-kaq"/>
+                            <constraint firstItem="5Xr-Tu-mil" firstAttribute="leading" secondItem="B7G-E5-W8G" secondAttribute="leading" constant="20" symbolic="YES" id="mLo-F3-tYL"/>
+                            <constraint firstItem="5Xr-Tu-mil" firstAttribute="top" secondItem="B7G-E5-W8G" secondAttribute="top" constant="15" id="nBO-3k-ydI"/>
+                        </constraints>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </box>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ker-t1-Qy5">
-                    <rect key="frame" x="0.0" y="0.0" width="260" height="255"/>
+                    <rect key="frame" x="0.0" y="0.0" width="260" height="248"/>
                     <clipView key="contentView" id="6RL-sY-8uh">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="255"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="248"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" id="9Vo-y1-T4n">
-                                <rect key="frame" x="0.0" y="0.0" width="260" height="255"/>
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="173"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Mnv-gB-wXm">
                                     <size key="itemSize" width="250" height="100"/>
@@ -70,26 +77,26 @@
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cFV-OJ-d0F">
                         <rect key="frame" x="1" y="144" width="233" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="BVc-u1-9dE">
-                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="BVc-u1-9dE">
+                        <rect key="frame" x="244" y="0.0" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
             </subviews>
             <constraints>
-                <constraint firstItem="lL5-mC-Rt1" firstAttribute="top" secondItem="SBL-jH-eqD" secondAttribute="top" id="95H-rh-8Cm"/>
-                <constraint firstItem="ker-t1-Qy5" firstAttribute="leading" secondItem="SBL-jH-eqD" secondAttribute="leading" id="Oiz-Dv-3Pq"/>
-                <constraint firstAttribute="bottom" secondItem="ker-t1-Qy5" secondAttribute="bottom" id="QMK-Uc-XDP"/>
-                <constraint firstItem="ker-t1-Qy5" firstAttribute="top" secondItem="lL5-mC-Rt1" secondAttribute="top" constant="45" id="U4G-Jz-CX8"/>
-                <constraint firstItem="lL5-mC-Rt1" firstAttribute="leading" secondItem="SBL-jH-eqD" secondAttribute="leading" id="ane-mX-UU8"/>
-                <constraint firstAttribute="trailing" secondItem="lL5-mC-Rt1" secondAttribute="trailing" id="gS3-Xe-tt6"/>
-                <constraint firstAttribute="trailing" secondItem="ker-t1-Qy5" secondAttribute="trailing" id="qrH-as-3R8"/>
+                <constraint firstAttribute="trailing" secondItem="GeZ-cP-xZs" secondAttribute="trailing" id="4rK-CF-H5k"/>
+                <constraint firstItem="ker-t1-Qy5" firstAttribute="top" secondItem="GeZ-cP-xZs" secondAttribute="bottom" id="DVe-Yz-Hpk"/>
+                <constraint firstItem="GeZ-cP-xZs" firstAttribute="top" secondItem="SBL-jH-eqD" secondAttribute="top" id="GDx-wC-axl"/>
+                <constraint firstItem="GeZ-cP-xZs" firstAttribute="leading" secondItem="SBL-jH-eqD" secondAttribute="leading" id="GmS-DW-vZ1"/>
+                <constraint firstAttribute="trailing" secondItem="ker-t1-Qy5" secondAttribute="trailing" id="Rhs-PG-YAu"/>
+                <constraint firstAttribute="bottom" secondItem="ker-t1-Qy5" secondAttribute="bottom" id="jCO-mN-BRq"/>
+                <constraint firstItem="ker-t1-Qy5" firstAttribute="leading" secondItem="SBL-jH-eqD" secondAttribute="leading" id="yO5-pL-2h9"/>
             </constraints>
         </customView>
     </objects>
