@@ -6,4 +6,7 @@ bootstrap:
 update:
 	carthage update $(platform)
 
+synx:
+	synx Yomu.xcodeproj
+
 .PHONY: carthage
