@@ -35,5 +35,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>SearchAPI</key>
+	<string>http://yomu.io</string>
 </dict>
 </plist>
