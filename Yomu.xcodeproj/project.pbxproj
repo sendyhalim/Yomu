@@ -434,8 +434,10 @@
 				<string>79AF71B31D072DB100608518</string>
 				<string>79E35F831D2D6BB0006765E0</string>
 				<string>79AB8FF41D4BB30C000FB47D</string>
+				<string>79AB8FFA1D4BB8F4000FB47D</string>
 				<string>79346A311D44FC6C00206487</string>
 				<string>798866181D11AB4300093761</string>
+				<string>79AB8FF81D4BB875000FB47D</string>
 				<string>7973B3611D3FD88400E2B0FC</string>
 				<string>79318B921D1EF91A006E6CF8</string>
 				<string>79C8B75C1D29514A0072F2D3</string>
@@ -1186,6 +1188,8 @@
 				<string>79E35F801D2D6209006765E0</string>
 				<string>79C8B75B1D29514A0072F2D3</string>
 				<string>79E35F821D2D6BB0006765E0</string>
+				<string>79AB8FF71D4BB875000FB47D</string>
+				<string>79AB8FF91D4BB8F4000FB47D</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1918,6 +1922,46 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>79AB8FF51D4BB5B5000FB47D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79AB8FF71D4BB875000FB47D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SearchedMangaCollectionViewModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79AB8FF81D4BB875000FB47D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79AB8FF71D4BB875000FB47D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79AB8FF91D4BB8F4000FB47D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SearchedMangaViewModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79AB8FFA1D4BB8F4000FB47D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79AB8FF91D4BB8F4000FB47D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
