@@ -13,6 +13,7 @@ import Swiftz
 
 struct SearchedMangaCollectionViewModel {
   private let _fetching = Variable(false)
+  private let _showViewController = Variable(false)
   private let provider = RxMoyaProvider<YomuAPI>()
   private let _mangas = Variable(List<SearchedMangaViewModel>())
 
@@ -22,6 +23,10 @@ struct SearchedMangaCollectionViewModel {
 
   var mangas: Driver<List<SearchedMangaViewModel>> {
     return _mangas.asDriver()
+  }
+
+  var showViewController: Driver<Bool> {
+    return _showViewController.asDriver()
   }
 
   subscript(index: Int) -> SearchedMangaViewModel {
@@ -39,5 +44,9 @@ struct SearchedMangaCollectionViewModel {
       .subscribeNext {
         self._mangas.value = List(fromArray: $0).map(SearchedMangaViewModel.init)
       }
+  }
+
+  func hideViewController() {
+    _showViewController.value = false
   }
 }
