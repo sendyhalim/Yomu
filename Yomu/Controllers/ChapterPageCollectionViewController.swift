@@ -38,7 +38,9 @@ class ChapterPageCollectionViewController: NSViewController {
 
     collectionView.dataSource = self
 
-    delegate?.closeChapterPage >>- close.rx_tap.subscribeNext
+    delegate?.closeChapterPage
+      >>- close.rx_tap.subscribeNext
+      ~>> disposeBag
 
     vm.chapterPages ~> { [weak self] _ in
       self?.collectionView.reloadData()

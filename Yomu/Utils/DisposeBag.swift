@@ -7,9 +7,17 @@
 //
 
 import RxSwift
+import Swiftz
 
 infix operator >>> { precedence 90 }
 
 func >>> (disposable: Disposable, disposeBag: DisposeBag) {
   disposable.addDisposableTo(disposeBag)
+}
+
+
+infix operator ~>> { precedence 90 }
+
+func ~>> (disposable: Disposable?, disposeBag: DisposeBag) {
+  disposable >>- { $0 >>> disposeBag }
 }
