@@ -70,17 +70,17 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     collectionView: NSCollectionView,
     itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath
   ) -> NSCollectionViewItem {
-    let item = collectionView.makeItemWithIdentifier(
+    let cell = collectionView.makeItemWithIdentifier(
       "ChapterItem",
       forIndexPath: indexPath
     ) as! ChapterItem
 
     let chapter = vm[indexPath.item]
-    chapter.fetchPreview() >>> item.disposeBag
-    chapter.title ~> item.chapterTitle.rx_text >>> item.disposeBag
-    chapter.previewUrl ~> item.chapterPreview.setImageWithUrl >>> item.disposeBag
+    chapter.fetchPreview() >>> cell.disposeBag
+    chapter.title ~> cell.chapterTitle.rx_text >>> cell.disposeBag
+    chapter.previewUrl ~> cell.chapterPreview.setImageWithUrl >>> cell.disposeBag
 
-    return item
+    return cell
   }
 }
 

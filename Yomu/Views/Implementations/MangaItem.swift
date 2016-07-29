@@ -7,8 +7,11 @@
 //
 
 import Cocoa
+import RxSwift
 
 class MangaItem: NSCollectionViewItem {
   @IBOutlet weak var mangaImageView: NSImageView!
   @IBOutlet weak var titleTextField: NSTextField!
+
+  var disposeBag = DisposeBag()
 }
