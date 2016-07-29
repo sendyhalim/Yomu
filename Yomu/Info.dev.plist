@@ -36,6 +36,6 @@
 		<true/>
 	</dict>
 	<key>SearchAPI</key>
-	<string>http://localhost:3099</string>
+	<string>http://localhost:3099/api</string>
 </dict>
 </plist>

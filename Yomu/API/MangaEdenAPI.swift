@@ -42,10 +42,3 @@ extension MangaEdenAPI: TargetType {
     return "{}".UTF8EncodedData
   }
 }
-
-
-private extension String {
-  var UTF8EncodedData: NSData {
-    return self.dataUsingEncoding(NSUTF8StringEncoding)!
-  }
-}

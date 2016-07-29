@@ -11,5 +11,5 @@ import Foundation
 private let info = NSBundle.mainBundle().infoDictionary!
 
 public struct Config {
-  static let SearchAPI: String = info["SearchAPI"] as! String
+  static let YomuAPI: String = info["YomuAPI"] as! String
 }

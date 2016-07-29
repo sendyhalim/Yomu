@@ -76,6 +76,8 @@
 		7997321D1D3EA21000FC3B01 /* ChapterPageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7997321C1D3EA21000FC3B01 /* ChapterPageCollectionViewController.swift */; };
 		7997321F1D3EA4D200FC3B01 /* ChapterPageCollection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7997321E1D3EA4D200FC3B01 /* ChapterPageCollection.xib */; };
 		79A10E651D0D9FFD00B9C4B7 /* manga.json in Resources */ = {isa = PBXBuildFile; fileRef = 79A10E641D0D9FFD00B9C4B7 /* manga.json */; };
+		79AB8FF21D4BB198000FB47D /* YomuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB8FF11D4BB198000FB47D /* YomuAPI.swift */; };
+		79AB8FF41D4BB30C000FB47D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB8FF31D4BB30C000FB47D /* String.swift */; };
 		79AF71A51D072C9B00608518 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AF719A1D072C9B00608518 /* Alamofire.framework */; };
 		79AF71A61D072C9B00608518 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AF719B1D072C9B00608518 /* Argo.framework */; };
 		79AF71A71D072C9B00608518 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AF719C1D072C9B00608518 /* Curry.framework */; };
@@ -161,6 +163,8 @@
 		7997321C1D3EA21000FC3B01 /* ChapterPageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterPageCollectionViewController.swift; sourceTree = "<group>"; };
 		7997321E1D3EA4D200FC3B01 /* ChapterPageCollection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterPageCollection.xib; sourceTree = "<group>"; };
 		79A10E641D0D9FFD00B9C4B7 /* manga.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manga.json; sourceTree = "<group>"; };
+		79AB8FF11D4BB198000FB47D /* YomuAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YomuAPI.swift; sourceTree = "<group>"; };
+		79AB8FF31D4BB30C000FB47D /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		79AF719A1D072C9B00608518 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		79AF719B1D072C9B00608518 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/Mac/Argo.framework; sourceTree = "<group>"; };
 		79AF719C1D072C9B00608518 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/Mac/Curry.framework; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				798866171D11AB4300093761 /* MangaEdenAPI.swift */,
+				79AB8FF11D4BB198000FB47D /* YomuAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				79E35F841D2D7384006765E0 /* NSImageView.swift */,
 				79E85D761D0B22C50029FDA6 /* NSURL.swift */,
 				79FF941A1D10776D00A7E450 /* RxMoyaResponse.swift */,
+				79AB8FF31D4BB30C000FB47D /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -667,6 +673,7 @@
 				79E35F811D2D6209006765E0 /* ChapterViewModel.swift in Sources */,
 				79AF71B31D072DB100608518 /* Manga.swift in Sources */,
 				79E35F831D2D6BB0006765E0 /* MangaViewModel.swift in Sources */,
+				79AB8FF41D4BB30C000FB47D /* String.swift in Sources */,
 				79346A311D44FC6C00206487 /* Driver.swift in Sources */,
 				798866181D11AB4300093761 /* MangaEdenAPI.swift in Sources */,
 				7973B3611D3FD88400E2B0FC /* ChapterPageViewModel.swift in Sources */,
@@ -685,6 +692,7 @@
 				79C8B75E1D2962CD0072F2D3 /* MangaContainerViewController.swift in Sources */,
 				796048691D130887006571B3 /* ChapterItem.swift in Sources */,
 				796048651D13062E006571B3 /* DisposeBag.swift in Sources */,
+				79AB8FF21D4BB198000FB47D /* YomuAPI.swift in Sources */,
 				798865EA1D11A1A400093761 /* MangaItem.swift in Sources */,
 				796048621D12FBEB006571B3 /* ChapterCollectionViewController.swift in Sources */,
 				7916A2061D1844DF007CA1BD /* ChapterPage.swift in Sources */,
