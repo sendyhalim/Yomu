@@ -11,9 +11,20 @@ import RxSwift
 
 class SearchedMangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
+  @IBOutlet weak var mangaTitle: NSTextField!
 
-  let collectionViewModel = SearchedMangaCollectionViewModel()
+  let collectionViewModel: SearchedMangaCollectionViewModel
   let disposeBag = DisposeBag()
+
+  init(viewModel: SearchedMangaCollectionViewModel) {
+    collectionViewModel = viewModel
+
+    super.init(nibName: "SearchedMangaCollection", bundle: nil)!
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()

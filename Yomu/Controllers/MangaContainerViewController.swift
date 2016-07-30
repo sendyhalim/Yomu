@@ -13,6 +13,8 @@ class MangaContainerViewController: NSViewController {
   @IBOutlet weak var mangaContainerView: NSView!
   @IBOutlet weak var chapterContainerView: NSView!
   @IBOutlet weak var chapterPageContainerView: NSView!
+  @IBOutlet weak var searchMangaButtonContainer: NSView!
+  @IBOutlet weak var searchMangaContainer: NSView!
 
   let mangaCollectionVM = MangaCollectionViewModel()
   var mangaCollectionVC: MangaCollectionViewController!
@@ -22,14 +24,20 @@ class MangaContainerViewController: NSViewController {
 
   var chapterPageCollectionVC: ChapterPageCollectionViewController?
 
+  let searchedMangaCollectionVM = SearchedMangaCollectionViewModel()
+  var searchedMangaVC: SearchedMangaCollectionViewController!
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
     mangaCollectionVC = MangaCollectionViewController(viewModel: mangaCollectionVM)
     chapterCollectionVC = ChapterCollectionViewController(viewModel: chapterCollectionVM)
+    searchedMangaVC = SearchedMangaCollectionViewController(viewModel: searchedMangaCollectionVM)
 
     mangaContainerView.addSubview(mangaCollectionVC.view)
     chapterContainerView.addSubview(chapterCollectionVC.view)
+    searchMangaContainer.addSubview(searchedMangaVC.view)
+
     mangaCollectionVC.mangaSelectionDelegate = chapterCollectionVC
     chapterCollectionVC.chapterSelectionDelegate = self
 
@@ -49,6 +57,15 @@ class MangaContainerViewController: NSViewController {
       mangaCollectionView.height >= 300
     }
 
+    constrain(searchedMangaVC.view, searchMangaContainer) {
+      searchMangaCollectionView, searchMangaContainer in
+      searchMangaCollectionView.top == searchMangaContainer.top
+      searchMangaCollectionView.bottom == searchMangaContainer.bottom
+      searchMangaCollectionView.trailing == searchMangaContainer.trailing
+      searchMangaCollectionView.leading == searchMangaContainer.leading
+    }
+
+
     constrain(chapterCollectionVC.view, chapterContainerView) {
       chapterCollectionView, chapterContainerView in
       chapterCollectionView.top == chapterContainerView.top
@@ -59,6 +76,12 @@ class MangaContainerViewController: NSViewController {
       chapterCollectionView.width >= 470
       chapterCollectionView.height >= 300
     }
+  }
+
+  @IBAction func showSearchMangaView(sender: NSButton) {
+    mangaContainerView.hidden = true
+    searchMangaButtonContainer.hidden = true
+    searchMangaContainer.hidden = false
   }
 }
 
@@ -77,6 +100,7 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
     chapterPageContainerView.hidden = false
     mangaContainerView.hidden = true
     chapterContainerView.hidden = true
+    searchMangaButtonContainer.hidden = true
   }
 
   func setupChapterPageCollectionConstraints() {
