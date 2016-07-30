@@ -3,15 +3,11 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MangaCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
-                <outlet property="addMangaButton" destination="WiD-4H-5fY" id="ma5-pj-lqc"/>
                 <outlet property="collectionView" destination="9Vo-y1-T4n" id="d50-KY-54b"/>
-                <outlet property="mangaIdField" destination="5Xr-Tu-mil" id="4Qn-g3-7bh"/>
-                <outlet property="progressIndicator" destination="cQR-BH-ucW" id="M1y-I8-9Fp"/>
                 <outlet property="view" destination="SBL-jH-eqD" id="RTN-Fv-hC2"/>
             </connections>
         </customObject>
@@ -20,56 +16,14 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="SBL-jH-eqD" userLabel="Manga Collection View">
             <rect key="frame" x="0.0" y="0.0" width="260" height="300"/>
             <subviews>
-                <box title="Manga Input Container" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="GeZ-cP-xZs">
-                    <rect key="frame" x="0.0" y="248" width="260" height="52"/>
-                    <view key="contentView" id="B7G-E5-W8G">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="52"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WiD-4H-5fY">
-                                <rect key="frame" x="181" y="9" width="65" height="32"/>
-                                <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nIp-xi-J5M">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="addManga:" target="-2" id="YvE-Kv-stA"/>
-                                </connections>
-                            </button>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Xr-Tu-mil">
-                                <rect key="frame" x="20" y="15" width="159" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="F6i-px-wtL">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="cQR-BH-ucW">
-                                <rect key="frame" x="204" y="18" width="16" height="16"/>
-                            </progressIndicator>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="WiD-4H-5fY" firstAttribute="top" secondItem="B7G-E5-W8G" secondAttribute="top" constant="15" id="3YY-xb-Uf5"/>
-                            <constraint firstAttribute="bottom" secondItem="5Xr-Tu-mil" secondAttribute="bottom" constant="15" id="GD3-fH-KXg"/>
-                            <constraint firstItem="cQR-BH-ucW" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="25" id="Kl4-tW-Crk"/>
-                            <constraint firstItem="WiD-4H-5fY" firstAttribute="leading" secondItem="5Xr-Tu-mil" secondAttribute="trailing" constant="8" symbolic="YES" id="OSu-BV-CJc"/>
-                            <constraint firstAttribute="trailing" secondItem="WiD-4H-5fY" secondAttribute="trailing" constant="20" symbolic="YES" id="XcY-KE-wZY"/>
-                            <constraint firstItem="cQR-BH-ucW" firstAttribute="top" secondItem="B7G-E5-W8G" secondAttribute="top" constant="18" id="czu-S5-kaq"/>
-                            <constraint firstItem="5Xr-Tu-mil" firstAttribute="leading" secondItem="B7G-E5-W8G" secondAttribute="leading" constant="20" symbolic="YES" id="mLo-F3-tYL"/>
-                            <constraint firstItem="5Xr-Tu-mil" firstAttribute="top" secondItem="B7G-E5-W8G" secondAttribute="top" constant="15" id="nBO-3k-ydI"/>
-                        </constraints>
-                    </view>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </box>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ker-t1-Qy5">
-                    <rect key="frame" x="0.0" y="0.0" width="260" height="248"/>
+                    <rect key="frame" x="0.0" y="0.0" width="260" height="300"/>
                     <clipView key="contentView" id="6RL-sY-8uh">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="248"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" id="9Vo-y1-T4n">
-                                <rect key="frame" x="0.0" y="0.0" width="260" height="173"/>
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="225"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Mnv-gB-wXm">
                                     <size key="itemSize" width="250" height="100"/>
@@ -90,10 +44,7 @@
                 </scrollView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="GeZ-cP-xZs" secondAttribute="trailing" id="4rK-CF-H5k"/>
-                <constraint firstItem="ker-t1-Qy5" firstAttribute="top" secondItem="GeZ-cP-xZs" secondAttribute="bottom" id="DVe-Yz-Hpk"/>
-                <constraint firstItem="GeZ-cP-xZs" firstAttribute="top" secondItem="SBL-jH-eqD" secondAttribute="top" id="GDx-wC-axl"/>
-                <constraint firstItem="GeZ-cP-xZs" firstAttribute="leading" secondItem="SBL-jH-eqD" secondAttribute="leading" id="GmS-DW-vZ1"/>
+                <constraint firstItem="ker-t1-Qy5" firstAttribute="top" secondItem="SBL-jH-eqD" secondAttribute="top" id="ON8-52-cG1"/>
                 <constraint firstAttribute="trailing" secondItem="ker-t1-Qy5" secondAttribute="trailing" id="Rhs-PG-YAu"/>
                 <constraint firstAttribute="bottom" secondItem="ker-t1-Qy5" secondAttribute="bottom" id="jCO-mN-BRq"/>
                 <constraint firstItem="ker-t1-Qy5" firstAttribute="leading" secondItem="SBL-jH-eqD" secondAttribute="leading" id="yO5-pL-2h9"/>
