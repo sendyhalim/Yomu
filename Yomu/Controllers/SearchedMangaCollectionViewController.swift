@@ -32,6 +32,18 @@ class SearchedMangaCollectionViewController: NSViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
 
+    mangaTitle
+      .rx_text
+      .filter {
+        $0.characters.count > 2
+      }
+      .throttle(0.5, scheduler: MainScheduler.instance)
+      .subscribeNext { [weak self] in
+        guard let `self` = self else { return }
+
+        self.collectionViewModel.search($0) >>> self.disposeBag
+      } >>> disposeBag
+
     collectionViewModel
       .mangas
       .driveNext { [weak self] _ in
