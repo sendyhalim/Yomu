@@ -92,6 +92,7 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
     let index = indexPaths.first!.item
     let chapterVm = vm[index]
 
+    collectionView.deselectAll(self)
     chapterSelectionDelegate?.chapterDidSelected(chapterVm.chapter)
   }
 }
