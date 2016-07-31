@@ -89,7 +89,10 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
 }
 
 extension SearchedMangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
-  func collectionView(collectionView: NSCollectionView, didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>) {
+  func collectionView(
+    collectionView: NSCollectionView,
+    didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
+  ) {
     let index = indexPaths.first!.item
 
     selectionDelegate?.searchedMangaDidSelected(collectionViewModel[index])

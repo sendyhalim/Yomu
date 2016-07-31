@@ -8,6 +8,7 @@
 
 import Cocoa
 import Cartography
+import RxSwift
 
 class MangaContainerViewController: NSViewController {
   @IBOutlet weak var mangaContainerView: NSView!
@@ -27,6 +28,8 @@ class MangaContainerViewController: NSViewController {
   let searchedMangaCollectionVM = SearchedMangaCollectionViewModel()
   var searchedMangaVC: SearchedMangaCollectionViewController!
 
+  let disposeBag = DisposeBag()
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -40,6 +43,7 @@ class MangaContainerViewController: NSViewController {
 
     mangaCollectionVC.mangaSelectionDelegate = chapterCollectionVC
     chapterCollectionVC.chapterSelectionDelegate = self
+    searchedMangaVC.selectionDelegate = self
 
     chapterPageContainerView.wantsLayer = true
     chapterPageContainerView.layer?.backgroundColor = NSColor.whiteColor().CGColor
@@ -81,6 +85,7 @@ class MangaContainerViewController: NSViewController {
   @IBAction func showSearchMangaView(sender: NSButton) {
     mangaContainerView.hidden = true
     searchMangaButtonContainer.hidden = true
+    chapterContainerView.hidden = true
     searchMangaContainer.hidden = false
   }
 }
@@ -119,5 +124,24 @@ extension MangaContainerViewController: ChapterPageCollectionViewDelegate {
     chapterPageContainerView.hidden = true
     mangaContainerView.hidden = false
     chapterContainerView.hidden = false
+    searchMangaButtonContainer.hidden = false
+  }
+}
+
+extension MangaContainerViewController: SearchedMangaSelectionDelegate {
+  func searchedMangaDidSelected(viewModel: SearchedMangaViewModel) {
+    viewModel.apiId ~> { [weak self] in
+      guard let `self` = self else {
+        return
+      }
+
+      self.mangaCollectionVM.fetch($0) >>> self.disposeBag
+    } >>> self.disposeBag
+
+    // TODO: Think a better way to do this, maybe implement a router?
+    mangaContainerView.hidden = false
+    searchMangaButtonContainer.hidden = false
+    chapterContainerView.hidden = false
+    searchMangaContainer.hidden = true
   }
 }

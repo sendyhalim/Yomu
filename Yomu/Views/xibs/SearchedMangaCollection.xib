@@ -50,7 +50,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="260" height="238"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView id="Q3a-Yj-lVf">
+                            <collectionView selectable="YES" id="Q3a-Yj-lVf">
                                 <rect key="frame" x="0.0" y="0.0" width="260" height="414"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="emQ-TK-qQM">
