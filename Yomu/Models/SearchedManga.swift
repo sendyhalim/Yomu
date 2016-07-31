@@ -12,8 +12,11 @@ import Curry
 
 ///  A data structure that represents searched manga from yomu API
 struct SearchedManga {
+  /// Server database id
   let id: String
-  let mangaEdenId: String
+
+  /// An id for communicating for manga eden API
+  let apiId: String
   let name: String
   let slug: String
   let image: ImageUrl

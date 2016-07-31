@@ -9,9 +9,15 @@
 import Cocoa
 import RxSwift
 
+protocol SearchedMangaSelectionDelegate: class {
+  func searchedMangaDidSelected(viewModel: SearchedMangaViewModel)
+}
+
 class SearchedMangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var mangaTitle: NSTextField!
+
+  weak var selectionDelegate: SearchedMangaSelectionDelegate?
 
   let collectionViewModel: SearchedMangaCollectionViewModel
   let disposeBag = DisposeBag()
@@ -83,5 +89,9 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
 }
 
 extension SearchedMangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
+  func collectionView(collectionView: NSCollectionView, didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>) {
+    let index = indexPaths.first!.item
 
+    selectionDelegate?.searchedMangaDidSelected(collectionViewModel[index])
+  }
 }

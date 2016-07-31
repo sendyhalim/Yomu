@@ -20,6 +20,10 @@ struct SearchedMangaViewModel {
     return manga.asDriver().map { $0.name }
   }
 
+  var apiId: Driver<String> {
+    return manga.asDriver().map { $0.apiId }
+  }
+
   init(manga: SearchedManga) {
     self.manga = Variable(manga)
   }
