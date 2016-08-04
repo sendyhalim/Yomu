@@ -57,7 +57,7 @@ class MangaContainerViewController: NSViewController {
       mangaCollectionView.top == mangaContainerView.top
       mangaCollectionView.bottom == mangaContainerView.bottom
 
-      mangaCollectionView.width >= 290
+      mangaCollectionView.width >= 300
       mangaCollectionView.height >= 300
     }
 

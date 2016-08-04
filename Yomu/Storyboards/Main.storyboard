@@ -671,17 +671,17 @@
             <objects>
                 <viewController id="Qhp-rp-OOh" customClass="MangaContainerViewController" customModule="Yomu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="WuG-f5-vtI">
-                        <rect key="frame" x="0.0" y="0.0" width="760" height="362"/>
+                        <rect key="frame" x="0.0" y="0.0" width="770" height="362"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="PHi-SR-OkI">
-                                <rect key="frame" x="0.0" y="330" width="290" height="32"/>
+                                <rect key="frame" x="0.0" y="330" width="300" height="32"/>
                                 <view key="contentView" id="blz-E3-99x">
-                                    <rect key="frame" x="0.0" y="0.0" width="290" height="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fj6-cY-agL">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="32"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="32"/>
                                             <buttonCell key="cell" type="bevel" title="Search Manga" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="JFm-pq-glh">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -702,24 +702,24 @@
                                 <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ieg-Qo-7il" userLabel="Manga Collection Container">
-                                <rect key="frame" x="0.0" y="0.0" width="290" height="330"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="330"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="290" id="c2K-2S-zoD"/>
+                                    <constraint firstAttribute="width" constant="300" id="c2K-2S-zoD"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="oV6-fm-nUs"/>
                                 </constraints>
                             </containerView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="k9q-VZ-e6L" userLabel="Chapter Collection Container">
-                                <rect key="frame" x="290" y="0.0" width="470" height="362"/>
+                                <rect key="frame" x="300" y="0.0" width="470" height="362"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="470" id="aEh-EW-JUp"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="uH0-pQ-1v4"/>
                                 </constraints>
                             </containerView>
                             <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5e-FU-OMp" userLabel="Chapter Page Collection Container">
-                                <rect key="frame" x="0.0" y="0.0" width="760" height="362"/>
+                                <rect key="frame" x="0.0" y="0.0" width="770" height="362"/>
                             </containerView>
                             <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gj-c6-gQ6" userLabel="Search Manga Container">
-                                <rect key="frame" x="0.0" y="0.0" width="760" height="362"/>
+                                <rect key="frame" x="0.0" y="0.0" width="770" height="362"/>
                             </containerView>
                         </subviews>
                         <constraints>
