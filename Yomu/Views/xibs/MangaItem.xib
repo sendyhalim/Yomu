@@ -20,10 +20,21 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="k2U-9a-r5Z"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-mk-txx">
-                    <rect key="frame" x="81" y="42" width="181" height="17"/>
+                    <rect key="frame" x="81" y="42" width="151" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="qHK-Rj-0lS">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kvi-Pn-54r">
+                    <rect key="frame" x="248" y="36" width="34" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="muw-sN-IlY"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="〉" id="F46-SY-J4j">
+                        <font key="font" metaFont="system" size="24"/>
+                        <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -31,14 +42,17 @@
             <constraints>
                 <constraint firstItem="rIw-mk-txx" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="1w0-qG-7oP"/>
                 <constraint firstItem="rIw-mk-txx" firstAttribute="leading" secondItem="CHo-eP-m62" secondAttribute="trailing" constant="8" symbolic="YES" id="EB8-m7-x6o"/>
+                <constraint firstItem="Kvi-Pn-54r" firstAttribute="centerY" secondItem="CHo-eP-m62" secondAttribute="centerY" id="G7l-0Z-mKa"/>
+                <constraint firstItem="Kvi-Pn-54r" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="Ggo-Rw-LHS"/>
+                <constraint firstItem="Kvi-Pn-54r" firstAttribute="leading" secondItem="rIw-mk-txx" secondAttribute="trailing" constant="20" id="c23-Ui-adc"/>
                 <constraint firstItem="CHo-eP-m62" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="fDX-9P-ORl"/>
-                <constraint firstAttribute="trailing" secondItem="rIw-mk-txx" secondAttribute="trailing" constant="20" symbolic="YES" id="fZI-bO-TMd"/>
                 <constraint firstItem="CHo-eP-m62" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="i5d-Gy-DCv"/>
-                <constraint firstAttribute="bottom" secondItem="CHo-eP-m62" secondAttribute="bottom" id="snW-8O-80b"/>
+                <constraint firstItem="CHo-eP-m62" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="snW-8O-80b"/>
             </constraints>
         </customView>
         <collectionViewItem id="mb3-6Q-snP" customClass="MangaItem" customModule="Yomu" customModuleProvider="target">
             <connections>
+                <outlet property="accesoriesTextField" destination="Kvi-Pn-54r" id="z9N-Nu-u5E"/>
                 <outlet property="mangaImageView" destination="CHo-eP-m62" id="fsv-jP-dTv"/>
                 <outlet property="titleTextField" destination="rIw-mk-txx" id="IGG-49-Z2T"/>
                 <outlet property="view" destination="c22-O7-iKe" id="Y9V-zn-zIE"/>

@@ -83,6 +83,7 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
 
     vm.title ~> cell.titleTextField.rx_text >>> cell.disposeBag
     vm.previewUrl ~> cell.mangaImageView.setImageWithUrl >>> cell.disposeBag
+    vm.accessoriesIcon ~> cell.accesoriesTextField.rx_text >>> cell.disposeBag
 
     return cell
   }
