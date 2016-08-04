@@ -11,7 +11,6 @@ import RxMoya
 import RxSwift
 
 struct ChapterViewModel {
-  private let provider = RxMoyaProvider<MangaEdenAPI>()
   private let _chapter: Variable<Chapter>
   private let _previewUrl: Variable<ImageUrl>
 
@@ -38,7 +37,7 @@ struct ChapterViewModel {
   func fetchPreview() -> Disposable {
     let id = _chapter.value.id
 
-    return provider
+    return MangaEden
       .request(MangaEdenAPI.ChapterPages(id))
       .mapArray(ChapterPage.self, withRootKey: "images")
       .subscribeNext {

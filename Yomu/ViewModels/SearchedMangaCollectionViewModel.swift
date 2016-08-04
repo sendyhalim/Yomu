@@ -14,7 +14,6 @@ import Swiftz
 struct SearchedMangaCollectionViewModel {
   private let _fetching = Variable(false)
   private let _showViewController = Variable(false)
-  private let provider = RxMoyaProvider<YomuAPI>()
   private let _mangas = Variable(List<SearchedMangaViewModel>())
 
   var count: Int {
@@ -36,7 +35,7 @@ struct SearchedMangaCollectionViewModel {
   func search(term: String) -> Disposable {
     let api = YomuAPI.Search(term)
 
-    return provider
+    return Yomu
       .request(api)
       .doOn { self._fetching.value = !$0.isStopEvent }
       .filterSuccessfulStatusCodes()

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
+import RxSwift
 import RxMoya
 
 enum MangaEdenAPI {
@@ -40,5 +41,13 @@ extension MangaEdenAPI: TargetType {
 
   var sampleData: NSData {
     return "{}".UTF8EncodedData
+  }
+}
+
+struct MangaEden {
+  private static let provider = RxMoyaProvider<MangaEdenAPI>()
+
+  static func request(api: MangaEdenAPI) -> Observable<Response> {
+    return provider.request(api)
   }
 }

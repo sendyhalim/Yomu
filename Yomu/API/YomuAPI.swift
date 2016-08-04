@@ -7,6 +7,7 @@
 //
 
 import RxMoya
+import RxSwift
 
 enum YomuAPI {
   case Search(String)
@@ -39,5 +40,13 @@ extension YomuAPI: TargetType {
 
   var sampleData: NSData {
     return "[]".UTF8EncodedData
+  }
+}
+
+struct Yomu {
+  private static let provider = RxMoyaProvider<YomuAPI>()
+
+  static func request(api: YomuAPI) -> Observable<Response> {
+    return provider.request(api)
   }
 }

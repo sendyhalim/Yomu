@@ -15,7 +15,6 @@ struct MangaCollectionViewModel {
   private var _fetching = Variable(false)
   private var _mangas = Variable(Set<Manga>())
   private let mangaViewModels = Variable(List<MangaViewModel>())
-  private let provider = RxMoyaProvider<MangaEdenAPI>()
 
   var mangas: Driver<List<MangaViewModel>> {
     return mangaViewModels.asDriver()
@@ -38,7 +37,7 @@ struct MangaCollectionViewModel {
 
     _fetching.value = true
 
-    return provider
+    return MangaEden
       .request(api)
       .doOn { self._fetching.value = !$0.isStopEvent }
       .filterSuccessfulStatusCodes()

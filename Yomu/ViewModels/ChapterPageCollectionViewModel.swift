@@ -13,7 +13,6 @@ import RxSwift
 import Swiftz
 
 struct ChapterPageCollectionViewModel {
-  private let provider = RxMoyaProvider<MangaEdenAPI>()
   private let _chapterPages = Variable(List<ChapterPage>())
 
   let chapterId: String
@@ -37,7 +36,7 @@ struct ChapterPageCollectionViewModel {
   }
 
   func fetch() -> Disposable {
-    return provider
+    return MangaEden
       .request(MangaEdenAPI.ChapterPages(chapterId))
       .mapArray(ChapterPage.self, withRootKey: "images")
       .subscribeNext {
