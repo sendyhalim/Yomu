@@ -43,7 +43,7 @@ class MangaContainerViewController: NSViewController {
 
     mangaCollectionVC.mangaSelectionDelegate = chapterCollectionVC
     chapterCollectionVC.chapterSelectionDelegate = self
-    searchedMangaVC.selectionDelegate = self
+    searchedMangaVC.delegate = self
 
     chapterPageContainerView.wantsLayer = true
     chapterPageContainerView.layer?.backgroundColor = NSColor.whiteColor().CGColor
@@ -128,7 +128,7 @@ extension MangaContainerViewController: ChapterPageCollectionViewDelegate {
   }
 }
 
-extension MangaContainerViewController: SearchedMangaSelectionDelegate {
+extension MangaContainerViewController: SearchedMangaDelegate {
   func searchedMangaDidSelected(viewModel: SearchedMangaViewModel) {
     viewModel.apiId ~> { [weak self] in
       guard let `self` = self else {
@@ -143,5 +143,10 @@ extension MangaContainerViewController: SearchedMangaSelectionDelegate {
     searchMangaButtonContainer.hidden = false
     chapterContainerView.hidden = false
     searchMangaContainer.hidden = true
+  }
+
+  func closeView(sender: SearchedMangaCollectionViewController) {
+    // TODO: Implement code to close searched manga view
+    print("Not implemented yet")
   }
 }

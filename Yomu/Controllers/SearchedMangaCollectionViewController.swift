@@ -9,15 +9,16 @@
 import Cocoa
 import RxSwift
 
-protocol SearchedMangaSelectionDelegate: class {
+protocol SearchedMangaDelegate: class {
   func searchedMangaDidSelected(viewModel: SearchedMangaViewModel)
+  func closeView(sender: SearchedMangaCollectionViewController)
 }
 
 class SearchedMangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var mangaTitle: NSTextField!
 
-  weak var selectionDelegate: SearchedMangaSelectionDelegate?
+  weak var delegate: SearchedMangaDelegate?
 
   let collectionViewModel: SearchedMangaCollectionViewModel
   let disposeBag = DisposeBag()
@@ -55,6 +56,10 @@ class SearchedMangaCollectionViewController: NSViewController {
       .driveNext { [weak self] _ in
         self?.collectionView.reloadData()
       } >>> disposeBag
+  }
+
+  @IBAction func closeView(sender: NSButton) {
+    delegate?.closeView(self)
   }
 }
 
@@ -96,6 +101,6 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDelegateFlowLay
   ) {
     let index = indexPaths.first!.item
 
-    selectionDelegate?.searchedMangaDidSelected(collectionViewModel[index])
+    delegate?.searchedMangaDidSelected(collectionViewModel[index])
   }
 }

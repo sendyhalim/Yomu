@@ -680,7 +680,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fj6-cY-agL">
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fj6-cY-agL" customClass="ActionButton" customModule="Yomu" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="32"/>
                                             <buttonCell key="cell" type="bevel" title="Search Manga" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="JFm-pq-glh">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

@@ -26,18 +26,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="coA-ef-eoc">
-                                <rect key="frame" x="20" y="20" width="220" height="22"/>
+                                <rect key="frame" x="84" y="20" width="156" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Search Manga" drawsBackground="YES" id="7Li-il-tjL">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9CP-m9-2JP" customClass="ActionButton" customModule="Yomu" customModuleProvider="target">
+                                <rect key="frame" x="20" y="15" width="44" height="32"/>
+                                <buttonCell key="cell" type="bevel" title="❮ Back" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="Vg7-5b-oYV">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeView:" target="-2" id="FLT-Yn-Zni"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="9CP-m9-2JP" firstAttribute="leading" secondItem="AVr-oz-nyO" secondAttribute="leading" constant="20" id="16v-Hc-Roh"/>
+                            <constraint firstItem="coA-ef-eoc" firstAttribute="leading" secondItem="9CP-m9-2JP" secondAttribute="trailing" constant="20" id="VcX-Dx-d0o"/>
+                            <constraint firstItem="9CP-m9-2JP" firstAttribute="centerY" secondItem="AVr-oz-nyO" secondAttribute="centerY" id="Yho-i5-vXf"/>
+                        </constraints>
                     </view>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="coA-ef-eoc" secondAttribute="bottom" constant="20" id="0ts-Et-c1R"/>
-                        <constraint firstItem="coA-ef-eoc" firstAttribute="leading" secondItem="pCP-5J-qtz" secondAttribute="leading" constant="20" id="VTg-kc-gue"/>
                         <constraint firstItem="coA-ef-eoc" firstAttribute="top" secondItem="pCP-5J-qtz" secondAttribute="top" constant="20" id="k9w-rC-a1W"/>
                         <constraint firstAttribute="trailing" secondItem="coA-ef-eoc" secondAttribute="trailing" constant="20" id="s3H-23-0B2"/>
                     </constraints>
