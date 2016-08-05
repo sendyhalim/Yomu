@@ -48,7 +48,24 @@ class MangaContainerViewController: NSViewController {
     chapterPageContainerView.wantsLayer = true
     chapterPageContainerView.layer?.backgroundColor = NSColor.whiteColor().CGColor
 
+    setupRoutes()
     setupConstraints()
+  }
+
+  func setupRoutes() {
+    Router.register(YomuRoute.Main([
+      mangaContainerView,
+      chapterContainerView,
+      searchMangaButtonContainer
+    ]))
+
+    Router.register(YomuRoute.SearchManga([
+      searchMangaContainer
+    ]))
+
+    Router.register(YomuRoute.ChapterPage([
+      chapterPageContainerView
+    ]))
   }
 
   func setupConstraints() {
@@ -83,10 +100,7 @@ class MangaContainerViewController: NSViewController {
   }
 
   @IBAction func showSearchMangaView(sender: NSButton) {
-    mangaContainerView.hidden = true
-    searchMangaButtonContainer.hidden = true
-    chapterContainerView.hidden = true
-    searchMangaContainer.hidden = false
+    Router.moveTo(YomuRouteId.SearchManga.rawValue)
   }
 }
 
@@ -102,10 +116,7 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
     chapterPageContainerView.addSubview(chapterPageCollectionVC!.view)
 
     setupChapterPageCollectionConstraints()
-    chapterPageContainerView.hidden = false
-    mangaContainerView.hidden = true
-    chapterContainerView.hidden = true
-    searchMangaButtonContainer.hidden = true
+    Router.moveTo(YomuRouteId.ChapterPage.rawValue)
   }
 
   func setupChapterPageCollectionConstraints() {
@@ -121,10 +132,7 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
 
 extension MangaContainerViewController: ChapterPageCollectionViewDelegate {
   func closeChapterPage() {
-    chapterPageContainerView.hidden = true
-    mangaContainerView.hidden = false
-    chapterContainerView.hidden = false
-    searchMangaButtonContainer.hidden = false
+    Router.moveTo(YomuRouteId.Main.rawValue)
   }
 }
 
@@ -138,11 +146,7 @@ extension MangaContainerViewController: SearchedMangaDelegate {
       self.mangaCollectionVM.fetch($0) >>> self.disposeBag
     } >>> self.disposeBag
 
-    // TODO: Think a better way to do this, maybe implement a router?
-    mangaContainerView.hidden = false
-    searchMangaButtonContainer.hidden = false
-    chapterContainerView.hidden = false
-    searchMangaContainer.hidden = true
+    Router.moveTo(YomuRouteId.Main.rawValue)
   }
 
   func closeView(sender: SearchedMangaCollectionViewController) {
