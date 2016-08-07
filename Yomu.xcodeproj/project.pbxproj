@@ -565,6 +565,7 @@
 				<string>79AF71B31D072DB100608518</string>
 				<string>79E35F831D2D6BB0006765E0</string>
 				<string>79AB8FF41D4BB30C000FB47D</string>
+				<string>799695961D5786C100DE46BB</string>
 				<string>79AB8FFA1D4BB8F4000FB47D</string>
 				<string>79346A311D44FC6C00206487</string>
 				<string>798866181D11AB4300093761</string>
@@ -1390,6 +1391,7 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>799695971D5786DB00DE46BB</string>
 				<string>799695941D57841F00DE46BB</string>
 				<string>790ABFCA1D550380004BAB8D</string>
 				<string>790ABFC71D54FE1A004BAB8D</string>
@@ -1966,6 +1968,33 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>799695921D57840400DE46BB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>799695951D5786C100DE46BB</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>NSColor.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>799695961D5786C100DE46BB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>799695951D5786C100DE46BB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>799695971D5786DB00DE46BB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>799695951D5786C100DE46BB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -2626,6 +2655,7 @@ fi</string>
 		<dict>
 			<key>children</key>
 			<array>
+				<string>799695951D5786C100DE46BB</string>
 				<string>79E35F841D2D7384006765E0</string>
 				<string>79E85D761D0B22C50029FDA6</string>
 				<string>799695921D57840400DE46BB</string>

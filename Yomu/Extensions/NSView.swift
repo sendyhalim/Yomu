@@ -72,7 +72,6 @@ extension NSView {
     )
 
     drawBorderWithFrame(borderFrame, width: borderWidth, radius: radius, color: color)
-
   }
 
   private func drawBorderAtBottom(borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
