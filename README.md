@@ -12,13 +12,13 @@ Manga Reader App for OSX
 - Implement zoom functionality
 
 ## Libraries
-- (Argo)[https://github.com/thoughtbot/Argo]
-- (Curry)[https://github.com/thoughtbot/Curry]
-- (Swiftz)[https://github.com/typelift/Swiftz]
-- (RxSwift)[https://github.com/ReactiveX/RxSwift]
-- (Moya)[https://github.com/Moya/Moya]
-- (Cartography)[https://github.com/robb/Cartography]
-- (King Fisher)[https://github.com/onevcat/Kingfisher]
-- (Quick)[https://github.com/Quick/Quick]
-- (Nimble)[https://github.com/Quick/Nimble]
+- [Argo](https://github.com/thoughtbot/Argo)
+- [Curry](https://github.com/thoughtbot/Curry)
+- [Swiftz](https://github.com/typelift/Swiftz)
+- [RxSwift](https://github.com/ReactiveX/RxSwift)
+- [Moya](https://github.com/Moya/Moya)
+- [Cartography](https://github.com/robb/Cartography)
+- [King Fisher](https://github.com/onevcat/Kingfisher)
+- [Quick](https://github.com/Quick/Quick)
+- [Nimble](https://github.com/Quick/Nimble)
 
