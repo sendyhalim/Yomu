@@ -11,8 +11,16 @@ import RxSwift
 
 class MangaItem: NSCollectionViewItem {
   @IBOutlet weak var mangaImageView: NSImageView!
+  @IBOutlet weak var titleContainerView: NSBox!
   @IBOutlet weak var titleTextField: NSTextField!
   @IBOutlet weak var accesoriesTextField: NSTextField!
 
   var disposeBag = DisposeBag()
+
+  override func viewWillLayout() {
+    super.viewWillLayout()
+    let border = Border.Bottom(1.0, 0.0, NSColor.grayColor())
+    titleContainerView.drawBorder(border)
+    view.drawBorder(border)
+  }
 }
