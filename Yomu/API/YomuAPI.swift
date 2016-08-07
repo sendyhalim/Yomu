@@ -38,6 +38,10 @@ extension YomuAPI: TargetType {
     return .None
   }
 
+  var task: Task {
+    return .Request
+  }
+
   var sampleData: NSData {
     return "[]".UTF8EncodedData
   }
