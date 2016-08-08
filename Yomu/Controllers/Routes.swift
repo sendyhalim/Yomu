@@ -20,17 +20,23 @@ enum YomuRouteId: String {
   case ChapterPage = "chapter-page"
 }
 
+extension YomuRouteId: RouteId {
+  var name: String {
+    return self.rawValue
+  }
+}
+
 extension YomuRoute: Route {
-  var id: String {
+  var id: RouteId {
     switch self {
     case .Main(_):
-      return YomuRouteId.Main.rawValue
+      return YomuRouteId.Main
 
     case .SearchManga(_):
-      return YomuRouteId.SearchManga.rawValue
+      return YomuRouteId.SearchManga
 
     case .ChapterPage(_):
-      return YomuRouteId.ChapterPage.rawValue
+      return YomuRouteId.ChapterPage
     }
   }
 

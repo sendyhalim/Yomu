@@ -100,7 +100,7 @@ class MangaContainerViewController: NSViewController {
   }
 
   @IBAction func showSearchMangaView(sender: NSButton) {
-    Router.moveTo(YomuRouteId.SearchManga.rawValue)
+    Router.moveTo(YomuRouteId.SearchManga)
   }
 }
 
@@ -116,7 +116,7 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
     chapterPageContainerView.addSubview(chapterPageCollectionVC!.view)
 
     setupChapterPageCollectionConstraints()
-    Router.moveTo(YomuRouteId.ChapterPage.rawValue)
+    Router.moveTo(YomuRouteId.ChapterPage)
   }
 
   func setupChapterPageCollectionConstraints() {
@@ -132,7 +132,7 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
 
 extension MangaContainerViewController: ChapterPageCollectionViewDelegate {
   func closeChapterPage() {
-    Router.moveTo(YomuRouteId.Main.rawValue)
+    Router.moveTo(YomuRouteId.Main)
   }
 }
 
@@ -146,7 +146,7 @@ extension MangaContainerViewController: SearchedMangaDelegate {
       self.mangaCollectionVM.fetch($0) >>> self.disposeBag
     } >>> self.disposeBag
 
-    Router.moveTo(YomuRouteId.Main.rawValue)
+    Router.moveTo(YomuRouteId.Main)
   }
 
   func closeView(sender: SearchedMangaCollectionViewController) {

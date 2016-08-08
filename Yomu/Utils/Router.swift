@@ -14,7 +14,7 @@ protocol RouteId {
 }
 
 protocol Route {
-  var id: String { get }
+  var id: RouteId { get }
   var views: [NSView] { get }
 }
 
@@ -25,9 +25,9 @@ struct Router {
     routes = List.cons(route, tail: routes)
   }
 
-  static func moveTo(id: String) {
+  static func moveTo(id: RouteId) {
     routes.forEach {
-      if $0.id == id {
+      if $0.id.name == id.name {
         showRoute($0)
       } else {
         hideRoute($0)
