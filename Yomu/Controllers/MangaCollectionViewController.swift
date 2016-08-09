@@ -41,6 +41,10 @@ class MangaCollectionViewController: NSViewController {
       self?.collectionView.reloadData()
     } >>> disposeBag
   }
+
+  override func viewWillLayout() {
+    view.drawBorder(.Right(1.0, 0, Config.style.primaryBackgroundColor))
+  }
 }
 
 extension MangaCollectionViewController: NSCollectionViewDataSource {

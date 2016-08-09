@@ -52,6 +52,10 @@ class MangaContainerViewController: NSViewController {
     setupConstraints()
   }
 
+  override func viewWillLayout() {
+    searchMangaButtonContainer.drawBorder(.Right(1.0, 0, Config.style.primaryBackgroundColor))
+  }
+
   func setupRoutes() {
     Router.register(YomuRoute.Main([
       mangaContainerView,
