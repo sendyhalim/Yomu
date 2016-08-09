@@ -5,7 +5,8 @@ Manga Reader App for OSX
 
 ### Manga Search View
 - Implement back functionality
-- Beautify manga title text input
+- ~~Beautify manga title text input~~
+- Save added manga, preferably using [Realm](https://github.com/realm/realm-cocoa)
 
 
 ### Chapter Pages View
