@@ -14,6 +14,7 @@ class MangaItem: NSCollectionViewItem {
   @IBOutlet weak var titleContainerView: NSBox!
   @IBOutlet weak var titleTextField: NSTextField!
   @IBOutlet weak var accesoriesTextField: NSTextField!
+  @IBOutlet weak var categoryTextField: NSTextField!
 
   var disposeBag = DisposeBag()
 

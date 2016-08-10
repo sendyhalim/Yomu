@@ -24,6 +24,12 @@ struct MangaViewModel {
     return _manga.asDriver().map { $0.title }
   }
 
+  var categoriesString: Driver<String> {
+    return _manga.asDriver().map {
+      $0.categories.joinWithSeparator(", ")
+    }
+  }
+
   init(_manga: Manga) {
     self._manga = Variable(_manga)
   }
