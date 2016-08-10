@@ -11,6 +11,7 @@ import Cocoa
 class TextInput: NSTextField {
   override func viewDidMoveToWindow() {
     textColor = Config.style.primaryFontColor
+    backgroundColor = Config.style.darkenBackgroundColor
     focusRingType = NSFocusRingType.None
   }
 }

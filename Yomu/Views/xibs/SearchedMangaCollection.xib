@@ -39,7 +39,7 @@
                                     <action selector="closeView:" target="-2" id="FLT-Yn-Zni"/>
                                 </connections>
                             </button>
-                            <box title="Box" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="rOH-Fb-9BO">
+                            <box title="Box" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="rOH-Fb-9BO" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
                                 <rect key="frame" x="80" y="10" width="170" height="32"/>
                                 <view key="contentView" focusRingType="none" id="pB5-ri-w3j">
                                     <rect key="frame" x="1" y="1" width="168" height="30"/>
@@ -50,7 +50,7 @@
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="Search Manga" drawsBackground="YES" id="7Li-il-tjL">
                                                 <font key="font" metaFont="systemLight" size="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
@@ -61,7 +61,7 @@
                                     </constraints>
                                 </view>
                                 <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                         </subviews>
                         <constraints>

@@ -17,11 +17,7 @@ protocol SearchedMangaDelegate: class {
 class SearchedMangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var mangaTitle: NSTextField!
-  @IBOutlet weak var mangaTitleContainer: NSBox! {
-    didSet {
-      mangaTitleContainer.cornerRadius = Config.style.cornerRadius
-    }
-  }
+  @IBOutlet weak var mangaTitleContainer: NSBox!
 
   weak var delegate: SearchedMangaDelegate?
 

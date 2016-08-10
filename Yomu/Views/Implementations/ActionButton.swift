@@ -10,8 +10,9 @@ import Cocoa
 
 class ActionButton: NSButton {
   override func viewDidMoveToWindow() {
-    wantsLayer = true
+    super.viewDidMoveToWindow()
 
+    wantsLayer = true
     layer?.backgroundColor = Config.style.darkenBackgroundColor.CGColor
     layer?.cornerRadius = Config.style.cornerRadius
 
@@ -20,7 +21,8 @@ class ActionButton: NSButton {
 
     attributedTitle = NSAttributedString(string: title, attributes: [
       NSForegroundColorAttributeName: Config.style.primaryFontColor,
-      NSParagraphStyleAttributeName: paragraphStyle
+      NSParagraphStyleAttributeName: paragraphStyle,
+      NSFontAttributeName: NSFont.systemFontOfSize(13, weight: NSFontWeightThin)
     ])
   }
 }
