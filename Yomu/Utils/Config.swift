@@ -12,7 +12,8 @@ private let info = NSBundle.mainBundle().infoDictionary!
 
 internal struct Style {
   let cornerRadius = CGFloat(5.0)
-  let primaryBackgroundColor = NSColor.fromHex(0xEFEFEF)
+  let primaryBackgroundColor = NSColor.fromHex(0xFFFFFF)
+  let darkenBackgroundColor = NSColor.fromHex(0xEFEFEF)
   let primaryFontColor = NSColor.fromHex(0x474747)
 }
 

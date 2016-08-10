@@ -12,7 +12,7 @@ class ActionButton: NSButton {
   override func viewDidMoveToWindow() {
     wantsLayer = true
 
-    layer?.backgroundColor = Config.style.primaryBackgroundColor.CGColor
+    layer?.backgroundColor = Config.style.darkenBackgroundColor.CGColor
     layer?.cornerRadius = Config.style.cornerRadius
 
     let paragraphStyle = NSMutableParagraphStyle()

@@ -45,15 +45,12 @@ class MangaContainerViewController: NSViewController {
     chapterCollectionVC.chapterSelectionDelegate = self
     searchedMangaVC.delegate = self
 
-    chapterPageContainerView.wantsLayer = true
-    chapterPageContainerView.layer?.backgroundColor = NSColor.whiteColor().CGColor
-
     setupRoutes()
     setupConstraints()
   }
 
   override func viewWillLayout() {
-    searchMangaButtonContainer.drawBorder(.Right(1.0, 0, Config.style.primaryBackgroundColor))
+    searchMangaButtonContainer.drawBorder(.Right(1.0, 0, Config.style.darkenBackgroundColor))
   }
 
   func setupRoutes() {

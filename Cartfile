@@ -7,3 +7,4 @@ github "Thoughtbot/Curry" ~> 2.3.0
 github "robb/Cartography" "master"
 github "Quick/Quick" "master"
 github "Quick/Nimble" "master"
+github "realm/realm-cocoa"
