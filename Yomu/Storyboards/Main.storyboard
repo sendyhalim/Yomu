@@ -682,9 +682,9 @@
                                     <subviews>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fj6-cY-agL" customClass="ActionButton" customModule="Yomu" customModuleProvider="target">
                                             <rect key="frame" x="10" y="10" width="280" height="32"/>
-                                            <buttonCell key="cell" type="bevel" title="+ Add Manga" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="JFm-pq-glh">
+                                            <buttonCell key="cell" type="roundRect" title="Add Manga +" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="JFm-pq-glh">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="systemLight" size="13"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="showSearchMangaView:" target="Qhp-rp-OOh" id="I5q-sM-O4Y"/>

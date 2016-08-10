@@ -496,6 +496,46 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>7983E90F1D5B9A200001A46C</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Realm.framework</string>
+			<key>path</key>
+			<string>Carthage/Build/Mac/Realm.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7983E9101D5B9A200001A46C</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>RealmSwift.framework</string>
+			<key>path</key>
+			<string>Carthage/Build/Mac/RealmSwift.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7983E9111D5B9A200001A46C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7983E90F1D5B9A200001A46C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7983E9121D5B9A200001A46C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7983E9101D5B9A200001A46C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>798454BD1D05CF3500BB7262</key>
 		<dict>
 			<key>children</key>
@@ -1637,6 +1677,8 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>7983E9111D5B9A200001A46C</string>
+				<string>7983E9121D5B9A200001A46C</string>
 				<string>79932A1C1D4A79A90018370D</string>
 				<string>79932A1D1D4A79A90018370D</string>
 				<string>79932A1E1D4A79A90018370D</string>
@@ -1827,6 +1869,8 @@
 				<string>$(SRCROOT)/Carthage/Build/Mac/RxSwift.framework</string>
 				<string>$(SRCROOT)/Carthage/Build/Mac/Swiftz.framework</string>
 				<string>$(SRCROOT)/Carthage/Build/Mac/Cartography.framework</string>
+				<string>$(SRCROOT)/Carthage/Build/Mac/Realm.framework</string>
+				<string>$(SRCROOT)/Carthage/Build/Mac/RealmSwift.framework</string>
 			</array>
 			<key>isa</key>
 			<string>PBXShellScriptBuildPhase</string>
@@ -2278,6 +2322,8 @@ fi</string>
 		<dict>
 			<key>children</key>
 			<array>
+				<string>7983E90F1D5B9A200001A46C</string>
+				<string>7983E9101D5B9A200001A46C</string>
 				<string>79FB7E9F1D3D378300A1CB12</string>
 				<string>79E85D7C1D0B378C0029FDA6</string>
 				<string>79E85D7D1D0B378C0029FDA6</string>

@@ -31,9 +31,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="kFm-cO-7dZ"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" title="❮ Back" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="Vg7-5b-oYV">
+                                <buttonCell key="cell" type="roundRect" title="❮ Back" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="Vg7-5b-oYV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="systemLight" size="13"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="closeView:" target="-2" id="FLT-Yn-Zni"/>
@@ -48,7 +48,7 @@
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="coA-ef-eoc" customClass="TextInput" customModule="Yomu" customModuleProvider="target">
                                             <rect key="frame" x="10" y="6" width="148" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="Search Manga" drawsBackground="YES" id="7Li-il-tjL">
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="systemLight" size="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                             </textFieldCell>
@@ -75,6 +75,7 @@
                     <constraints>
                         <constraint firstItem="rOH-Fb-9BO" firstAttribute="top" secondItem="pCP-5J-qtz" secondAttribute="top" constant="10" id="5Qf-5y-nmz"/>
                         <constraint firstAttribute="bottom" secondItem="rOH-Fb-9BO" secondAttribute="bottom" constant="10" id="Aej-US-roA"/>
+                        <constraint firstAttribute="height" constant="52" id="mmR-KM-Noi"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" id="Q3a-Yj-lVf">
-                                <rect key="frame" x="0.0" y="0.0" width="260" height="434"/>
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="484"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="emQ-TK-qQM">
                                     <size key="itemSize" width="250" height="60"/>
