@@ -9,7 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SearchedMangaCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Q3a-Yj-lVf" id="Uk1-LI-EFY"/>
-                <outlet property="mangaTitle" destination="coA-ef-eoc" id="9kj-qo-SUb"/>
+                <outlet property="mangaTitle" destination="OKf-bj-PbJ" id="ARR-0V-2ib"/>
                 <outlet property="mangaTitleContainer" destination="rOH-Fb-9BO" id="bZD-vc-MwS"/>
                 <outlet property="view" destination="c22-O7-iKe" id="hVd-DO-IXl"/>
             </connections>
@@ -45,21 +45,21 @@
                                     <rect key="frame" x="1" y="1" width="168" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="coA-ef-eoc" customClass="TextInput" customModule="Yomu" customModuleProvider="target">
-                                            <rect key="frame" x="10" y="6" width="148" height="17"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="Search Manga" drawsBackground="YES" id="7Li-il-tjL">
-                                                <font key="font" metaFont="systemLight" size="13"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
-                                            </textFieldCell>
-                                        </textField>
+                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OKf-bj-PbJ" customClass="SearchTextInput" customModule="Yomu" customModuleProvider="target">
+                                            <rect key="frame" x="9" y="4" width="150" height="22"/>
+                                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="SUP-8D-W8O">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </searchFieldCell>
+                                        </searchField>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="coA-ef-eoc" firstAttribute="leading" secondItem="pB5-ri-w3j" secondAttribute="leading" constant="10" id="6Ok-7r-KVw"/>
-                                        <constraint firstItem="coA-ef-eoc" firstAttribute="centerY" secondItem="pB5-ri-w3j" secondAttribute="centerY" id="e5f-7p-yKp"/>
-                                        <constraint firstAttribute="trailing" secondItem="coA-ef-eoc" secondAttribute="trailing" constant="10" id="frT-sM-IxS"/>
-                                    </constraints>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="OKf-bj-PbJ" firstAttribute="trailing" secondItem="rOH-Fb-9BO" secondAttribute="trailing" constant="-10" id="BS2-EQ-AfH"/>
+                                    <constraint firstItem="OKf-bj-PbJ" firstAttribute="centerY" secondItem="rOH-Fb-9BO" secondAttribute="centerY" id="ZzS-9X-r4s"/>
+                                    <constraint firstItem="OKf-bj-PbJ" firstAttribute="leading" secondItem="rOH-Fb-9BO" secondAttribute="leading" constant="10" id="dXX-Lk-gJE"/>
+                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </box>

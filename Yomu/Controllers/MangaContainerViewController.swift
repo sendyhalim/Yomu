@@ -151,7 +151,6 @@ extension MangaContainerViewController: SearchedMangaDelegate {
   }
 
   func closeView(sender: SearchedMangaCollectionViewController) {
-    // TODO: Implement code to close searched manga view
-    print("Not implemented yet")
+    Router.moveTo(YomuRouteId.Main)
   }
 }
