@@ -9,4 +9,7 @@ update:
 synx:
 	synx Yomu.xcodeproj
 
+lint:
+	swiftlint
+
 .PHONY: carthage
