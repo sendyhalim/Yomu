@@ -12,7 +12,7 @@ import RxSwift
 
 struct ChapterViewModel {
   private let _chapter: Variable<Chapter>
-  private let _previewUrl: Variable<ImageUrl>
+  private let _previewUrl = Variable(ImageUrl(endpoint: ""))
 
   var previewUrl: Driver<NSURL> {
     return _previewUrl
@@ -31,7 +31,6 @@ struct ChapterViewModel {
 
   init(chapter: Chapter) {
     _chapter = Variable(chapter)
-    _previewUrl = Variable(ImageUrl(endpoint: ""))
   }
 
   func fetchPreview() -> Disposable {

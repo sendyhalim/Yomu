@@ -16,6 +16,22 @@ extension NSImageView {
   ///
   ///  - parameter url: Image url
   func setImageWithUrl(url: NSURL) {
+    // https://github.com/onevcat/Kingfisher/issues/395
+    invalidateActivityIndicatorCache()
+    showActivityIndicator()
     kf_setImageWithURL(url)
+  }
+
+  func showActivityIndicator() {
+    kf_showIndicatorWhenLoading = true
+    kf_indicator!.startAnimation(nil)
+    kf_indicator!.hidden = false
+  }
+
+  func invalidateActivityIndicatorCache() {
+    if kf_showIndicatorWhenLoading {
+      kf_showIndicatorWhenLoading = false
+      kf_showIndicatorWhenLoading = true
+    }
   }
 }
