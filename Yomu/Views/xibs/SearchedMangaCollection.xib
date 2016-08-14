@@ -91,6 +91,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="emQ-TK-qQM">
                                     <size key="itemSize" width="250" height="60"/>
+                                    <edgeInsets key="sectionInset" left="10" right="10" top="0.0" bottom="0.0"/>
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </collectionView>

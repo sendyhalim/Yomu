@@ -24,10 +24,6 @@ struct SearchedMangaViewModel {
     return manga.asDriver().map { $0.apiId }
   }
 
-  var accessoriesIcon: Driver<String> {
-    return Driver.just("+")
-  }
-
   init(manga: SearchedManga) {
     self.manga = Variable(manga)
   }

@@ -17,7 +17,13 @@ internal struct Style {
   let primaryFontColor = NSColor.fromHex(0x474747)
 }
 
+internal struct Icon {
+  let plus = NSBundle.mainBundle().imageForResource("Plus")!
+  let rightArrow = NSBundle.mainBundle().imageForResource("RightArrow")!
+}
+
 public struct Config {
   static let YomuAPI: String = info["YomuAPI"] as! String
   static let style = Style()
+  static let icon = Icon()
 }

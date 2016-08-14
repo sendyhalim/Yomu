@@ -26,19 +26,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="210" height="70"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kvi-Pn-54r">
-                                <rect key="frame" x="178" y="21" width="34" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="muw-sN-IlY"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="〉" id="F46-SY-J4j">
-                                    <font key="font" metaFont="system" size="24"/>
-                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-sV-RKO">
-                                <rect key="frame" x="-2" y="10" width="176" height="13"/>
+                                <rect key="frame" x="-2" y="10" width="169" height="13"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="b8d-Ya-Cqz">
                                     <font key="font" metaFont="systemThin" size="10"/>
                                     <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -46,22 +35,33 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-mk-txx">
-                                <rect key="frame" x="-2" y="43" width="192" height="17"/>
+                                <rect key="frame" x="-2" y="43" width="174" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="qHK-Rj-0lS">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="76s-Oa-UPa">
+                                <rect key="frame" x="175" y="23" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="eqp-ct-Nm0"/>
+                                    <constraint firstAttribute="height" constant="25" id="pQX-wL-LuJ"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="RightArrow" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="o6r-qi-fqD">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="rIw-mk-txx" firstAttribute="leading" secondItem="bYl-sR-kkV" secondAttribute="leading" id="2Xe-QV-uCI"/>
-                            <constraint firstItem="Kvi-Pn-54r" firstAttribute="centerY" secondItem="bYl-sR-kkV" secondAttribute="centerY" id="2vZ-jt-Aag"/>
                             <constraint firstItem="rIw-mk-txx" firstAttribute="top" secondItem="bYl-sR-kkV" secondAttribute="top" constant="10" id="GEp-v0-WJE"/>
-                            <constraint firstItem="rIw-mk-txx" firstAttribute="trailing" secondItem="Kvi-Pn-54r" secondAttribute="leading" constant="8" symbolic="YES" id="LaN-T7-7sb"/>
-                            <constraint firstItem="Kvi-Pn-54r" firstAttribute="trailing" secondItem="bYl-sR-kkV" secondAttribute="trailing" id="MNF-Dy-Zep"/>
+                            <constraint firstAttribute="trailing" secondItem="76s-Oa-UPa" secondAttribute="trailing" constant="10" id="IWQ-Nc-ddT"/>
                             <constraint firstAttribute="bottom" secondItem="FpS-sV-RKO" secondAttribute="bottom" constant="10" id="awz-qu-45F"/>
-                            <constraint firstItem="Kvi-Pn-54r" firstAttribute="leading" secondItem="FpS-sV-RKO" secondAttribute="trailing" constant="8" symbolic="YES" id="jRM-1I-nBT"/>
+                            <constraint firstItem="76s-Oa-UPa" firstAttribute="leading" secondItem="FpS-sV-RKO" secondAttribute="trailing" constant="10" id="bVc-To-puN"/>
+                            <constraint firstItem="76s-Oa-UPa" firstAttribute="leading" secondItem="rIw-mk-txx" secondAttribute="trailing" constant="5" id="gUE-in-GvC"/>
+                            <constraint firstItem="76s-Oa-UPa" firstAttribute="centerY" secondItem="bYl-sR-kkV" secondAttribute="centerY" id="sMd-mj-CRg"/>
                             <constraint firstItem="FpS-sV-RKO" firstAttribute="leading" secondItem="bYl-sR-kkV" secondAttribute="leading" id="u0e-3y-x49"/>
                         </constraints>
                     </view>
@@ -82,7 +82,7 @@
         </customView>
         <collectionViewItem id="mb3-6Q-snP" customClass="MangaItem" customModule="Yomu" customModuleProvider="target">
             <connections>
-                <outlet property="accesoriesTextField" destination="Kvi-Pn-54r" id="z9N-Nu-u5E"/>
+                <outlet property="accessoryButton" destination="76s-Oa-UPa" id="j5Y-pK-SCg"/>
                 <outlet property="categoryTextField" destination="FpS-sV-RKO" id="R1s-Uz-IT0"/>
                 <outlet property="mangaImageView" destination="CHo-eP-m62" id="fsv-jP-dTv"/>
                 <outlet property="titleContainerView" destination="89x-YM-u0k" id="seC-Cx-N95"/>
@@ -91,4 +91,7 @@
             </connections>
         </collectionViewItem>
     </objects>
+    <resources>
+        <image name="RightArrow" width="100" height="100"/>
+    </resources>
 </document>

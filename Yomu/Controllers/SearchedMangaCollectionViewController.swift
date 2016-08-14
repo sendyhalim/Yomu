@@ -22,6 +22,7 @@ class SearchedMangaCollectionViewController: NSViewController {
   weak var delegate: SearchedMangaDelegate?
 
   let collectionViewModel: SearchedMangaCollectionViewModel
+
   let disposeBag = DisposeBag()
 
   init(viewModel: SearchedMangaCollectionViewModel) {
@@ -89,7 +90,7 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
 
     vm.title ~> cell.titleTextField.rx_text >>> cell.disposeBag
     vm.previewUrl ~> cell.mangaImageView.setImageWithUrl >>> cell.disposeBag
-    vm.accessoriesIcon ~> cell.accesoriesTextField.rx_text >>> cell.disposeBag
+    cell.accessoryButton.image = Config.icon.plus
 
     return cell
   }
