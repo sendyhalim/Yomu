@@ -1,16 +1,22 @@
 ## Yomu
 Manga Reader App for OSX
 
-## TODOs
+## Install
+Since [yomu api server](https://github.com/sendyhalim/yomu-server) is still in development,
+you need to clone it.
 
-### Manga Search View
-- Implement back functionality
-- ~~Beautify manga title text input~~
+1. Clone yomu osx `git clone https://github.com/sendyhalim/yomu`
+2. Clone yomu server `git clone https://github.com/sendyhalim/yomu-server`
+3. Install mongodb
+4. Install dependencies `npm install`
+5. Start the server `npm start`
+6. Open yomu app with xcode and build it :tada:
+
+## What's next?
 - Save added manga, preferably using [Realm](https://github.com/realm/realm-cocoa)
-
-
-### Chapter Pages View
+- Create a makefile target to create yomu app package
 - Implement zoom functionality
+
 
 ## Libraries
 - [Argo](https://github.com/thoughtbot/Argo)
