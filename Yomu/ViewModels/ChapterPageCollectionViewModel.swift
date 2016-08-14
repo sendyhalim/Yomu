@@ -6,7 +6,6 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
-import Cocoa
 import RxCocoa
 import RxMoya
 import RxSwift
