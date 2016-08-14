@@ -29,3 +29,5 @@ you need to clone it.
 - [Quick](https://github.com/Quick/Quick)
 - [Nimble](https://github.com/Quick/Nimble)
 
+## Acknowledgements
+Free icons used in this app are provided by [icons8](https://icons8.com)
