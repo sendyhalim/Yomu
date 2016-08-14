@@ -9,8 +9,9 @@ you need to clone it.
 2. Clone yomu server `git clone https://github.com/sendyhalim/yomu-server`
 3. Install mongodb
 4. Install dependencies `npm install`
-5. Start the server `npm start`
-6. Open yomu app with xcode and build it :tada:
+5. Populate manga data `node seeds/seed-manga.js`
+6. Start the server `npm start`
+7. Open yomu app with xcode and build it :tada:
 
 ## What's next?
 - Save added manga, preferably using [Realm](https://github.com/realm/realm-cocoa)
