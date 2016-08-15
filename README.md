@@ -20,14 +20,16 @@ you need to clone it.
 
 ## Libraries
 - [Argo](https://github.com/thoughtbot/Argo)
-- [Curry](https://github.com/thoughtbot/Curry)
-- [Swiftz](https://github.com/typelift/Swiftz)
-- [RxSwift](https://github.com/ReactiveX/RxSwift)
-- [Moya](https://github.com/Moya/Moya)
 - [Cartography](https://github.com/robb/Cartography)
+- [Curry](https://github.com/thoughtbot/Curry)
 - [King Fisher](https://github.com/onevcat/Kingfisher)
-- [Quick](https://github.com/Quick/Quick)
+- [Moya](https://github.com/Moya/Moya)
 - [Nimble](https://github.com/Quick/Nimble)
+- [Quick](https://github.com/Quick/Quick)
+- [Realm](https://github.com/realm/realm-cocoa)
+- [RxRealm](https://github.com/RxSwiftCommunity/RxRealm)
+- [RxSwift](https://github.com/ReactiveX/RxSwift)
+- [Swiftz](https://github.com/typelift/Swiftz)
 
 ## Acknowledgements
 Free icons used in this app are provided by [icons8](https://icons8.com)
