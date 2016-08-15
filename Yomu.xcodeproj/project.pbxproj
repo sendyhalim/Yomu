@@ -10,6 +10,101 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
+		<key>7901C6D61D623A3000EE349B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MangaRealm.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7901C6D71D623A3000EE349B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7901C6D61D623A3000EE349B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7901C6D81D623C4900EE349B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7901C6D61D623A3000EE349B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7901C6DB1D62421D00EE349B</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>RxRealm.framework</string>
+			<key>path</key>
+			<string>Carthage/Build/Mac/RxRealm.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7901C6DC1D62421D00EE349B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7901C6DB1D62421D00EE349B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7901C6DD1D62425E00EE349B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7983E90F1D5B9A200001A46C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7901C6DE1D62425E00EE349B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7983E9101D5B9A200001A46C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7901C6DF1D62427A00EE349B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7901C6DB1D62421D00EE349B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7901C6E11D62498A00EE349B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Database.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7901C6E21D62498A00EE349B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7901C6E11D62498A00EE349B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7901C6E31D6249D700EE349B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7901C6E11D62498A00EE349B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>79065F3C1D3412EA005DB5AE</key>
 		<dict>
 			<key>fileEncoding</key>
@@ -316,6 +411,7 @@
 			<key>children</key>
 			<array>
 				<string>79932A371D4A7A320018370D</string>
+				<string>7901C6E11D62498A00EE349B</string>
 				<string>796048641D13062E006571B3</string>
 				<string>79346A301D44FC6C00206487</string>
 				<string>790ABFC51D54FDC4004BAB8D</string>
@@ -667,6 +763,7 @@
 				<string>790ABFC31D54F9AD004BAB8D</string>
 				<string>79AB8FF81D4BB875000FB47D</string>
 				<string>7973B3611D3FD88400E2B0FC</string>
+				<string>7901C6D71D623A3000EE349B</string>
 				<string>79318B921D1EF91A006E6CF8</string>
 				<string>79C8B75C1D29514A0072F2D3</string>
 				<string>79F0948C1D1198F60029FB41</string>
@@ -692,6 +789,7 @@
 				<string>798865EA1D11A1A400093761</string>
 				<string>796048621D12FBEB006571B3</string>
 				<string>7916A2061D1844DF007CA1BD</string>
+				<string>7901C6E21D62498A00EE349B</string>
 				<string>79E85D7B1D0B2C110029FDA6</string>
 			</array>
 			<key>isa</key>
@@ -705,6 +803,9 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>7901C6DD1D62425E00EE349B</string>
+				<string>7901C6DE1D62425E00EE349B</string>
+				<string>7901C6DC1D62421D00EE349B</string>
 				<string>79FB7EA01D3D378300A1CB12</string>
 				<string>79AF71A51D072C9B00608518</string>
 				<string>79AF71A61D072C9B00608518</string>
@@ -1489,6 +1590,8 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>7901C6E31D6249D700EE349B</string>
+				<string>7901C6D81D623C4900EE349B</string>
 				<string>7983E9151D5B9E8B0001A46C</string>
 				<string>792A074B1D5A34D2009390D6</string>
 				<string>799695971D5786DB00DE46BB</string>
@@ -1709,6 +1812,7 @@
 			<array>
 				<string>7983E9111D5B9A200001A46C</string>
 				<string>7983E9121D5B9A200001A46C</string>
+				<string>7901C6DF1D62427A00EE349B</string>
 				<string>79932A1C1D4A79A90018370D</string>
 				<string>79932A1D1D4A79A90018370D</string>
 				<string>79932A1E1D4A79A90018370D</string>
@@ -1901,6 +2005,7 @@
 				<string>$(SRCROOT)/Carthage/Build/Mac/Cartography.framework</string>
 				<string>$(SRCROOT)/Carthage/Build/Mac/Realm.framework</string>
 				<string>$(SRCROOT)/Carthage/Build/Mac/RealmSwift.framework</string>
+				<string>$(SRCROOT)/Carthage/Build/Mac/RxRealm.framework</string>
 			</array>
 			<key>isa</key>
 			<string>PBXShellScriptBuildPhase</string>
@@ -2334,6 +2439,9 @@ fi</string>
 				<string>$(SRCROOT)/Carthage/Build/Mac/RxSwift.framework</string>
 				<string>$(SRCROOT)/Carthage/Build/Mac/Swiftz.framework</string>
 				<string>$(SRCROOT)/Carthage/Build/Mac/Cartography.framework</string>
+				<string>$(SRCROOT)/Carthage/Build/Mac/Realm.framework</string>
+				<string>$(SRCROOT)/Carthage/Build/Mac/RealmSwift.framework</string>
+				<string>$(SRCROOT)/Carthage/Build/Mac/RxRealm.framework</string>
 			</array>
 			<key>isa</key>
 			<string>PBXShellScriptBuildPhase</string>
@@ -2352,6 +2460,7 @@ fi</string>
 		<dict>
 			<key>children</key>
 			<array>
+				<string>7901C6DB1D62421D00EE349B</string>
 				<string>7983E90F1D5B9A200001A46C</string>
 				<string>7983E9101D5B9A200001A46C</string>
 				<string>79FB7E9F1D3D378300A1CB12</string>
@@ -2608,6 +2717,7 @@ fi</string>
 				<string>7916A2051D1844DF007CA1BD</string>
 				<string>79E85D781D0B287D0029FDA6</string>
 				<string>79AF71B21D072DB100608518</string>
+				<string>7901C6D61D623A3000EE349B</string>
 				<string>79AB8FF51D4BB5B5000FB47D</string>
 			</array>
 			<key>isa</key>

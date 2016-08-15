@@ -6,14 +6,19 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
+import class RealmSwift.Realm
 import RxCocoa
 import RxMoya
 import RxSwift
+import RxRealm
 import Swiftz
 
 struct MangaCollectionViewModel {
   private var _fetching = Variable(false)
-  private var _mangas = Variable(Set<Manga>())
+  private var _mangas: Variable<Set<Manga>> = {
+    return Variable(Set(Database.queryMangas()))
+  }()
+  private var recentlyAddedManga: Variable<Manga?> = Variable(.None)
   private let mangaViewModels = Variable(List<MangaViewModel>())
 
   var mangas: Driver<List<MangaViewModel>> {
@@ -26,6 +31,21 @@ struct MangaCollectionViewModel {
 
   var fetching: Driver<Bool> {
     return _fetching.asDriver()
+  }
+
+  var disposeBag = DisposeBag()
+
+  init() {
+    recentlyAddedManga
+      .asObservable()
+      .filter { $0 != nil }
+      .map { MangaRealm.fromManga($0!) }
+      .subscribe(Realm.rx_add()) >>> disposeBag
+
+    _mangas.asDriver().driveNext {
+      let viewModels = $0.flatMap(MangaViewModel.init)
+      self.mangaViewModels.value = List(fromArray: viewModels)
+    } >>> disposeBag
   }
 
   subscript(index: Int) -> MangaViewModel {
@@ -51,9 +71,8 @@ struct MangaCollectionViewModel {
           return
         }
 
+        self.recentlyAddedManga.value = manga
         self._mangas.value.insert(manga)
-        let viewModels = self._mangas.value.flatMap(MangaViewModel.init)
-        self.mangaViewModels.value = List(fromArray: viewModels)
       }
   }
 }
