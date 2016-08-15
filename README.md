@@ -14,7 +14,6 @@ you need to clone it.
 7. Open yomu app with xcode and build it :tada:
 
 ## What's next?
-- Save added manga, preferably using [Realm](https://github.com/realm/realm-cocoa)
 - Create a makefile target to create yomu app package
 - Implement zoom functionality
 
