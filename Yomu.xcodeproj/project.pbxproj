@@ -266,6 +266,26 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>7928CCEF1D64275F001F472D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Components.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7928CCF01D64275F001F472D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7928CCEF1D64275F001F472D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>792A07491D5A349C009390D6</key>
 		<dict>
 			<key>fileEncoding</key>
@@ -837,6 +857,7 @@
 				<string>7997321F1D3EA4D200FC3B01</string>
 				<string>79065F3D1D3412EA005DB5AE</string>
 				<string>798865E61D119BA500093761</string>
+				<string>7928CCF01D64275F001F472D</string>
 				<string>7973B35D1D3FD5DA00E2B0FC</string>
 			</array>
 			<key>isa</key>
@@ -913,6 +934,7 @@
 				<string>79F094871D118B300029FB41</string>
 				<string>798454C91D05CF3600BB7262</string>
 				<string>798454CB1D05CF3600BB7262</string>
+				<string>7928CCEF1D64275F001F472D</string>
 				<string>79E9A8051D4A7880007D1190</string>
 				<string>798454D01D05CF3600BB7262</string>
 			</array>
@@ -1172,6 +1194,8 @@
 				<string>YES</string>
 				<key>GCC_WARN_UNUSED_VARIABLE</key>
 				<string>YES</string>
+				<key>INSTALL_PATH</key>
+				<string>/Applications</string>
 				<key>MACOSX_DEPLOYMENT_TARGET</key>
 				<string>10.11</string>
 				<key>MTL_ENABLE_DEBUG_INFO</key>
@@ -1225,7 +1249,7 @@
 				<key>CODE_SIGN_IDENTITY</key>
 				<string>-</string>
 				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
+				<string>YES</string>
 				<key>DEBUG_INFORMATION_FORMAT</key>
 				<string>dwarf-with-dsym</string>
 				<key>ENABLE_NS_ASSERTIONS</key>
@@ -1248,6 +1272,8 @@
 				<string>YES</string>
 				<key>GCC_WARN_UNUSED_VARIABLE</key>
 				<string>YES</string>
+				<key>INSTALL_PATH</key>
+				<string>/Applications</string>
 				<key>MACOSX_DEPLOYMENT_TARGET</key>
 				<string>10.11</string>
 				<key>MTL_ENABLE_DEBUG_INFO</key>
