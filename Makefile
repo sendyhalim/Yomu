@@ -19,10 +19,10 @@ clean:
 	rm -f $(output_package_name)
 	xcodebuild $(xcode_flags) clean
 
-test: clean
+test: clean bootstrap
 	xcodebuild $(xcode_flags_test) test
 
-installables: clean
+installables: clean bootstrap
 	xcodebuild $(xcode_flags) install
 
 lint:
