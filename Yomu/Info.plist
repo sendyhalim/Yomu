@@ -36,6 +36,6 @@
 		<true/>
 	</dict>
 	<key>YomuAPI</key>
-	<string>http://yomu.io/api</string>
+	<string>http://139.59.194.59/yomu/api</string>
 </dict>
 </plist>
