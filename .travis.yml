@@ -4,7 +4,6 @@ before_install:
   - sudo installer -pkg "Carthage.pkg" -target /
   - rm "Carthage.pkg"
   - carthage version # Print version for debugging purposes
-  - carthage bootstrap --platform osx --verbose
 matrix:
   include:
     - os: osx
