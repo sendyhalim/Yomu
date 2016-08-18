@@ -1,12 +1,18 @@
 ## Yomu
 Manga Reader App for OSX
 
+[![Build Status](https://travis-ci.org/sendyhalim/yomu.svg?branch=master)](https://travis-ci.org/sendyhalim/yomu)
+
+
 ## Install
 
-#### Build manually
+### Download
+Latest yomu installer can be found [here](https://github.com/sendyhalim/yomu/releases/latest)
+
+### Build manually
 1. `git clone https://github.com/sendyhalim/yomu`
 2. `make package`
-3. Open the directory, there will be an yomu installer `Yomu.pkg`
+3. Open the directory, there will be a yomu installer `Yomu.pkg`
 4. Double click `Yomu.pkg`
 
 
