@@ -1,5 +1,6 @@
 platform = --platform osx
 xcode_flags = -project Yomu.xcodeproj -scheme 'Yomu' -configuration Release DSTROOT=/tmp/Yomu.dst
+xcode_flags_test = -project Yomu.xcodeproj -scheme 'Yomu' -configuration Debug
 components_plist = Yomu/Components.plist
 temporary_dir = /tmp/Yomu.dst
 output_package_name = Yomu.pkg
@@ -18,13 +19,16 @@ clean:
 	rm -f $(output_package_name)
 	xcodebuild $(xcode_flags) clean
 
-install: clean
+test: clean
+	xcodebuild $(xcode_flags_test) test
+
+installables: clean
 	xcodebuild $(xcode_flags) install
 
 lint:
 	swiftlint
 
-package: install
+package: installables
 	pkgbuild \
 		--component-plist $(components_plist) \
 		--identifier "com.sendyhalim.yomu" \
@@ -33,4 +37,4 @@ package: install
 		$(output_package_name)
 
 
-.PHONY: carthage
+.PHONY: bootstrap update synx clean test installables lint package
