@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SearchedMangaCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="9CP-m9-2JP" id="FtY-Ev-HzB"/>
                 <outlet property="collectionView" destination="Q3a-Yj-lVf" id="Uk1-LI-EFY"/>
                 <outlet property="mangaTitle" destination="OKf-bj-PbJ" id="ARR-0V-2ib"/>
                 <outlet property="mangaTitleContainer" destination="rOH-Fb-9BO" id="bZD-vc-MwS"/>
@@ -36,9 +37,6 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="systemLight" size="13"/>
                                 </buttonCell>
-                                <connections>
-                                    <action selector="closeView:" target="-2" id="FLT-Yn-Zni"/>
-                                </connections>
                             </button>
                             <box title="Box" boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="rOH-Fb-9BO" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
                                 <rect key="frame" x="80" y="10" width="284" height="32"/>

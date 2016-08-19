@@ -19,6 +19,7 @@ class SearchedMangaCollectionViewController: NSViewController {
   @IBOutlet weak var mangaTitle: NSTextField!
   @IBOutlet weak var mangaTitleContainer: NSBox!
   @IBOutlet weak var progressIndicator: NSProgressIndicator!
+  @IBOutlet weak var backButton: NSButton!
 
   weak var delegate: SearchedMangaDelegate?
 
@@ -67,6 +68,14 @@ class SearchedMangaCollectionViewController: NSViewController {
         self?.progressIndicator.stopAnimation(self)
       }
     }
+
+    backButton.rx_tap.subscribeNext { [weak self] in
+      guard let `self` = self else {
+        return
+      }
+
+      self.delegate?.closeView(self)
+    } >>> disposeBag
   }
 
   @IBAction func closeView(sender: NSButton) {
