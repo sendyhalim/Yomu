@@ -61,13 +61,7 @@ class SearchedMangaCollectionViewController: NSViewController {
         self?.collectionView.reloadData()
       } >>> disposeBag
 
-    collectionViewModel.fetching ~> { [weak self] in
-      if $0 {
-        self?.progressIndicator.startAnimation(self)
-      } else {
-        self?.progressIndicator.stopAnimation(self)
-      }
-    }
+    collectionViewModel.fetching ~> progressIndicator.animating >>> disposeBag
 
     backButton.rx_tap.subscribeNext { [weak self] in
       guard let `self` = self else {

@@ -18,6 +18,7 @@ protocol ChapterSelectionDelegate: class {
 
 class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
+  @IBOutlet weak var progressIndicator: NSProgressIndicator!
 
   let vm: ChapterCollectionViewModel
   weak var chapterSelectionDelegate: ChapterSelectionDelegate?
@@ -45,6 +46,8 @@ class ChapterCollectionViewController: NSViewController {
     vm.chapters ~> { [weak self] _ in
       self!.collectionView.reloadData()
     } >>> disposeBag
+
+    vm.fetching ~> progressIndicator.animating >>> disposeBag
   }
 }
 

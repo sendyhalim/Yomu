@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ChapterCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="dfe-Ib-Wgi" id="FwT-BJ-7en"/>
+                <outlet property="progressIndicator" destination="sZd-Q7-Lk4" id="bdP-VU-XQ2"/>
                 <outlet property="view" destination="c22-O7-iKe" id="HZX-Z2-6Na"/>
             </connections>
         </customObject>
@@ -42,12 +43,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="sZd-Q7-Lk4">
+                    <rect key="frame" x="217" y="142" width="16" height="16"/>
+                </progressIndicator>
             </subviews>
             <constraints>
+                <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="0cn-oN-SG4"/>
                 <constraint firstItem="hOx-C6-3Tl" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="2fw-Lp-Kv7"/>
                 <constraint firstAttribute="trailing" secondItem="hOx-C6-3Tl" secondAttribute="trailing" id="HXk-rJ-Inp"/>
                 <constraint firstAttribute="bottom" secondItem="hOx-C6-3Tl" secondAttribute="bottom" id="JJ1-fW-JNK"/>
                 <constraint firstItem="hOx-C6-3Tl" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="o8g-j7-o2U"/>
+                <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="yRm-E3-uim"/>
             </constraints>
         </customView>
     </objects>
