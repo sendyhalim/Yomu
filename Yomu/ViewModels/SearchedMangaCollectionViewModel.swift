@@ -28,6 +28,10 @@ struct SearchedMangaCollectionViewModel {
     return _showViewController.asDriver()
   }
 
+  var fetching: Driver<Bool> {
+    return _fetching.asDriver()
+  }
+
   subscript(index: Int) -> SearchedMangaViewModel {
     return _mangas.value[UInt(index)]
   }

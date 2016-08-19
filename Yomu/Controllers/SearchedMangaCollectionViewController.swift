@@ -18,6 +18,7 @@ class SearchedMangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var mangaTitle: NSTextField!
   @IBOutlet weak var mangaTitleContainer: NSBox!
+  @IBOutlet weak var progressIndicator: NSProgressIndicator!
 
   weak var delegate: SearchedMangaDelegate?
 
@@ -58,6 +59,14 @@ class SearchedMangaCollectionViewController: NSViewController {
       .driveNext { [weak self] _ in
         self?.collectionView.reloadData()
       } >>> disposeBag
+
+    collectionViewModel.fetching ~> { [weak self] in
+      if $0 {
+        self?.progressIndicator.startAnimation(self)
+      } else {
+        self?.progressIndicator.stopAnimation(self)
+      }
+    }
   }
 
   @IBAction func closeView(sender: NSButton) {
