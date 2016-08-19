@@ -3,6 +3,8 @@ Manga Reader App for OSX
 
 [![Build Status](https://travis-ci.org/sendyhalim/yomu.svg?branch=master)](https://travis-ci.org/sendyhalim/yomu)
 
+<img width="800" alt="screen shot 2016-08-19 at 22 53 32" src="https://cloud.githubusercontent.com/assets/3948217/17815841/407b6864-6660-11e6-9be8-54b156dd7d69.png">
+
 
 ## Install
 
@@ -17,8 +19,8 @@ Latest yomu installer can be found [here](https://github.com/sendyhalim/yomu/rel
 
 
 ## What's next?
+- Add feature to search manga chapters (either by chapter title or chapter number)
 - Implement zoom functionality
-
 
 ## Libraries
 - [Argo](https://github.com/thoughtbot/Argo)
