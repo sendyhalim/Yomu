@@ -37,3 +37,8 @@ Latest yomu installer can be found [here](https://github.com/sendyhalim/yomu/rel
 
 ## Acknowledgements
 Free icons used in this app are provided by [icons8](https://icons8.com)
+
+## License
+MIT ~
+
+![Yeay](https://media1.giphy.com/media/ZHjSXzRkUWTWE/200.gif)
