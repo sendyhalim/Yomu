@@ -6,7 +6,7 @@ temporary_dir = /tmp/Yomu.dst
 output_package_name = Yomu.pkg
 
 bootstrap:
-	carthage bootstrap $(platform)
+	carthage bootstrap $(platform) --no-use-binaries
 
 update:
 	carthage update $(platform)
