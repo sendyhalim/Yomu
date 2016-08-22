@@ -1,7 +1,6 @@
 line_length:
   warning: 120
   error: 150
-
 disabled_rules:
   - variable_name
   - force_cast

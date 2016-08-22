@@ -16,7 +16,15 @@ struct OrderedSet<T: Hashable>: ArrayLiteralConvertible {
     return elements.count
   }
 
+  init(elements: [T]) {
+    appendElements(elements)
+  }
+
   init(arrayLiteral elements: T...) {
+    appendElements(elements)
+  }
+
+  mutating func appendElements(elements: [T]) {
     for element in elements {
       append(element)
     }

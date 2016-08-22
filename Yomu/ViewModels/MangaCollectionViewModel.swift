@@ -15,8 +15,9 @@ import Swiftz
 
 struct MangaCollectionViewModel {
   private var _fetching = Variable(false)
-  private var _mangas: Variable<Set<Manga>> = {
-    return Variable(Set(Database.queryMangas()))
+  private var _mangas: Variable<OrderedSet<Manga>> = {
+    let mangas = Database.queryMangas()
+    return Variable(OrderedSet(elements: Database.queryMangas()))
   }()
   private var recentlyAddedManga: Variable<Manga?> = Variable(.None)
   private let mangaViewModels = Variable(List<MangaViewModel>())
@@ -72,7 +73,7 @@ struct MangaCollectionViewModel {
         }
 
         self.recentlyAddedManga.value = manga
-        self._mangas.value.insert(manga)
+        self._mangas.value.append(manga)
       }
   }
 }
