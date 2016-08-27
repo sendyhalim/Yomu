@@ -841,6 +841,7 @@
 				<string>7973B35F1D3FD78400E2B0FC</string>
 				<string>79932A381D4A7A320018370D</string>
 				<string>79FF941B1D10776D00A7E450</string>
+				<string>7995C6C21D717DE7008F02FD</string>
 				<string>7997321D1D3EA21000FC3B01</string>
 				<string>79E85D771D0B22C50029FDA6</string>
 				<string>79AB8FF61D4BB5B5000FB47D</string>
@@ -2233,6 +2234,26 @@ fi</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>7995C6C11D717DE7008F02FD</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>YomuWindowController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7995C6C21D717DE7008F02FD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7995C6C11D717DE7008F02FD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>799695921D57840400DE46BB</key>
 		<dict>
 			<key>fileEncoding</key>
@@ -3211,6 +3232,7 @@ fi</string>
 				<string>79C8B75D1D2962CD0072F2D3</string>
 				<string>790ABFC81D550250004BAB8D</string>
 				<string>79AB8FFD1D4BBD6C000FB47D</string>
+				<string>7995C6C11D717DE7008F02FD</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
