@@ -33,6 +33,10 @@ struct ChapterViewModel {
     _chapter = Variable(chapter)
   }
 
+  func titleContains(pattern: String) -> Bool {
+    return _chapter.value.title.lowercaseString.containsString(pattern)
+  }
+
   func fetchPreview() -> Disposable {
     let id = _chapter.value.id
 
