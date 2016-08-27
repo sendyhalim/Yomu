@@ -3,11 +3,13 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ChapterCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="dfe-Ib-Wgi" id="FwT-BJ-7en"/>
+                <outlet property="filter" destination="rdi-Ye-Sdz" id="5i6-Pm-orY"/>
                 <outlet property="progressIndicator" destination="sZd-Q7-Lk4" id="bdP-VU-XQ2"/>
                 <outlet property="view" destination="c22-O7-iKe" id="HZX-Z2-6Na"/>
             </connections>
@@ -17,14 +19,59 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe" userLabel="Chapter Collection View">
             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
             <subviews>
+                <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="L0b-P3-rH2">
+                    <rect key="frame" x="0.0" y="248" width="450" height="52"/>
+                    <view key="contentView" id="Y9d-9v-y0n">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="52"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-Ca-TU5" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="430" height="32"/>
+                                <view key="contentView" id="wKo-Iq-4Ka">
+                                    <rect key="frame" x="0.0" y="0.0" width="430" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rdi-Ye-Sdz" customClass="SearchTextInput" customModule="Yomu" customModuleProvider="target">
+                                            <rect key="frame" x="10" y="5" width="410" height="22"/>
+                                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="qYS-CM-qvB">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </searchFieldCell>
+                                        </searchField>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rdi-Ye-Sdz" secondAttribute="trailing" constant="10" id="JHD-98-Mcd"/>
+                                    <constraint firstItem="rdi-Ye-Sdz" firstAttribute="leading" secondItem="aOQ-Ca-TU5" secondAttribute="leading" constant="10" id="NKY-L9-zAi"/>
+                                    <constraint firstItem="rdi-Ye-Sdz" firstAttribute="centerY" secondItem="aOQ-Ca-TU5" secondAttribute="centerY" id="qEu-XA-kXZ"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                            </box>
+                        </subviews>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="1KU-rJ-Ocp"/>
+                        <constraint firstItem="aOQ-Ca-TU5" firstAttribute="top" secondItem="L0b-P3-rH2" secondAttribute="top" constant="10" id="41i-lQ-qvy"/>
+                        <constraint firstAttribute="bottom" secondItem="aOQ-Ca-TU5" secondAttribute="bottom" constant="10" id="6U1-UW-kKR"/>
+                        <constraint firstAttribute="trailing" secondItem="aOQ-Ca-TU5" secondAttribute="trailing" constant="10" id="ic9-5f-Te7"/>
+                        <constraint firstItem="aOQ-Ca-TU5" firstAttribute="leading" secondItem="L0b-P3-rH2" secondAttribute="leading" constant="10" id="kaM-eY-Osw"/>
+                    </constraints>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </box>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="sZd-Q7-Lk4">
+                    <rect key="frame" x="217" y="142" width="16" height="16"/>
+                </progressIndicator>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOx-C6-3Tl">
-                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                    <rect key="frame" x="0.0" y="0.0" width="450" height="248"/>
                     <clipView key="contentView" id="gHa-tB-PY2">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="248"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" id="dfe-Ib-Wgi">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="27"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="LbZ-xK-IQ1">
                                     <size key="itemSize" width="228.5" height="325"/>
@@ -43,15 +90,15 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="sZd-Q7-Lk4">
-                    <rect key="frame" x="217" y="142" width="16" height="16"/>
-                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="0cn-oN-SG4"/>
-                <constraint firstItem="hOx-C6-3Tl" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="2fw-Lp-Kv7"/>
-                <constraint firstAttribute="trailing" secondItem="hOx-C6-3Tl" secondAttribute="trailing" id="HXk-rJ-Inp"/>
-                <constraint firstAttribute="bottom" secondItem="hOx-C6-3Tl" secondAttribute="bottom" id="JJ1-fW-JNK"/>
+                <constraint firstItem="L0b-P3-rH2" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="3Vi-MO-sgj"/>
+                <constraint firstItem="hOx-C6-3Tl" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="HXk-rJ-Inp"/>
+                <constraint firstItem="hOx-C6-3Tl" firstAttribute="top" secondItem="Y9d-9v-y0n" secondAttribute="bottom" id="JFQ-NC-nTf"/>
+                <constraint firstItem="hOx-C6-3Tl" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="JJ1-fW-JNK"/>
+                <constraint firstItem="L0b-P3-rH2" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="Jd5-D1-Q83"/>
+                <constraint firstItem="L0b-P3-rH2" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="TAA-f2-9xH"/>
                 <constraint firstItem="hOx-C6-3Tl" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="o8g-j7-o2U"/>
                 <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="yRm-E3-uim"/>
             </constraints>
