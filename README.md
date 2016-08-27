@@ -19,7 +19,6 @@ Latest yomu installer can be found [here](https://github.com/sendyhalim/yomu/rel
 
 
 ## What's next?
-- Add feature to search manga chapters (either by chapter title or chapter number)
 - Implement zoom functionality
 
 ## Libraries
