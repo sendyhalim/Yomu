@@ -13,15 +13,16 @@ import Swiftz
 
 struct ChapterCollectionViewModel {
   private let _chapters = Variable(List<ChapterViewModel>())
+  private let _filteredChapters = Variable(List<ChapterViewModel>())
   private let _fetching = Variable(false)
   private let provider = RxMoyaProvider<MangaEdenAPI>()
 
   var chapters: Driver<List<ChapterViewModel>> {
-    return _chapters.asDriver()
+    return _filteredChapters.asDriver()
   }
 
   var count: Int {
-    return _chapters.value.count
+    return _filteredChapters.value.count
   }
 
   var isEmpty: Bool {
@@ -45,10 +46,22 @@ struct ChapterCollectionViewModel {
       }
       .subscribeNext {
         self._chapters.value = List<ChapterViewModel>(fromArray: $0)
+        self._filteredChapters.value = self._chapters.value
       }
   }
 
+  func filter(pattern: String) {
+    if pattern.isEmpty {
+      _filteredChapters.value = _chapters.value
+    } else {
+      _filteredChapters.value = _chapters.value.filter {
+        $0.titleContains(pattern)
+      }
+    }
+  }
+
+
   subscript(index: Int) -> ChapterViewModel {
-    return _chapters.value[UInt(index)]
+    return _filteredChapters.value[UInt(index)]
   }
 }
