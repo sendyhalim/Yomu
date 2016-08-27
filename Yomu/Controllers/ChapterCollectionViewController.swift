@@ -118,8 +118,15 @@ extension ChapterCollectionViewController: MangaSelectionDelegate {
   func mangaDidSelected(manga: Manga) {
     // Cleanup first, triggering `deinit` on the current `disposeBag`
     disposeBag = DisposeBag()
+
+    // Reset filter
+    // we need to reset it before setup subscriptions so that the selected manga's chapters
+    // won't get filtered
+    chapterTitle.stringValue = ""
+
     setupSubscriptions()
 
+    // Scroll to the top everytime manga is selected
     if !vm.isEmpty {
       let index = NSIndexPath(forItem: 0, inSection: 0)
       let indexPaths = Set(arrayLiteral: index)
