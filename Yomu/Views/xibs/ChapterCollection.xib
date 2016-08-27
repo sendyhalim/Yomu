@@ -8,8 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ChapterCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
+                <outlet property="chapterTitle" destination="rdi-Ye-Sdz" id="iPu-NK-ciq"/>
                 <outlet property="collectionView" destination="dfe-Ib-Wgi" id="FwT-BJ-7en"/>
-                <outlet property="filter" destination="rdi-Ye-Sdz" id="5i6-Pm-orY"/>
                 <outlet property="progressIndicator" destination="sZd-Q7-Lk4" id="bdP-VU-XQ2"/>
                 <outlet property="view" destination="c22-O7-iKe" id="HZX-Z2-6Na"/>
             </connections>
@@ -25,7 +25,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="52"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-Ca-TU5" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
+                            <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-Ca-TU5" userLabel="Search Chapter Container" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="430" height="32"/>
                                 <view key="contentView" id="wKo-Iq-4Ka">
                                     <rect key="frame" x="0.0" y="0.0" width="430" height="32"/>
@@ -54,8 +54,8 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="1KU-rJ-Ocp"/>
                         <constraint firstItem="aOQ-Ca-TU5" firstAttribute="top" secondItem="L0b-P3-rH2" secondAttribute="top" constant="10" id="41i-lQ-qvy"/>
-                        <constraint firstAttribute="bottom" secondItem="aOQ-Ca-TU5" secondAttribute="bottom" constant="10" id="6U1-UW-kKR"/>
-                        <constraint firstAttribute="trailing" secondItem="aOQ-Ca-TU5" secondAttribute="trailing" constant="10" id="ic9-5f-Te7"/>
+                        <constraint firstItem="aOQ-Ca-TU5" firstAttribute="bottom" secondItem="L0b-P3-rH2" secondAttribute="bottom" constant="-10" id="6U1-UW-kKR"/>
+                        <constraint firstItem="aOQ-Ca-TU5" firstAttribute="trailing" secondItem="L0b-P3-rH2" secondAttribute="trailing" constant="-10" id="ic9-5f-Te7"/>
                         <constraint firstItem="aOQ-Ca-TU5" firstAttribute="leading" secondItem="L0b-P3-rH2" secondAttribute="leading" constant="10" id="kaM-eY-Osw"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

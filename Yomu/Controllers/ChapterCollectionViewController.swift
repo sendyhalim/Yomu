@@ -19,7 +19,7 @@ protocol ChapterSelectionDelegate: class {
 class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var progressIndicator: NSProgressIndicator!
-  @IBOutlet weak var filter: NSTextField!
+  @IBOutlet weak var chapterTitle: NSTextField!
 
   let vm: ChapterCollectionViewModel
   weak var chapterSelectionDelegate: ChapterSelectionDelegate?
@@ -50,7 +50,7 @@ class ChapterCollectionViewController: NSViewController {
 
     vm.fetching ~> progressIndicator.animating >>> disposeBag
 
-    filter
+    chapterTitle
       .rx_text
       .throttle(0.5, scheduler: MainScheduler.instance)
       .subscribeNext { [weak self] in
