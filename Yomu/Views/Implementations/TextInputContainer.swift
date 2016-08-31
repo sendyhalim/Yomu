@@ -13,6 +13,6 @@ class TextInputContainer: NSBox {
     super.viewDidMoveToWindow()
 
     cornerRadius = Config.style.cornerRadius
-    fillColor = Config.style.darkenBackgroundColor
+    fillColor = Config.style.inputBackgroundColor
   }
 }

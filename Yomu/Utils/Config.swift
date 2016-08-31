@@ -15,6 +15,8 @@ internal struct Style {
   let primaryBackgroundColor = NSColor.fromHex(0xFFFFFF)
   let darkenBackgroundColor = NSColor.fromHex(0xF4F4F4)
   let primaryFontColor = NSColor.fromHex(0x474747)
+  let buttonBackgroundColor = NSColor.fromHex(0xFFFFFF)
+  let inputBackgroundColor = NSColor.fromHex(0xFFFFFF)
 }
 
 internal struct Icon {

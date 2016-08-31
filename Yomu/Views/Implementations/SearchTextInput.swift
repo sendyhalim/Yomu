@@ -16,7 +16,7 @@ class SearchTextInput: NSSearchField {
     // Use new layer with background to remove border
     // http://stackoverflow.com/questions/38921355/osx-cocoa-nssearchfield-clear-button-not-responding-to-click
     let maskLayer = CALayer()
-    maskLayer.backgroundColor = Config.style.darkenBackgroundColor.CGColor
+    maskLayer.backgroundColor = Config.style.inputBackgroundColor.CGColor
 
     wantsLayer = true
     layer = maskLayer
