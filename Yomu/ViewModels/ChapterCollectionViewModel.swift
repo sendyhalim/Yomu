@@ -11,11 +11,30 @@ import RxSwift
 import RxCocoa
 import Swiftz
 
+enum SortOrder {
+  case Ascending
+  case Descending
+}
+
 struct ChapterCollectionViewModel {
   private let _chapters = Variable(List<ChapterViewModel>())
   private let _filteredChapters = Variable(List<ChapterViewModel>())
   private let _fetching = Variable(false)
   private let provider = RxMoyaProvider<MangaEdenAPI>()
+  private let currentOrdering = Variable(SortOrder.Descending)
+
+  var orderingIconName: Driver<String> {
+    return currentOrdering
+      .asDriver()
+      .map {
+        switch $0 {
+        case .Ascending:
+          return Config.iconName.ascending
+        case .Descending:
+          return Config.iconName.descending
+        }
+      }
+  }
 
   var chapters: Driver<List<ChapterViewModel>> {
     return _filteredChapters.asDriver()
@@ -60,6 +79,38 @@ struct ChapterCollectionViewModel {
     }
   }
 
+  func toggleSort() {
+    let currentSort = currentOrdering.value
+    currentOrdering.value = currentSort == .Ascending ? .Descending : .Ascending
+
+    _filteredChapters.value = sortChapters(_filteredChapters.value)
+  }
+
+  func resetSort() {
+    currentOrdering.value = .Descending
+  }
+
+  private func sortChapters(chapters: List<ChapterViewModel>) -> List<ChapterViewModel> {
+    let compare: Int -> Int -> Bool
+
+    switch currentOrdering.value {
+    case .Ascending:
+      compare = (<)
+
+    case .Descending:
+      // We cannot use (>) because the (>)'s arguments ordering in
+      // sort method need to be flipped too, the easiest way is to flip it
+      compare = flip(<)
+    }
+
+    let sorted = chapters.sort {
+      let (left, right) = $0
+
+      return compare(left.chapter.number)(right.chapter.number)
+    }
+
+    return List(fromArray: sorted)
+  }
 
   subscript(index: Int) -> ChapterViewModel {
     return _filteredChapters.value[UInt(index)]

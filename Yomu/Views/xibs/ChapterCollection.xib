@@ -11,6 +11,7 @@
                 <outlet property="chapterTitle" destination="rdi-Ye-Sdz" id="iPu-NK-ciq"/>
                 <outlet property="collectionView" destination="dfe-Ib-Wgi" id="FwT-BJ-7en"/>
                 <outlet property="progressIndicator" destination="sZd-Q7-Lk4" id="bdP-VU-XQ2"/>
+                <outlet property="toggleSort" destination="k6v-bH-O91" id="Cfg-yq-mvx"/>
                 <outlet property="view" destination="c22-O7-iKe" id="HZX-Z2-6Na"/>
             </connections>
         </customObject>
@@ -26,13 +27,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-Ca-TU5" userLabel="Search Chapter Container" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="430" height="32"/>
+                                <rect key="frame" x="10" y="10" width="375" height="32"/>
                                 <view key="contentView" id="wKo-Iq-4Ka">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rdi-Ye-Sdz" customClass="SearchTextInput" customModule="Yomu" customModuleProvider="target">
-                                            <rect key="frame" x="10" y="5" width="410" height="22"/>
+                                            <rect key="frame" x="10" y="5" width="355" height="22"/>
                                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search Chapters" usesSingleLineMode="YES" bezelStyle="round" id="qYS-CM-qvB">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -42,20 +43,34 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="rdi-Ye-Sdz" secondAttribute="trailing" constant="10" id="JHD-98-Mcd"/>
+                                    <constraint firstItem="rdi-Ye-Sdz" firstAttribute="trailing" secondItem="aOQ-Ca-TU5" secondAttribute="trailing" constant="-10" id="JHD-98-Mcd"/>
                                     <constraint firstItem="rdi-Ye-Sdz" firstAttribute="leading" secondItem="aOQ-Ca-TU5" secondAttribute="leading" constant="10" id="NKY-L9-zAi"/>
                                     <constraint firstItem="rdi-Ye-Sdz" firstAttribute="centerY" secondItem="aOQ-Ca-TU5" secondAttribute="centerY" id="qEu-XA-kXZ"/>
                                 </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k6v-bH-O91">
+                                <rect key="frame" x="395" y="17.5" width="45" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="t1y-zA-7gk"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" title="Button" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="YdZ-Fi-lyS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="k6v-bH-O91" firstAttribute="trailing" secondItem="Y9d-9v-y0n" secondAttribute="trailing" constant="-10" id="EIX-qe-6M4"/>
+                            <constraint firstItem="k6v-bH-O91" firstAttribute="leading" secondItem="aOQ-Ca-TU5" secondAttribute="trailing" constant="10" id="Y0X-e3-U6v"/>
+                            <constraint firstItem="k6v-bH-O91" firstAttribute="centerY" secondItem="Y9d-9v-y0n" secondAttribute="centerY" id="k4e-16-0yA"/>
+                        </constraints>
                     </view>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="1KU-rJ-Ocp"/>
                         <constraint firstItem="aOQ-Ca-TU5" firstAttribute="top" secondItem="L0b-P3-rH2" secondAttribute="top" constant="10" id="41i-lQ-qvy"/>
                         <constraint firstItem="aOQ-Ca-TU5" firstAttribute="bottom" secondItem="L0b-P3-rH2" secondAttribute="bottom" constant="-10" id="6U1-UW-kKR"/>
-                        <constraint firstItem="aOQ-Ca-TU5" firstAttribute="trailing" secondItem="L0b-P3-rH2" secondAttribute="trailing" constant="-10" id="ic9-5f-Te7"/>
                         <constraint firstItem="aOQ-Ca-TU5" firstAttribute="leading" secondItem="L0b-P3-rH2" secondAttribute="leading" constant="10" id="kaM-eY-Osw"/>
                     </constraints>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

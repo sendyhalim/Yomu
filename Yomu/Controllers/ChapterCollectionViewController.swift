@@ -20,6 +20,7 @@ class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var progressIndicator: NSProgressIndicator!
   @IBOutlet weak var chapterTitle: NSTextField!
+  @IBOutlet weak var toggleSort: NSButton!
 
   let vm: ChapterCollectionViewModel
   weak var chapterSelectionDelegate: ChapterSelectionDelegate?
@@ -56,6 +57,15 @@ class ChapterCollectionViewController: NSViewController {
       .subscribeNext { [weak self] in
         self?.vm.filter($0)
       } >>> disposeBag
+
+
+    toggleSort
+      .rx_tap
+      .subscribeNext(vm.toggleSort) >>> disposeBag
+
+    vm.orderingIconName ~> { [weak self] in
+      self?.toggleSort.image = Config.iconWithName($0)
+    } >>> disposeBag
   }
 }
 
@@ -123,6 +133,7 @@ extension ChapterCollectionViewController: MangaSelectionDelegate {
     // we need to reset it before setup subscriptions so that the selected manga's chapters
     // won't get filtered
     chapterTitle.stringValue = ""
+    vm.resetSort()
 
     setupSubscriptions()
 

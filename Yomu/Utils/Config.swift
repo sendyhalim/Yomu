@@ -9,7 +9,8 @@
 import AppKit
 import Hue
 
-private let info = NSBundle.mainBundle().infoDictionary!
+private let bundle = NSBundle.mainBundle()
+private let info = bundle.infoDictionary!
 
 internal struct Style {
   let cornerRadius = CGFloat(7.0)
@@ -22,12 +23,31 @@ internal struct Style {
 }
 
 internal struct Icon {
-  let plus = NSBundle.mainBundle().imageForResource("Plus")!
-  let rightArrow = NSBundle.mainBundle().imageForResource("RightArrow")!
+  let plus = bundle.imageForResource("Plus")!
+  let rightArrow = bundle.imageForResource("RightArrow")!
+}
+
+internal struct IconName {
+  let ascending = "Ascending"
+  let descending = "Descending"
 }
 
 public struct Config {
   static let YomuAPI: String = info["YomuAPI"] as! String
   static let style = Style()
   static let icon = Icon()
+  static let iconName = IconName()
+
+  static private var iconByName: [String: NSImage] = [:]
+
+  static func iconWithName(name: String) -> NSImage {
+    if let icon = iconByName[name] {
+      return icon
+    }
+
+    let _icon = bundle.imageForResource(name)!
+    iconByName[name] = _icon
+
+    return _icon
+  }
 }
