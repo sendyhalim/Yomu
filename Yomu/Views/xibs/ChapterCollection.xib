@@ -21,7 +21,7 @@
             <subviews>
                 <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="L0b-P3-rH2">
                     <rect key="frame" x="0.0" y="248" width="450" height="52"/>
-                    <view key="contentView" id="Y9d-9v-y0n">
+                    <view key="contentView" id="Y9d-9v-y0n" customClass="StickyHeader" customModule="Yomu" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="52"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
