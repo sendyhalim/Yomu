@@ -7,17 +7,18 @@
 //
 
 import AppKit
+import Hue
 
 private let info = NSBundle.mainBundle().infoDictionary!
 
 internal struct Style {
   let cornerRadius = CGFloat(7.0)
-  let primaryBackgroundColor = NSColor.fromHex(0xFFFFFF)
-  let darkenBackgroundColor = NSColor.fromHex(0xF4F4F4)
-  let primaryFontColor = NSColor.fromHex(0x474747)
-  let buttonBackgroundColor = NSColor.fromHex(0xFFFFFF)
-  let inputBackgroundColor = NSColor.fromHex(0xFFFFFF)
-  let borderColor = NSColor.fromHex(0xF0F0F0)
+  let primaryBackgroundColor = NSColor(hex: "#FFFFFF")
+  let darkenBackgroundColor = NSColor(hex: "#F4F4F4")
+  let primaryFontColor = NSColor(hex: "#474747")
+  let buttonBackgroundColor = NSColor(hex: "#FFFFFF")
+  let inputBackgroundColor = NSColor(hex: "#FFFFFF")
+  let borderColor = NSColor(hex: "#F0F0F0")
 }
 
 internal struct Icon {
