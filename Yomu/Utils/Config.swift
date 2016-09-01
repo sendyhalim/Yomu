@@ -20,6 +20,7 @@ internal struct Style {
   let buttonBackgroundColor = NSColor(hex: "#FFFFFF")
   let inputBackgroundColor = NSColor(hex: "#FFFFFF")
   let borderColor = NSColor(hex: "#F0F0F0")
+  let noteColor = NSColor(hex: "#555555")
 }
 
 internal struct Icon {

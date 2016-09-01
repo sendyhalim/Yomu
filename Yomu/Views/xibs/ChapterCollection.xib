@@ -51,7 +51,7 @@
                                 <color key="fillColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k6v-bH-O91">
-                                <rect key="frame" x="395" y="17.5" width="45" height="17"/>
+                                <rect key="frame" x="395" y="17" width="45" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="t1y-zA-7gk"/>
                                 </constraints>

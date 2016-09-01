@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="close" destination="hYB-6H-HIJ" id="wV0-Yo-ZSa"/>
                 <outlet property="collectionView" destination="IEp-r8-DMM" id="eZ6-Qc-gUP"/>
+                <outlet property="readingProgress" destination="E5O-V0-gGw" id="SzI-wp-FqL"/>
                 <outlet property="view" destination="c22-O7-iKe" id="TTh-Zp-q8q"/>
             </connections>
         </customObject>
@@ -20,7 +21,7 @@
             <subviews>
                 <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ihj-5u-q5C">
                     <rect key="frame" x="0.0" y="987" width="730" height="53"/>
-                    <view key="contentView" id="gbb-gT-ROi">
+                    <view key="contentView" id="gbb-gT-ROi" customClass="StickyHeader" customModule="Yomu" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="730" height="53"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -31,9 +32,19 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E5O-V0-gGw" customClass="NoteLabel" customModule="Yomu" customModuleProvider="target">
+                                <rect key="frame" x="346.5" y="18" width="37" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="OA0-QP-hHW">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="E5O-V0-gGw" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="DCh-g4-baf"/>
                             <constraint firstAttribute="trailing" secondItem="hYB-6H-HIJ" secondAttribute="trailing" constant="20" symbolic="YES" id="Jcp-ez-Jw3"/>
+                            <constraint firstItem="E5O-V0-gGw" firstAttribute="centerX" secondItem="gbb-gT-ROi" secondAttribute="centerX" id="Kaa-fM-TZP"/>
                             <constraint firstItem="hYB-6H-HIJ" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="T4L-Z8-JaY"/>
                         </constraints>
                     </view>

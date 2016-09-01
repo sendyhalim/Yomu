@@ -13,8 +13,9 @@ import Swiftz
 
 struct ChapterPageCollectionViewModel {
   private let _chapterPages = Variable(List<ChapterPage>())
+  private let _currentPageIndex = Variable(0)
 
-  let chapterId: String
+  let chapterVM: ChapterViewModel
 
   var chapterPages: Driver<List<ChapterPage>> {
     return _chapterPages.asDriver()
@@ -24,8 +25,21 @@ struct ChapterPageCollectionViewModel {
     return _chapterPages.value.isEmpty ? .None : _chapterPages.value.first!.image
   }
 
+  var title: Driver<String> {
+    return chapterVM.title
+  }
+
   var count: Int {
     return _chapterPages.value.count
+  }
+
+  var readingProgress: Driver<String> {
+    return _currentPageIndex
+      .asDriver()
+      .map(+1)
+      .map {
+        "\($0) / \(self.count) Pages"
+      }
   }
 
   subscript(index: Int) -> ChapterPageViewModel {
@@ -36,7 +50,7 @@ struct ChapterPageCollectionViewModel {
 
   func fetch() -> Disposable {
     return MangaEden
-      .request(MangaEdenAPI.ChapterPages(chapterId))
+      .request(MangaEdenAPI.ChapterPages(chapterVM.chapter.id))
       .mapArray(ChapterPage.self, withRootKey: "images")
       .subscribeNext {
         let sortedPages = $0.sort {
@@ -49,4 +63,7 @@ struct ChapterPageCollectionViewModel {
       }
   }
 
+  func setCurrentPageIndex(index: Int) {
+    _currentPageIndex.value = index
+  }
 }

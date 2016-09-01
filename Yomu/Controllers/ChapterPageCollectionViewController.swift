@@ -17,6 +17,7 @@ protocol ChapterPageCollectionViewDelegate: class {
 class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var close: NSButton!
+  @IBOutlet weak var readingProgress: NSTextField!
 
   weak var delegate: ChapterPageCollectionViewDelegate?
 
@@ -37,6 +38,7 @@ class ChapterPageCollectionViewController: NSViewController {
     super.viewDidLoad()
 
     collectionView.dataSource = self
+    collectionView.delegate = self
 
     delegate?.closeChapterPage
       >>- close.rx_tap.subscribeNext
@@ -45,6 +47,8 @@ class ChapterPageCollectionViewController: NSViewController {
     vm.chapterPages ~> { [weak self] _ in
       self?.collectionView.reloadData()
     } >>> disposeBag
+
+    vm.readingProgress ~> readingProgress.rx_text >>> disposeBag
 
     vm.fetch() >>> disposeBag
   }
@@ -78,5 +82,15 @@ extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
       >>> disposeBag
 
     return cell
+  }
+}
+
+extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayout {
+  func collectionView(
+    collectionView: NSCollectionView,
+    willDisplayItem item: NSCollectionViewItem,
+    forRepresentedObjectAtIndexPath indexPath: NSIndexPath
+  ) {
+    vm.setCurrentPageIndex(indexPath.item)
   }
 }
