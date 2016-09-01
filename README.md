@@ -25,6 +25,7 @@ Latest yomu installer can be found [here](https://github.com/sendyhalim/yomu/rel
 - [Argo](https://github.com/thoughtbot/Argo)
 - [Cartography](https://github.com/robb/Cartography)
 - [Curry](https://github.com/thoughtbot/Curry)
+- [Hue](https://github.com/hyperoslo/Hue)
 - [King Fisher](https://github.com/onevcat/Kingfisher)
 - [Moya](https://github.com/Moya/Moya)
 - [Nimble](https://github.com/Quick/Nimble)
@@ -33,6 +34,10 @@ Latest yomu installer can be found [here](https://github.com/sendyhalim/yomu/rel
 - [RxRealm](https://github.com/RxSwiftCommunity/RxRealm)
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 - [Swiftz](https://github.com/typelift/Swiftz)
+
+
+## Why another manga reader?
+Just for hobby
 
 ## Acknowledgements
 Free icons used in this app are provided by [icons8](https://icons8.com)
