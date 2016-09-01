@@ -13,14 +13,15 @@ private let bundle = NSBundle.mainBundle()
 private let info = bundle.infoDictionary!
 
 internal struct Style {
-  let cornerRadius = CGFloat(7.0)
-  let primaryBackgroundColor = NSColor(hex: "#FFFFFF")
-  let darkenBackgroundColor = NSColor(hex: "#F4F4F4")
-  let primaryFontColor = NSColor(hex: "#474747")
-  let buttonBackgroundColor = NSColor(hex: "#FFFFFF")
-  let inputBackgroundColor = NSColor(hex: "#FFFFFF")
+  let actionButtonColor = NSColor(hex: "#2674A8")
   let borderColor = NSColor(hex: "#F0F0F0")
+  let buttonBackgroundColor = NSColor(hex: "#FFFFFF")
+  let cornerRadius = CGFloat(7.0)
+  let darkenBackgroundColor = NSColor(hex: "#F4F4F4")
+  let inputBackgroundColor = NSColor(hex: "#FFFFFF")
   let noteColor = NSColor(hex: "#555555")
+  let primaryBackgroundColor = NSColor(hex: "#FFFFFF")
+  let primaryFontColor = NSColor(hex: "#474747")
 }
 
 internal struct Icon {

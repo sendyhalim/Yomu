@@ -12,17 +12,13 @@ class ActionButton: NSButton {
   override func viewDidMoveToWindow() {
     super.viewDidMoveToWindow()
 
-    wantsLayer = true
-    layer?.backgroundColor = Config.style.darkenBackgroundColor.CGColor
-    layer?.cornerRadius = Config.style.cornerRadius
-
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .Center
 
     attributedTitle = NSAttributedString(string: title, attributes: [
-      NSForegroundColorAttributeName: Config.style.primaryFontColor,
+      NSForegroundColorAttributeName: Config.style.actionButtonColor,
       NSParagraphStyleAttributeName: paragraphStyle,
-      NSFontAttributeName: NSFont.systemFontOfSize(13, weight: NSFontWeightThin)
+      NSFontAttributeName: NSFont.systemFontOfSize(13, weight: NSFontWeightThin),
     ])
   }
 }

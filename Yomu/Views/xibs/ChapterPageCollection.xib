@@ -25,15 +25,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="730" height="53"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hYB-6H-HIJ">
-                                <rect key="frame" x="678" y="4" width="39" height="38"/>
-                                <buttonCell key="cell" type="round" title="x" bezelStyle="circular" alignment="center" borderStyle="border" inset="2" id="lzJ-1p-FAI">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hYB-6H-HIJ" customClass="ActionButton" customModule="Yomu" customModuleProvider="target">
+                                <rect key="frame" x="693" y="18" width="17" height="17"/>
+                                <buttonCell key="cell" type="square" title="╳" bezelStyle="shadowlessSquare" alignment="center" inset="2" id="lzJ-1p-FAI">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E5O-V0-gGw" customClass="NoteLabel" customModule="Yomu" customModuleProvider="target">
-                                <rect key="frame" x="346.5" y="18" width="37" height="17"/>
+                                <rect key="frame" x="346" y="18" width="37" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="OA0-QP-hHW">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
