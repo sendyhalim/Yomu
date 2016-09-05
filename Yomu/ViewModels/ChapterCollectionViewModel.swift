@@ -54,6 +54,8 @@ struct ChapterCollectionViewModel {
   func fetch(id: String) -> Disposable {
     let api = MangaEdenAPI.MangaDetail(id)
 
+    _fetching.value = true
+
     return MangaEden
       .request(api)
       .doOn { self._fetching.value = !$0.isStopEvent }
