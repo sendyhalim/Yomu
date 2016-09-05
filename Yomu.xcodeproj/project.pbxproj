@@ -669,8 +669,6 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>NoteLabel.swift</string>
 			<key>path</key>
 			<string>NoteLabel.swift</string>
 			<key>sourceTree</key>

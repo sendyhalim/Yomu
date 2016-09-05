@@ -20,7 +20,6 @@ struct ChapterCollectionViewModel {
   private let _chapters = Variable(List<ChapterViewModel>())
   private let _filteredChapters = Variable(List<ChapterViewModel>())
   private let _fetching = Variable(false)
-  private let provider = RxMoyaProvider<MangaEdenAPI>()
   private let currentOrdering = Variable(SortOrder.Descending)
 
   var orderingIconName: Driver<String> {
@@ -55,7 +54,7 @@ struct ChapterCollectionViewModel {
   func fetch(id: String) -> Disposable {
     let api = MangaEdenAPI.MangaDetail(id)
 
-    return provider
+    return MangaEden
       .request(api)
       .doOn { self._fetching.value = !$0.isStopEvent }
       .filterSuccessfulStatusCodes()
