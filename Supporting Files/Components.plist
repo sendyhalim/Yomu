@@ -41,6 +41,12 @@
 				<key>BundleOverwriteAction</key>
 				<string></string>
 				<key>RootRelativeBundlePath</key>
+				<string>Applications/Yomu.app/Contents/Frameworks/Hue.framework</string>
+			</dict>
+			<dict>
+				<key>BundleOverwriteAction</key>
+				<string></string>
+				<key>RootRelativeBundlePath</key>
 				<string>Applications/Yomu.app/Contents/Frameworks/Kingfisher.framework</string>
 			</dict>
 			<dict>

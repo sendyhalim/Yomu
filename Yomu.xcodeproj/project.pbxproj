@@ -761,6 +761,8 @@
 			<array>
 				<string>79AF71991D072C8300608518</string>
 				<string>798454C71D05CF3600BB7262</string>
+				<string>79FDDE2B1D7DF3BE00318E08</string>
+				<string>79FDDE2A1D7DF38C00318E08</string>
 				<string>798454C81D05CF3600BB7262</string>
 				<string>798454D81D05CF3600BB7262</string>
 			</array>
@@ -1015,13 +1017,11 @@
 				<string>798866191D11ADD800093761</string>
 				<string>79F094871D118B300029FB41</string>
 				<string>798454C91D05CF3600BB7262</string>
-				<string>798454CB1D05CF3600BB7262</string>
-				<string>7928CCEF1D64275F001F472D</string>
-				<string>79E9A8051D4A7880007D1190</string>
-				<string>798454D01D05CF3600BB7262</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Yomu</string>
 			<key>path</key>
 			<string>Yomu</string>
 			<key>sourceTree</key>
@@ -3393,6 +3393,34 @@ fi</string>
 			<string>79FB7E9F1D3D378300A1CB12</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>79FDDE2A1D7DF38C00318E08</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7928CCEF1D64275F001F472D</string>
+				<string>79E9A8051D4A7880007D1190</string>
+				<string>798454D01D05CF3600BB7262</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79FDDE2B1D7DF3BE00318E08</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>798454CB1D05CF3600BB7262</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>79FF941A1D10776D00A7E450</key>
 		<dict>
