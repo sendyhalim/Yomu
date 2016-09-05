@@ -1,7 +1,7 @@
 platform = --platform osx
-xcode_flags = -project 'Yomu.xcodeproj' -scheme 'Yomu' -configuration 'Release' DSTROOT=/tmp/Yomu.dst
-xcode_flags_test = -project 'Yomu.xcodeproj' -scheme 'Yomu' -configuration 'Debug'
-components_plist = Supporting Files/Components.plist
+xcode_flags = -project "Yomu.xcodeproj" -scheme "Yomu" -configuration "Release" DSTROOT=/tmp/Yomu.dst
+xcode_flags_test = -project "Yomu.xcodeproj" -scheme "Yomu" -configuration "Debug"
+components_plist = "Supporting Files/Components.plist"
 temporary_dir = /tmp/Yomu.dst
 output_package_name = Yomu.pkg
 
