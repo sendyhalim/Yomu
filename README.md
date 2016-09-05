@@ -3,7 +3,7 @@ Manga Reader App for OSX
 
 [![Build Status](https://api.travis-ci.org/sendyhalim/Yomu.svg)](https://travis-ci.org/sendyhalim/Yomu)
 
-<img width="800" alt="screen shot 2016-08-31 at 23 20 18" src="https://cloud.githubusercontent.com/assets/3948217/18137236/c59d1554-6fd1-11e6-9d14-4050d5d71799.png">
+<img width="800" alt="Yomu screenshot" src="https://raw.githubusercontent.com/sendyhalim/Yomu/master/Resources/screenshot.png">
 
 
 ## Install
