@@ -21,6 +21,7 @@ internal struct Style {
   let inputBackgroundColor = NSColor(hex: "#FFFFFF")
   let noteColor = NSColor(hex: "#555555")
   let primaryBackgroundColor = NSColor(hex: "#FFFFFF")
+  let selectedBackgroundColor = NSColor(hex: "22BDFC")
   let primaryFontColor = NSColor(hex: "#474747")
 }
 

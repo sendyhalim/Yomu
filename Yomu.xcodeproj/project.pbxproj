@@ -669,6 +669,8 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>NoteLabel.swift</string>
 			<key>path</key>
 			<string>NoteLabel.swift</string>
 			<key>sourceTree</key>
@@ -1545,7 +1547,6 @@
 				<string>7973B35C1D3FD5DA00E2B0FC</string>
 				<string>79065F3C1D3412EA005DB5AE</string>
 				<string>798865E51D119BA500093761</string>
-				<string>7982A1F31D78A4D700850AFE</string>
 				<string>79AB8FFB1D4BBD36000FB47D</string>
 			</array>
 			<key>isa</key>
@@ -1563,6 +1564,7 @@
 				<string>796048681D130887006571B3</string>
 				<string>7973B35E1D3FD78400E2B0FC</string>
 				<string>798865E91D11A1A400093761</string>
+				<string>7982A1F31D78A4D700850AFE</string>
 				<string>792A07491D5A349C009390D6</string>
 				<string>79E912F91D771FED0082AA20</string>
 				<string>7983E9131D5B9E190001A46C</string>

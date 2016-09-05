@@ -73,6 +73,7 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
     mangaViewModel.title ~> cell.titleTextField.rx_text >>> cell.disposeBag
     mangaViewModel.previewUrl ~> cell.mangaImageView.setImageWithUrl >>> cell.disposeBag
     mangaViewModel.categoriesString ~> cell.categoryTextField.rx_text >>> cell.disposeBag
+    mangaViewModel.selected.map(!) ~> cell.accessoryButton.rx_hidden >>> cell.disposeBag
 
     return cell
   }
@@ -83,9 +84,10 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     collectionView: NSCollectionView,
     didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
   ) {
-    let indexPath = indexPaths.first!
-    let viewModel = vm[indexPath.item]
+    let index = indexPaths.first!.item
+    let viewModel = vm[index]
 
+    vm.setSelectedIndex(index)
     mangaSelectionDelegate?.mangaDidSelected(viewModel.manga)
   }
 }

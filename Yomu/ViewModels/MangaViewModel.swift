@@ -11,6 +11,7 @@ import RxSwift
 
 struct MangaViewModel {
   private let _manga: Variable<Manga>
+  private let _selected = Variable(false)
 
   var manga: Manga {
     return _manga.value
@@ -30,7 +31,15 @@ struct MangaViewModel {
     }
   }
 
+  var selected: Driver<Bool> {
+    return _selected.asDriver()
+  }
+
   init(_manga: Manga) {
     self._manga = Variable(_manga)
+  }
+
+  func setSelected(selected: Bool) {
+    _selected.value = selected
   }
 }

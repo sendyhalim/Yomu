@@ -13,13 +13,20 @@ import RxSwift
 import RxRealm
 import Swiftz
 
+struct SelectedIndex {
+  let previousIndex: Int
+  let index: Int
+}
+
+
 struct MangaCollectionViewModel {
+  private let _selectedIndex = Variable(SelectedIndex(previousIndex: -1, index: -1))
   private var _fetching = Variable(false)
   private var _mangas: Variable<OrderedSet<Manga>> = {
     let mangas = Database.queryMangas()
     return Variable(OrderedSet(elements: Database.queryMangas()))
   }()
-  private var recentlyAddedManga: Variable<Manga?> = Variable(.None)
+  private let recentlyAddedManga: Variable<Manga?> = Variable(.None)
   private let mangaViewModels = Variable(List<MangaViewModel>())
 
   var mangas: Driver<List<MangaViewModel>> {
@@ -75,5 +82,17 @@ struct MangaCollectionViewModel {
         self.recentlyAddedManga.value = manga
         self._mangas.value.append(manga)
       }
+  }
+
+  func setSelectedIndex(index: Int) {
+    let previous = _selectedIndex.value
+    let selectedIndex = SelectedIndex(previousIndex: previous.index, index: index)
+    _selectedIndex.value = selectedIndex
+
+    if selectedIndex.previousIndex != -1 {
+      self[selectedIndex.previousIndex].setSelected(false)
+    }
+
+    self[selectedIndex.index].setSelected(true)
   }
 }
