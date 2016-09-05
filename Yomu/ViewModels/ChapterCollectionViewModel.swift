@@ -87,8 +87,10 @@ struct ChapterCollectionViewModel {
     _filteredChapters.value = sortChapters(_filteredChapters.value)
   }
 
-  func resetSort() {
+  func reset() {
     currentOrdering.value = .Descending
+    _filteredChapters.value = List()
+    _chapters.value = List()
   }
 
   private func sortChapters(chapters: List<ChapterViewModel>) -> List<ChapterViewModel> {

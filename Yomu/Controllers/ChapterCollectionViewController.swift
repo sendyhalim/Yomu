@@ -133,7 +133,7 @@ extension ChapterCollectionViewController: MangaSelectionDelegate {
     // we need to reset it before setup subscriptions so that the selected manga's chapters
     // won't get filtered
     chapterTitle.stringValue = ""
-    vm.resetSort()
+    vm.reset()
 
     setupSubscriptions()
 
