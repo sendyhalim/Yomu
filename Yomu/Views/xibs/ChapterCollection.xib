@@ -8,10 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ChapterCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
-                <outlet property="chapterTitle" destination="rdi-Ye-Sdz" id="iPu-NK-ciq"/>
+                <outlet property="chapterTitle" destination="l5t-Wm-gb8" id="bPi-FV-Ebi"/>
                 <outlet property="collectionView" destination="dfe-Ib-Wgi" id="FwT-BJ-7en"/>
                 <outlet property="progressIndicator" destination="sZd-Q7-Lk4" id="bdP-VU-XQ2"/>
-                <outlet property="toggleSort" destination="k6v-bH-O91" id="Cfg-yq-mvx"/>
+                <outlet property="toggleSort" destination="4QI-1m-9b2" id="2Ys-8g-7vN"/>
                 <outlet property="view" destination="c22-O7-iKe" id="HZX-Z2-6Na"/>
             </connections>
         </customObject>
@@ -27,44 +27,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-Ca-TU5" userLabel="Search Chapter Container" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="375" height="32"/>
+                                <rect key="frame" x="10" y="10" width="371" height="32"/>
                                 <view key="contentView" id="wKo-Iq-4Ka">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="371" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rdi-Ye-Sdz" customClass="SearchTextInput" customModule="Yomu" customModuleProvider="target">
-                                            <rect key="frame" x="10" y="5" width="355" height="22"/>
-                                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search Chapters" usesSingleLineMode="YES" bezelStyle="round" id="qYS-CM-qvB">
+                                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l5t-Wm-gb8">
+                                            <rect key="frame" x="30" y="7" width="331" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Search Chapters" drawsBackground="YES" id="6zw-KD-Aui">
                                                 <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </searchFieldCell>
-                                        </searchField>
+                                            </textFieldCell>
+                                        </textField>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bYi-SL-hON">
+                                            <rect key="frame" x="0.0" y="7" width="30" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="HsZ-r3-WiG"/>
+                                                <constraint firstAttribute="height" constant="17" id="ww8-IG-hAz"/>
+                                            </constraints>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Search" id="iKP-nS-oQi"/>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="l5t-Wm-gb8" firstAttribute="centerY" secondItem="wKo-Iq-4Ka" secondAttribute="centerY" id="4yj-mP-EfR"/>
+                                        <constraint firstItem="l5t-Wm-gb8" firstAttribute="trailing" secondItem="wKo-Iq-4Ka" secondAttribute="trailing" constant="-10" id="DmH-qF-Xmy"/>
+                                        <constraint firstItem="bYi-SL-hON" firstAttribute="centerY" secondItem="wKo-Iq-4Ka" secondAttribute="centerY" id="QFF-wL-DJD"/>
+                                        <constraint firstItem="l5t-Wm-gb8" firstAttribute="leading" secondItem="bYi-SL-hON" secondAttribute="trailing" id="bXg-dc-jf4"/>
+                                        <constraint firstItem="bYi-SL-hON" firstAttribute="leading" secondItem="wKo-Iq-4Ka" secondAttribute="leading" id="d8B-Pl-UIF"/>
+                                    </constraints>
                                 </view>
-                                <constraints>
-                                    <constraint firstItem="rdi-Ye-Sdz" firstAttribute="trailing" secondItem="aOQ-Ca-TU5" secondAttribute="trailing" constant="-10" id="JHD-98-Mcd"/>
-                                    <constraint firstItem="rdi-Ye-Sdz" firstAttribute="leading" secondItem="aOQ-Ca-TU5" secondAttribute="leading" constant="10" id="NKY-L9-zAi"/>
-                                    <constraint firstItem="rdi-Ye-Sdz" firstAttribute="centerY" secondItem="aOQ-Ca-TU5" secondAttribute="centerY" id="qEu-XA-kXZ"/>
-                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k6v-bH-O91">
-                                <rect key="frame" x="395" y="17" width="45" height="17"/>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="4QI-1m-9b2">
+                                <rect key="frame" x="390" y="16" width="50" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="t1y-zA-7gk"/>
+                                    <constraint firstAttribute="height" constant="20" id="Ifu-ze-KHp"/>
+                                    <constraint firstAttribute="width" constant="50" id="XCY-My-o1q"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" title="Button" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="YdZ-Fi-lyS">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Descending" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="zYx-HV-G3k">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="k6v-bH-O91" firstAttribute="trailing" secondItem="Y9d-9v-y0n" secondAttribute="trailing" constant="-10" id="EIX-qe-6M4"/>
-                            <constraint firstItem="k6v-bH-O91" firstAttribute="leading" secondItem="aOQ-Ca-TU5" secondAttribute="trailing" constant="10" id="Y0X-e3-U6v"/>
-                            <constraint firstItem="k6v-bH-O91" firstAttribute="centerY" secondItem="Y9d-9v-y0n" secondAttribute="centerY" id="k4e-16-0yA"/>
+                            <constraint firstItem="4QI-1m-9b2" firstAttribute="centerY" secondItem="Y9d-9v-y0n" secondAttribute="centerY" id="290-Sg-B5A"/>
+                            <constraint firstItem="4QI-1m-9b2" firstAttribute="leading" secondItem="wKo-Iq-4Ka" secondAttribute="trailing" constant="9" id="kkV-Cd-Srh"/>
+                            <constraint firstAttribute="trailing" secondItem="4QI-1m-9b2" secondAttribute="trailing" constant="10" id="p9n-7s-nFW"/>
                         </constraints>
                     </view>
                     <constraints>
@@ -119,4 +130,8 @@
             </constraints>
         </customView>
     </objects>
+    <resources>
+        <image name="Descending" width="100" height="100"/>
+        <image name="Search" width="500" height="500"/>
+    </resources>
 </document>

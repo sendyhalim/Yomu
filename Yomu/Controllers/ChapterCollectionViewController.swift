@@ -55,6 +55,7 @@ class ChapterCollectionViewController: NSViewController {
       .rx_text
       .throttle(0.5, scheduler: MainScheduler.instance)
       .subscribeNext { [weak self] in
+        print($0)
         self?.vm.filter($0)
       } >>> disposeBag
 
