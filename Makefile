@@ -1,4 +1,4 @@
-platform = --platform osx
+platform = --platform macos
 xcode_flags = -project "Yomu.xcodeproj" -scheme "Yomu" -configuration "Release" DSTROOT=/tmp/Yomu.dst
 xcode_flags_test = -project "Yomu.xcodeproj" -scheme "Yomu" -configuration "Debug"
 components_plist = "Supporting Files/Components.plist"
@@ -10,6 +10,9 @@ bootstrap:
 
 update:
 	carthage update $(platform)
+
+build:
+	carthage build $(platform)
 
 synx:
 	synx Yomu.xcodeproj
