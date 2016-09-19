@@ -10,11 +10,11 @@ import Foundation
 import RealmSwift
 
 struct Database {
-  static private let realm = try! Realm()
+  static fileprivate let realm = try! Realm()
 
   static func queryMangas() -> Array<Manga> {
     return realm
       .objects(MangaRealm.self)
-      .map(MangaRealm.toManga)
+      .map(MangaRealm.to(mangaRealm:))
   }
 }

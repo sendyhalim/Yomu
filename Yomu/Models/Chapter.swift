@@ -8,6 +8,7 @@
 
 import Argo
 import Curry
+import Runes
 
 ///  Example chapter response from Manga Eden API
 ///  [
@@ -29,11 +30,11 @@ struct Chapter {
 }
 
 extension Chapter: Decodable {
-  static func decode(json: JSON) -> Decoded<Chapter> {
+  static func decode(_ json: JSON) -> Decoded<Chapter> {
     switch json {
-    case JSON.Array(var jsonStrings):
-      if case JSON.Null = jsonStrings[ChapterJSONMapping.title] {
-        jsonStrings[ChapterJSONMapping.title] = JSON.String("")
+    case JSON.array(var jsonStrings):
+      if case JSON.null = jsonStrings[ChapterJSONMapping.title] {
+        jsonStrings[ChapterJSONMapping.title] = JSON.string("")
       }
 
       return curry(Chapter.init)
@@ -42,7 +43,7 @@ extension Chapter: Decodable {
         <*> String.decode(jsonStrings[ChapterJSONMapping.title])
 
     default:
-      return .typeMismatch("Array of JSON String", actual: json)
+      return .typeMismatch(expected: "Array of JSON String", actual: json)
     }
   }
 }

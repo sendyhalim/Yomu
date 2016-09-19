@@ -26,8 +26,8 @@ struct MangaCollectionViewModel {
     let mangas = Database.queryMangas()
     return Variable(OrderedSet(elements: Database.queryMangas()))
   }()
-  private let recentlyAddedManga: Variable<Manga?> = Variable(.None)
-  private let mangaViewModels = Variable(List<MangaViewModel>())
+  private let recentlyAddedManga: Variable<Manga?> = Variable(.none)
+  private var mangaViewModels = Variable(List<MangaViewModel>())
 
   var mangas: Driver<List<MangaViewModel>> {
     return mangaViewModels.asDriver()
@@ -47,13 +47,15 @@ struct MangaCollectionViewModel {
     recentlyAddedManga
       .asObservable()
       .filter { $0 != nil }
-      .map { MangaRealm.fromManga($0!) }
-      .subscribe(Realm.rx_add()) >>> disposeBag
+      .map { MangaRealm.from(manga: $0!) }
+      .subscribe(Realm.rx_add()) >>>> disposeBag
 
-    _mangas.asDriver().driveNext {
+    let this = self
+
+    _mangas.asDriver() ~~> {
       let viewModels = $0.flatMap(MangaViewModel.init)
-      self.mangaViewModels.value = List(fromArray: viewModels)
-    } >>> disposeBag
+      this.mangaViewModels.value = List(fromArray: viewModels)
+    } >>>> disposeBag
   }
 
   subscript(index: Int) -> MangaViewModel {
@@ -61,16 +63,16 @@ struct MangaCollectionViewModel {
   }
 
   func fetch(id: String) -> Disposable {
-    let api = MangaEdenAPI.MangaDetail(id)
+    let api = MangaEdenAPI.mangaDetail(id)
 
     _fetching.value = true
 
     return MangaEden
       .request(api)
-      .doOn { self._fetching.value = !$0.isStopEvent }
+      .do(onCompleted: { self._fetching.value = false })
       .filterSuccessfulStatusCodes()
       .map(Manga.self)
-      .subscribeNext {
+      .subscribe(onNext: {
         var manga = $0
         manga.id = id
 
@@ -80,11 +82,11 @@ struct MangaCollectionViewModel {
         }
 
         self.recentlyAddedManga.value = manga
-        self._mangas.value.append(manga)
-      }
+        self._mangas.value.append(element: manga)
+      })
   }
 
-  func setSelectedIndex(index: Int) {
+  func setSelectedIndex(_ index: Int) {
     let previous = _selectedIndex.value
     let selectedIndex = SelectedIndex(previousIndex: previous.index, index: index)
     _selectedIndex.value = selectedIndex

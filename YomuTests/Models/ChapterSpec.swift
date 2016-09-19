@@ -34,20 +34,20 @@ class ChapterSpec: QuickSpec {
       }
 
       context("and title is null") {
-        let json = JSON.Array([
-          JSON.Number(800),
-          JSON.Number(1888221.3),
-          JSON.Null,
-          JSON.String("someId")
+        let json = JSON.array([
+          JSON.number(800),
+          JSON.number(1888221.3),
+          JSON.null,
+          JSON.string("someId")
         ])
 
         var chapter: Chapter?
 
         switch Chapter.decode(json) {
-        case .Success(let _chapter):
+        case .success(let _chapter):
           chapter = _chapter
 
-        case .Failure(let error):
+        case .failure(let error):
           print(error)
         }
 

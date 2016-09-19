@@ -50,21 +50,21 @@ class MangaContainerViewController: NSViewController {
   }
 
   override func viewWillLayout() {
-    searchMangaButtonContainer.drawBorder(.Right(1.0, 0, Config.style.darkenBackgroundColor))
+    searchMangaButtonContainer.drawBorder(.right(1.0, 0, Config.style.darkenBackgroundColor))
   }
 
   func setupRoutes() {
-    Router.register(YomuRoute.Main([
+    Router.register(route: YomuRoute.main([
       mangaContainerView,
       chapterContainerView,
       searchMangaButtonContainer
     ]))
 
-    Router.register(YomuRoute.SearchManga([
+    Router.register(route: YomuRoute.searchManga([
       searchMangaContainer
     ]))
 
-    Router.register(YomuRoute.ChapterPage([
+    Router.register(route: YomuRoute.chapterPage([
       chapterPageContainerView
     ]))
   }
@@ -100,13 +100,13 @@ class MangaContainerViewController: NSViewController {
     }
   }
 
-  @IBAction func showSearchMangaView(sender: NSButton) {
-    Router.moveTo(YomuRouteId.SearchManga)
+  @IBAction func showSearchMangaView(_ sender: NSButton) {
+    Router.moveTo(id: YomuRouteId.SearchManga)
   }
 }
 
 extension MangaContainerViewController: ChapterSelectionDelegate {
-  func chapterDidSelected(chapter: Chapter) {
+  func chapterDidSelected(_ chapter: Chapter) {
     if chapterPageCollectionVC != nil {
       chapterPageCollectionVC!.view.removeFromSuperview()
     }
@@ -117,7 +117,7 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
     chapterPageContainerView.addSubview(chapterPageCollectionVC!.view)
 
     setupChapterPageCollectionConstraints()
-    Router.moveTo(YomuRouteId.ChapterPage)
+    Router.moveTo(id: YomuRouteId.ChapterPage)
   }
 
   func setupChapterPageCollectionConstraints() {
@@ -133,24 +133,24 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
 
 extension MangaContainerViewController: ChapterPageCollectionViewDelegate {
   func closeChapterPage() {
-    Router.moveTo(YomuRouteId.Main)
+    Router.moveTo(id: YomuRouteId.Main)
   }
 }
 
 extension MangaContainerViewController: SearchedMangaDelegate {
-  func searchedMangaDidSelected(viewModel: SearchedMangaViewModel) {
-    viewModel.apiId ~> { [weak self] in
+  func searchedMangaDidSelected(_ viewModel: SearchedMangaViewModel) {
+    viewModel.apiId ~~> { [weak self] in
       guard let `self` = self else {
         return
       }
 
-      self.mangaCollectionVM.fetch($0) >>> self.disposeBag
-    } >>> self.disposeBag
+      self.mangaCollectionVM.fetch(id: $0) >>>> self.disposeBag
+    } >>>> self.disposeBag
 
-    Router.moveTo(YomuRouteId.Main)
+    Router.moveTo(id: YomuRouteId.Main)
   }
 
-  func closeView(sender: SearchedMangaCollectionViewController) {
-    Router.moveTo(YomuRouteId.Main)
+  func closeView(_ sender: SearchedMangaCollectionViewController) {
+    Router.moveTo(id: YomuRouteId.Main)
   }
 }

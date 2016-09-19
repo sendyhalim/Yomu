@@ -10,19 +10,19 @@ import RxSwift
 import RxMoya
 
 enum MangaEdenAPI {
-  case MangaDetail(String)
-  case ChapterPages(String)
+  case mangaDetail(String)
+  case chapterPages(String)
 }
 
 extension MangaEdenAPI: TargetType {
-  var baseURL: NSURL { return NSURL(string: "http://www.mangaeden.com/api")! }
+  var baseURL: URL { return URL(string: "http://www.mangaeden.com/api")! }
 
   var path: String {
     switch self {
-    case .MangaDetail(let id):
+    case .mangaDetail(let id):
       return "/manga/\(id)"
 
-    case .ChapterPages(let id):
+    case .chapterPages(let id):
       return "/chapter/\(id)"
     }
   }
@@ -31,27 +31,27 @@ extension MangaEdenAPI: TargetType {
     return .GET
   }
 
-  var parameters: [String: AnyObject]? {
+  var parameters: [String: Any]? {
     return [:]
   }
 
   var multipartBody: [MultipartFormData]? {
-    return .None
+    return .none
   }
 
   var task: Task {
-    return .Request
+    return .request
   }
 
-  var sampleData: NSData {
+  var sampleData: Data {
     return "{}".UTF8EncodedData
   }
 }
 
 struct MangaEden {
-  private static let provider = RxMoyaProvider<MangaEdenAPI>()
+  fileprivate static let provider = RxMoyaProvider<MangaEdenAPI>()
 
-  static func request(api: MangaEdenAPI) -> Observable<Response> {
+  static func request(_ api: MangaEdenAPI) -> Observable<Response> {
     return provider.request(api)
   }
 }

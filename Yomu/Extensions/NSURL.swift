@@ -9,17 +9,17 @@
 import Argo
 import Swiftz
 
-extension NSURL: Decodable {
-  public static func decode(json: JSON) -> Decoded<NSURL> {
+extension URL: Decodable {
+  public static func decode(_ json: JSON) -> Decoded<URL> {
     switch json {
-    case JSON.String(let url):
-      return (pure <^> NSURL(string: url)) ?? .typeMismatch(
-        "A String that is convertible to NSURL",
+    case JSON.string(let url):
+      return URL(string: url).map(pure) ?? .typeMismatch(
+        expected: "A String that is convertible to NSURL",
         actual: url
       )
 
     default:
-      return .typeMismatch("String", actual: json)
+      return .typeMismatch(expected: "String", actual: json)
     }
   }
 }

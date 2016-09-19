@@ -16,7 +16,7 @@ extension Response {
   ///  - throws: Decoding error message
   ///
   ///  - returns: Transformed data from response
-  func map<T: Decodable where T == T.DecodedType>() throws -> T {
+  func map<T: Decodable>() throws -> T where T == T.DecodedType {
     let json = try mapJSON()
     let decoded: Decoded<T> = decode(json)
 
@@ -30,7 +30,7 @@ extension Response {
   ///  - throws: Decoding error message
   ///
   ///  - returns: Transformed data from response
-  func map<T: Decodable where T == T.DecodedType>(withRootKey rootKey: String) throws -> T {
+  func map<T: Decodable>(withRootKey rootKey: String) throws -> T where T == T.DecodedType {
     let dict = try mapDictionary()
     let decoded: Decoded<T> = decode(dict, rootKey: rootKey)
 
@@ -44,9 +44,9 @@ extension Response {
   ///  - throws: Decoding error message
   ///
   ///  - returns: Transformed data from response
-  func mapArray<T: Decodable where T == T.DecodedType>(
+  func mapArray<T: Decodable>(
     withRootKey rootKey: String
-  ) throws -> [T] {
+  ) throws -> [T] where T == T.DecodedType {
     let dict = try mapDictionary()
     let decoded: Decoded<[T]> = decode(dict, rootKey: rootKey)
 
@@ -58,7 +58,7 @@ extension Response {
   ///  - throws: `mapJSON()` error message
   ///
   ///  - returns: Dictionary
-  private func mapDictionary() throws -> [String: AnyObject] {
+  fileprivate func mapDictionary() throws -> [String: AnyObject] {
     let json = try mapJSON()
 
     return json as? [String: AnyObject] ?? [:]
@@ -71,37 +71,37 @@ extension Response {
   ///  - throws: Decoding error message
   ///
   ///  - returns: Extracted value
-  private func decodedValue<T>(decoded: Decoded<T>) throws -> T {
+  fileprivate func decodedValue<T>(_ decoded: Decoded<T>) throws -> T {
     switch decoded {
-    case .Success(let value):
+    case .success(let value):
       return value
 
-    case .Failure(let error):
+    case .failure(let error):
       throw error
     }
   }
 }
 
 extension ObservableType where E == RxMoya.Response {
-  func map<T: Decodable where T == T.DecodedType>(type: T.Type) -> Observable<T> {
+  func map<T: Decodable>(_ type: T.Type) -> Observable<T> where T == T.DecodedType {
     return map {
       try $0.map()
     }
   }
 
-  func map<T: Decodable where T == T.DecodedType>(
-    type: T.Type,
+  func map<T: Decodable>(
+    _ type: T.Type,
     withRootKey rootKey: String
-  ) -> Observable<T> {
+  ) -> Observable<T> where T == T.DecodedType {
     return map {
       try $0.map(withRootKey: rootKey)
     }
   }
 
-  func mapArray<T: Decodable where T == T.DecodedType>(
-    type: T.Type,
+  func mapArray<T: Decodable>(
+    _ type: T.Type,
     withRootKey rootKey: String
-  ) -> Observable<[T]> {
+  ) -> Observable<[T]> where T == T.DecodedType {
     return map {
       return try $0.mapArray(withRootKey: rootKey)
     }

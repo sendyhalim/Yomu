@@ -9,7 +9,7 @@
 import AppKit
 import Hue
 
-private let bundle = NSBundle.mainBundle()
+private let bundle = Bundle.main
 private let info = bundle.infoDictionary!
 
 internal struct Style {
@@ -26,8 +26,9 @@ internal struct Style {
 }
 
 internal struct Icon {
-  let plus = bundle.imageForResource("Plus")!
-  let rightArrow = bundle.imageForResource("RightArrow")!
+  let plus: NSImage = #imageLiteral(resourceName: "Plus")
+  let pin: NSImage = #imageLiteral(resourceName: "Pin")
+  let rightArrow: NSImage = #imageLiteral(resourceName: "RightArrow")
 }
 
 internal struct IconName {
@@ -41,14 +42,14 @@ public struct Config {
   static let icon = Icon()
   static let iconName = IconName()
 
-  static private var iconByName: [String: NSImage] = [:]
+  static fileprivate var iconByName: [String: NSImage] = [:]
 
-  static func iconWithName(name: String) -> NSImage {
+  static func icon(name: String) -> NSImage {
     if let icon = iconByName[name] {
       return icon
     }
 
-    let _icon = bundle.imageForResource(name)!
+    let _icon = bundle.image(forResource: name)!
     iconByName[name] = _icon
 
     return _icon

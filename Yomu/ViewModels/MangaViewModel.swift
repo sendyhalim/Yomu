@@ -17,7 +17,7 @@ struct MangaViewModel {
     return _manga.value
   }
 
-  var previewUrl: Driver<NSURL> {
+  var previewUrl: Driver<URL> {
     return _manga.asDriver().map { $0.image.url }
   }
 
@@ -27,7 +27,7 @@ struct MangaViewModel {
 
   var categoriesString: Driver<String> {
     return _manga.asDriver().map {
-      $0.categories.joinWithSeparator(", ")
+      $0.categories.joined(separator: ", ")
     }
   }
 
@@ -39,7 +39,7 @@ struct MangaViewModel {
     self._manga = Variable(_manga)
   }
 
-  func setSelected(selected: Bool) {
+  func setSelected(_ selected: Bool) {
     _selected.value = selected
   }
 }

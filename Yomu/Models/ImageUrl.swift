@@ -19,19 +19,19 @@ struct ImageUrl: CustomStringConvertible {
     return "\(ImageUrl.prefix)/\(endpoint)"
   }
 
-  var url: NSURL {
-    return NSURL(string: self.description)!
+  var url: URL {
+    return URL(string: self.description)!
   }
 }
 
 extension ImageUrl: Decodable {
-  static func decode(json: JSON) -> Decoded<ImageUrl> {
+  static func decode(_ json: JSON) -> Decoded<ImageUrl> {
     switch json {
-    case JSON.String(let endpoint):
+    case JSON.string(let endpoint):
       return pure(ImageUrl(endpoint: endpoint))
 
     default:
-      return .typeMismatch("String endpoint", actual: json)
+      return .typeMismatch(expected: "String endpoint", actual: json)
     }
   }
 }

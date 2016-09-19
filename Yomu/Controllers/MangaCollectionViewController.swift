@@ -11,7 +11,7 @@ import RxMoya
 import RxSwift
 
 protocol MangaSelectionDelegate: class {
-  func mangaDidSelected(manga: Manga)
+  func mangaDidSelected(_ manga: Manga)
 }
 
 class MangaCollectionViewController: NSViewController {
@@ -37,43 +37,43 @@ class MangaCollectionViewController: NSViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
 
-    vm.mangas ~> { [weak self] _ in
+    vm.mangas ~~> { [weak self] _ in
       self?.collectionView.reloadData()
-    } >>> disposeBag
+    } >>>> disposeBag
   }
 
   override func viewWillLayout() {
-    view.drawBorder(.Right(1.0, 0, Config.style.darkenBackgroundColor))
+    view.drawBorder(.right(1.0, 0, Config.style.darkenBackgroundColor))
   }
 }
 
 extension MangaCollectionViewController: NSCollectionViewDataSource {
-  func numberOfSectionsInCollectionView(collectionView: NSCollectionView) -> Int {
+  func numberOfSections(in collectionView: NSCollectionView) -> Int {
     return 1
   }
 
   func collectionView(
-    collectionView: NSCollectionView,
+    _ collectionView: NSCollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
     return vm.count
   }
 
   func collectionView(
-    collectionView: NSCollectionView,
-    itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath
+    _ collectionView: NSCollectionView,
+    itemForRepresentedObjectAt indexPath: IndexPath
   ) -> NSCollectionViewItem {
-    let cell = collectionView.makeItemWithIdentifier(
-      "MangaItem",
-      forIndexPath: indexPath
+    let cell = collectionView.makeItem(
+      withIdentifier: "MangaItem",
+      for: indexPath
     ) as! MangaItem
 
-    let mangaViewModel = vm[indexPath.item]
+    let mangaViewModel = vm[(indexPath as NSIndexPath).item]
 
-    mangaViewModel.title ~> cell.titleTextField.rx_text >>> cell.disposeBag
-    mangaViewModel.previewUrl ~> cell.mangaImageView.setImageWithUrl >>> cell.disposeBag
-    mangaViewModel.categoriesString ~> cell.categoryTextField.rx_text >>> cell.disposeBag
-    mangaViewModel.selected.map(!) ~> cell.accessoryButton.rx_hidden >>> cell.disposeBag
+    mangaViewModel.title ~~> cell.titleTextField.rx.text >>>> cell.disposeBag
+    mangaViewModel.previewUrl ~~> cell.mangaImageView.setImageWithUrl >>>> cell.disposeBag
+    mangaViewModel.categoriesString ~~> cell.categoryTextField.rx.text >>>> cell.disposeBag
+    mangaViewModel.selected.map(!) ~~> cell.accessoryButton.rx.hidden >>>> cell.disposeBag
 
     return cell
   }
@@ -81,10 +81,10 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
 
 extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
   func collectionView(
-    collectionView: NSCollectionView,
-    didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
+    _ collectionView: NSCollectionView,
+    didSelectItemsAt indexPaths: Set<IndexPath>
   ) {
-    let index = indexPaths.first!.item
+    let index = (indexPaths.first! as NSIndexPath).item
     let viewModel = vm[index]
 
     vm.setSelectedIndex(index)

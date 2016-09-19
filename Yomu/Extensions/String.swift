@@ -9,7 +9,7 @@
 import Foundation
 
 extension String {
-  var UTF8EncodedData: NSData {
-    return self.dataUsingEncoding(NSUTF8StringEncoding)!
+  var UTF8EncodedData: Data {
+    return self.data(using: String.Encoding.utf8)!
   }
 }

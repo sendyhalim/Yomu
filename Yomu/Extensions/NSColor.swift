@@ -15,7 +15,7 @@ extension NSColor {
   ///  - parameter hex: Hexadecimal value e.g. 0xEFEFEF
   ///
   ///  - returns: `NSColor`
-  static func fromHex(hex: UInt) -> NSColor {
+  static func fromHex(_ hex: UInt) -> NSColor {
     return NSColor(
       calibratedRed: CGFloat((hex & 0xFF0000) >> 16) / 255.0,
       green: CGFloat((hex & 0x00FF00) >> 8) / 255.0,

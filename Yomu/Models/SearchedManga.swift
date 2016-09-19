@@ -9,6 +9,7 @@
 import Foundation
 import Argo
 import Curry
+import Runes
 
 ///  A data structure that represents searched manga from yomu API
 struct SearchedManga {
@@ -24,7 +25,7 @@ struct SearchedManga {
 }
 
 extension SearchedManga: Decodable {
-  static func decode(json: JSON) -> Decoded<SearchedManga> {
+  static func decode(_ json: JSON) -> Decoded<SearchedManga> {
     return curry(SearchedManga.init)
       <^> json <| "_id"
       <*> json <| "apiId"

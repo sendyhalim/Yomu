@@ -8,13 +8,21 @@
 
 import RxCocoa
 import RxSwift
+import Swiftz
 
-infix operator ~> { precedence 90 }
-
-func ~> <T>(driver: Driver<T>, f: T -> Void) -> Disposable {
-  return driver.driveNext(f)
+precedencegroup YomuDriverBindPrecedence {
+  associativity: left
+  lowerThan: CategoryPrecedence, DefaultPrecedence
+  higherThan: YomuAddToDisposeBagPrecedence
 }
 
-func ~> <T, O: ObserverType where O.E == T>(driver: Driver<T>, observer: O) -> Disposable {
+infix operator ~~> : YomuDriverBindPrecedence
+
+func ~~> <T>(driver: Driver<T>, f: @escaping (T) -> Void) -> Disposable {
+  return driver.drive(onNext: f)
+}
+
+
+func ~~> <T, O: ObserverType>(driver: Driver<T>, observer: O) -> Disposable where O.E == T {
   return driver.drive(observer)
 }

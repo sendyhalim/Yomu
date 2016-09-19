@@ -14,3 +14,4 @@ excluded: # paths to ignore during linting. overridden by `included`.
   - Carthage
   - Pods
   - R.generated.swift
+  - YomuTests/Utils/JSONFileReader.swift

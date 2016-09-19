@@ -18,7 +18,7 @@ class MangaRealm: Object {
   dynamic var releasedYear: Int = 0
   dynamic var commaSeparatedCategories: String = ""
 
-  static func fromManga(manga: Manga) -> MangaRealm {
+  static func from(manga: Manga) -> MangaRealm {
     let mangaRealm = MangaRealm()
 
     mangaRealm.id = manga.id!
@@ -27,12 +27,12 @@ class MangaRealm: Object {
     mangaRealm.author = manga.author
     mangaRealm.imageEndpoint = manga.image.endpoint
     mangaRealm.releasedYear = manga.releasedYear
-    mangaRealm.commaSeparatedCategories = manga.categories.joinWithSeparator(",")
+    mangaRealm.commaSeparatedCategories = manga.categories.joined(separator: ",")
 
     return mangaRealm
   }
 
-  static func toManga(mangaRealm: MangaRealm) -> Manga {
+  static func to(mangaRealm: MangaRealm) -> Manga {
     let categories = mangaRealm
       .commaSeparatedCategories.characters
       .split {

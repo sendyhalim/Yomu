@@ -13,12 +13,12 @@ class ActionButton: NSButton {
     super.viewDidMoveToWindow()
 
     let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.alignment = .Center
+    paragraphStyle.alignment = .center
 
     attributedTitle = NSAttributedString(string: title, attributes: [
       NSForegroundColorAttributeName: Config.style.actionButtonColor,
       NSParagraphStyleAttributeName: paragraphStyle,
-      NSFontAttributeName: NSFont.systemFontOfSize(13, weight: NSFontWeightThin),
+      NSFontAttributeName: NSFont.systemFont(ofSize: 13, weight: NSFontWeightThin),
     ])
   }
 }

@@ -10,8 +10,8 @@ import AppKit
 import RxSwift
 
 protocol SearchedMangaDelegate: class {
-  func searchedMangaDidSelected(viewModel: SearchedMangaViewModel)
-  func closeView(sender: SearchedMangaCollectionViewController)
+  func searchedMangaDidSelected(_ viewModel: SearchedMangaViewModel)
+  func closeView(_ sender: SearchedMangaCollectionViewController)
 }
 
 class SearchedMangaCollectionViewController: NSViewController {
@@ -44,65 +44,65 @@ class SearchedMangaCollectionViewController: NSViewController {
     collectionView.delegate = self
 
     mangaTitle
-      .rx_text
+      .rx.text
       .filter {
         $0.characters.count > 2
       }
       .throttle(0.5, scheduler: MainScheduler.instance)
-      .subscribeNext { [weak self] in
+      .subscribe(onNext: { [weak self] in
         guard let `self` = self else { return }
 
-        self.collectionViewModel.search($0) >>> self.disposeBag
-      } >>> disposeBag
+        self.collectionViewModel.search(term: $0) >>>> self.disposeBag
+      }) >>>> disposeBag
 
     collectionViewModel
       .mangas
-      .driveNext { [weak self] _ in
+      .drive(onNext: { [weak self] _ in
         self?.collectionView.reloadData()
-      } >>> disposeBag
+      }) >>>> disposeBag
 
-    collectionViewModel.fetching ~> progressIndicator.animating >>> disposeBag
+    collectionViewModel.fetching ~~> progressIndicator.animating >>>> disposeBag
 
-    backButton.rx_tap.subscribeNext { [weak self] in
+    backButton.rx.tap.subscribe(onNext: { [weak self] in
       guard let `self` = self else {
         return
       }
 
       self.delegate?.closeView(self)
-    } >>> disposeBag
+    }) >>>> disposeBag
   }
 
-  @IBAction func closeView(sender: NSButton) {
+  @IBAction func closeView(_ sender: NSButton) {
     delegate?.closeView(self)
   }
 }
 
 extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
-  func numberOfSectionsInCollectionView(collectionView: NSCollectionView) -> Int {
+  func numberOfSections(in collectionView: NSCollectionView) -> Int {
     return 1
   }
 
   func collectionView(
-    collectionView: NSCollectionView,
+    _ collectionView: NSCollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
     return collectionViewModel.count
   }
 
   func collectionView(
-    collectionView: NSCollectionView,
-    itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath
+    _ collectionView: NSCollectionView,
+    itemForRepresentedObjectAt indexPath: IndexPath
   ) -> NSCollectionViewItem {
-    let cell = collectionView.makeItemWithIdentifier(
-      "MangaItem",
-      forIndexPath: indexPath
+    let cell = collectionView.makeItem(
+      withIdentifier: "MangaItem",
+      for: indexPath
     ) as! MangaItem
 
-    let vm = collectionViewModel[indexPath.item]
+    let vm = collectionViewModel[(indexPath as NSIndexPath).item]
 
-    vm.title ~> cell.titleTextField.rx_text >>> cell.disposeBag
-    vm.previewUrl ~> cell.mangaImageView.setImageWithUrl >>> cell.disposeBag
-    cell.accessoryButton.image = Config.icon.plus
+    vm.title ~~> cell.titleTextField.rx.text >>>> cell.disposeBag
+    vm.previewUrl ~~> cell.mangaImageView.setImageWithUrl >>>> cell.disposeBag
+    cell.accessoryButton.image = Config.icon.pin
 
     return cell
   }
@@ -110,10 +110,10 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
 
 extension SearchedMangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
   func collectionView(
-    collectionView: NSCollectionView,
-    didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
+    _ collectionView: NSCollectionView,
+    didSelectItemsAt indexPaths: Set<IndexPath>
   ) {
-    let index = indexPaths.first!.item
+    let index = (indexPaths.first! as NSIndexPath).item
 
     delegate?.searchedMangaDidSelected(collectionViewModel[index])
   }

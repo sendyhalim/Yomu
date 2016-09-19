@@ -9,9 +9,9 @@
 import AppKit
 
 enum YomuRoute {
-  case Main([NSView])
-  case SearchManga([NSView])
-  case ChapterPage([NSView])
+  case main([NSView])
+  case searchManga([NSView])
+  case chapterPage([NSView])
 }
 
 enum YomuRouteId: String {
@@ -29,26 +29,26 @@ extension YomuRouteId: RouteId {
 extension YomuRoute: Route {
   var id: RouteId {
     switch self {
-    case .Main(_):
+    case .main(_):
       return YomuRouteId.Main
 
-    case .SearchManga(_):
+    case .searchManga(_):
       return YomuRouteId.SearchManga
 
-    case .ChapterPage(_):
+    case .chapterPage(_):
       return YomuRouteId.ChapterPage
     }
   }
 
   var views: [NSView] {
     switch self {
-    case .Main(let _views):
+    case .main(let _views):
       return _views
 
-    case .SearchManga(let _views):
+    case .searchManga(let _views):
       return _views
 
-    case .ChapterPage(let _views):
+    case .chapterPage(let _views):
       return _views
     }
   }

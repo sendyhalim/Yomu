@@ -9,15 +9,21 @@
 import RxSwift
 import Swiftz
 
-infix operator >>> { precedence 90 }
+precedencegroup YomuAddToDisposeBagPrecedence {
+  associativity: left
+  lowerThan: MonadPrecedenceLeft
+  higherThan: AssignmentPrecedence
+}
 
-func >>> (disposable: Disposable, disposeBag: DisposeBag) {
+infix operator >>>> : YomuAddToDisposeBagPrecedence
+
+func >>>> (disposable: Disposable, disposeBag: DisposeBag) {
   disposable.addDisposableTo(disposeBag)
 }
 
 
-infix operator ~>> { precedence 90 }
+infix operator ~>> : YomuAddToDisposeBagPrecedence
 
 func ~>> (disposable: Disposable?, disposeBag: DisposeBag) {
-  disposable >>- { $0 >>> disposeBag }
+  disposable >>- { $0 >>>> disposeBag }
 }

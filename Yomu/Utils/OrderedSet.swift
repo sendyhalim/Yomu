@@ -8,25 +8,25 @@
 
 import Foundation
 
-struct OrderedSet<T: Hashable>: ArrayLiteralConvertible {
-  private var indexByElement: [T: Int] = [:]
-  private var elements: Array<T> = []
+struct OrderedSet<T: Hashable>: ExpressibleByArrayLiteral {
+  fileprivate var indexByElement: [T: Int] = [:]
+  fileprivate var elements: Array<T> = []
 
   var count: Int {
     return elements.count
   }
 
   init(elements: [T]) {
-    appendElements(elements)
+    append(elements: elements)
   }
 
   init(arrayLiteral elements: T...) {
-    appendElements(elements)
+    append(elements: elements)
   }
 
-  mutating func appendElements(elements: [T]) {
+  mutating func append(elements: [T]) {
     for element in elements {
-      append(element)
+      append(element: element)
     }
   }
 
@@ -45,7 +45,7 @@ struct OrderedSet<T: Hashable>: ArrayLiteralConvertible {
     }
 
     indexByElement[element] = nil
-    elements.removeAtIndex(index)
+    elements.remove(at: index)
 
     return true
   }
@@ -63,7 +63,16 @@ extension OrderedSet: CustomStringConvertible {
   }
 }
 
-extension OrderedSet: MutableCollectionType {
+extension OrderedSet: MutableCollection {
+  /// Returns the position immediately after the given index.
+  ///
+  /// - Parameter i: A valid index of the collection. `i` must be less than
+  ///   `endIndex`.
+  /// - Returns: The index value immediately after `i`.
+  public func index(after i: Int) -> Int {
+    return i + 1
+  }
+
   typealias Index = Int
 
   var startIndex: Int {
@@ -80,7 +89,7 @@ extension OrderedSet: MutableCollectionType {
     }
 
     set {
-      if has(newValue) {
+      if has(element: newValue) {
         return
       }
 
@@ -92,21 +101,21 @@ extension OrderedSet: MutableCollectionType {
   }
 }
 
-extension OrderedSet: SequenceType {
-  typealias Generator = OrderedSetGenerator<T>
+extension OrderedSet: Sequence {
+  typealias Iterator = OrderedSetGenerator<T>
 
-  func generate() -> Generator {
+  func makeIterator() -> Iterator {
     return OrderedSetGenerator(set: self)
   }
 }
 
-struct OrderedSetGenerator<T: Hashable>: GeneratorType {
+struct OrderedSetGenerator<T: Hashable>: IteratorProtocol {
   typealias Element = T
 
-  var generator: IndexingGenerator<Array<T>>
+  var generator: IndexingIterator<Array<T>>
 
   init(set: OrderedSet<T>) {
-    generator = set.elements.generate()
+    generator = set.elements.makeIterator()
   }
 
   mutating func next() -> T? {

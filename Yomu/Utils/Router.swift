@@ -19,35 +19,35 @@ protocol Route {
 }
 
 struct Router {
-  private static var routes = List<Route>()
+  fileprivate static var routes = List<Route>()
 
   static func register(route: Route) {
-    routes = List.cons(route, tail: routes)
+    routes = List.cons(head: route, tail: routes)
   }
 
   static func moveTo(id: RouteId) {
     routes.forEach {
       if $0.id.name == id.name {
-        showRoute($0)
+        show(route: $0)
       } else {
-        hideRoute($0)
+        hide(route: $0)
       }
     }
   }
 
-  private static func showRoute(route: Route) {
-    route.views.forEach(showView)
+  fileprivate static func show(route: Route) {
+    route.views.forEach(show)
   }
 
-  private static func hideRoute(route: Route) {
-    route.views.forEach(hideView)
+  fileprivate static func hide(route: Route) {
+    route.views.forEach(hide)
   }
 
-  private static func hideView(view: NSView) {
-    view.hidden = true
+  fileprivate static func hide(view: NSView) {
+    view.isHidden = true
   }
 
-  private static func showView(view: NSView) {
-    view.hidden = false
+  fileprivate static func show(view: NSView) {
+    view.isHidden = false
   }
 }

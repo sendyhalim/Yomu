@@ -9,7 +9,7 @@
 import AppKit
 
 extension NSProgressIndicator {
-  func animating(shouldAnimate: Bool) {
+  func animating(_ shouldAnimate: Bool) {
     if shouldAnimate {
       startAnimation(nil)
     } else {

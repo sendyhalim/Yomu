@@ -13,7 +13,7 @@ import RxCocoa
 import Swiftz
 
 protocol ChapterSelectionDelegate: class {
-  func chapterDidSelected(chapter: Chapter)
+  func chapterDidSelected(_ chapter: Chapter)
 }
 
 class ChapterCollectionViewController: NSViewController {
@@ -45,43 +45,42 @@ class ChapterCollectionViewController: NSViewController {
   }
 
   func setupSubscriptions() {
-    vm.chapters ~> { [weak self] _ in
+    vm.chapters.drive(onNext: { [weak self] _ in
       self!.collectionView.reloadData()
-    } >>> disposeBag
+    }) >>>> disposeBag
 
-    vm.fetching ~> progressIndicator.animating >>> disposeBag
+    vm.fetching.drive(onNext: progressIndicator.animating) >>>> disposeBag
 
     chapterTitle
-      .rx_text
+      .rx.text
       .throttle(0.5, scheduler: MainScheduler.instance)
-      .subscribeNext { [weak self] in
-        print($0)
-        self?.vm.filter($0)
-      } >>> disposeBag
+      .subscribe(onNext: { [weak self] in
+        self?.vm.filter(pattern: $0)
+      }) >>>> disposeBag
 
 
     toggleSort
-      .rx_tap
-      .subscribeNext(vm.toggleSort) >>> disposeBag
+      .rx.tap
+      .subscribe(onNext: vm.toggleSort) >>>> disposeBag
 
-    vm.orderingIconName ~> { [weak self] in
-      self?.toggleSort.image = Config.iconWithName($0)
-    } >>> disposeBag
+    vm.orderingIconName.drive(onNext: { [weak self] in
+      self?.toggleSort.image = Config.icon(name: $0)
+    }) >>>> disposeBag
   }
 }
 
 extension ChapterCollectionViewController: NSCollectionViewDataSource {
   func collectionView(
-    collectionView: NSCollectionView,
+    _ collectionView: NSCollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
     return vm.count
   }
 
-  func collectionView(
-    collectionView: NSCollectionView,
-    didEndDisplayingItem item: NSCollectionViewItem,
-    forRepresentedObjectAtIndexPath indexPath: NSIndexPath
+  @objc(collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:) func collectionView(
+    _ collectionView: NSCollectionView,
+    didEndDisplaying item: NSCollectionViewItem,
+    forRepresentedObjectAt indexPath: IndexPath
   ) {
     let _item = item as! ChapterItem
 
@@ -89,24 +88,25 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
   }
 
   func collectionView(
-    collectionView: NSCollectionView,
-    itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath
+    _ collectionView: NSCollectionView,
+    itemForRepresentedObjectAt indexPath: IndexPath
   ) -> NSCollectionViewItem {
-    let cell = collectionView.makeItemWithIdentifier(
-      "ChapterItem",
-      forIndexPath: indexPath
+    let cell = collectionView.makeItem(
+      withIdentifier: "ChapterItem",
+      for: indexPath
     ) as! ChapterItem
 
-    let chapter = vm[indexPath.item]
+    let chapter = vm[(indexPath as NSIndexPath).item]
 
     // Show activity indicator right now because fetch preview will
     // fetch chapter pages first, after the pages are loaded, the first image of the pages
     // will be fetched. Activity indicator will be removed automatically by kingfisher
     // after image preview is fetched.
-    cell.chapterPreview.showActivityIndicator()
-    chapter.fetchPreview() >>> cell.disposeBag
-    chapter.title ~> cell.chapterTitle.rx_text >>> cell.disposeBag
-    chapter.previewUrl ~> cell.chapterPreview.setImageWithUrl >>> cell.disposeBag
+    // TODO: figure out how to show activity indicator manually
+    // cell.chapterPreview.showActivityIndicator()
+    chapter.fetchPreview() >>>> cell.disposeBag
+    chapter.title ~~> cell.chapterTitle.rx.text >>>> cell.disposeBag
+    chapter.previewUrl ~~> cell.chapterPreview.setImageWithUrl >>>> cell.disposeBag
 
     return cell
   }
@@ -114,10 +114,10 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
 
 extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
   func collectionView(
-    collectionView: NSCollectionView,
-    didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>
+    _ collectionView: NSCollectionView,
+    didSelectItemsAt indexPaths: Set<IndexPath>
   ) {
-    let index = indexPaths.first!.item
+    let index = (indexPaths.first! as NSIndexPath).item
     let chapterVm = vm[index]
 
     collectionView.deselectAll(self)
@@ -126,7 +126,7 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
 }
 
 extension ChapterCollectionViewController: MangaSelectionDelegate {
-  func mangaDidSelected(manga: Manga) {
+  func mangaDidSelected(_ manga: Manga) {
     // Cleanup first, triggering `deinit` on the current `disposeBag`
     disposeBag = DisposeBag()
 
@@ -140,12 +140,12 @@ extension ChapterCollectionViewController: MangaSelectionDelegate {
 
     // Scroll to the top everytime manga is selected
     if !vm.isEmpty {
-      let index = NSIndexPath(forItem: 0, inSection: 0)
+      let index = IndexPath(item: 0, section: 0)
       let indexPaths = Set(arrayLiteral: index)
-      collectionView.scrollToItemsAtIndexPaths(indexPaths, scrollPosition: .Top)
+      collectionView.scrollToItems(at: indexPaths, scrollPosition: .top)
     }
 
     // At this point we are sure that manga.id will 100% available
-    vm.fetch(manga.id!) >>> disposeBag
+    vm.fetch(id: manga.id!) >>>> disposeBag
   }
 }

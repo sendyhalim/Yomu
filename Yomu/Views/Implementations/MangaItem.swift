@@ -18,10 +18,16 @@ class MangaItem: NSCollectionViewItem {
 
   var disposeBag = DisposeBag()
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    mangaImageView.kf.indicatorType = .activity
+  }
+  
   override func viewWillLayout() {
     super.viewWillLayout()
 
-    let border = Border.Bottom(1.0, 0.0, Config.style.borderColor)
+    let border = Border.bottom(1.0, 0.0, Config.style.borderColor)
     titleContainerView.drawBorder(border)
   }
 }

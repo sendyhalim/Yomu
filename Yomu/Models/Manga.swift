@@ -9,6 +9,7 @@
 import Foundation
 import Argo
 import Curry
+import Runes
 
 ///  JSON mapping of Manga Eden API.
 ///  Example: https://www.mangaeden.com/api/manga/4e70ea90c092255ef70074a7
@@ -37,7 +38,7 @@ struct Manga {
 }
 
 extension Manga: Decodable {
-  static func decode(json: JSON) -> Decoded<Manga> {
+  static func decode(_ json: JSON) -> Decoded<Manga> {
     return curry(Manga.init)
       <^> json <|? MangaJSONMapping.id
       <*> json <| MangaJSONMapping.slug

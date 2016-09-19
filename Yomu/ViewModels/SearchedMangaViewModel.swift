@@ -12,7 +12,7 @@ import RxSwift
 struct SearchedMangaViewModel {
   private let manga: Variable<SearchedManga>
 
-  var previewUrl: Driver<NSURL> {
+  var previewUrl: Driver<URL> {
     return manga.asDriver().map { $0.image.url }
   }
 

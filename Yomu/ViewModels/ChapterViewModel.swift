@@ -14,7 +14,7 @@ struct ChapterViewModel {
   private let _chapter: Variable<Chapter>
   private let _previewUrl = Variable(ImageUrl(endpoint: ""))
 
-  var previewUrl: Driver<NSURL> {
+  var previewUrl: Driver<URL> {
     return _previewUrl
       .asDriver()
       .filter { $0.endpoint.characters.count != 0 }
@@ -34,23 +34,23 @@ struct ChapterViewModel {
   }
 
   func titleContains(pattern: String) -> Bool {
-    return _chapter.value.title.lowercaseString.containsString(pattern)
+    return _chapter.value.title.lowercased().contains(pattern)
   }
 
   func fetchPreview() -> Disposable {
     let id = _chapter.value.id
 
     return MangaEden
-      .request(MangaEdenAPI.ChapterPages(id))
+      .request(MangaEdenAPI.chapterPages(id))
       .mapArray(ChapterPage.self, withRootKey: "images")
-      .subscribeNext {
-        let sortedPages = $0.sort {
+      .subscribe(onNext: {
+        let sortedPages = $0.sorted {
           let (x, y) = $0
 
           return x.number < y.number
         }
 
         self._previewUrl.value = sortedPages.first!.image
-    }
+      })
   }
 }

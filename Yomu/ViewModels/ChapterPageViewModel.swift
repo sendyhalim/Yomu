@@ -12,7 +12,7 @@ import RxSwift
 struct ChapterPageViewModel {
   private let chapterPage: Variable<ChapterPage>
 
-  var imageUrl: Driver<NSURL> {
+  var imageUrl: Driver<URL> {
     return chapterPage.asDriver().map { $0.image.url }
   }
 

@@ -8,15 +8,15 @@
 
 import Foundation
 
-func JSONDataFromString(jsonString: String) -> AnyObject? {
-  let jsonData = jsonString.dataUsingEncoding(NSUTF8StringEncoding)!
+func JSONDataFromString(_ jsonString: String) -> AnyObject? {
+  let jsonData = jsonString.data(using: String.Encoding.utf8)!
 
-  return try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
+  return try! JSONSerialization.jsonObject(with: jsonData, options: []) as AnyObject?
 }
 
-func JSONDataFromFile(filename: String) -> AnyObject? {
-  return NSBundle(forClass: JSONFileReader.self)
-    .pathForResource(filename, ofType: "json")
+func JSONDataFromFile(_ filename: String) -> AnyObject? {
+  return Bundle(for: JSONFileReader.self)
+    .path(forResource: filename, ofType: "json")
     .flatMap { try? String(contentsOfFile: $0) }
     .flatMap(JSONDataFromString)
 }

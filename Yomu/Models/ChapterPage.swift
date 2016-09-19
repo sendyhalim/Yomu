@@ -8,6 +8,7 @@
 
 import Argo
 import Curry
+import Runes
 
 ///  Example chapter detail response
 ///  [
@@ -31,16 +32,16 @@ struct ChapterPage {
 }
 
 extension ChapterPage: Decodable {
-  static func decode(json: JSON) -> Decoded<ChapterPage> {
+  static func decode(_ json: JSON) -> Decoded<ChapterPage> {
     switch json {
-    case .Array(let details):
+    case .array(let details):
       return curry(ChapterPage.init)
         <^> Int.decode(details[ChapterPageJSONMapping.number])
         <*> ImageUrl.decode(details[ChapterPageJSONMapping.image])
         <*> Int.decode(details[ChapterPageJSONMapping.width])
         <*> Int.decode(details[ChapterPageJSONMapping.height])
     default:
-      return .typeMismatch("Array of json data", actual: json)
+      return .typeMismatch(expected: "Array of json data", actual: json)
     }
   }
 }

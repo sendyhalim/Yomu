@@ -12,6 +12,6 @@ class YomuWindowController: NSWindowController {
   override func windowDidLoad() {
     super.windowDidLoad()
 
-    window?.setFrame(NSScreen.mainScreen()!.visibleFrame, display: true)
+    window?.setFrame(NSScreen.main()!.visibleFrame, display: true)
   }
 }

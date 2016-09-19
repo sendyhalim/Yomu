@@ -10,5 +10,9 @@ import AppKit
 import RxSwift
 
 class ChapterPageItem: NSCollectionViewItem {
-  @IBOutlet weak var pageImageView: NSImageView!
+  @IBOutlet weak var pageImageView: NSImageView! {
+    didSet {
+      pageImageView.kf.indicatorType = .activity
+    }
+  }
 }

@@ -22,7 +22,7 @@ struct ChapterPageCollectionViewModel {
   }
 
   var chapterImage: ImageUrl? {
-    return _chapterPages.value.isEmpty ? .None : _chapterPages.value.first!.image
+    return _chapterPages.value.isEmpty ? .none : _chapterPages.value.first!.image
   }
 
   var title: Driver<String> {
@@ -36,7 +36,7 @@ struct ChapterPageCollectionViewModel {
   var readingProgress: Driver<String> {
     return _currentPageIndex
       .asDriver()
-      .map(+1)
+      .map { $0 + 1 }
       .map {
         "\($0) / \(self.count) Pages"
       }
@@ -50,20 +50,20 @@ struct ChapterPageCollectionViewModel {
 
   func fetch() -> Disposable {
     return MangaEden
-      .request(MangaEdenAPI.ChapterPages(chapterVM.chapter.id))
+      .request(MangaEdenAPI.chapterPages(chapterVM.chapter.id))
       .mapArray(ChapterPage.self, withRootKey: "images")
-      .subscribeNext {
-        let sortedPages = $0.sort {
+      .subscribe(onNext: {
+        let sortedPages = $0.sorted {
           let (x, y) = $0
 
           return x.number < y.number
         }
 
         self._chapterPages.value = List<ChapterPage>(fromArray: sortedPages)
-      }
+      })
   }
 
-  func setCurrentPageIndex(index: Int) {
+  func setCurrentPageIndex(_ index: Int) {
     _currentPageIndex.value = index
   }
 }

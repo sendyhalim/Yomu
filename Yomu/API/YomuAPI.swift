@@ -10,15 +10,15 @@ import RxMoya
 import RxSwift
 
 enum YomuAPI {
-  case Search(String)
+  case search(String)
 }
 
 extension YomuAPI: TargetType {
-  var baseURL: NSURL { return NSURL(string: Config.YomuAPI)! }
+  var baseURL: URL { return URL(string: Config.YomuAPI)! }
 
   var path: String {
     switch self {
-    case .Search(_):
+    case .search(_):
       return "/search"
     }
   }
@@ -27,30 +27,30 @@ extension YomuAPI: TargetType {
     return .GET
   }
 
-  var parameters: [String: AnyObject]? {
+  var parameters: [String: Any]? {
     switch self {
-    case .Search(let titlePattern):
-      return ["term": titlePattern]
+    case .search(let titlePattern):
+      return ["term": titlePattern as AnyObject]
     }
   }
 
   var multipartBody: [MultipartFormData]? {
-    return .None
+    return .none
   }
 
   var task: Task {
-    return .Request
+    return .request
   }
 
-  var sampleData: NSData {
+  var sampleData: Data {
     return "[]".UTF8EncodedData
   }
 }
 
 struct Yomu {
-  private static let provider = RxMoyaProvider<YomuAPI>()
+  fileprivate static let provider = RxMoyaProvider<YomuAPI>()
 
-  static func request(api: YomuAPI) -> Observable<Response> {
+  static func request(_ api: YomuAPI) -> Observable<Response> {
     return provider.request(api)
   }
 }

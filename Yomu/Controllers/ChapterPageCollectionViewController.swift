@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
+
 import AppKit
 import RxSwift
 import Swiftz
@@ -41,45 +42,49 @@ class ChapterPageCollectionViewController: NSViewController {
     collectionView.delegate = self
 
     delegate?.closeChapterPage
-      >>- close.rx_tap.subscribeNext
+      >>- { close.rx.tap.subscribe(onNext: $0) }
       ~>> disposeBag
 
-    vm.chapterPages ~> { [weak self] _ in
+    vm.chapterPages ~~> { [weak self] _ in
       self?.collectionView.reloadData()
-    } >>> disposeBag
+    } >>>> disposeBag
 
-    vm.readingProgress ~> readingProgress.rx_text >>> disposeBag
+    vm.readingProgress
+      ~~> readingProgress.rx.text
+      >>>> disposeBag
 
-    vm.fetch() >>> disposeBag
+    vm.readingProgress ~~> readingProgress.rx.text >>>> disposeBag
+
+    vm.fetch() >>>> disposeBag
   }
 }
 
 extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
-  func numberOfSectionsInCollectionView(collectionView: NSCollectionView) -> Int {
+  func numberOfSections(in collectionView: NSCollectionView) -> Int {
     return 1
   }
 
   func collectionView(
-    collectionView: NSCollectionView,
+    _ collectionView: NSCollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
     return vm.count
   }
 
   func collectionView(
-    collectionView: NSCollectionView,
-    itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath
+    _ collectionView: NSCollectionView,
+    itemForRepresentedObjectAt indexPath: IndexPath
   ) -> NSCollectionViewItem {
-    let cell = collectionView.makeItemWithIdentifier(
-      "ChapterPageItem",
-      forIndexPath: indexPath
+    let cell = collectionView.makeItem(
+      withIdentifier: "ChapterPageItem",
+      for: indexPath
     ) as! ChapterPageItem
 
-    let pageViewModel = vm[indexPath.item]
+    let pageViewModel = vm[(indexPath as NSIndexPath).item]
 
     pageViewModel.imageUrl
-      ~> cell.pageImageView.setImageWithUrl
-      >>> disposeBag
+      ~~> cell.pageImageView.setImageWithUrl
+      >>>> disposeBag
 
     return cell
   }
@@ -87,10 +92,10 @@ extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
 
 extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayout {
   func collectionView(
-    collectionView: NSCollectionView,
-    willDisplayItem item: NSCollectionViewItem,
-    forRepresentedObjectAtIndexPath indexPath: NSIndexPath
+    _ collectionView: NSCollectionView,
+    willDisplay item: NSCollectionViewItem,
+    forRepresentedObjectAt indexPath: IndexPath
   ) {
-    vm.setCurrentPageIndex(indexPath.item)
+    vm.setCurrentPageIndex((indexPath as NSIndexPath).item)
   }
 }

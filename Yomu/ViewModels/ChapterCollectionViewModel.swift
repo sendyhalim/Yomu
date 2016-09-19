@@ -12,24 +12,24 @@ import RxCocoa
 import Swiftz
 
 enum SortOrder {
-  case Ascending
-  case Descending
+  case ascending
+  case descending
 }
 
 struct ChapterCollectionViewModel {
   private let _chapters = Variable(List<ChapterViewModel>())
   private let _filteredChapters = Variable(List<ChapterViewModel>())
   private let _fetching = Variable(false)
-  private let currentOrdering = Variable(SortOrder.Descending)
+  private let currentOrdering = Variable(SortOrder.descending)
 
   var orderingIconName: Driver<String> {
     return currentOrdering
       .asDriver()
       .map {
         switch $0 {
-        case .Ascending:
+        case .ascending:
           return Config.iconName.ascending
-        case .Descending:
+        case .descending:
           return Config.iconName.descending
         }
       }
@@ -52,22 +52,22 @@ struct ChapterCollectionViewModel {
   }
 
   func fetch(id: String) -> Disposable {
-    let api = MangaEdenAPI.MangaDetail(id)
+    let api = MangaEdenAPI.mangaDetail(id)
 
     _fetching.value = true
 
     return MangaEden
       .request(api)
-      .doOn { self._fetching.value = !$0.isStopEvent }
+      .do(onCompleted: { self._fetching.value = false })
       .filterSuccessfulStatusCodes()
       .mapArray(Chapter.self, withRootKey: "chapters")
       .map {
         $0.map(ChapterViewModel.init)
       }
-      .subscribeNext {
+      .subscribe(onNext: {
         self._chapters.value = List<ChapterViewModel>(fromArray: $0)
         self._filteredChapters.value = self._chapters.value
-      }
+      })
   }
 
   func filter(pattern: String) {
@@ -75,38 +75,38 @@ struct ChapterCollectionViewModel {
       _filteredChapters.value = _chapters.value
     } else {
       _filteredChapters.value = _chapters.value.filter {
-        $0.titleContains(pattern)
+        $0.titleContains(pattern: pattern)
       }
     }
   }
 
   func toggleSort() {
     let currentSort = currentOrdering.value
-    currentOrdering.value = currentSort == .Ascending ? .Descending : .Ascending
+    currentOrdering.value = currentSort == .ascending ? .descending : .ascending
 
-    _filteredChapters.value = sortChapters(_filteredChapters.value)
+    _filteredChapters.value = sort(chapters: _filteredChapters.value)
   }
 
   func reset() {
-    currentOrdering.value = .Descending
+    currentOrdering.value = .descending
     _filteredChapters.value = List()
     _chapters.value = List()
   }
 
-  private func sortChapters(chapters: List<ChapterViewModel>) -> List<ChapterViewModel> {
-    let compare: Int -> Int -> Bool
+  private func sort(chapters: List<ChapterViewModel>) -> List<ChapterViewModel> {
+    let compare: (Int) -> (Int) -> Bool
 
     switch currentOrdering.value {
-    case .Ascending:
-      compare = (<)
+    case .ascending:
+      compare = curry(<)
 
-    case .Descending:
+    case .descending:
       // We cannot use (>) because the (>)'s arguments ordering in
       // sort method need to be flipped too, the easiest way is to flip it
-      compare = flip(<)
+      compare = flip(curry(<))
     }
 
-    let sorted = chapters.sort {
+    let sorted = chapters.sorted {
       let (left, right) = $0
 
       return compare(left.chapter.number)(right.chapter.number)
