@@ -17,27 +17,27 @@ class OrderetSetSpec: QuickSpec {
 
     func refreshSet() {
       set = OrderedSet<String>()
-      set.append("hot")
-      set.append("chilli")
-      set.append("peppers")
+      set.append(element: "hot")
+      set.append(element: "chilli")
+      set.append(element: "peppers")
     }
 
     beforeEach(refreshSet)
 
     describe(".has()") {
       it("should return false if the given element is not in set") {
-        expect(set.has("chili")) == false
+        expect(set.has(element: "chili")) == false
       }
 
       it("should return true if the given element is in set") {
-        expect(set.has("peppers")) == true
+        expect(set.has(element: "peppers")) == true
       }
     }
 
     describe(".remove()") {
       context("when element that does not exist in set is removed") {
         beforeSuite {
-          set.remove("hott")
+          set.remove(element: "hott")
         }
 
         it("should still have 3 elements") {
@@ -53,11 +53,11 @@ class OrderetSetSpec: QuickSpec {
 
       context("when element is removed") {
         beforeEach {
-          set.remove("hot")
+          set.remove(element: "hot")
         }
 
         it("should not have the removed element") {
-          expect(set.has("hot")) == false
+          expect(set.has(element: "hot")) == false
         }
 
         it("should only have 2 elements") {
@@ -80,7 +80,7 @@ class OrderetSetSpec: QuickSpec {
       }
 
       context("and we have added an element that exists in set") {
-        set.append("chilli")
+        set.append(element: "chilli")
 
         it("should show count equals to 3") {
           expect(set.count) == 3

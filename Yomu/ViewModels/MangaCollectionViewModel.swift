@@ -48,7 +48,7 @@ struct MangaCollectionViewModel {
       .asObservable()
       .filter { $0 != nil }
       .map { MangaRealm.from(manga: $0!) }
-      .subscribe(Realm.rx_add()) >>>> disposeBag
+      .subscribe(Realm.rx.add()) >>>> disposeBag
 
     let this = self
 

@@ -39,6 +39,7 @@ struct OrderedSet<T: Hashable>: ExpressibleByArrayLiteral {
     elements.append(element)
   }
 
+  @discardableResult
   mutating func remove(element: T) -> Bool {
     guard let index = indexByElement[element] else {
       return false

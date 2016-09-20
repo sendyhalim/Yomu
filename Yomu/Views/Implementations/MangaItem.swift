@@ -20,10 +20,10 @@ class MangaItem: NSCollectionViewItem {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     mangaImageView.kf.indicatorType = .activity
   }
-  
+
   override func viewWillLayout() {
     super.viewWillLayout()
 
