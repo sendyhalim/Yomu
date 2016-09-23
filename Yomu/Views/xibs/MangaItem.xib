@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MangaItem" customModule="Yomu" customModuleProvider="target"/>
@@ -20,14 +21,14 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="k2U-9a-r5Z"/>
                 </imageView>
-                <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="89x-YM-u0k">
+                <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="89x-YM-u0k">
                     <rect key="frame" x="70" y="0.0" width="210" height="70"/>
                     <view key="contentView" id="bYl-sR-kkV">
                         <rect key="frame" x="0.0" y="0.0" width="210" height="70"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-sV-RKO">
-                                <rect key="frame" x="-2" y="10" width="169" height="13"/>
+                                <rect key="frame" x="-2" y="10" width="174" height="13"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="b8d-Ya-Cqz">
                                     <font key="font" metaFont="systemThin" size="10"/>
                                     <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -35,7 +36,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-mk-txx">
-                                <rect key="frame" x="-2" y="43" width="174" height="17"/>
+                                <rect key="frame" x="-2" y="43" width="179" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="qHK-Rj-0lS">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -43,10 +44,10 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="76s-Oa-UPa">
-                                <rect key="frame" x="175" y="23" width="25" height="25"/>
+                                <rect key="frame" x="180" y="25" width="20" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="eqp-ct-Nm0"/>
-                                    <constraint firstAttribute="height" constant="25" id="pQX-wL-LuJ"/>
+                                    <constraint firstAttribute="width" constant="20" id="eqp-ct-Nm0"/>
+                                    <constraint firstAttribute="height" constant="20" id="pQX-wL-LuJ"/>
                                 </constraints>
                                 <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="RightArrow" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="o6r-qi-fqD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -66,7 +67,6 @@
                         </constraints>
                     </view>
                     <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </box>
             </subviews>
             <constraints>
