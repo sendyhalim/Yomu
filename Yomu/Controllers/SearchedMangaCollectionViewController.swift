@@ -48,9 +48,12 @@ class SearchedMangaCollectionViewController: NSViewController {
       .filter {
         $0.characters.count > 2
       }
-      .throttle(0.5, scheduler: MainScheduler.instance)
+      .throttle(1.0, scheduler: MainScheduler.instance)
+      .distinctUntilChanged()
       .subscribe(onNext: { [weak self] in
-        guard let `self` = self else { return }
+        guard let `self` = self else {
+          return
+        }
 
         self.collectionViewModel.search(term: $0) >>>> self.disposeBag
       }) >>>> disposeBag
