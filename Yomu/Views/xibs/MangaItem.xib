@@ -57,11 +57,12 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="rIw-mk-txx" firstAttribute="leading" secondItem="bYl-sR-kkV" secondAttribute="leading" id="2Xe-QV-uCI"/>
+                            <constraint firstItem="FpS-sV-RKO" firstAttribute="top" secondItem="rIw-mk-txx" secondAttribute="bottom" constant="20" id="E5H-aj-0JS"/>
                             <constraint firstItem="rIw-mk-txx" firstAttribute="top" secondItem="bYl-sR-kkV" secondAttribute="top" constant="10" id="GEp-v0-WJE"/>
-                            <constraint firstAttribute="trailing" secondItem="76s-Oa-UPa" secondAttribute="trailing" constant="10" id="IWQ-Nc-ddT"/>
-                            <constraint firstAttribute="bottom" secondItem="FpS-sV-RKO" secondAttribute="bottom" constant="10" id="awz-qu-45F"/>
+                            <constraint firstItem="76s-Oa-UPa" firstAttribute="trailing" secondItem="bYl-sR-kkV" secondAttribute="trailing" constant="-10" id="IWQ-Nc-ddT"/>
                             <constraint firstItem="76s-Oa-UPa" firstAttribute="leading" secondItem="FpS-sV-RKO" secondAttribute="trailing" constant="10" id="bVc-To-puN"/>
                             <constraint firstItem="76s-Oa-UPa" firstAttribute="leading" secondItem="rIw-mk-txx" secondAttribute="trailing" constant="5" id="gUE-in-GvC"/>
+                            <constraint firstAttribute="bottom" secondItem="FpS-sV-RKO" secondAttribute="bottom" constant="10" id="ruh-vS-2aR"/>
                             <constraint firstItem="76s-Oa-UPa" firstAttribute="centerY" secondItem="bYl-sR-kkV" secondAttribute="centerY" id="sMd-mj-CRg"/>
                             <constraint firstItem="FpS-sV-RKO" firstAttribute="leading" secondItem="bYl-sR-kkV" secondAttribute="leading" id="u0e-3y-x49"/>
                         </constraints>

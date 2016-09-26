@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MangaCollectionViewController" customModule="Yomu" customModuleProvider="target">
@@ -18,7 +18,7 @@
             <subviews>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ker-t1-Qy5">
                     <rect key="frame" x="0.0" y="0.0" width="290" height="300"/>
-                    <clipView key="contentView" id="6RL-sY-8uh">
+                    <clipView key="contentView" drawsBackground="NO" id="6RL-sY-8uh">
                         <rect key="frame" x="0.0" y="0.0" width="290" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -45,8 +45,8 @@
             </subviews>
             <constraints>
                 <constraint firstItem="ker-t1-Qy5" firstAttribute="top" secondItem="SBL-jH-eqD" secondAttribute="top" id="ON8-52-cG1"/>
-                <constraint firstAttribute="trailing" secondItem="ker-t1-Qy5" secondAttribute="trailing" id="Rhs-PG-YAu"/>
-                <constraint firstAttribute="bottom" secondItem="ker-t1-Qy5" secondAttribute="bottom" id="jCO-mN-BRq"/>
+                <constraint firstItem="ker-t1-Qy5" firstAttribute="trailing" secondItem="SBL-jH-eqD" secondAttribute="trailing" id="Rhs-PG-YAu"/>
+                <constraint firstItem="ker-t1-Qy5" firstAttribute="bottom" secondItem="SBL-jH-eqD" secondAttribute="bottom" id="jCO-mN-BRq"/>
                 <constraint firstItem="ker-t1-Qy5" firstAttribute="leading" secondItem="SBL-jH-eqD" secondAttribute="leading" id="yO5-pL-2h9"/>
             </constraints>
         </customView>
