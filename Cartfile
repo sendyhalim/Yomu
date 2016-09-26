@@ -9,4 +9,4 @@ github "Quick/Nimble" "master"
 github "realm/realm-cocoa"
 github "RxSwiftCommunity/RxRealm" "master"
 github "hyperoslo/Hue" "swift3"
-github "robb/Cartography" "swift3_ci"
+github "robb/Cartography" ~> 1.0.0
