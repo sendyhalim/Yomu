@@ -88,7 +88,6 @@ class MangaContainerViewController: NSViewController {
       searchMangaCollectionView.leading == searchMangaContainer.leading
     }
 
-
     constrain(chapterCollectionVC.view, chapterContainerView) {
       chapterCollectionView, chapterContainerView in
       chapterCollectionView.top == chapterContainerView.top

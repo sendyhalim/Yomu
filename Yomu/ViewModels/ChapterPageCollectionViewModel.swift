@@ -14,11 +14,26 @@ import Swiftz
 struct ChapterPageCollectionViewModel {
   private let _chapterPages = Variable(List<ChapterPage>())
   private let _currentPageIndex = Variable(0)
+  private let _pageSize = Variable(CGSize(
+    width: Config.chapterPageSize.width,
+    height: Config.chapterPageSize.height
+  ))
+  private let _zoomScale = Variable<Double>(1.0)
 
   let chapterVM: ChapterViewModel
 
+  var reload: Driver<Void> {
+    return chapterPages
+      .asDriver()
+      .map { _ in Void() }
+  }
+
   var chapterPages: Driver<List<ChapterPage>> {
     return _chapterPages.asDriver()
+  }
+
+  var zoomScale: Driver<Double> {
+    return _zoomScale.asDriver()
   }
 
   var chapterImage: ImageUrl? {
@@ -31,6 +46,10 @@ struct ChapterPageCollectionViewModel {
 
   var count: Int {
     return _chapterPages.value.count
+  }
+
+  var pageSize: CGSize {
+    return _pageSize.value
   }
 
   var readingProgress: Driver<String> {
@@ -65,5 +84,22 @@ struct ChapterPageCollectionViewModel {
 
   func setCurrentPageIndex(_ index: Int) {
     _currentPageIndex.value = index
+  }
+
+  private func updatePageSize() {
+    _pageSize.value = CGSize(
+      width: Int(Double(Config.chapterPageSize.width) * _zoomScale.value),
+      height: Int(Double(Config.chapterPageSize.height) * _zoomScale.value)
+    )
+  }
+
+  func zoomIn() {
+    _zoomScale.value = _zoomScale.value + 0.1
+    updatePageSize()
+  }
+
+  func zoomOut() {
+    _zoomScale.value = _zoomScale.value - 0.1
+    updatePageSize()
   }
 }

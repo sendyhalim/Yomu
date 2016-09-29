@@ -19,6 +19,7 @@ class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var close: NSButton!
   @IBOutlet weak var readingProgress: NSTextField!
+  @IBOutlet weak var zoomIn: NSButton!
 
   weak var delegate: ChapterPageCollectionViewDelegate?
 
@@ -41,9 +42,19 @@ class ChapterPageCollectionViewController: NSViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
 
+    zoomIn
+      .rx.tap
+      .subscribe(onNext: vm.zoomIn) >>>> disposeBag
+
     delegate?.closeChapterPage
       >>- { close.rx.tap.subscribe(onNext: $0) }
       ~>> disposeBag
+
+    vm.reload ~~> collectionView.reloadData >>>> disposeBag
+
+    vm.zoomScale ~~> { [weak self] _ in
+      self?.collectionView.collectionViewLayout?.invalidateLayout()
+    } >>>> disposeBag
 
     vm.chapterPages ~~> { [weak self] _ in
       self?.collectionView.reloadData()
@@ -97,5 +108,14 @@ extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayou
     forRepresentedObjectAt indexPath: IndexPath
   ) {
     vm.setCurrentPageIndex((indexPath as NSIndexPath).item)
+  }
+
+  func collectionView(
+    _ collectionView: NSCollectionView,
+    layout collectionViewLayout: NSCollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath
+  ) -> NSSize {
+    print(vm.pageSize)
+    return vm.pageSize
   }
 }

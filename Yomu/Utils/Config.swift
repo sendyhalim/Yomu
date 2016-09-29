@@ -36,11 +36,17 @@ internal struct IconName {
   let descending = "Descending"
 }
 
+internal struct ChapterPageSize {
+  let width = 730
+  let height = 1040
+}
+
 public struct Config {
   static let YomuAPI: String = info["YomuAPI"] as! String
   static let style = Style()
   static let icon = Icon()
   static let iconName = IconName()
+  static let chapterPageSize = ChapterPageSize()
 
   static fileprivate var iconByName: [String: NSImage] = [:]
 
