@@ -2251,6 +2251,8 @@ fi</string>
 				<string>com.sendyhalim.Yomu</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
 			</dict>
 			<key>isa</key>
 			<string>XCBuildConfiguration</string>
@@ -2280,6 +2282,8 @@ fi</string>
 				<string>com.sendyhalim.Yomu</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
+				<key>SWIFT_VERSION</key>
+				<string>3.0</string>
 			</dict>
 			<key>isa</key>
 			<string>XCBuildConfiguration</string>
