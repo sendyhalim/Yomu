@@ -17,10 +17,6 @@ Latest yomu installer can be found [here](https://github.com/sendyhalim/yomu/rel
 3. Open the directory, there will be a yomu installer `Yomu.pkg`
 4. Double click `Yomu.pkg`
 
-
-## What's next?
-- Implement zoom functionality
-
 ## Libraries
 - [Argo](https://github.com/thoughtbot/Argo)
 - [Cartography](https://github.com/robb/Cartography)
