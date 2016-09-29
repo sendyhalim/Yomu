@@ -94,12 +94,16 @@ struct ChapterPageCollectionViewModel {
   }
 
   func zoomIn() {
-    _zoomScale.value = _zoomScale.value + 0.1
-    updatePageSize()
+    if _zoomScale.value < Config.chapterPageSize.maximumZoomScale {
+      _zoomScale.value = _zoomScale.value + Config.chapterPageSize.zoomScaleStep
+      updatePageSize()
+    }
   }
 
   func zoomOut() {
-    _zoomScale.value = _zoomScale.value - 0.1
-    updatePageSize()
+    if _zoomScale.value > Config.chapterPageSize.minimumZoomScale {
+      _zoomScale.value = _zoomScale.value - Config.chapterPageSize.zoomScaleStep
+      updatePageSize()
+    }
   }
 }
