@@ -25,15 +25,26 @@ struct ChapterPageCollectionViewModel {
   var reload: Driver<Void> {
     return chapterPages
       .asDriver()
-      .map { _ in Void() }
+      .map(const(Void()))
   }
 
   var chapterPages: Driver<List<ChapterPage>> {
     return _chapterPages.asDriver()
   }
 
-  var zoomScale: Driver<Double> {
-    return _zoomScale.asDriver()
+  var invalidateLayout: Driver<Void> {
+    return _zoomScale
+      .asDriver()
+      .map(const(Void()))
+  }
+
+  var zoomScaleText: Driver<String> {
+    return _zoomScale
+      .asDriver()
+      .map { $0 * 100 }
+      .map {
+        "\(Int($0))%"
+      }
   }
 
   var chapterImage: ImageUrl? {

@@ -21,6 +21,7 @@ class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var readingProgress: NSTextField!
   @IBOutlet weak var zoomIn: NSButton!
   @IBOutlet weak var zoomOut: NSButton!
+  @IBOutlet weak var zoomScaleLabel: NSTextField!
 
   weak var delegate: ChapterPageCollectionViewDelegate?
 
@@ -57,19 +58,17 @@ class ChapterPageCollectionViewController: NSViewController {
 
     vm.reload ~~> collectionView.reloadData >>>> disposeBag
 
-    vm.zoomScale ~~> { [weak self] _ in
-      self?.collectionView.collectionViewLayout?.invalidateLayout()
-    } >>>> disposeBag
-
-    vm.chapterPages ~~> { [weak self] _ in
-      self?.collectionView.reloadData()
-    } >>>> disposeBag
+    vm.invalidateLayout
+      ~~> collectionView.collectionViewLayout!.invalidateLayout
+      >>>> disposeBag
 
     vm.readingProgress
       ~~> readingProgress.rx.text
       >>>> disposeBag
 
-    vm.readingProgress ~~> readingProgress.rx.text >>>> disposeBag
+    vm.zoomScaleText
+      ~~> zoomScaleLabel.rx.text
+      >>>> disposeBag
 
     vm.fetch() >>>> disposeBag
   }
