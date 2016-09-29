@@ -20,6 +20,7 @@ class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var close: NSButton!
   @IBOutlet weak var readingProgress: NSTextField!
   @IBOutlet weak var zoomIn: NSButton!
+  @IBOutlet weak var zoomOut: NSButton!
 
   weak var delegate: ChapterPageCollectionViewDelegate?
 
@@ -45,6 +46,10 @@ class ChapterPageCollectionViewController: NSViewController {
     zoomIn
       .rx.tap
       .subscribe(onNext: vm.zoomIn) >>>> disposeBag
+
+    zoomOut
+      .rx.tap
+      .subscribe(onNext: vm.zoomOut) >>>> disposeBag
 
     delegate?.closeChapterPage
       >>- { close.rx.tap.subscribe(onNext: $0) }
@@ -115,7 +120,6 @@ extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayou
     layout collectionViewLayout: NSCollectionViewLayout,
     sizeForItemAt indexPath: IndexPath
   ) -> NSSize {
-    print(vm.pageSize)
     return vm.pageSize
   }
 }

@@ -12,7 +12,8 @@
                 <outlet property="collectionView" destination="IEp-r8-DMM" id="eZ6-Qc-gUP"/>
                 <outlet property="readingProgress" destination="E5O-V0-gGw" id="SzI-wp-FqL"/>
                 <outlet property="view" destination="c22-O7-iKe" id="TTh-Zp-q8q"/>
-                <outlet property="zoomIn" destination="WCI-a3-NNb" id="DXn-Gs-p1Q"/>
+                <outlet property="zoomIn" destination="IQq-oC-6uB" id="Mi7-9e-ylO"/>
+                <outlet property="zoomOut" destination="vOW-VQ-cxA" id="R6G-Yj-hUt"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -41,21 +42,38 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WCI-a3-NNb">
-                                <rect key="frame" x="108" y="9" width="81" height="32"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="02m-Qq-iCC">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="vOW-VQ-cxA">
+                                <rect key="frame" x="20" y="14" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="2Wb-7F-JWy"/>
+                                    <constraint firstAttribute="width" constant="25" id="KmU-xZ-5x4"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ZoomOut" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ze9-MN-hiy">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="IQq-oC-6uB">
+                                <rect key="frame" x="55" y="14" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="M18-PS-OH2"/>
+                                    <constraint firstAttribute="height" constant="25" id="aRj-rn-7eK"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ZoomIn" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="4m5-9P-wuo">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="WCI-a3-NNb" firstAttribute="leading" secondItem="gbb-gT-ROi" secondAttribute="leading" constant="114" id="0au-o9-fHM"/>
                             <constraint firstItem="E5O-V0-gGw" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="DCh-g4-baf"/>
-                            <constraint firstAttribute="trailing" secondItem="hYB-6H-HIJ" secondAttribute="trailing" constant="20" symbolic="YES" id="Jcp-ez-Jw3"/>
+                            <constraint firstItem="IQq-oC-6uB" firstAttribute="leading" secondItem="vOW-VQ-cxA" secondAttribute="trailing" constant="10" symbolic="YES" id="KYr-Am-KZ7"/>
                             <constraint firstItem="E5O-V0-gGw" firstAttribute="centerX" secondItem="gbb-gT-ROi" secondAttribute="centerX" id="Kaa-fM-TZP"/>
                             <constraint firstItem="hYB-6H-HIJ" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="T4L-Z8-JaY"/>
-                            <constraint firstItem="WCI-a3-NNb" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="nL4-HE-sDI"/>
+                            <constraint firstItem="vOW-VQ-cxA" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="Uga-pb-okS"/>
+                            <constraint firstItem="hYB-6H-HIJ" firstAttribute="trailing" secondItem="gbb-gT-ROi" secondAttribute="trailing" constant="-20" id="XeB-dg-Xdd"/>
+                            <constraint firstItem="IQq-oC-6uB" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="egb-jJ-fpX"/>
+                            <constraint firstItem="vOW-VQ-cxA" firstAttribute="leading" secondItem="gbb-gT-ROi" secondAttribute="leading" constant="20" symbolic="YES" id="rGO-aV-ICF"/>
                         </constraints>
                     </view>
                     <constraints>
@@ -102,4 +120,8 @@
             </constraints>
         </customView>
     </objects>
+    <resources>
+        <image name="ZoomIn" width="200" height="200"/>
+        <image name="ZoomOut" width="200" height="200"/>
+    </resources>
 </document>
