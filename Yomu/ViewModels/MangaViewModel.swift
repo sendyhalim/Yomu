@@ -13,6 +13,10 @@ struct MangaViewModel {
   private let _manga: Variable<Manga>
   private let _selected = Variable(false)
 
+  var id: String {
+    return _manga.value.id!
+  }
+
   var manga: Manga {
     return _manga.value
   }

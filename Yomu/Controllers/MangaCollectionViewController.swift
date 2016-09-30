@@ -18,8 +18,11 @@ class MangaCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
 
   weak var mangaSelectionDelegate: MangaSelectionDelegate?
+
   let vm: MangaCollectionViewModel
   let disposeBag = DisposeBag()
+
+  var currentlyDraggedIndexPaths = Set<IndexPath>()
 
   init(viewModel: MangaCollectionViewModel) {
     vm = viewModel
@@ -36,6 +39,7 @@ class MangaCollectionViewController: NSViewController {
 
     collectionView.dataSource = self
     collectionView.delegate = self
+    collectionView.register(forDraggedTypes: [NSPasteboardTypePNG, NSPasteboardTypeString])
 
     vm.mangas ~~> { [weak self] _ in
       self?.collectionView.reloadData()
@@ -89,5 +93,64 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
 
     vm.setSelectedIndex(index)
     mangaSelectionDelegate?.mangaDidSelected(viewModel.manga)
+  }
+
+  // MARK: Drag and drop operation
+  // --------------------------------------------------
+  
+  func collectionView(
+    _ collectionView: NSCollectionView,
+    pasteboardWriterForItemAt indexPath: IndexPath
+  ) -> NSPasteboardWriting? {
+    let item = NSPasteboardItem()
+    let mangaViewModel = vm[indexPath.item]
+
+    // We need to set this value
+    // to satisfy collectionView(_:validateDrop:proposedIndexPath:dropOperation:)
+    // https://developer.apple.com/reference/appkit/nscollectionviewdelegate/1525471-collectionview
+    item.setString(mangaViewModel.id, forType: NSPasteboardTypeString)
+   
+    return item
+  }
+
+  func collectionView(
+    _ collectionView: NSCollectionView,
+    validateDrop draggingInfo: NSDraggingInfo,
+    proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>,
+    dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionViewDropOperation>
+  ) -> NSDragOperation {
+    return NSDragOperation.move
+  }
+
+  func collectionView(
+    _ collectionView: NSCollectionView,
+    draggingSession session: NSDraggingSession,
+    willBeginAt screenPoint: NSPoint,
+    forItemsAt indexPaths: Set<IndexPath>
+  ) {
+    currentlyDraggedIndexPaths = indexPaths
+  }
+
+  func collectionView(
+    _ collectionView: NSCollectionView,
+    draggingSession session: NSDraggingSession,
+    endedAt screenPoint: NSPoint,
+    dragOperation operation: NSDragOperation
+  ) {
+    currentlyDraggedIndexPaths = []
+  }
+
+  func collectionView(
+    _ collectionView: NSCollectionView,
+    acceptDrop draggingInfo: NSDraggingInfo,
+    indexPath: IndexPath,
+    dropOperation: NSCollectionViewDropOperation
+  ) -> Bool {
+    let fromIndexPath = currentlyDraggedIndexPaths.first!
+    collectionView.animator().moveItem(at: fromIndexPath, to: indexPath)
+
+    vm.swapPosition(fromIndex: fromIndexPath.item, toIndex: indexPath.item)
+
+    return true
   }
 }

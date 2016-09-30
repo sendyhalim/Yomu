@@ -97,4 +97,8 @@ struct MangaCollectionViewModel {
 
     self[selectedIndex.index].setSelected(true)
   }
+
+  func swapPosition(fromIndex: Int, toIndex: Int) {
+    _mangas.value.swap(fromIndex: fromIndex, toIndex: toIndex)
+  }
 }
