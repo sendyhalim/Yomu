@@ -55,16 +55,16 @@ class SearchedMangaCollectionViewController: NSViewController {
           return
         }
 
-        self.collectionViewModel.search(term: $0) >>>> self.disposeBag
-      }) >>>> disposeBag
+        self.collectionViewModel.search(term: $0) ==> self.disposeBag
+      }) ==> disposeBag
 
     collectionViewModel
       .mangas
       .drive(onNext: { [weak self] _ in
         self?.collectionView.reloadData()
-      }) >>>> disposeBag
+      }) ==> disposeBag
 
-    collectionViewModel.fetching ~~> progressIndicator.animating >>>> disposeBag
+    collectionViewModel.fetching ~~> progressIndicator.animating ==> disposeBag
 
     backButton.rx.tap.subscribe(onNext: { [weak self] in
       guard let `self` = self else {
@@ -72,7 +72,7 @@ class SearchedMangaCollectionViewController: NSViewController {
       }
 
       self.delegate?.closeView(self)
-    }) >>>> disposeBag
+    }) ==> disposeBag
   }
 
   @IBAction func closeView(_ sender: NSButton) {
@@ -103,8 +103,8 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
 
     let vm = collectionViewModel[(indexPath as NSIndexPath).item]
 
-    vm.title ~~> cell.titleTextField.rx.text >>>> cell.disposeBag
-    vm.previewUrl ~~> cell.mangaImageView.setImageWithUrl >>>> cell.disposeBag
+    vm.title ~~> cell.titleTextField.rx.text ==> cell.disposeBag
+    vm.previewUrl ~~> cell.mangaImageView.setImageWithUrl ==> cell.disposeBag
     cell.accessoryButton.image = Config.icon.pin
 
     return cell

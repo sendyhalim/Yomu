@@ -51,8 +51,12 @@ struct ChapterPageCollectionViewModel {
     return _chapterPages.value.isEmpty ? .none : _chapterPages.value.first!.image
   }
 
-  var title: Driver<String> {
-    return chapterVM.title
+  var headerTitle: Driver<String> {
+    return chapterVM
+      .number
+      .map {
+        "Chapter \($0)"
+      }
   }
 
   var count: Int {

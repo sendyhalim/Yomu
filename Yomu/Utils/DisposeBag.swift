@@ -15,15 +15,14 @@ precedencegroup YomuAddToDisposeBagPrecedence {
   higherThan: AssignmentPrecedence
 }
 
-infix operator >>>> : YomuAddToDisposeBagPrecedence
+infix operator ==> : YomuAddToDisposeBagPrecedence
 
-func >>>> (disposable: Disposable, disposeBag: DisposeBag) {
+func ==> (disposable: Disposable, disposeBag: DisposeBag) {
   disposable.addDisposableTo(disposeBag)
 }
-
 
 infix operator ~>> : YomuAddToDisposeBagPrecedence
 
 func ~>> (disposable: Disposable?, disposeBag: DisposeBag) {
-  disposable >>- { $0 >>>> disposeBag }
+  disposable >>- { $0 ==> disposeBag }
 }

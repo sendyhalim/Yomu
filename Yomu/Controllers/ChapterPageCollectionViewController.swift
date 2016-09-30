@@ -22,6 +22,7 @@ class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var zoomIn: NSButton!
   @IBOutlet weak var zoomOut: NSButton!
   @IBOutlet weak var zoomScaleLabel: NSTextField!
+  @IBOutlet weak var headerTitle: NSTextField!
 
   weak var delegate: ChapterPageCollectionViewDelegate?
 
@@ -46,31 +47,35 @@ class ChapterPageCollectionViewController: NSViewController {
 
     zoomIn
       .rx.tap
-      .subscribe(onNext: vm.zoomIn) >>>> disposeBag
+      .subscribe(onNext: vm.zoomIn) ==> disposeBag
 
     zoomOut
       .rx.tap
-      .subscribe(onNext: vm.zoomOut) >>>> disposeBag
+      .subscribe(onNext: vm.zoomOut) ==> disposeBag
 
     delegate?.closeChapterPage
       >>- { close.rx.tap.subscribe(onNext: $0) }
       ~>> disposeBag
 
-    vm.reload ~~> collectionView.reloadData >>>> disposeBag
+    vm.reload ~~> collectionView.reloadData ==> disposeBag
 
     vm.invalidateLayout
       ~~> collectionView.collectionViewLayout!.invalidateLayout
-      >>>> disposeBag
+      ==> disposeBag
 
     vm.readingProgress
       ~~> readingProgress.rx.text
-      >>>> disposeBag
+      ==> disposeBag
 
     vm.zoomScaleText
       ~~> zoomScaleLabel.rx.text
-      >>>> disposeBag
+      ==> disposeBag
 
-    vm.fetch() >>>> disposeBag
+    vm.headerTitle
+      ~~> headerTitle.rx.text
+      ==> disposeBag
+
+    vm.fetch() ==> disposeBag
   }
 }
 
@@ -99,7 +104,7 @@ extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
 
     pageViewModel.imageUrl
       ~~> cell.pageImageView.setImageWithUrl
-      >>>> disposeBag
+      ==> disposeBag
 
     return cell
   }

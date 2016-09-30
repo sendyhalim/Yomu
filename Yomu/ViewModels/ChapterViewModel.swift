@@ -25,6 +25,10 @@ struct ChapterViewModel {
     return _chapter.asDriver().map { $0.title }
   }
 
+  var number: Driver<Int> {
+    return _chapter.asDriver().map { $0.number }
+  }
+
   var chapter: Chapter {
     return _chapter.value
   }

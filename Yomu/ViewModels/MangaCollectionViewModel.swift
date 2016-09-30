@@ -48,14 +48,14 @@ struct MangaCollectionViewModel {
       .asObservable()
       .filter { $0 != nil }
       .map { MangaRealm.from(manga: $0!) }
-      .subscribe(Realm.rx.add()) >>>> disposeBag
+      .subscribe(Realm.rx.add()) ==> disposeBag
 
     let this = self
 
     _mangas.asDriver() ~~> {
       let viewModels = $0.flatMap(MangaViewModel.init)
       this.mangaViewModels.value = List(fromArray: viewModels)
-    } >>>> disposeBag
+    } ==> disposeBag
   }
 
   subscript(index: Int) -> MangaViewModel {

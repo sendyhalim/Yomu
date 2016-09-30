@@ -39,7 +39,7 @@ class MangaCollectionViewController: NSViewController {
 
     vm.mangas ~~> { [weak self] _ in
       self?.collectionView.reloadData()
-    } >>>> disposeBag
+    } ==> disposeBag
   }
 
   override func viewWillLayout() {
@@ -70,10 +70,10 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
 
     let mangaViewModel = vm[(indexPath as NSIndexPath).item]
 
-    mangaViewModel.title ~~> cell.titleTextField.rx.text >>>> cell.disposeBag
-    mangaViewModel.previewUrl ~~> cell.mangaImageView.setImageWithUrl >>>> cell.disposeBag
-    mangaViewModel.categoriesString ~~> cell.categoryTextField.rx.text >>>> cell.disposeBag
-    mangaViewModel.selected.map(!) ~~> cell.accessoryButton.rx.hidden >>>> cell.disposeBag
+    mangaViewModel.title ~~> cell.titleTextField.rx.text ==> cell.disposeBag
+    mangaViewModel.previewUrl ~~> cell.mangaImageView.setImageWithUrl ==> cell.disposeBag
+    mangaViewModel.categoriesString ~~> cell.categoryTextField.rx.text ==> cell.disposeBag
+    mangaViewModel.selected.map(!) ~~> cell.accessoryButton.rx.hidden ==> cell.disposeBag
 
     return cell
   }

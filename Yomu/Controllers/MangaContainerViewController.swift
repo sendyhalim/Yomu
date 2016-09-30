@@ -144,8 +144,8 @@ extension MangaContainerViewController: SearchedMangaDelegate {
         return
       }
 
-      self.mangaCollectionVM.fetch(id: $0) >>>> self.disposeBag
-    } >>>> self.disposeBag
+      self.mangaCollectionVM.fetch(id: $0) ==> self.disposeBag
+    } ==> self.disposeBag
 
     Router.moveTo(id: YomuRouteId.Main)
   }

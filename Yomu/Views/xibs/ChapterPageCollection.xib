@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="close" destination="hYB-6H-HIJ" id="wV0-Yo-ZSa"/>
                 <outlet property="collectionView" destination="IEp-r8-DMM" id="eZ6-Qc-gUP"/>
+                <outlet property="headerTitle" destination="5l1-IJ-UVG" id="IWO-FR-7AU"/>
                 <outlet property="readingProgress" destination="E5O-V0-gGw" id="SzI-wp-FqL"/>
                 <outlet property="view" destination="c22-O7-iKe" id="TTh-Zp-q8q"/>
                 <outlet property="zoomIn" destination="IQq-oC-6uB" id="Mi7-9e-ylO"/>
@@ -36,8 +37,8 @@
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E5O-V0-gGw" customClass="NoteLabel" customModule="Yomu" customModuleProvider="target">
-                                <rect key="frame" x="346" y="18" width="37" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="OA0-QP-hHW">
+                                <rect key="frame" x="159" y="18" width="71" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1/20 Pages" id="OA0-QP-hHW">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -56,7 +57,7 @@
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w8v-C9-1Sb">
                                 <rect key="frame" x="86" y="18" width="37" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="VqQ-8C-3ah">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="100%" id="VqQ-8C-3ah">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -73,13 +74,23 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5l1-IJ-UVG">
+                                <rect key="frame" x="333.5" y="18" width="63" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Chapter 1" id="8Ur-l8-hWe">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="5l1-IJ-UVG" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="0c6-es-YP0"/>
                             <constraint firstItem="w8v-C9-1Sb" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="7lD-Pp-0gL"/>
-                            <constraint firstItem="E5O-V0-gGw" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="DCh-g4-baf"/>
+                            <constraint firstItem="E5O-V0-gGw" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="9pj-nK-rmK"/>
                             <constraint firstItem="IQq-oC-6uB" firstAttribute="leading" secondItem="vOW-VQ-cxA" secondAttribute="trailing" constant="10" symbolic="YES" id="KYr-Am-KZ7"/>
-                            <constraint firstItem="E5O-V0-gGw" firstAttribute="centerX" secondItem="gbb-gT-ROi" secondAttribute="centerX" id="Kaa-fM-TZP"/>
                             <constraint firstItem="hYB-6H-HIJ" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="T4L-Z8-JaY"/>
+                            <constraint firstItem="5l1-IJ-UVG" firstAttribute="centerX" secondItem="gbb-gT-ROi" secondAttribute="centerX" id="T5W-nF-Kfd"/>
+                            <constraint firstItem="E5O-V0-gGw" firstAttribute="leading" secondItem="w8v-C9-1Sb" secondAttribute="trailing" constant="40" id="U6q-36-QSh"/>
                             <constraint firstItem="vOW-VQ-cxA" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="Uga-pb-okS"/>
                             <constraint firstItem="hYB-6H-HIJ" firstAttribute="trailing" secondItem="gbb-gT-ROi" secondAttribute="trailing" constant="-20" id="XeB-dg-Xdd"/>
                             <constraint firstItem="IQq-oC-6uB" firstAttribute="centerY" secondItem="gbb-gT-ROi" secondAttribute="centerY" id="egb-jJ-fpX"/>

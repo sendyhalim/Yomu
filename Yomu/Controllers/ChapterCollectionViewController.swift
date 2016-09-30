@@ -47,25 +47,25 @@ class ChapterCollectionViewController: NSViewController {
   func setupSubscriptions() {
     vm.chapters.drive(onNext: { [weak self] _ in
       self!.collectionView.reloadData()
-    }) >>>> disposeBag
+    }) ==> disposeBag
 
-    vm.fetching.drive(onNext: progressIndicator.animating) >>>> disposeBag
+    vm.fetching.drive(onNext: progressIndicator.animating) ==> disposeBag
 
     chapterTitle
       .rx.text
       .throttle(0.5, scheduler: MainScheduler.instance)
       .subscribe(onNext: { [weak self] in
         self?.vm.filter(pattern: $0)
-      }) >>>> disposeBag
+      }) ==> disposeBag
 
 
     toggleSort
       .rx.tap
-      .subscribe(onNext: vm.toggleSort) >>>> disposeBag
+      .subscribe(onNext: vm.toggleSort) ==> disposeBag
 
     vm.orderingIconName.drive(onNext: { [weak self] in
       self?.toggleSort.image = Config.icon(name: $0)
-    }) >>>> disposeBag
+    }) ==> disposeBag
   }
 }
 
@@ -103,9 +103,9 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     // will be fetched. Activity indicator will be removed automatically by kingfisher
     // after image preview is fetched.
     cell.chapterPreview.kf.indicator?.startAnimatingView()
-    chapter.fetchPreview() >>>> cell.disposeBag
-    chapter.title ~~> cell.chapterTitle.rx.text >>>> cell.disposeBag
-    chapter.previewUrl ~~> cell.chapterPreview.setImageWithUrl >>>> cell.disposeBag
+    chapter.fetchPreview() ==> cell.disposeBag
+    chapter.title ~~> cell.chapterTitle.rx.text ==> cell.disposeBag
+    chapter.previewUrl ~~> cell.chapterPreview.setImageWithUrl ==> cell.disposeBag
 
     return cell
   }
@@ -145,6 +145,6 @@ extension ChapterCollectionViewController: MangaSelectionDelegate {
     }
 
     // At this point we are sure that manga.id will 100% available
-    vm.fetch(id: manga.id!) >>>> disposeBag
+    vm.fetch(id: manga.id!) ==> disposeBag
   }
 }
