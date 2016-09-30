@@ -80,13 +80,41 @@ class OrderetSetSpec: QuickSpec {
       }
 
       context("and we have added an element that exists in set") {
-        set.append(element: "chilli")
+        beforeSuite {
+          set.append(element: "chilli")
+        }
 
         it("should show count equals to 3") {
           expect(set.count) == 3
         }
 
         it("should be ordered") {
+          expect(set[0]) == "hot"
+          expect(set[1]) == "chilli"
+          expect(set[2]) == "peppers"
+        }
+      }
+    }
+
+    describe(".swap()") {
+      context("when we swap element at index 0 to 2") {
+        beforeEach {
+          set.swap(fromIndex: 0, toIndex: 2)
+        }
+        
+        it("should swap the set") {
+          expect(set[0]) == "peppers"
+          expect(set[1]) == "chilli"
+          expect(set[2]) == "hot"
+        }
+      }
+
+      context("when target index is out of range") {
+        beforeEach {
+          set.swap(fromIndex: 0, toIndex: 3)
+        }
+
+        it("should not swap the set") {
           expect(set[0]) == "hot"
           expect(set[1]) == "chilli"
           expect(set[2]) == "peppers"

@@ -24,6 +24,10 @@ struct OrderedSet<T: Hashable>: ExpressibleByArrayLiteral {
     append(elements: elements)
   }
 
+  private func validIndex(index: Int) -> Bool {
+    return index > -1 && index < elements.count
+  }
+
   mutating func append(elements: [T]) {
     for element in elements {
       append(element: element)
@@ -39,16 +43,30 @@ struct OrderedSet<T: Hashable>: ExpressibleByArrayLiteral {
     elements.append(element)
   }
 
+  mutating func swap(fromIndex: Int, toIndex: Int) {
+    guard validIndex(index: fromIndex) && validIndex(index: toIndex) else {
+      return
+    }
+
+    let fromElement = elements[fromIndex]
+    let toElement = elements[toIndex]
+
+    indexByElement[fromElement] = toIndex
+    indexByElement[toElement] = fromIndex
+
+    elements[fromIndex] = toElement
+    elements[toIndex] = fromElement
+  }
+
   @discardableResult
-  mutating func remove(element: T) -> Bool {
+  mutating func remove(element: T) -> T? {
     guard let index = indexByElement[element] else {
-      return false
+      return .none
     }
 
     indexByElement[element] = nil
-    elements.remove(at: index)
 
-    return true
+    return elements.remove(at: index)
   }
 
   func has(element: T) -> Bool {
