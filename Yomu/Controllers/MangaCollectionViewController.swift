@@ -150,7 +150,7 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     let fromIndexPath = currentlyDraggedIndexPaths.first!
     collectionView.animator().moveItem(at: fromIndexPath, to: indexPath)
 
-    vm.swapPosition(fromIndex: fromIndexPath.item, toIndex: indexPath.item)
+    vm.move(fromIndex: fromIndexPath.item, toIndex: indexPath.item)
 
     return true
   }

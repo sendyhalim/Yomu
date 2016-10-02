@@ -49,7 +49,7 @@ class ChapterCollectionViewController: NSViewController {
       self!.collectionView.reloadData()
     }) ==> disposeBag
 
-    vm.fetching.drive(onNext: progressIndicator.animating) ==> disposeBag
+    vm.fetching ~~> progressIndicator.animating ==> disposeBag
 
     chapterTitle
       .rx.text

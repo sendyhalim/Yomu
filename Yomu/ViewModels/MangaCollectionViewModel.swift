@@ -23,10 +23,12 @@ struct MangaCollectionViewModel {
   private let _selectedIndex = Variable(SelectedIndex(previousIndex: -1, index: -1))
   private var _fetching = Variable(false)
   private var _mangas: Variable<OrderedSet<Manga>> = {
-    let mangas = Database.queryMangas()
-    return Variable(OrderedSet(elements: Database.queryMangas()))
+    let mangas = Database.queryMangas().sorted {
+      $0.position < $1.position
+    }
+
+    return Variable(OrderedSet(elements: mangas))
   }()
-  private let recentlyAddedManga: Variable<Manga?> = Variable(.none)
   private let recentlyDeletedManga: Variable<Manga?> = Variable(.none)
   private var mangaViewModels = Variable(List<MangaViewModel>())
 
@@ -45,12 +47,6 @@ struct MangaCollectionViewModel {
   var disposeBag = DisposeBag()
 
   init() {
-    recentlyAddedManga
-      .asObservable()
-      .filter { $0 != nil }
-      .map { MangaRealm.from(manga: $0!) }
-      .subscribe(Realm.rx.add()) ==> disposeBag
-
     recentlyDeletedManga
       .asObservable()
       .filter { $0 != nil }
@@ -63,10 +59,17 @@ struct MangaCollectionViewModel {
 
     let this = self
 
-    _mangas.asDriver() ~~> {
+    _mangas.asObservable() ~~> {
       let viewModels = $0.flatMap(MangaViewModel.init)
       this.mangaViewModels.value = List(fromArray: viewModels)
     } ==> disposeBag
+
+    _mangas
+      .asObservable()
+      .filter { $0.count != 0 }
+      .flatMap { Observable.from($0) }
+      .map(MangaRealm.from(manga:))
+      .subscribe(Realm.rx.add(update: true)) ==> disposeBag
   }
 
   subscript(index: Int) -> MangaViewModel {
@@ -86,13 +89,13 @@ struct MangaCollectionViewModel {
       .subscribe(onNext: {
         var manga = $0
         manga.id = id
+        manga.position = self.count
 
         // Manga already in collection
         if self._mangas.value.contains(manga) {
           return
         }
 
-        self.recentlyAddedManga.value = manga
         self._mangas.value.append(element: manga)
 
         for (index, var manga) in self._mangas.value.enumerated() {
@@ -115,8 +118,20 @@ struct MangaCollectionViewModel {
     self[selectedIndex.index].setSelected(true)
   }
 
-  func swapPosition(fromIndex: Int, toIndex: Int) {
-    _mangas.value.swap(fromIndex: fromIndex, toIndex: toIndex)
+  func move(fromIndex: Int, toIndex: Int) {
+    let manga = self[fromIndex].manga
+    _mangas.value.remove(index: fromIndex)
+    _mangas.value.insert(element: manga, atIndex: toIndex)
+
+    let indexes: [Int] = [Int](0..<self.count)
+    let mangas: [Manga] = indexes.map {
+      var manga = self._mangas.value[$0]
+      manga.position = $0
+
+      return manga
+    }
+
+    _mangas.value = OrderedSet(elements: mangas)
   }
 
   func remove(mangaIndex: Int) {
