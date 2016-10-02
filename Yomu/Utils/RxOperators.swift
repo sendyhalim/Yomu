@@ -10,13 +10,13 @@ import RxCocoa
 import RxSwift
 import Swiftz
 
-precedencegroup YomuDriverBindPrecedence {
+precedencegroup YomuRxBindPrecedence {
   associativity: left
   lowerThan: CategoryPrecedence, DefaultPrecedence
   higherThan: YomuAddToDisposeBagPrecedence
 }
 
-infix operator ~~> : YomuDriverBindPrecedence
+infix operator ~~> : YomuRxBindPrecedence
 
 func ~~> <T>(driver: Driver<T>, f: @escaping (T) -> Void) -> Disposable {
   return driver.drive(onNext: f)
@@ -24,4 +24,8 @@ func ~~> <T>(driver: Driver<T>, f: @escaping (T) -> Void) -> Disposable {
 
 func ~~> <T, O: ObserverType>(driver: Driver<T>, observer: O) -> Disposable where O.E == T {
   return driver.drive(observer)
+}
+
+func ~~> <T>(observable: Observable<T>, f: @escaping (T) -> Void) -> Disposable {
+  return observable.subscribe(onNext: f)
 }
