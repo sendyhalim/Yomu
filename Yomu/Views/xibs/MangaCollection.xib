@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="290" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView selectable="YES" id="9Vo-y1-T4n">
+                            <collectionView selectable="YES" id="9Vo-y1-T4n" customClass="MenuableCollectionView" customModule="Yomu" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="225"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Mnv-gB-wXm">

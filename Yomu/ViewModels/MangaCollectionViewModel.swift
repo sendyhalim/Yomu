@@ -27,6 +27,7 @@ struct MangaCollectionViewModel {
     return Variable(OrderedSet(elements: Database.queryMangas()))
   }()
   private let recentlyAddedManga: Variable<Manga?> = Variable(.none)
+  private let recentlyDeletedManga: Variable<Manga?> = Variable(.none)
   private var mangaViewModels = Variable(List<MangaViewModel>())
 
   var mangas: Driver<List<MangaViewModel>> {
@@ -49,6 +50,16 @@ struct MangaCollectionViewModel {
       .filter { $0 != nil }
       .map { MangaRealm.from(manga: $0!) }
       .subscribe(Realm.rx.add()) ==> disposeBag
+
+    recentlyDeletedManga
+      .asObservable()
+      .filter { $0 != nil }
+      .map { manga in
+        let id = manga?.id
+        
+        return Database.queryMangaRealm(id: id!)
+      }
+      .subscribe(Realm.rx.delete()) ==> disposeBag
 
     let this = self
 
@@ -106,5 +117,9 @@ struct MangaCollectionViewModel {
 
   func swapPosition(fromIndex: Int, toIndex: Int) {
     _mangas.value.swap(fromIndex: fromIndex, toIndex: toIndex)
+  }
+
+  func remove(mangaIndex: Int) {
+    recentlyDeletedManga.value = _mangas.value.remove(index: mangaIndex)
   }
 }

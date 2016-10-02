@@ -22,7 +22,6 @@ func ~~> <T>(driver: Driver<T>, f: @escaping (T) -> Void) -> Disposable {
   return driver.drive(onNext: f)
 }
 
-
 func ~~> <T, O: ObserverType>(driver: Driver<T>, observer: O) -> Disposable where O.E == T {
   return driver.drive(observer)
 }

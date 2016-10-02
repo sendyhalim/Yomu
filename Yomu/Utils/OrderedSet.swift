@@ -64,6 +64,21 @@ struct OrderedSet<T: Hashable>: ExpressibleByArrayLiteral {
       return .none
     }
 
+    return remove(element: element, index: index)
+  }
+
+  @discardableResult
+  mutating func remove(index: Int) -> T? {
+    guard validIndex(index: index) else {
+      return .none
+    }
+
+    let element = elements[index]
+
+    return remove(element: element, index: index)
+  }
+
+  mutating private func remove(element: T, index: Int) -> T {
     indexByElement[element] = nil
 
     return elements.remove(at: index)

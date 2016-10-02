@@ -19,6 +19,10 @@ class MangaRealm: Object {
   dynamic var commaSeparatedCategories: String = ""
   // dynamic var position: Int = -1
 
+  override static func primaryKey() -> String? {
+    return "id"
+  }
+
   static func from(manga: Manga) -> MangaRealm {
     let mangaRealm = MangaRealm()
 

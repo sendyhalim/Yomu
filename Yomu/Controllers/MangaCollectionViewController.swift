@@ -15,7 +15,7 @@ protocol MangaSelectionDelegate: class {
 }
 
 class MangaCollectionViewController: NSViewController {
-  @IBOutlet weak var collectionView: NSCollectionView!
+  @IBOutlet weak var collectionView: MenuableCollectionView!
 
   weak var mangaSelectionDelegate: MangaSelectionDelegate?
 
@@ -37,6 +37,7 @@ class MangaCollectionViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    collectionView.menuSource = self
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.register(forDraggedTypes: [NSPasteboardTypePNG, NSPasteboardTypeString])
@@ -152,5 +153,37 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     vm.swapPosition(fromIndex: fromIndexPath.item, toIndex: indexPath.item)
 
     return true
+  }
+}
+
+extension MangaCollectionViewController: CollectionViewMenuSource {
+  func menu(for event: NSEvent) -> NSMenu? {
+    let menu = NSMenu()
+
+
+    let point = collectionView.convert(event.locationInWindow, from: nil)
+
+    // There's a possibility that user right click on empty space between cell items
+    guard let indexPath = collectionView.indexPathForItem(at: point) else {
+      return .none
+    }
+
+    let delete = NSMenuItem(
+      title: "Delete Manga",
+      action: #selector(MangaCollectionViewController.deleteManga(item:)),
+      keyEquivalent: ""
+    )
+
+    delete.representedObject = indexPath
+
+    menu.addItem(delete)
+
+    return menu
+  }
+
+  func deleteManga(item: NSMenuItem) {
+    let indexPath = item.representedObject as! IndexPath
+
+    vm.remove(mangaIndex: indexPath.item)
   }
 }
