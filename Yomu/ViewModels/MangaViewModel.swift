@@ -46,4 +46,8 @@ struct MangaViewModel {
   func setSelected(_ selected: Bool) {
     _selected.value = selected
   }
+
+  func update(manga: Manga) {
+    self._manga.value = manga
+  }
 }

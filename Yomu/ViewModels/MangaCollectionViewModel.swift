@@ -46,6 +46,15 @@ struct MangaCollectionViewModel {
 
   var disposeBag = DisposeBag()
 
+  var reload: Driver<Void> {
+    let void = Void()
+
+    return Observable
+      .of(_mangas.asObservable().map(const(void)), mangaViewModels.asObservable().map(const(void)))
+      .merge()
+      .asDriver(onErrorJustReturn: Void())
+  }
+
   init() {
     recentlyDeletedManga
       .asObservable()
@@ -111,8 +120,8 @@ struct MangaCollectionViewModel {
     let selectedIndex = SelectedIndex(previousIndex: previous.index, index: index)
     _selectedIndex.value = selectedIndex
 
-    if selectedIndex.previousIndex != -1 {
-      self[selectedIndex.previousIndex].setSelected(false)
+    mangaViewModels.value.forEach {
+      $0.setSelected(false)
     }
 
     self[selectedIndex.index].setSelected(true)
@@ -132,13 +141,9 @@ struct MangaCollectionViewModel {
 
   private func updateMangaPositions() {
     let indexes: [Int] = [Int](0..<self.count)
-    let mangas: [Manga] = indexes.map {
-      var manga = self._mangas.value[$0]
-      manga.position = $0
 
-      return manga
+    indexes.forEach {
+      _mangas.value[$0].position = $0
     }
-
-    _mangas.value = OrderedSet(elements: mangas)
   }
 }

@@ -42,7 +42,7 @@ class MangaCollectionViewController: NSViewController {
     mangaCollectionView.delegate = self
     mangaCollectionView.register(forDraggedTypes: [NSPasteboardTypePNG, NSPasteboardTypeString])
 
-    vm.mangas ~~> { [weak self] _ in
+    vm.reload ~~> { [weak self] _ in
       self?.mangaCollectionView.reloadData()
     } ==> disposeBag
   }
@@ -148,8 +148,8 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     dropOperation: NSCollectionViewDropOperation
   ) -> Bool {
     let fromIndexPath = currentlyDraggedIndexPaths.first!
-    collectionView.animator().moveItem(at: fromIndexPath, to: indexPath)
 
+    collectionView.animator().moveItem(at: fromIndexPath, to: indexPath)
     vm.move(fromIndex: fromIndexPath.item, toIndex: indexPath.item)
 
     return true
