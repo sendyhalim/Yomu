@@ -56,7 +56,7 @@ struct MangaCollectionViewModel {
       .filter { $0 != nil }
       .map { manga in
         let id = manga?.id
-        
+
         return Database.queryMangaRealm(id: id!)
       }
       .subscribe(Realm.rx.delete()) ==> disposeBag

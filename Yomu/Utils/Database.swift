@@ -10,11 +10,51 @@ import Foundation
 import RealmSwift
 
 struct Database {
-  // TODO: Add primary key
-  static fileprivate let realm = try! Realm()
+  static fileprivate let version: UInt64 = 1
+  static fileprivate var _realm: Realm!
+
+  static func realm() -> Realm {
+    guard let _ = _realm else {
+      Database.migrate()
+
+      _realm = try! Realm()
+
+      return _realm
+    }
+
+    return _realm
+  }
+
+  static func migrate() {
+    let config = Realm.Configuration(
+      schemaVersion: Database.version,
+
+      // This block will be called automatically when opening a Realm with
+      // a schema version lower than the one set above
+      migrationBlock: { migration, oldSchemaVersion in
+        var maxIndex = -1
+
+        // The enumerateObjects(ofType:_:) method iterates
+        // over every Person object stored in the Realm file
+        migration.enumerateObjects(ofType: MangaRealm.className()) { oldObject, newObject in
+          maxIndex = maxIndex + 1
+        }
+
+        // The enumerateObjects(ofType:_:) method iterates
+        // over every Person object stored in the Realm file
+        migration.enumerateObjects(ofType: MangaRealm.className()) { oldObject, newObject in
+          newObject!["position"] = maxIndex
+          maxIndex = maxIndex - 1
+        }
+      }
+    )
+
+    // Tell Realm to use this new configuration object for the default Realm
+    Realm.Configuration.defaultConfiguration = config
+  }
 
   static func queryMangas() -> Array<Manga> {
-    return realm
+    return realm()
       .objects(MangaRealm.self)
       .map(MangaRealm.from(mangaRealm:))
   }
@@ -26,6 +66,6 @@ struct Database {
   }
 
   static func queryMangaRealm(id: String) -> MangaRealm {
-    return realm.object(ofType: MangaRealm.self, forPrimaryKey: id)!
+    return realm().object(ofType: MangaRealm.self, forPrimaryKey: id)!
   }
 }
