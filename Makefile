@@ -22,6 +22,9 @@ clean:
 	rm -f $(output_package_name)
 	xcodebuild $(xcode_flags) clean
 
+clean_realm:
+	rm -rf ~/Library/Application\ Support/com.sendyhalim.Yomu/*.realm*
+
 test: clean bootstrap
 	xcodebuild $(xcode_flags_test) test
 
