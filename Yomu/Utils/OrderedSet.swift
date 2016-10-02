@@ -78,6 +78,25 @@ struct OrderedSet<T: Hashable>: ExpressibleByArrayLiteral {
     return remove(element: element, index: index)
   }
 
+  mutating func insert(element: T, atIndex: Int) {
+    if atIndex == 0 {
+      elements = elements.cons(element)
+    } else if atIndex == count {
+      elements.append(element)
+    } else {
+      let head = elements[0..<atIndex]
+      let tail = elements[atIndex..<count]
+
+      elements = head + [element] + tail
+    }
+
+    // Just update all elements index for simplicity sake's,
+    // because the elements count in this app should be relatively low, it's ok to be O(n)
+    for (index, element) in elements.enumerated() {
+      indexByElement[element] = index
+    }
+  }
+
   mutating private func remove(element: T, index: Int) -> T {
     indexByElement[element] = nil
 
@@ -92,7 +111,7 @@ struct OrderedSet<T: Hashable>: ExpressibleByArrayLiteral {
 extension OrderedSet: CustomStringConvertible {
   var description: String {
     return elements.reduce("OrderedSet \(count) objects: ") {
-      "\($0), $1"
+      "\($0), \($1)"
     }
   }
 }
@@ -123,10 +142,6 @@ extension OrderedSet: MutableCollection {
     }
 
     set {
-      if has(element: newValue) {
-        return
-      }
-
       let oldValue = elements[index]
       indexByElement[oldValue] = nil
       indexByElement[newValue] = index

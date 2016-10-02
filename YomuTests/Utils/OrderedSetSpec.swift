@@ -121,5 +121,46 @@ class OrderetSetSpec: QuickSpec {
         }
       }
     }
+
+    describe(".insertAt()") {
+      context("when inserted at the first index") {
+        beforeEach {
+          set.insert(element: "yo", atIndex: 0)
+        }
+
+        it("should prepend the element") {
+          expect(set[0]) == "yo"
+          expect(set[1]) == "hot"
+          expect(set[2]) == "chilli"
+          expect(set[3]) == "peppers"
+        }
+      }
+
+      context("when inserted at the middle") {
+        beforeEach {
+          set.insert(element: "yea", atIndex: 1)
+        }
+
+        it("should shift the tail correctly") {
+          expect(set[0]) == "hot"
+          expect(set[1]) == "yea"
+          expect(set[2]) == "chilli"
+          expect(set[3]) == "peppers"
+        }
+      }
+
+      context("when inserted at the end") {
+        beforeEach {
+          set.insert(element: "yap", atIndex: 3)
+        }
+
+        it("should append the element") {
+          expect(set[0]) == "hot"
+          expect(set[1]) == "chilli"
+          expect(set[2]) == "peppers"
+          expect(set[3]) == "yap"
+        }
+      }
+    }
   }
 }
