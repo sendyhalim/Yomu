@@ -15,7 +15,7 @@ protocol MangaSelectionDelegate: class {
 }
 
 class MangaCollectionViewController: NSViewController {
-  @IBOutlet weak var collectionView: MenuableCollectionView!
+  @IBOutlet weak var mangaCollectionView: MenuableCollectionView!
 
   weak var mangaSelectionDelegate: MangaSelectionDelegate?
 
@@ -37,13 +37,13 @@ class MangaCollectionViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    collectionView.menuSource = self
-    collectionView.dataSource = self
-    collectionView.delegate = self
-    collectionView.register(forDraggedTypes: [NSPasteboardTypePNG, NSPasteboardTypeString])
+    mangaCollectionView.menuSource = self
+    mangaCollectionView.dataSource = self
+    mangaCollectionView.delegate = self
+    mangaCollectionView.register(forDraggedTypes: [NSPasteboardTypePNG, NSPasteboardTypeString])
 
     vm.mangas ~~> { [weak self] _ in
-      self?.collectionView.reloadData()
+      self?.mangaCollectionView.reloadData()
     } ==> disposeBag
   }
 
@@ -161,10 +161,10 @@ extension MangaCollectionViewController: CollectionViewMenuSource {
     let menu = NSMenu()
 
 
-    let point = collectionView.convert(event.locationInWindow, from: nil)
+    let point = mangaCollectionView.convert(event.locationInWindow, from: nil)
 
     // There's a possibility that user right click on empty space between cell items
-    guard let indexPath = collectionView.indexPathForItem(at: point) else {
+    guard let indexPath = mangaCollectionView.indexPathForItem(at: point) else {
       return .none
     }
 
@@ -173,9 +173,16 @@ extension MangaCollectionViewController: CollectionViewMenuSource {
       action: #selector(MangaCollectionViewController.deleteManga(item:)),
       keyEquivalent: ""
     )
-
     delete.representedObject = indexPath
 
+    let showChapters = NSMenuItem(
+      title: "Show Chapters",
+      action: #selector(MangaCollectionViewController.showChapters(item:)),
+      keyEquivalent: ""
+    )
+    showChapters.representedObject = indexPath
+
+    menu.addItem(showChapters)
     menu.addItem(delete)
 
     return menu
@@ -185,5 +192,11 @@ extension MangaCollectionViewController: CollectionViewMenuSource {
     let indexPath = item.representedObject as! IndexPath
 
     vm.remove(mangaIndex: indexPath.item)
+  }
+
+  func showChapters(item: NSMenuItem) {
+    let indexPath = item.representedObject as! IndexPath
+
+    collectionView(mangaCollectionView, didSelectItemsAt: Set([indexPath]))
   }
 }

@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MangaCollectionViewController" customModule="Yomu" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="9Vo-y1-T4n" id="d50-KY-54b"/>
+                <outlet property="mangaCollectionView" destination="9Vo-y1-T4n" id="L9z-q7-WgR"/>
                 <outlet property="view" destination="SBL-jH-eqD" id="RTN-Fv-hC2"/>
             </connections>
         </customObject>
