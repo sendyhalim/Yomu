@@ -83,6 +83,12 @@ struct MangaCollectionViewModel {
 
         self.recentlyAddedManga.value = manga
         self._mangas.value.append(element: manga)
+
+        for (index, var manga) in self._mangas.value.enumerated() {
+          if manga.position == MangaPosition.undefined.rawValue {
+            manga.position = index
+          }
+        }
       })
   }
 

@@ -15,6 +15,6 @@ struct Database {
   static func queryMangas() -> Array<Manga> {
     return realm
       .objects(MangaRealm.self)
-      .map(MangaRealm.to(mangaRealm:))
+      .map(MangaRealm.from(mangaRealm:))
   }
 }

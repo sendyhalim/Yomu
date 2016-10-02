@@ -101,7 +101,7 @@ class OrderetSetSpec: QuickSpec {
         beforeEach {
           set.swap(fromIndex: 0, toIndex: 2)
         }
-        
+
         it("should swap the set") {
           expect(set[0]) == "peppers"
           expect(set[1]) == "chilli"

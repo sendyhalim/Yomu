@@ -97,7 +97,7 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
 
   // MARK: Drag and drop operation
   // --------------------------------------------------
-  
+
   func collectionView(
     _ collectionView: NSCollectionView,
     pasteboardWriterForItemAt indexPath: IndexPath
@@ -109,7 +109,7 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     // to satisfy collectionView(_:validateDrop:proposedIndexPath:dropOperation:)
     // https://developer.apple.com/reference/appkit/nscollectionviewdelegate/1525471-collectionview
     item.setString(mangaViewModel.id, forType: NSPasteboardTypeString)
-   
+
     return item
   }
 

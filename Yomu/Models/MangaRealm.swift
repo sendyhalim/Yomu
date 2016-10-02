@@ -17,6 +17,7 @@ class MangaRealm: Object {
   dynamic var imageEndpoint: String = ""
   dynamic var releasedYear: Int = 0
   dynamic var commaSeparatedCategories: String = ""
+  // dynamic var position: Int = -1
 
   static func from(manga: Manga) -> MangaRealm {
     let mangaRealm = MangaRealm()
@@ -28,11 +29,12 @@ class MangaRealm: Object {
     mangaRealm.imageEndpoint = manga.image.endpoint
     mangaRealm.releasedYear = manga.releasedYear
     mangaRealm.commaSeparatedCategories = manga.categories.joined(separator: ",")
+//    mangaRealm.position = manga.position
 
     return mangaRealm
   }
 
-  static func to(mangaRealm: MangaRealm) -> Manga {
+  static func from(mangaRealm: MangaRealm) -> Manga {
     let categories = mangaRealm
       .commaSeparatedCategories.characters
       .split {
@@ -40,7 +42,15 @@ class MangaRealm: Object {
       }
       .map(String.init)
 
+    var position = MangaPosition.undefined.rawValue
+
+    // TODO: Add migration
+//    if mangaRealm.position != MangaPosition.undefined.rawValue {
+//      position = mangaRealm.position
+//    }
+
     return Manga(
+      position: position,
       id: mangaRealm.id,
       slug: mangaRealm.slug,
       title: mangaRealm.title,
