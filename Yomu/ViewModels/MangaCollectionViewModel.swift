@@ -122,7 +122,15 @@ struct MangaCollectionViewModel {
     let manga = self[fromIndex].manga
     _mangas.value.remove(index: fromIndex)
     _mangas.value.insert(element: manga, atIndex: toIndex)
+    updateMangaPositions()
+  }
 
+  func remove(mangaIndex: Int) {
+    recentlyDeletedManga.value = _mangas.value.remove(index: mangaIndex)
+    updateMangaPositions()
+  }
+
+  private func updateMangaPositions() {
     let indexes: [Int] = [Int](0..<self.count)
     let mangas: [Manga] = indexes.map {
       var manga = self._mangas.value[$0]
@@ -132,9 +140,5 @@ struct MangaCollectionViewModel {
     }
 
     _mangas.value = OrderedSet(elements: mangas)
-  }
-
-  func remove(mangaIndex: Int) {
-    recentlyDeletedManga.value = _mangas.value.remove(index: mangaIndex)
   }
 }
