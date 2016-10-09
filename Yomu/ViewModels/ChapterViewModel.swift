@@ -22,11 +22,11 @@ struct ChapterViewModel {
   }
 
   var title: Driver<String> {
-    return _chapter.asDriver().map { "Title: \($0.title)" }
+    return _chapter.asDriver().map { $0.title }
   }
 
   var number: Driver<String> {
-    return _chapter.asDriver().map { "Chapter: \($0.number.description)" }
+    return _chapter.asDriver().map { "Chapter \($0.number.description)" }
   }
 
   var chapter: Chapter {

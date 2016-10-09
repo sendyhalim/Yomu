@@ -52,11 +52,7 @@ struct ChapterPageCollectionViewModel {
   }
 
   var headerTitle: Driver<String> {
-    return chapterVM
-      .number
-      .map {
-        "Chapter \($0)"
-      }
+    return chapterVM.number
   }
 
   var count: Int {
