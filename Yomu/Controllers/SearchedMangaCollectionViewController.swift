@@ -74,6 +74,11 @@ class SearchedMangaCollectionViewController: NSViewController {
       }) ==> disposeBag
   }
 
+  override func viewWillLayout() {
+    super.viewWillLayout()
+    collectionView.collectionViewLayout?.invalidateLayout()
+  }
+
   @IBAction func closeView(_ sender: NSButton) {
     delegate?.closeView(self)
   }

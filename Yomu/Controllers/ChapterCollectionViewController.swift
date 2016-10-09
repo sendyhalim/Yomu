@@ -44,6 +44,11 @@ class ChapterCollectionViewController: NSViewController {
     setupSubscriptions()
   }
 
+  override func viewWillLayout() {
+    super.viewWillLayout()
+    collectionView.collectionViewLayout?.invalidateLayout()
+  }
+
   func setupSubscriptions() {
     vm.chapters.drive(onNext: { [weak self] _ in
       self!.collectionView.reloadData()
@@ -106,6 +111,7 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     chapter.fetchPreview() ==> cell.disposeBag
     chapter.title ~~> cell.chapterTitle.rx.text ==> cell.disposeBag
     chapter.previewUrl ~~> cell.chapterPreview.setImageWithUrl ==> cell.disposeBag
+    chapter.number ~~> cell.chapterNumber.rx.text ==> cell.disposeBag
 
     return cell
   }
@@ -121,6 +127,14 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
 
     collectionView.deselectAll(self)
     chapterSelectionDelegate?.chapterDidSelected(chapterVm.chapter)
+  }
+
+  func collectionView(
+    _ collectionView: NSCollectionView,
+    layout collectionViewLayout: NSCollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath
+  ) -> NSSize {
+    return CGSize(width: collectionView.bounds.size.width, height: 88)
   }
 }
 

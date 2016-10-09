@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -20,13 +20,13 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe" userLabel="Chapter Collection View">
             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
             <subviews>
-                <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="L0b-P3-rH2">
+                <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="L0b-P3-rH2">
                     <rect key="frame" x="0.0" y="248" width="450" height="52"/>
                     <view key="contentView" id="Y9d-9v-y0n" customClass="StickyHeader" customModule="Yomu" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="52"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-Ca-TU5" userLabel="Search Chapter Container" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
+                            <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-Ca-TU5" userLabel="Search Chapter Container" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="371" height="32"/>
                                 <view key="contentView" id="wKo-Iq-4Ka">
                                     <rect key="frame" x="0.0" y="0.0" width="371" height="32"/>
@@ -57,7 +57,6 @@
                                         <constraint firstItem="bYi-SL-hON" firstAttribute="leading" secondItem="wKo-Iq-4Ka" secondAttribute="leading" id="d8B-Pl-UIF"/>
                                     </constraints>
                                 </view>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="4QI-1m-9b2">
@@ -84,54 +83,69 @@
                         <constraint firstItem="aOQ-Ca-TU5" firstAttribute="bottom" secondItem="L0b-P3-rH2" secondAttribute="bottom" constant="-10" id="6U1-UW-kKR"/>
                         <constraint firstItem="aOQ-Ca-TU5" firstAttribute="leading" secondItem="L0b-P3-rH2" secondAttribute="leading" constant="10" id="kaM-eY-Osw"/>
                     </constraints>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="sZd-Q7-Lk4">
                     <rect key="frame" x="217" y="142" width="16" height="16"/>
                 </progressIndicator>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOx-C6-3Tl">
+                <box boxType="custom" borderType="none" title="Chapter Collection Container" translatesAutoresizingMaskIntoConstraints="NO" id="yhl-30-M9X">
                     <rect key="frame" x="0.0" y="0.0" width="450" height="248"/>
-                    <clipView key="contentView" id="gHa-tB-PY2">
+                    <view key="contentView" id="ZH4-eO-g9a">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="248"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView selectable="YES" id="dfe-Ib-Wgi">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="27"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="LbZ-xK-IQ1">
-                                    <size key="itemSize" width="228.5" height="325"/>
-                                </collectionViewFlowLayout>
-                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </collectionView>
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOx-C6-3Tl">
+                                <rect key="frame" x="10" y="0.0" width="430" height="248"/>
+                                <clipView key="contentView" drawsBackground="NO" id="gHa-tB-PY2">
+                                    <rect key="frame" x="0.0" y="0.0" width="430" height="248"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView selectable="YES" id="dfe-Ib-Wgi">
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10000" minimumLineSpacing="10" id="LbZ-xK-IQ1">
+                                                <size key="itemSize" width="228.5" height="325"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cnO-fh-RDf">
+                                    <rect key="frame" x="0.0" y="370" width="430" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oTb-F2-XU8">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cnO-fh-RDf">
-                        <rect key="frame" x="1" y="144" width="233" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oTb-F2-XU8">
-                        <rect key="frame" x="234" y="1" width="15" height="143"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="hOx-C6-3Tl" secondAttribute="trailing" constant="10" id="4D1-on-0Td"/>
+                        <constraint firstItem="hOx-C6-3Tl" firstAttribute="top" secondItem="yhl-30-M9X" secondAttribute="top" id="BXh-6Q-Yhc"/>
+                        <constraint firstAttribute="bottom" secondItem="hOx-C6-3Tl" secondAttribute="bottom" id="o3e-Z3-X2l"/>
+                        <constraint firstItem="hOx-C6-3Tl" firstAttribute="leading" secondItem="yhl-30-M9X" secondAttribute="leading" constant="10" id="yBZ-sP-9Z4"/>
+                    </constraints>
+                    <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </box>
             </subviews>
             <constraints>
                 <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="0cn-oN-SG4"/>
                 <constraint firstItem="L0b-P3-rH2" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="3Vi-MO-sgj"/>
-                <constraint firstItem="hOx-C6-3Tl" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="HXk-rJ-Inp"/>
-                <constraint firstItem="hOx-C6-3Tl" firstAttribute="top" secondItem="Y9d-9v-y0n" secondAttribute="bottom" id="JFQ-NC-nTf"/>
-                <constraint firstItem="hOx-C6-3Tl" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="JJ1-fW-JNK"/>
+                <constraint firstItem="yhl-30-M9X" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="5fr-he-YKj"/>
+                <constraint firstItem="yhl-30-M9X" firstAttribute="top" secondItem="L0b-P3-rH2" secondAttribute="bottom" id="6Y3-TR-u4y"/>
+                <constraint firstItem="yhl-30-M9X" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="EKa-cf-IRZ"/>
+                <constraint firstItem="yhl-30-M9X" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="HYE-87-WEx"/>
                 <constraint firstItem="L0b-P3-rH2" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="Jd5-D1-Q83"/>
                 <constraint firstItem="L0b-P3-rH2" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="TAA-f2-9xH"/>
-                <constraint firstItem="hOx-C6-3Tl" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="o8g-j7-o2U"/>
                 <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="yRm-E3-uim"/>
             </constraints>
         </customView>
     </objects>
     <resources>
         <image name="Descending" width="100" height="100"/>
-        <image name="Search" width="500" height="500"/>
+        <image name="Search" width="100" height="100"/>
     </resources>
 </document>

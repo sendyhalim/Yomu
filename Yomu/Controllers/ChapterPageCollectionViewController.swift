@@ -39,6 +39,11 @@ class ChapterPageCollectionViewController: NSViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  override func viewWillLayout() {
+    super.viewWillLayout()
+    collectionView.collectionViewLayout?.invalidateLayout()
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 

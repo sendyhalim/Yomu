@@ -22,11 +22,11 @@ struct ChapterViewModel {
   }
 
   var title: Driver<String> {
-    return _chapter.asDriver().map { $0.title }
+    return _chapter.asDriver().map { "Title: \($0.title)" }
   }
 
-  var number: Driver<Int> {
-    return _chapter.asDriver().map { $0.number }
+  var number: Driver<String> {
+    return _chapter.asDriver().map { "Chapter: \($0.number.description)" }
   }
 
   var chapter: Chapter {
@@ -37,8 +37,8 @@ struct ChapterViewModel {
     _chapter = Variable(chapter)
   }
 
-  func titleContains(pattern: String) -> Bool {
-    return _chapter.value.title.lowercased().contains(pattern)
+  func chapterNumberMatches(pattern: String) -> Bool {
+    return _chapter.value.number.description.lowercased().contains(pattern)
   }
 
   func fetchPreview() -> Disposable {

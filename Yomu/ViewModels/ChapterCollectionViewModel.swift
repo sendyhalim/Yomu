@@ -75,7 +75,7 @@ struct ChapterCollectionViewModel {
       _filteredChapters.value = _chapters.value
     } else {
       _filteredChapters.value = _chapters.value.filter {
-        $0.titleContains(pattern: pattern)
+        $0.chapterNumberMatches(pattern: pattern)
       }
     }
   }
