@@ -1,10 +1,12 @@
 ## Yomu
-Manga Reader App for OSX
+Manga Reader App for Mac OS
 
 [![Build Status](https://api.travis-ci.org/sendyhalim/Yomu.svg)](https://travis-ci.org/sendyhalim/Yomu)
 
 <img width="800" alt="Yomu screenshot" src="https://raw.githubusercontent.com/sendyhalim/Yomu/master/Resources/screenshot.png">
 
+## Requirements
+Mac OS 10.11+
 
 ## Install
 
