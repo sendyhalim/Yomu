@@ -18,7 +18,6 @@ struct SelectedIndex {
   let index: Int
 }
 
-
 struct MangaCollectionViewModel {
   private let _selectedIndex = Variable(SelectedIndex(previousIndex: -1, index: -1))
   private var _fetching = Variable(false)
@@ -47,10 +46,11 @@ struct MangaCollectionViewModel {
   var disposeBag = DisposeBag()
 
   var reload: Driver<Void> {
-    let void = Void()
-
     return Observable
-      .of(_mangas.asObservable().map(const(void)), mangaViewModels.asObservable().map(const(void)))
+      .of(
+        _mangas.asObservable().map(const(Void())),
+        mangaViewModels.asObservable().map(const(Void()))
+      )
       .merge()
       .asDriver(onErrorJustReturn: Void())
   }

@@ -23,7 +23,7 @@ class SearchedMangaCollectionViewController: NSViewController {
 
   weak var delegate: SearchedMangaDelegate?
 
-  let collectionViewModel: SearchedMangaCollectionViewModel
+  var collectionViewModel: SearchedMangaCollectionViewModel
 
   let disposeBag = DisposeBag()
 
@@ -55,24 +55,23 @@ class SearchedMangaCollectionViewController: NSViewController {
           return
         }
 
-        self.collectionViewModel.search(term: $0) ==> self.disposeBag
+        // Cancel previous request
+        self.collectionViewModel.disposeBag = DisposeBag()
+        self.collectionViewModel.search(term: $0) ==> self.collectionViewModel.disposeBag
       }) ==> disposeBag
 
-    collectionViewModel
-      .mangas
-      .drive(onNext: { [weak self] _ in
-        self?.collectionView.reloadData()
-      }) ==> disposeBag
-
+    collectionViewModel.reload ~~> collectionView.reloadData ==> disposeBag
     collectionViewModel.fetching ~~> progressIndicator.animating ==> disposeBag
 
-    backButton.rx.tap.subscribe(onNext: { [weak self] in
-      guard let `self` = self else {
-        return
-      }
+    backButton
+      .rx.tap
+      .subscribe(onNext: { [weak self] in
+        guard let `self` = self else {
+          return
+        }
 
-      self.delegate?.closeView(self)
-    }) ==> disposeBag
+        self.delegate?.closeView(self)
+      }) ==> disposeBag
   }
 
   @IBAction func closeView(_ sender: NSButton) {

@@ -20,8 +20,8 @@ struct SearchedMangaCollectionViewModel {
     return _mangas.value.count
   }
 
-  var mangas: Driver<List<SearchedMangaViewModel>> {
-    return _mangas.asDriver()
+  var reload: Driver<Void> {
+    return _mangas.asDriver().map(const(Void()))
   }
 
   var showViewController: Driver<Bool> {
@@ -31,6 +31,8 @@ struct SearchedMangaCollectionViewModel {
   var fetching: Driver<Bool> {
     return _fetching.asDriver()
   }
+
+  var disposeBag = DisposeBag()
 
   subscript(index: Int) -> SearchedMangaViewModel {
     return _mangas.value[UInt(index)]
@@ -44,9 +46,10 @@ struct SearchedMangaCollectionViewModel {
       .do(onCompleted: { self._fetching.value = false })
       .filterSuccessfulStatusCodes()
       .mapArray(SearchedManga.self, withRootKey: "mangas")
-      .subscribe(onNext: {
-        self._mangas.value = List(fromArray: $0).map(SearchedMangaViewModel.init)
-      })
+      .map {
+        List(fromArray: $0).map(SearchedMangaViewModel.init)
+      }
+      .bindTo(_mangas)
   }
 
   func hideViewController() {
