@@ -8,40 +8,54 @@
 
 import AppKit
 
-enum Border {
-  case all(CGFloat, CGFloat, NSColor)
-  case left(CGFloat, CGFloat, NSColor)
-  case top(CGFloat, CGFloat, NSColor)
-  case right(CGFloat, CGFloat, NSColor)
-  case bottom(CGFloat, CGFloat, NSColor)
+struct Border {
+  let position: BorderPosition
+  let width: CGFloat
+  let color: NSColor
+  let radius: CGFloat
+
+  init(position: BorderPosition, width: CGFloat, color: NSColor, radius: CGFloat = 0.0) {
+    self.position = position
+    self.width = width
+    self.color = color
+    self.radius = radius
+  }
+}
+
+enum BorderPosition {
+  case all
+  case left
+  case top
+  case right
+  case bottom
 }
 
 extension NSView {
   func drawBorder(_ border: Border) {
     wantsLayer = true
 
-    switch border {
-    case .all(let width, let radius, let color):
-      drawBorderAtLeft(width, radius: radius, color: color)
-      drawBorderAtTop(width, radius: radius, color: color)
-      drawBorderAtRight(width, radius: radius, color: color)
-      drawBorderAtBottom(width, radius: radius, color: color)
+    switch border.position {
+    case .all:
+      drawBorderAtLeft(width: border.width, radius: border.radius, color: border.color)
+      drawBorderAtTop(width: border.width, radius: border.radius, color: border.color)
+      drawBorderAtRight(width: border.width, radius: border.radius, color: border.color)
+      drawBorderAtBottom(width: border.width, radius: border.radius, color: border.color)
 
-    case .left(let width, let radius, let color):
-      drawBorderAtLeft(width, radius: radius, color: color)
+    case .left:
+      drawBorderAtLeft(width: border.width, radius: border.radius, color: border.color)
 
-    case .top(let width, let radius, let color):
-      drawBorderAtTop(width, radius: radius, color: color)
+    case .top:
+      drawBorderAtTop(width: border.width, radius: border.radius, color: border.color)
 
-    case .right(let width, let radius, let color):
-      drawBorderAtRight(width, radius: radius, color: color)
+    case .right:
+      drawBorderAtRight(width: border.width, radius: border.radius, color: border.color)
 
-    case .bottom(let width, let radius, let color):
-      drawBorderAtBottom(width, radius: radius, color: color)
+    case .bottom:
+      drawBorderAtBottom(width: border.width, radius: border.radius, color: border.color)
     }
   }
 
-  fileprivate func drawBorderAtLeft(_ borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
+  fileprivate func drawBorderAtLeft(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
     let borderFrame = CGRect(
       x: 0,
       y: 0,
@@ -49,10 +63,10 @@ extension NSView {
       height: frame.size.height
     )
 
-    drawBorderWithFrame(borderFrame, width: borderWidth, radius: radius, color: color)
+    drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
   }
 
-  fileprivate func drawBorderAtTop(_ borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
+  fileprivate func drawBorderAtTop(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
     let borderFrame = CGRect(
       x: 0,
       y: frame.size.height - borderWidth,
@@ -60,10 +74,10 @@ extension NSView {
       height: borderWidth
     )
 
-    drawBorderWithFrame(borderFrame, width: borderWidth, radius: radius, color: color)
+    drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
   }
 
-  fileprivate func drawBorderAtRight(_ borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
+  fileprivate func drawBorderAtRight(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
     let borderFrame = CGRect(
       x: frame.size.width - borderWidth,
       y: 0,
@@ -71,10 +85,10 @@ extension NSView {
       height: frame.size.height
     )
 
-    drawBorderWithFrame(borderFrame, width: borderWidth, radius: radius, color: color)
+    drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
   }
 
-  fileprivate func drawBorderAtBottom(_ borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
+  fileprivate func drawBorderAtBottom(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
     let borderFrame = CGRect(
       x: 0,
       y: 0,
@@ -82,11 +96,11 @@ extension NSView {
       height: borderWidth
     )
 
-    drawBorderWithFrame(borderFrame, width: borderWidth, radius: radius, color: color)
+    drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
   }
 
-  fileprivate func drawBorderWithFrame(
-    _ borderFrame: CGRect,
+  fileprivate func drawBorder(
+    frame borderFrame: CGRect,
     width: CGFloat,
     radius: CGFloat,
     color: NSColor

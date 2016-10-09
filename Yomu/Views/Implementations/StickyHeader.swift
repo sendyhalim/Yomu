@@ -12,6 +12,7 @@ class StickyHeader: NSView {
   override func viewWillDraw() {
     super.viewWillDraw()
 
-    drawBorder(Border.bottom(1.0, 0, Config.style.borderColor))
+    let border = Border(position: .bottom, width: 1.0, color: Config.style.borderColor)
+    drawBorder(border)
   }
 }

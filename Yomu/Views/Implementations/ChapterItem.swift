@@ -27,4 +27,10 @@ class ChapterItem: NSCollectionViewItem {
 
     disposeBag = DisposeBag()
   }
+
+  override func viewWillLayout() {
+    let border = Border(position: .bottom, width: 1.0, color: Config.style.borderColor)
+
+    view.drawBorder(border)
+  }
 }

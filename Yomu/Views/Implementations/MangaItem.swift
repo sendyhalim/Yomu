@@ -27,7 +27,7 @@ class MangaItem: NSCollectionViewItem {
   override func viewWillLayout() {
     super.viewWillLayout()
 
-    let border = Border.bottom(1.0, 0.0, Config.style.borderColor)
+    let border = Border(position: .bottom, width: 1.0, color: Config.style.borderColor)
     titleContainerView.drawBorder(border)
   }
 }

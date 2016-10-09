@@ -48,7 +48,8 @@ class MangaCollectionViewController: NSViewController {
   }
 
   override func viewWillLayout() {
-    view.drawBorder(.right(1.0, 0, Config.style.darkenBackgroundColor))
+    let border = Border(position: .right, width: 1.0, color: Config.style.darkenBackgroundColor)
+    view.drawBorder(border)
   }
 }
 
