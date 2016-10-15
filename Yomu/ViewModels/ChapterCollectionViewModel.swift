@@ -18,19 +18,6 @@ enum SortOrder {
 
 struct ChapterCollectionViewModel {
   // MARK: Public
-  var orderingIconName: Driver<String> {
-    return _currentOrdering
-      .asDriver()
-      .map {
-        switch $0 {
-        case .ascending:
-          return Config.iconName.ascending
-        case .descending:
-          return Config.iconName.descending
-        }
-    }
-  }
-
   var count: Int {
     return _filteredChapters.value.count
   }
@@ -47,56 +34,75 @@ struct ChapterCollectionViewModel {
   let reload: Driver<Void>
   let fetching: Driver<Bool>
   let disposeBag = DisposeBag()
+  let orderingIconName: Driver<String>
 
   // MARK: Private
   fileprivate let _chapters = Variable(List<ChapterViewModel>())
   fileprivate let _filteredChapters = Variable(List<ChapterViewModel>())
   fileprivate let _fetching = Variable(false)
-  fileprivate let _currentOrdering = Variable(SortOrder.descending)
+  fileprivate let _ordering = Variable(SortOrder.descending)
 
   init() {
     let chapters = _chapters
     let filteredChapters = _filteredChapters
-    let currentOrdering = _currentOrdering
 
-    reload = _filteredChapters.asDriver().map { _ in Void() }
+    // MARK: Fetching chapters
     fetching = _fetching.asDriver()
 
+    chapters
+      .asObservable()
+      .bindTo(_filteredChapters) ==> disposeBag
+
+    reload = _filteredChapters
+      .asDriver()
+      .map(void)
+
+
+    // MARK: Filtering chapters
     filterPattern
-      .map { pattern in
+      .flatMap { pattern -> Observable<List<ChapterViewModel>> in
         if pattern.isEmpty {
-          return chapters.value
+          return chapters.asObservable()
         }
 
-        return chapters.value.filter {
-          $0.chapterNumberMatches(pattern: pattern)
-        }
+        return chapters
+          .asObservable()
+          .map { chaptersList in
+            chaptersList.filter { chapterVM in
+              chapterVM.chapterNumberMatches(pattern: pattern)
+            }
+          }
       }
       .bindTo(_filteredChapters) ==> disposeBag
 
+    // MARK: Sorting chapters
     toggleSort
-      .map {
-        currentOrdering.value == .descending ? .ascending : .descending
+      .asObservable()
+      .scan(SortOrder.descending) { previousOrdering, _ in
+        previousOrdering == .descending ? .ascending : .descending
       }
-      .bindTo(currentOrdering) ==> disposeBag
+      .bindTo(_ordering) ==> disposeBag
 
-    currentOrdering
+    orderingIconName = _ordering
       .asDriver()
       .map {
-        let compare: (Int) -> (Int) -> Bool
-        let chapters = filteredChapters.value
-
         switch $0 {
         case .ascending:
-          compare = curry(<)
-
+          return Config.iconName.ascending
         case .descending:
-          // We cannot use (>) because the (>)'s arguments ordering in
-          // sort method need to be flipped too, the easiest way is to flip it
-          compare = flip(curry(<))
+          return Config.iconName.descending
         }
+      }
 
-        let sorted = chapters.sorted {
+    _ordering
+      .asObservable()
+      .map { order in
+        // We cannot use (>) because the (>)'s arguments ordering in
+        // sort method need to be flipped too, the easiest way is to flip it
+        order == .ascending ? curry(<) : flip(curry(<))
+      }
+      .map { (compare: (Int) -> (Int) -> Bool) in
+        let sorted = filteredChapters.value.sorted {
           let (left, right) = $0
 
           return compare(left.chapter.number)(right.chapter.number)
@@ -104,32 +110,37 @@ struct ChapterCollectionViewModel {
 
         return List(fromArray: sorted)
       }
-      .drive(_filteredChapters) ==> disposeBag
+      .bindTo(_filteredChapters) ==> disposeBag
   }
 
   func fetch(id: String) -> Disposable {
+    reset()
+
     let api = MangaEdenAPI.mangaDetail(id)
+    let request = MangaEden.request(api).share()
 
-    _fetching.value = true
+    let fetchingDisposable = request
+      .map(const(false))
+      .startWith(true)
+      .asDriver(onErrorJustReturn: false)
+      .drive(_fetching)
 
-    return MangaEden
-      .request(api)
-      .do(onCompleted: { self._fetching.value = false })
+    let resultDisposable = request
       .filterSuccessfulStatusCodes()
       .mapArray(Chapter.self, withRootKey: "chapters")
       .map {
         $0.map(ChapterViewModel.init)
       }
-      .subscribe(onNext: {
-        self._chapters.value = List<ChapterViewModel>(fromArray: $0)
-        self._filteredChapters.value = self._chapters.value
-      })
+      .map(List<ChapterViewModel>.init)
+      .bindTo(_chapters)
+
+    return CompositeDisposable(fetchingDisposable, resultDisposable)
   }
 
   func reset() {
-    _currentOrdering.value = .descending
     _filteredChapters.value = List()
     _chapters.value = List()
+    _ordering.value = .descending
   }
 
   subscript(index: Int) -> ChapterViewModel {

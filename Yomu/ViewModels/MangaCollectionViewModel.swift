@@ -48,8 +48,8 @@ struct MangaCollectionViewModel {
     mangas = mangaViewModels.asDriver()
     reload = Observable
       .of(
-        _mangas.asObservable().map(const(Void())),
-        mangaViewModels.asObservable().map(const(Void()))
+        _mangas.asObservable().map(void),
+        mangaViewModels.asObservable().map(void)
       )
       .merge()
       .asDriver(onErrorJustReturn: Void())
@@ -65,13 +65,13 @@ struct MangaCollectionViewModel {
       .subscribe(Realm.rx.delete()) ==> disposeBag
 
     _mangas
-      .asDriver()
+      .asObservable()
       .map {
         let viewModels = $0.flatMap(MangaViewModel.init)
 
         return List(fromArray: viewModels)
       }
-      .drive(mangaViewModels) ==> disposeBag
+      .bindTo(mangaViewModels) ==> disposeBag
 
     _mangas
       .asObservable()
@@ -88,11 +88,15 @@ struct MangaCollectionViewModel {
   func fetch(id: String) -> Disposable {
     let api = MangaEdenAPI.mangaDetail(id)
 
-    _fetching.value = true
+    let request = MangaEden.request(api).share()
 
-    return MangaEden
-      .request(api)
-      .do(onCompleted: { self._fetching.value = false })
+    let fetchingDisposable = request
+      .map(const(false))
+      .startWith(true)
+      .asDriver(onErrorJustReturn: false)
+      .drive(_fetching)
+
+    let resultDisposable = request
       .filterSuccessfulStatusCodes()
       .map(Manga.self)
       .map {
@@ -108,6 +112,8 @@ struct MangaCollectionViewModel {
       .subscribe(onNext: {
         self._mangas.value.append(element: $0)
       })
+
+    return CompositeDisposable(fetchingDisposable, resultDisposable)
   }
 
   func setSelectedIndex(_ index: Int) {

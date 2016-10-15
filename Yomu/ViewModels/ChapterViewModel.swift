@@ -51,14 +51,16 @@ struct ChapterViewModel {
     return MangaEden
       .request(MangaEdenAPI.chapterPages(id))
       .mapArray(ChapterPage.self, withRootKey: "images")
-      .subscribe(onNext: {
-        let sortedPages = $0.sorted {
-          let (x, y) = $0
+      .map { chapters in
+        chapters
+          .sorted {
+            let (x, y) = $0
 
-          return x.number < y.number
-        }
-
-        self._previewUrl.value = sortedPages.first!.image
-      })
+            return x.number < y.number
+          }
+          .first!
+          .image
+      }
+      .bindTo(_previewUrl)
   }
 }

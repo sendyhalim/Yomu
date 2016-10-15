@@ -43,16 +43,24 @@ struct SearchedMangaCollectionViewModel {
 
   func search(term: String) -> Disposable {
     let api = YomuAPI.search(term)
+    let request = Yomu.request(api).share()
 
-    return Yomu
-      .request(api)
-      .do(onCompleted: { self._fetching.value = false })
+    let fetchingDisposable = request
+      .map(const(false))
+      .startWith(true)
+      .asDriver(onErrorJustReturn: false)
+      .drive(_fetching)
+
+    let resultDisposable = request
       .filterSuccessfulStatusCodes()
       .mapArray(SearchedManga.self, withRootKey: "mangas")
       .map {
-        List(fromArray: $0).map(SearchedMangaViewModel.init)
+        $0.map(SearchedMangaViewModel.init)
       }
+      .map(List<SearchedMangaViewModel>.init)
       .bindTo(_mangas)
+
+    return CompositeDisposable(fetchingDisposable, resultDisposable)
   }
 
   func hideViewController() {
