@@ -17,13 +17,9 @@ enum SortOrder {
 }
 
 struct ChapterCollectionViewModel {
-  private let _chapters = Variable(List<ChapterViewModel>())
-  private let _filteredChapters = Variable(List<ChapterViewModel>())
-  private let _fetching = Variable(false)
-  private let currentOrdering = Variable(SortOrder.descending)
-
+  // MARK: Public
   var orderingIconName: Driver<String> {
-    return currentOrdering
+    return _currentOrdering
       .asDriver()
       .map {
         switch $0 {
@@ -32,11 +28,7 @@ struct ChapterCollectionViewModel {
         case .descending:
           return Config.iconName.descending
         }
-      }
-  }
-
-  var chapters: Driver<List<ChapterViewModel>> {
-    return _filteredChapters.asDriver()
+    }
   }
 
   var count: Int {
@@ -47,8 +39,72 @@ struct ChapterCollectionViewModel {
     return count == 0
   }
 
-  var fetching: Driver<Bool> {
-    return _fetching.asDriver()
+  // MARK: Input
+  let filterPattern = PublishSubject<String>()
+  let toggleSort = PublishSubject<Void>()
+
+  // MARK: Output
+  let reload: Driver<Void>
+  let fetching: Driver<Bool>
+  let disposeBag = DisposeBag()
+
+  // MARK: Private
+  fileprivate let _chapters = Variable(List<ChapterViewModel>())
+  fileprivate let _filteredChapters = Variable(List<ChapterViewModel>())
+  fileprivate let _fetching = Variable(false)
+  fileprivate let _currentOrdering = Variable(SortOrder.descending)
+
+  init() {
+    let chapters = _chapters
+    let filteredChapters = _filteredChapters
+    let currentOrdering = _currentOrdering
+
+    reload = _filteredChapters.asDriver().map { _ in Void() }
+    fetching = _fetching.asDriver()
+
+    filterPattern
+      .map { pattern in
+        if pattern.isEmpty {
+          return chapters.value
+        }
+
+        return chapters.value.filter {
+          $0.chapterNumberMatches(pattern: pattern)
+        }
+      }
+      .bindTo(_filteredChapters) ==> disposeBag
+
+    toggleSort
+      .map {
+        currentOrdering.value == .descending ? .ascending : .descending
+      }
+      .bindTo(currentOrdering) ==> disposeBag
+
+    currentOrdering
+      .asDriver()
+      .map {
+        let compare: (Int) -> (Int) -> Bool
+        let chapters = filteredChapters.value
+
+        switch $0 {
+        case .ascending:
+          compare = curry(<)
+
+        case .descending:
+          // We cannot use (>) because the (>)'s arguments ordering in
+          // sort method need to be flipped too, the easiest way is to flip it
+          compare = flip(curry(<))
+        }
+
+        let sorted = chapters.sorted {
+          let (left, right) = $0
+
+          return compare(left.chapter.number)(right.chapter.number)
+        }
+
+        return List(fromArray: sorted)
+      }
+      .drive(_filteredChapters) ==> disposeBag
   }
 
   func fetch(id: String) -> Disposable {
@@ -70,49 +126,10 @@ struct ChapterCollectionViewModel {
       })
   }
 
-  func filter(pattern: String) {
-    if pattern.isEmpty {
-      _filteredChapters.value = _chapters.value
-    } else {
-      _filteredChapters.value = _chapters.value.filter {
-        $0.chapterNumberMatches(pattern: pattern)
-      }
-    }
-  }
-
-  func toggleSort() {
-    let currentSort = currentOrdering.value
-    currentOrdering.value = currentSort == .ascending ? .descending : .ascending
-
-    _filteredChapters.value = sort(chapters: _filteredChapters.value)
-  }
-
   func reset() {
-    currentOrdering.value = .descending
+    _currentOrdering.value = .descending
     _filteredChapters.value = List()
     _chapters.value = List()
-  }
-
-  private func sort(chapters: List<ChapterViewModel>) -> List<ChapterViewModel> {
-    let compare: (Int) -> (Int) -> Bool
-
-    switch currentOrdering.value {
-    case .ascending:
-      compare = curry(<)
-
-    case .descending:
-      // We cannot use (>) because the (>)'s arguments ordering in
-      // sort method need to be flipped too, the easiest way is to flip it
-      compare = flip(curry(<))
-    }
-
-    let sorted = chapters.sorted {
-      let (left, right) = $0
-
-      return compare(left.chapter.number)(right.chapter.number)
-    }
-
-    return List(fromArray: sorted)
   }
 
   subscript(index: Int) -> ChapterViewModel {

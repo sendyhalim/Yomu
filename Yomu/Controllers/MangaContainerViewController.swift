@@ -112,7 +112,7 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
       chapterPageCollectionVC!.view.removeFromSuperview()
     }
 
-    let pageVM = ChapterPageCollectionViewModel(chapterVM: ChapterViewModel(chapter: chapter))
+    let pageVM = ChapterPageCollectionViewModel(chapterViewModel: ChapterViewModel(chapter: chapter))
     chapterPageCollectionVC = ChapterPageCollectionViewController(viewModel: pageVM)
     chapterPageCollectionVC!.delegate = self
     chapterPageContainerView.addSubview(chapterPageCollectionVC!.view)

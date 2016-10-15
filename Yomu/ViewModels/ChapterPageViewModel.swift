@@ -10,11 +10,13 @@ import RxCocoa
 import RxSwift
 
 struct ChapterPageViewModel {
-  private let chapterPage: Variable<ChapterPage>
-
+  // MARK: Public
   var imageUrl: Driver<URL> {
     return chapterPage.asDriver().map { $0.image.url }
   }
+
+  // MARK: Private
+  fileprivate let chapterPage: Variable<ChapterPage>
 
   init(page: ChapterPage) {
     chapterPage = Variable(page)

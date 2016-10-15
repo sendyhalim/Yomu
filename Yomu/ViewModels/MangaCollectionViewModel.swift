@@ -19,43 +19,41 @@ struct SelectedIndex {
 }
 
 struct MangaCollectionViewModel {
-  private let _selectedIndex = Variable(SelectedIndex(previousIndex: -1, index: -1))
-  private var _fetching = Variable(false)
-  private var _mangas: Variable<OrderedSet<Manga>> = {
+  // MARK: Public
+  var count: Int {
+    return mangaViewModels.value.count
+  }
+
+  // MARK: Output
+  let fetching: Driver<Bool>
+  let reload: Driver<Void>
+  let mangas: Driver<List<MangaViewModel>>
+
+  // MARK: Private
+  fileprivate let _selectedIndex = Variable(SelectedIndex(previousIndex: -1, index: -1))
+  fileprivate var _fetching = Variable(false)
+  fileprivate var _mangas: Variable<OrderedSet<Manga>> = {
     let mangas = Database.queryMangas().sorted {
       $0.position < $1.position
     }
 
     return Variable(OrderedSet(elements: mangas))
   }()
-  private let recentlyDeletedManga: Variable<Manga?> = Variable(.none)
-  private var mangaViewModels = Variable(List<MangaViewModel>())
+  fileprivate let recentlyDeletedManga: Variable<Manga?> = Variable(.none)
+  fileprivate let mangaViewModels = Variable(List<MangaViewModel>())
+  fileprivate let disposeBag = DisposeBag()
 
-  var mangas: Driver<List<MangaViewModel>> {
-    return mangaViewModels.asDriver()
-  }
-
-  var count: Int {
-    return mangaViewModels.value.count
-  }
-
-  var fetching: Driver<Bool> {
-    return _fetching.asDriver()
-  }
-
-  var disposeBag = DisposeBag()
-
-  var reload: Driver<Void> {
-    return Observable
+  init() {
+    fetching = _fetching.asDriver()
+    mangas = mangaViewModels.asDriver()
+    reload = Observable
       .of(
         _mangas.asObservable().map(const(Void())),
         mangaViewModels.asObservable().map(const(Void()))
       )
       .merge()
       .asDriver(onErrorJustReturn: Void())
-  }
 
-  init() {
     recentlyDeletedManga
       .asObservable()
       .filter { $0 != nil }
@@ -66,12 +64,14 @@ struct MangaCollectionViewModel {
       }
       .subscribe(Realm.rx.delete()) ==> disposeBag
 
-    let this = self
+    _mangas
+      .asDriver()
+      .map {
+        let viewModels = $0.flatMap(MangaViewModel.init)
 
-    _mangas.asObservable() ~~> {
-      let viewModels = $0.flatMap(MangaViewModel.init)
-      this.mangaViewModels.value = List(fromArray: viewModels)
-    } ==> disposeBag
+        return List(fromArray: viewModels)
+      }
+      .drive(mangaViewModels) ==> disposeBag
 
     _mangas
       .asObservable()
@@ -95,23 +95,18 @@ struct MangaCollectionViewModel {
       .do(onCompleted: { self._fetching.value = false })
       .filterSuccessfulStatusCodes()
       .map(Manga.self)
-      .subscribe(onNext: {
+      .map {
         var manga = $0
         manga.id = id
         manga.position = self.count
 
-        // Manga already in collection
-        if self._mangas.value.contains(manga) {
-          return
-        }
-
-        self._mangas.value.append(element: manga)
-
-        for (index, var manga) in self._mangas.value.enumerated() {
-          if manga.position == MangaPosition.undefined.rawValue {
-            manga.position = index
-          }
-        }
+        return manga
+      }
+      .filter {
+        return !self._mangas.value.contains($0)
+      }
+      .subscribe(onNext: {
+        self._mangas.value.append(element: $0)
       })
   }
 

@@ -12,47 +12,9 @@ import RxSwift
 import Swiftz
 
 struct ChapterPageCollectionViewModel {
-  private let _chapterPages = Variable(List<ChapterPage>())
-  private let _currentPageIndex = Variable(0)
-  private let _pageSize = Variable(CGSize(
-    width: Config.chapterPageSize.width,
-    height: Config.chapterPageSize.height
-  ))
-  private let _zoomScale = Variable<Double>(1.0)
-
-  let chapterVM: ChapterViewModel
-
-  var reload: Driver<Void> {
-    return chapterPages
-      .asDriver()
-      .map(const(Void()))
-  }
-
-  var chapterPages: Driver<List<ChapterPage>> {
-    return _chapterPages.asDriver()
-  }
-
-  var invalidateLayout: Driver<Void> {
-    return _zoomScale
-      .asDriver()
-      .map(const(Void()))
-  }
-
-  var zoomScaleText: Driver<String> {
-    return _zoomScale
-      .asDriver()
-      .map { $0 * 100 }
-      .map {
-        "\(Int($0))%"
-      }
-  }
-
+  // MARK: Public
   var chapterImage: ImageUrl? {
     return _chapterPages.value.isEmpty ? .none : _chapterPages.value.first!.image
-  }
-
-  var headerTitle: Driver<String> {
-    return chapterVM.number
   }
 
   var count: Int {
@@ -63,13 +25,89 @@ struct ChapterPageCollectionViewModel {
     return _pageSize.value
   }
 
-  var readingProgress: Driver<String> {
-    return _currentPageIndex
+  // MARK: Input
+  let zoomIn = PublishSubject<Void>()
+  let zoomOut = PublishSubject<Void>()
+
+  // MARK: Output
+  let reload: Driver<Void>
+  let chapterPages: Driver<List<ChapterPage>>
+  let invalidateLayout: Driver<Void>
+  let zoomScaleText: Driver<String>
+  let headerTitle: Driver<String>
+  let readingProgress: Driver<String>
+  let disposeBag = DisposeBag()
+
+  // MARK: Private
+  fileprivate let _chapterPages = Variable(List<ChapterPage>())
+  fileprivate let _currentPageIndex = Variable(0)
+  fileprivate let _pageSize = Variable(CGSize(
+    width: Config.chapterPageSize.width,
+    height: Config.chapterPageSize.height
+  ))
+  fileprivate let _zoomScale = Variable<Double>(1.0)
+  fileprivate let chapterVM: ChapterViewModel
+
+  init(chapterViewModel: ChapterViewModel) {
+    let _chapterPages = self._chapterPages
+    let _zoomScale = self._zoomScale
+    let _pageSize = self._pageSize
+
+    chapterVM = chapterViewModel
+
+    chapterPages = _chapterPages.asDriver()
+
+    reload = chapterPages
+      .asDriver()
+      .map(void)
+
+    readingProgress = _currentPageIndex
       .asDriver()
       .map { $0 + 1 }
       .map {
-        "\($0) / \(self.count) Pages"
+        "\($0) / \(_chapterPages.value.count) Pages"
       }
+
+    zoomIn
+      .filter {
+        _zoomScale.value < Config.chapterPageSize.maximumZoomScale
+      }
+      .map {
+        _zoomScale.value + Config.chapterPageSize.zoomScaleStep
+      }
+      .bindTo(_zoomScale) ==> disposeBag
+
+    zoomOut
+      .filter {
+        _zoomScale.value > Config.chapterPageSize.minimumZoomScale
+      }
+      .map {
+        _zoomScale.value - Config.chapterPageSize.zoomScaleStep
+      }
+      .bindTo(_zoomScale) ==> disposeBag
+
+    _zoomScale
+      .asObservable()
+      .map { scale in
+        CGSize(
+          width: Int(Double(Config.chapterPageSize.width) * scale),
+          height: Int(Double(Config.chapterPageSize.height) * scale)
+        )
+      }
+      .bindTo(_pageSize) ==> disposeBag
+
+    zoomScaleText = _zoomScale
+      .asDriver()
+      .map { $0 * 100 }
+      .map {
+        "\(Int($0))%"
+      }
+
+    invalidateLayout = _zoomScale
+      .asDriver()
+      .map(void)
+
+    headerTitle = chapterVM.number
   }
 
   subscript(index: Int) -> ChapterPageViewModel {
@@ -95,26 +133,5 @@ struct ChapterPageCollectionViewModel {
 
   func setCurrentPageIndex(_ index: Int) {
     _currentPageIndex.value = index
-  }
-
-  private func updatePageSize() {
-    _pageSize.value = CGSize(
-      width: Int(Double(Config.chapterPageSize.width) * _zoomScale.value),
-      height: Int(Double(Config.chapterPageSize.height) * _zoomScale.value)
-    )
-  }
-
-  func zoomIn() {
-    if _zoomScale.value < Config.chapterPageSize.maximumZoomScale {
-      _zoomScale.value = _zoomScale.value + Config.chapterPageSize.zoomScaleStep
-      updatePageSize()
-    }
-  }
-
-  func zoomOut() {
-    if _zoomScale.value > Config.chapterPageSize.minimumZoomScale {
-      _zoomScale.value = _zoomScale.value - Config.chapterPageSize.zoomScaleStep
-      updatePageSize()
-    }
   }
 }

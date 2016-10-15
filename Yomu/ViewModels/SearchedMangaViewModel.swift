@@ -10,21 +10,27 @@ import RxCocoa
 import RxSwift
 
 struct SearchedMangaViewModel {
-  private let manga: Variable<SearchedManga>
+  // MARK: Output
+  let previewUrl: Driver<URL>
+  let title: Driver<String>
+  let apiId: Driver<String>
 
-  var previewUrl: Driver<URL> {
-    return manga.asDriver().map { $0.image.url }
-  }
-
-  var title: Driver<String> {
-    return manga.asDriver().map { $0.name }
-  }
-
-  var apiId: Driver<String> {
-    return manga.asDriver().map { $0.apiId }
-  }
+  // MARK: Private
+  fileprivate let manga: Variable<SearchedManga>
 
   init(manga: SearchedManga) {
     self.manga = Variable(manga)
+
+    previewUrl = self.manga
+      .asDriver()
+      .map { $0.image.url }
+
+    title = self.manga
+      .asDriver()
+      .map { $0.name }
+
+    apiId = self.manga
+      .asDriver()
+      .map { $0.apiId }
   }
 }

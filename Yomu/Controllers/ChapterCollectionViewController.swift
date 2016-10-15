@@ -50,23 +50,17 @@ class ChapterCollectionViewController: NSViewController {
   }
 
   func setupSubscriptions() {
-    vm.chapters.drive(onNext: { [weak self] _ in
-      self!.collectionView.reloadData()
-    }) ==> disposeBag
-
+    vm.reload ~~> collectionView.reloadData ==> disposeBag
     vm.fetching ~~> progressIndicator.animating ==> disposeBag
 
     chapterTitle
       .rx.text
       .throttle(0.5, scheduler: MainScheduler.instance)
-      .subscribe(onNext: { [weak self] in
-        self?.vm.filter(pattern: $0)
-      }) ==> disposeBag
-
+      .bindTo(vm.filterPattern) ==> disposeBag
 
     toggleSort
       .rx.tap
-      .subscribe(onNext: vm.toggleSort) ==> disposeBag
+      .bindTo(vm.toggleSort) ==> disposeBag
 
     vm.orderingIconName.drive(onNext: { [weak self] in
       self?.toggleSort.image = Config.icon(name: $0)
@@ -147,7 +141,6 @@ extension ChapterCollectionViewController: MangaSelectionDelegate {
     // we need to reset it before setup subscriptions so that the selected manga's chapters
     // won't get filtered
     chapterTitle.stringValue = ""
-    vm.reset()
 
     setupSubscriptions()
 

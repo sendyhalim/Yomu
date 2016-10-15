@@ -12,27 +12,30 @@ import RxSwift
 import Swiftz
 
 struct SearchedMangaCollectionViewModel {
-  private let _fetching = Variable(false)
-  private let _showViewController = Variable(false)
-  private let _mangas = Variable(List<SearchedMangaViewModel>())
+  // MARK: Public
+  var disposeBag = DisposeBag()
 
+  // MARK: Output
   var count: Int {
     return _mangas.value.count
   }
+  let reload: Driver<Void>
+  let showViewController: Driver<Bool>
+  let fetching: Driver<Bool>
 
-  var reload: Driver<Void> {
-    return _mangas.asDriver().map(const(Void()))
+  // MARK: Private
+  fileprivate let _fetching = Variable(false)
+  fileprivate let _showViewController = Variable(false)
+  fileprivate let _mangas = Variable(List<SearchedMangaViewModel>())
+
+  init() {
+    reload = _mangas
+      .asDriver()
+      .map(void)
+
+    fetching = _fetching.asDriver()
+    showViewController = _fetching.asDriver()
   }
-
-  var showViewController: Driver<Bool> {
-    return _showViewController.asDriver()
-  }
-
-  var fetching: Driver<Bool> {
-    return _fetching.asDriver()
-  }
-
-  var disposeBag = DisposeBag()
 
   subscript(index: Int) -> SearchedMangaViewModel {
     return _mangas.value[UInt(index)]

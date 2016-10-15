@@ -11,30 +11,34 @@ import RxMoya
 import RxSwift
 
 struct ChapterViewModel {
-  private let _chapter: Variable<Chapter>
-  private let _previewUrl = Variable(ImageUrl(endpoint: ""))
-
-  var previewUrl: Driver<URL> {
-    return _previewUrl
-      .asDriver()
-      .filter { $0.endpoint.characters.count != 0 }
-      .map { $0.url }
-  }
-
-  var title: Driver<String> {
-    return _chapter.asDriver().map { $0.title }
-  }
-
-  var number: Driver<String> {
-    return _chapter.asDriver().map { "Chapter \($0.number.description)" }
-  }
-
+  // MARK: Public
   var chapter: Chapter {
     return _chapter.value
   }
 
+  // MARK: Output
+  let previewUrl: Driver<URL>
+  let title: Driver<String>
+  let number: Driver<String>
+
+  // MARK: Private
+  private let _chapter: Variable<Chapter>
+  private let _previewUrl = Variable(ImageUrl(endpoint: ""))
+
   init(chapter: Chapter) {
     _chapter = Variable(chapter)
+    number = _chapter
+      .asDriver()
+      .map { "Chapter \($0.number.description)" }
+
+    title = _chapter
+      .asDriver()
+      .map { $0.title }
+
+    previewUrl = _previewUrl
+      .asDriver()
+      .filter { $0.endpoint.characters.count != 0 }
+      .map { $0.url }
   }
 
   func chapterNumberMatches(pattern: String) -> Bool {

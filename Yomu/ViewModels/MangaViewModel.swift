@@ -10,9 +10,7 @@ import RxCocoa
 import RxSwift
 
 struct MangaViewModel {
-  private let _manga: Variable<Manga>
-  private let _selected = Variable(false)
-
+  // MARK: Public
   var id: String {
     return _manga.value.id!
   }
@@ -21,26 +19,34 @@ struct MangaViewModel {
     return _manga.value
   }
 
-  var previewUrl: Driver<URL> {
-    return _manga.asDriver().map { $0.image.url }
-  }
+  // MARK: Output
+  let previewUrl: Driver<URL>
+  let title: Driver<String>
+  let categoriesString: Driver<String>
+  let selected: Driver<Bool>
 
-  var title: Driver<String> {
-    return _manga.asDriver().map { $0.title }
-  }
+  // MARK: Private
+  fileprivate let _manga: Variable<Manga>
+  fileprivate let _selected = Variable(false)
 
-  var categoriesString: Driver<String> {
-    return _manga.asDriver().map {
-      $0.categories.joined(separator: ", ")
-    }
-  }
+  init(manga: Manga) {
+    _manga = Variable(manga)
 
-  var selected: Driver<Bool> {
-    return _selected.asDriver()
-  }
+    previewUrl = _manga
+      .asDriver()
+      .map { $0.image.url }
 
-  init(_manga: Manga) {
-    self._manga = Variable(_manga)
+    title = _manga
+      .asDriver()
+      .map { $0.title }
+
+    categoriesString = _manga
+      .asDriver()
+      .map {
+        $0.categories.joined(separator: ", ")
+      }
+
+    selected = _selected.asDriver()
   }
 
   func setSelected(_ selected: Bool) {

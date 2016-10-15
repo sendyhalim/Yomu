@@ -52,11 +52,11 @@ class ChapterPageCollectionViewController: NSViewController {
 
     zoomIn
       .rx.tap
-      .subscribe(onNext: vm.zoomIn) ==> disposeBag
+      .bindTo(vm.zoomIn) ==> disposeBag
 
     zoomOut
       .rx.tap
-      .subscribe(onNext: vm.zoomOut) ==> disposeBag
+      .bindTo(vm.zoomOut) ==> disposeBag
 
     delegate?.closeChapterPage
       >>- { close.rx.tap.subscribe(onNext: $0) }
