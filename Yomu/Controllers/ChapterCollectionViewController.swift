@@ -50,6 +50,9 @@ class ChapterCollectionViewController: NSViewController {
   }
 
   func setupSubscriptions() {
+    // Cleanup everytime we setup subscriptions
+    disposeBag = DisposeBag()
+
     vm.reload ~~> collectionView.reloadData ==> disposeBag
     vm.fetching ~~> progressIndicator.animating ==> disposeBag
 
@@ -134,9 +137,6 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
 
 extension ChapterCollectionViewController: MangaSelectionDelegate {
   func mangaDidSelected(_ manga: Manga) {
-    // Cleanup first, triggering `deinit` on the current `disposeBag`
-    disposeBag = DisposeBag()
-
     // Reset filter
     // we need to reset it before setup subscriptions so that the selected manga's chapters
     // won't get filtered
