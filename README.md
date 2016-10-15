@@ -1,5 +1,5 @@
 ## Yomu
-Manga Reader App for Mac OS
+Manga Reader App for Mac OS, feel free to request new features on [issue tracker](https://github.com/sendyhalim/yomu/issues)
 
 [![Build Status](https://api.travis-ci.org/sendyhalim/Yomu.svg)](https://travis-ci.org/sendyhalim/Yomu)
 
