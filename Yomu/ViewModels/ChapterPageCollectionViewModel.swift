@@ -86,9 +86,7 @@ struct ChapterPageCollectionViewModel {
     readingProgress = _currentPageIndex
       .asDriver()
       .map { $0 + 1 }
-      .map {
-        "\($0) / \(_chapterPages.value.count) Pages"
-    }
+      .map { "\($0) / \(_chapterPages.value.count) Pages" }
 
     zoomIn
       .filter {
@@ -121,9 +119,7 @@ struct ChapterPageCollectionViewModel {
     zoomScaleText = _zoomScale
       .asDriver()
       .map { $0 * 100 }
-      .map {
-        "\(Int($0))%"
-      }
+      .map { "\(Int($0))%" }
 
     invalidateLayout = _zoomScale
       .asDriver()
@@ -141,7 +137,7 @@ struct ChapterPageCollectionViewModel {
           marginHeight: CGFloat($0.margin.height),
           previousItemsCount: _currentPageIndex.value
         )
-    }
+      }
 
     headerTitle = chapterVM.number
   }

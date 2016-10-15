@@ -6,7 +6,6 @@ disabled_rules:
   - force_cast
   - force_try
   - function_body_length
-  - variable_name_min_length
 included:
   - Yomu
   - YomuTests
