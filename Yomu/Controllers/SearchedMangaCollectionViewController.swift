@@ -11,7 +11,7 @@ import RxSwift
 
 protocol SearchedMangaDelegate: class {
   func searchedMangaDidSelected(_ viewModel: SearchedMangaViewModel)
-  func closeView(_ sender: SearchedMangaCollectionViewController)
+  func closeView(_ sender: AnyObject?)
 }
 
 class SearchedMangaCollectionViewController: NSViewController {
@@ -66,11 +66,7 @@ class SearchedMangaCollectionViewController: NSViewController {
     backButton
       .rx.tap
       .subscribe(onNext: { [weak self] in
-        guard let `self` = self else {
-          return
-        }
-
-        self.delegate?.closeView(self)
+        self?.delegate?.closeView(self)
       }) ==> disposeBag
   }
 

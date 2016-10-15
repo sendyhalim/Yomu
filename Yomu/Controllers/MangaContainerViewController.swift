@@ -151,7 +151,7 @@ extension MangaContainerViewController: SearchedMangaDelegate {
     Router.moveTo(id: YomuRouteId.Main)
   }
 
-  func closeView(_ sender: SearchedMangaCollectionViewController) {
+  func closeView(_ sender: AnyObject?) {
     Router.moveTo(id: YomuRouteId.Main)
   }
 }
