@@ -80,7 +80,15 @@ class ChapterPageCollectionViewController: NSViewController {
       ~~> headerTitle.rx.text
       ==> disposeBag
 
+    vm.zoomScroll ~~> scroll ==> disposeBag
+
     vm.fetch() ==> disposeBag
+  }
+
+  func scroll(offset: ScrollOffset) {
+    let targetRect = collectionView.visibleRect.offsetBy(dx: 0, dy: offset.deltaY)
+
+    collectionView.scrollToVisible(targetRect)
   }
 }
 

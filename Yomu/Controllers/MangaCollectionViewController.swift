@@ -42,9 +42,7 @@ class MangaCollectionViewController: NSViewController {
     mangaCollectionView.delegate = self
     mangaCollectionView.register(forDraggedTypes: [NSPasteboardTypePNG, NSPasteboardTypeString])
 
-    vm.reload ~~> { [weak self] _ in
-      self?.mangaCollectionView.reloadData()
-    } ==> disposeBag
+    vm.reload ~~> mangaCollectionView.reloadData ==> disposeBag
   }
 
   override func viewWillLayout() {

@@ -11,6 +11,26 @@ import RxMoya
 import RxSwift
 import Swiftz
 
+struct PageSizeMargin {
+  let previousSize: CGSize
+  let currentSize: CGSize
+  var margin: CGSize {
+    return CGSize(
+      width: currentSize.width - previousSize.width,
+      height: currentSize.height - previousSize.height
+    )
+  }
+}
+
+struct ScrollOffset {
+  let marginHeight: CGFloat
+  let previousItemsCount: Int
+
+  var deltaY: CGFloat {
+    return marginHeight * CGFloat(previousItemsCount)
+  }
+}
+
 struct ChapterPageCollectionViewModel {
   // MARK: Public
   var chapterImage: ImageUrl? {
@@ -36,6 +56,7 @@ struct ChapterPageCollectionViewModel {
   let zoomScaleText: Driver<String>
   let headerTitle: Driver<String>
   let readingProgress: Driver<String>
+  let zoomScroll: Driver<ScrollOffset>
   let disposeBag = DisposeBag()
 
   // MARK: Private
@@ -52,6 +73,7 @@ struct ChapterPageCollectionViewModel {
     let _chapterPages = self._chapterPages
     let _zoomScale = self._zoomScale
     let _pageSize = self._pageSize
+    let _currentPageIndex = self._currentPageIndex
 
     chapterVM = chapterViewModel
 
@@ -66,7 +88,7 @@ struct ChapterPageCollectionViewModel {
       .map { $0 + 1 }
       .map {
         "\($0) / \(_chapterPages.value.count) Pages"
-      }
+    }
 
     zoomIn
       .filter {
@@ -106,6 +128,20 @@ struct ChapterPageCollectionViewModel {
     invalidateLayout = _zoomScale
       .asDriver()
       .map(void)
+
+    let initialMargin = PageSizeMargin(previousSize: CGSize.zero, currentSize: _pageSize.value)
+
+    zoomScroll = _pageSize
+      .asDriver()
+      .scan(initialMargin) { previousSizeMargin, nextSize in
+        PageSizeMargin(previousSize: previousSizeMargin.currentSize, currentSize: nextSize)
+      }
+      .map {
+        ScrollOffset(
+          marginHeight: CGFloat($0.margin.height),
+          previousItemsCount: _currentPageIndex.value
+        )
+    }
 
     headerTitle = chapterVM.number
   }

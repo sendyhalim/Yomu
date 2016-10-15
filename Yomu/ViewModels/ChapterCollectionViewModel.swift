@@ -57,7 +57,6 @@ struct ChapterCollectionViewModel {
       .asDriver()
       .map(void)
 
-
     // MARK: Filtering chapters
     filterPattern
       .flatMap { pattern -> Observable<List<ChapterViewModel>> in
