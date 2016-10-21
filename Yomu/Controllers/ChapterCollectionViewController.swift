@@ -22,8 +22,9 @@ class ChapterCollectionViewController: NSViewController {
   @IBOutlet weak var chapterTitle: NSTextField!
   @IBOutlet weak var toggleSort: NSButton!
 
-  let vm: ChapterCollectionViewModel
   weak var chapterSelectionDelegate: ChapterSelectionDelegate?
+
+  let vm: ChapterCollectionViewModel
   var disposeBag = DisposeBag()
 
   init(viewModel: ChapterCollectionViewModel) {
@@ -52,6 +53,7 @@ class ChapterCollectionViewController: NSViewController {
   func setupSubscriptions() {
     // Cleanup everytime we setup subscriptions
     disposeBag = DisposeBag()
+    vm.reset()
 
     vm.reload ~~> collectionView.reloadData ==> disposeBag
     vm.fetching ~~> progressIndicator.animating ==> disposeBag

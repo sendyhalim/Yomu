@@ -43,8 +43,9 @@ struct ChapterCollectionViewModel {
   fileprivate let _ordering = Variable(SortOrder.descending)
 
   init() {
-    let chapters = _chapters
-    let filteredChapters = _filteredChapters
+    let chapters = self._chapters
+    let filteredChapters = self._filteredChapters
+    let _ordering = self._ordering
 
     // MARK: Fetching chapters
     fetching = _fetching.asDriver()
@@ -76,9 +77,8 @@ struct ChapterCollectionViewModel {
 
     // MARK: Sorting chapters
     toggleSort
-      .asObservable()
-      .scan(SortOrder.descending) { previousOrdering, _ in
-        previousOrdering == .descending ? .ascending : .descending
+      .map {
+        _ordering.value == .descending ? .ascending : .descending
       }
       .bindTo(_ordering) ==> disposeBag
 
