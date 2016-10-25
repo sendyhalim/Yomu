@@ -105,6 +105,41 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>79025C951DBB77480088CD2F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>79025C961DBB77750088CD2F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ViewModels</string>
+			<key>path</key>
+			<string>ViewModels</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79025C961DBB77750088CD2F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SearchedMangaViewModelSpec.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79025C971DBB77750088CD2F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79025C961DBB77750088CD2F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>79065F3C1D3412EA005DB5AE</key>
 		<dict>
 			<key>fileEncoding</key>
@@ -676,6 +711,41 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>797237FF1DBFDAC800B3B53A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>RxTest.framework</string>
+			<key>path</key>
+			<string>Carthage/Build/Mac/RxTest.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>797238001DBFDAC800B3B53A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>797237FF1DBFDAC800B3B53A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>797238031DBFDAF600B3B53A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>797237FF1DBFDAC800B3B53A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>CodeSignOnCopy</string>
+					<string>RemoveHeadersOnCopy</string>
+				</array>
+			</dict>
+		</dict>
 		<key>7973B35C1D3FD5DA00E2B0FC</key>
 		<dict>
 			<key>fileEncoding</key>
@@ -1164,6 +1234,7 @@
 				<string>794CF82D1D0D9B51008761DF</string>
 				<string>794CF82B1D0D9A5B008761DF</string>
 				<string>7916A2081D184701007CA1BD</string>
+				<string>79025C971DBB77750088CD2F</string>
 				<string>7942DC6E1D6B6C8100BD4A6C</string>
 			</array>
 			<key>isa</key>
@@ -1177,6 +1248,7 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>797238001DBFDAC800B3B53A</string>
 				<string>79E85D7E1D0B378C0029FDA6</string>
 				<string>79E85D7F1D0B378C0029FDA6</string>
 			</array>
@@ -1267,6 +1339,7 @@
 			<array>
 				<string>79E85D831D0B37EF0029FDA6</string>
 				<string>794CF8291D0D9A46008761DF</string>
+				<string>79025C951DBB77480088CD2F</string>
 				<string>79A10E631D0D9FEF00B9C4B7</string>
 				<string>798454DB1D05CF3600BB7262</string>
 			</array>
@@ -2719,6 +2792,7 @@ fi</string>
 		<dict>
 			<key>children</key>
 			<array>
+				<string>797237FF1DBFDAC800B3B53A</string>
 				<string>7965D6CA1D906BD6000B693E</string>
 				<string>79E912FD1D7722B60082AA20</string>
 				<string>7901C6DB1D62421D00EE349B</string>
@@ -3291,11 +3365,14 @@ fi</string>
 			<string>10</string>
 			<key>files</key>
 			<array>
+				<string>797238031DBFDAF600B3B53A</string>
 				<string>79E85D811D0B37E00029FDA6</string>
 				<string>79E85D821D0B37E00029FDA6</string>
 			</array>
 			<key>isa</key>
 			<string>PBXCopyFilesBuildPhase</string>
+			<key>name</key>
+			<string>Copy Files</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
