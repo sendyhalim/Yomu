@@ -8,11 +8,13 @@
 
 import RxSwift
 import RxMoya
+import Moya
 
 enum MangaEdenAPI {
   case mangaDetail(String)
   case chapterPages(String)
 }
+
 
 extension MangaEdenAPI: TargetType {
   var baseURL: URL { return URL(string: "http://www.mangaeden.com/api")! }
@@ -27,16 +29,12 @@ extension MangaEdenAPI: TargetType {
     }
   }
 
-  var method: RxMoya.Method {
-    return .GET
+  var method: Moya.Method {
+    return .get
   }
 
   var parameters: [String: Any]? {
     return [:]
-  }
-
-  var multipartBody: [MultipartFormData]? {
-    return .none
   }
 
   var task: Task {

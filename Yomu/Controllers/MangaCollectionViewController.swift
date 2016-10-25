@@ -78,10 +78,10 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
 
     let mangaViewModel = vm[(indexPath as NSIndexPath).item]
 
-    mangaViewModel.title ~~> cell.titleTextField.rx.text ==> cell.disposeBag
+    mangaViewModel.title ~~> cell.titleTextField.rx.text.orEmpty ==> cell.disposeBag
     mangaViewModel.previewUrl ~~> cell.mangaImageView.setImageWithUrl ==> cell.disposeBag
-    mangaViewModel.categoriesString ~~> cell.categoryTextField.rx.text ==> cell.disposeBag
-    mangaViewModel.selected.map(!) ~~> cell.accessoryButton.rx.hidden ==> cell.disposeBag
+    mangaViewModel.categoriesString ~~> cell.categoryTextField.rx.text.orEmpty ==> cell.disposeBag
+    mangaViewModel.selected.map(!) ~~> cell.accessoryButton.rx.isHidden ==> cell.disposeBag
 
     return cell
   }

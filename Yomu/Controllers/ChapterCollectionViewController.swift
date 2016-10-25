@@ -59,7 +59,7 @@ class ChapterCollectionViewController: NSViewController {
     vm.fetching ~~> progressIndicator.animating ==> disposeBag
 
     chapterTitle
-      .rx.text
+      .rx.text.orEmpty
       .throttle(0.5, scheduler: MainScheduler.instance)
       .bindTo(vm.filterPattern) ==> disposeBag
 
@@ -108,9 +108,9 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     // after image preview is fetched.
     cell.chapterPreview.kf.indicator?.startAnimatingView()
     chapter.fetchPreview() ==> cell.disposeBag
-    chapter.title ~~> cell.chapterTitle.rx.text ==> cell.disposeBag
+    chapter.title ~~> cell.chapterTitle.rx.text.orEmpty ==> cell.disposeBag
     chapter.previewUrl ~~> cell.chapterPreview.setImageWithUrl ==> cell.disposeBag
-    chapter.number ~~> cell.chapterNumber.rx.text ==> cell.disposeBag
+    chapter.number ~~> cell.chapterNumber.rx.text.orEmpty ==> cell.disposeBag
 
     return cell
   }

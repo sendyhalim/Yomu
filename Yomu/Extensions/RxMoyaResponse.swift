@@ -9,6 +9,7 @@
 import Argo
 import RxSwift
 import RxMoya
+import Moya
 
 extension Response {
   ///  Transform response data to a type.
@@ -82,7 +83,7 @@ extension Response {
   }
 }
 
-extension ObservableType where E == RxMoya.Response {
+extension ObservableType where E == Response {
   func map<T: Decodable>(_ type: T.Type) -> Observable<T> where T == T.DecodedType {
     return map {
       try $0.map()

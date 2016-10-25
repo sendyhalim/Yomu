@@ -26,8 +26,8 @@ class ChapterPageCollectionViewController: NSViewController {
 
   weak var delegate: ChapterPageCollectionViewDelegate?
 
-  let vm: ChapterPageCollectionViewModel
-  let disposeBag = DisposeBag()
+  var vm: ChapterPageCollectionViewModel
+  var disposeBag = DisposeBag()
 
   init(viewModel: ChapterPageCollectionViewModel) {
     vm = viewModel
@@ -49,6 +49,11 @@ class ChapterPageCollectionViewController: NSViewController {
 
     collectionView.dataSource = self
     collectionView.delegate = self
+    setupSubscriptions()
+  }
+
+  func setupSubscriptions() {
+    disposeBag = DisposeBag()
 
     zoomIn
       .rx.tap
@@ -69,15 +74,15 @@ class ChapterPageCollectionViewController: NSViewController {
       ==> disposeBag
 
     vm.readingProgress
-      ~~> readingProgress.rx.text
+      ~~> readingProgress.rx.text.orEmpty
       ==> disposeBag
 
     vm.zoomScaleText
-      ~~> zoomScaleLabel.rx.text
+      ~~> zoomScaleLabel.rx.text.orEmpty
       ==> disposeBag
 
     vm.headerTitle
-      ~~> headerTitle.rx.text
+      ~~> headerTitle.rx.text.orEmpty
       ==> disposeBag
 
     vm.zoomScroll ~~> scroll ==> disposeBag

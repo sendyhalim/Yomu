@@ -8,6 +8,7 @@
 
 import RxMoya
 import RxSwift
+import Moya
 
 enum YomuAPI {
   case search(String)
@@ -23,8 +24,8 @@ extension YomuAPI: TargetType {
     }
   }
 
-  var method: RxMoya.Method {
-    return .GET
+  var method: Moya.Method {
+    return .get
   }
 
   var parameters: [String: Any]? {
@@ -32,10 +33,6 @@ extension YomuAPI: TargetType {
     case .search(let titlePattern):
       return ["term": titlePattern as AnyObject]
     }
-  }
-
-  var multipartBody: [MultipartFormData]? {
-    return .none
   }
 
   var task: Task {

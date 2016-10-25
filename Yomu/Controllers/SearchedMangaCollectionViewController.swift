@@ -44,7 +44,7 @@ class SearchedMangaCollectionViewController: NSViewController {
     collectionView.delegate = self
 
     mangaTitle
-      .rx.text
+      .rx.text.orEmpty
       .filter {
         $0.characters.count > 2
       }
@@ -103,7 +103,7 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
 
     let vm = collectionViewModel[(indexPath as NSIndexPath).item]
 
-    vm.title ~~> cell.titleTextField.rx.text ==> cell.disposeBag
+    vm.title ~~> cell.titleTextField.rx.text.orEmpty ==> cell.disposeBag
     vm.previewUrl ~~> cell.mangaImageView.setImageWithUrl ==> cell.disposeBag
     cell.accessoryButton.image = Config.icon.pin
 
