@@ -11,7 +11,5 @@ import Cocoa
 class YomuWindowController: NSWindowController {
   override func windowDidLoad() {
     super.windowDidLoad()
-
-    window?.setFrame(NSScreen.main()!.visibleFrame, display: true)
   }
 }

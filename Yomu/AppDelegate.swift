@@ -11,7 +11,11 @@ import AppKit
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-
+    let mainWindow = NSApplication.shared().windows.first!
+    mainWindow.titleVisibility = NSWindowTitleVisibility.hidden
+    mainWindow.titlebarAppearsTransparent = true
+    mainWindow.styleMask = [NSFullSizeContentViewWindowMask, mainWindow.styleMask]
+    mainWindow.setFrame(NSScreen.main()!.frame, display: true)
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {

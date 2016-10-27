@@ -85,9 +85,6 @@
                     </constraints>
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="sZd-Q7-Lk4">
-                    <rect key="frame" x="217" y="142" width="16" height="16"/>
-                </progressIndicator>
                 <box boxType="custom" borderType="none" title="Chapter Collection Container" translatesAutoresizingMaskIntoConstraints="NO" id="yhl-30-M9X">
                     <rect key="frame" x="0.0" y="0.0" width="450" height="248"/>
                     <view key="contentView" id="ZH4-eO-g9a">
@@ -130,17 +127,20 @@
                     </constraints>
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="sZd-Q7-Lk4">
+                    <rect key="frame" x="217" y="116" width="16" height="16"/>
+                </progressIndicator>
             </subviews>
             <constraints>
-                <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="0cn-oN-SG4"/>
                 <constraint firstItem="L0b-P3-rH2" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="3Vi-MO-sgj"/>
                 <constraint firstItem="yhl-30-M9X" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="5fr-he-YKj"/>
                 <constraint firstItem="yhl-30-M9X" firstAttribute="top" secondItem="L0b-P3-rH2" secondAttribute="bottom" id="6Y3-TR-u4y"/>
                 <constraint firstItem="yhl-30-M9X" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="EKa-cf-IRZ"/>
                 <constraint firstItem="yhl-30-M9X" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="HYE-87-WEx"/>
+                <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerX" secondItem="yhl-30-M9X" secondAttribute="centerX" id="IZ9-ls-hSz"/>
                 <constraint firstItem="L0b-P3-rH2" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="Jd5-D1-Q83"/>
+                <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerY" secondItem="yhl-30-M9X" secondAttribute="centerY" id="NHI-Dl-7DI"/>
                 <constraint firstItem="L0b-P3-rH2" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="TAA-f2-9xH"/>
-                <constraint firstItem="sZd-Q7-Lk4" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="yRm-E3-uim"/>
             </constraints>
         </customView>
     </objects>

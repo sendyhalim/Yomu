@@ -57,6 +57,7 @@ class ChapterCollectionViewController: NSViewController {
 
     vm.reload ~~> collectionView.reloadData ==> disposeBag
     vm.fetching ~~> progressIndicator.animating ==> disposeBag
+    // vm.fetching ~~> collectionView.rx.isHidden ==> disposeBag
 
     chapterTitle
       .rx.text.orEmpty
