@@ -113,8 +113,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>ViewModels</string>
 			<key>path</key>
 			<string>ViewModels</string>
 			<key>sourceTree</key>
@@ -932,8 +930,12 @@
 					<dict>
 						<key>CreatedOnToolsVersion</key>
 						<string>7.3.1</string>
+						<key>DevelopmentTeam</key>
+						<string>4QCP9AS6BP</string>
 						<key>LastSwiftMigration</key>
 						<string>0800</string>
+						<key>ProvisioningStyle</key>
+						<string>Automatic</string>
 					</dict>
 					<key>798454D41D05CF3600BB7262</key>
 					<dict>
@@ -1556,6 +1558,8 @@
 				<string></string>
 				<key>COMBINE_HIDPI_IMAGES</key>
 				<string>YES</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>4QCP9AS6BP</string>
 				<key>FRAMEWORK_SEARCH_PATHS</key>
 				<array>
 					<string>$(inherited)</string>
@@ -1570,7 +1574,7 @@
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>SWIFT_VERSION</key>
-				<string>3.0</string>
+				<string>3.0.1</string>
 			</dict>
 			<key>isa</key>
 			<string>XCBuildConfiguration</string>
@@ -1587,6 +1591,8 @@
 				<string></string>
 				<key>COMBINE_HIDPI_IMAGES</key>
 				<string>YES</string>
+				<key>DEVELOPMENT_TEAM</key>
+				<string>4QCP9AS6BP</string>
 				<key>FRAMEWORK_SEARCH_PATHS</key>
 				<array>
 					<string>$(inherited)</string>
@@ -1601,7 +1607,7 @@
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>SWIFT_VERSION</key>
-				<string>3.0</string>
+				<string>3.0.1</string>
 			</dict>
 			<key>isa</key>
 			<string>XCBuildConfiguration</string>
@@ -2385,7 +2391,7 @@ fi</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>SWIFT_VERSION</key>
-				<string>3.0</string>
+				<string>3.0.1</string>
 			</dict>
 			<key>isa</key>
 			<string>XCBuildConfiguration</string>
@@ -2416,7 +2422,7 @@ fi</string>
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>SWIFT_VERSION</key>
-				<string>3.0</string>
+				<string>3.0.1</string>
 			</dict>
 			<key>isa</key>
 			<string>XCBuildConfiguration</string>
