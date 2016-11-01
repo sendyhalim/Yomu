@@ -109,6 +109,7 @@
 		<dict>
 			<key>children</key>
 			<array>
+				<string>79C3B9CD1DC907A100F03B42</string>
 				<string>79025C961DBB77750088CD2F</string>
 			</array>
 			<key>isa</key>
@@ -1235,6 +1236,7 @@
 				<string>79E85D851D0B380D0029FDA6</string>
 				<string>794CF82D1D0D9B51008761DF</string>
 				<string>794CF82B1D0D9A5B008761DF</string>
+				<string>79C3B9CE1DC907A100F03B42</string>
 				<string>7916A2081D184701007CA1BD</string>
 				<string>79025C971DBB77750088CD2F</string>
 				<string>7942DC6E1D6B6C8100BD4A6C</string>
@@ -3092,6 +3094,26 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>7965D6CA1D906BD6000B693E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79C3B9CD1DC907A100F03B42</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ChapterPageViewModelSpec.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79C3B9CE1DC907A100F03B42</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79C3B9CD1DC907A100F03B42</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>

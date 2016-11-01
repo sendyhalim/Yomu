@@ -8,8 +8,8 @@
 
 import Quick
 import Nimble
-import RxTest
 import RxSwift
+import RxTest
 
 @testable import Yomu
 
