@@ -1658,7 +1658,7 @@
 				<key>SWIFT_OPTIMIZATION_LEVEL</key>
 				<string>-Onone</string>
 				<key>SWIFT_VERSION</key>
-				<string>3.0</string>
+				<string>3.0.1</string>
 				<key>TEST_HOST</key>
 				<string>$(BUILT_PRODUCTS_DIR)/Yomu.app/Contents/MacOS/Yomu</string>
 			</dict>
@@ -1693,7 +1693,7 @@
 				<key>PRODUCT_NAME</key>
 				<string>$(TARGET_NAME)</string>
 				<key>SWIFT_VERSION</key>
-				<string>3.0</string>
+				<string>3.0.1</string>
 				<key>TEST_HOST</key>
 				<string>$(BUILT_PRODUCTS_DIR)/Yomu.app/Contents/MacOS/Yomu</string>
 			</dict>
