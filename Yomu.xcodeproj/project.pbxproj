@@ -110,6 +110,7 @@
 			<key>children</key>
 			<array>
 				<string>79C3B9CD1DC907A100F03B42</string>
+				<string>793B7C3D1DCE65DD00C1EA34</string>
 				<string>79025C961DBB77750088CD2F</string>
 			</array>
 			<key>isa</key>
@@ -384,6 +385,26 @@
 		<dict>
 			<key>fileRef</key>
 			<string>79346A301D44FC6C00206487</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>793B7C3D1DCE65DD00C1EA34</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>MangaViewModelSpec.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>793B7C3E1DCE65DD00C1EA34</key>
+		<dict>
+			<key>fileRef</key>
+			<string>793B7C3D1DCE65DD00C1EA34</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1239,6 +1260,7 @@
 				<string>79C3B9CE1DC907A100F03B42</string>
 				<string>7916A2081D184701007CA1BD</string>
 				<string>79025C971DBB77750088CD2F</string>
+				<string>793B7C3E1DCE65DD00C1EA34</string>
 				<string>7942DC6E1D6B6C8100BD4A6C</string>
 			</array>
 			<key>isa</key>
