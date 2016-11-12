@@ -21,8 +21,11 @@ class MangaViewModelSpec: QuickSpec {
       Manga(
         position: 0,
         id: "shingeki",
+        slug: "shingeki-no-kyojin",
         title: "Shingeki No Kyojin",
-        image: ImageUrl(endpoint: "http://some/url"),
+        author: "yep yep",
+        image: ImageUrl(endpoint: "/some/url"),
+        releasedYear: 1880,
         description: "test",
         categories: categories
       )
@@ -88,23 +91,7 @@ class MangaViewModelSpec: QuickSpec {
       }
 
       it("should emit preview url") {
-        expect(observer.events.first?.value.element) == "http://some/url"
-      }
-    }
-
-    describe(".previewUrl") {
-      let observer = scheduler.createObserver(String.self)
-
-      let vm = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
-
-      beforeEach {
-        vm.previewUrl.map { $0.description } ~~> observer ==> disposeBag
-
-        scheduler.start()
-      }
-
-      it("should emit preview url") {
-        expect(observer.events.first?.value.element) == "http://some/url"
+        expect(observer.events.first?.value.element) == "https://cdn.mangaeden.com/mangasimg/some/url"
       }
     }
 

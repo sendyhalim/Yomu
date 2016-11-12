@@ -16,7 +16,10 @@ struct ImageUrl: CustomStringConvertible {
   let endpoint: String
 
   var description: String {
-    return "\(ImageUrl.prefix)/\(endpoint)"
+    let characters = CharacterSet(charactersIn: "/")
+    let _endpoint = endpoint.trimmingCharacters(in: characters)
+
+    return "\(ImageUrl.prefix)/\(_endpoint)"
   }
 
   var url: URL {
