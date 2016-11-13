@@ -21,7 +21,7 @@ class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var readingProgress: NSTextField!
   @IBOutlet weak var zoomIn: NSButton!
   @IBOutlet weak var zoomOut: NSButton!
-  @IBOutlet weak var zoomScaleLabel: NSTextField!
+  @IBOutlet weak var zoomScale: NSTextField!
   @IBOutlet weak var headerTitle: NSTextField!
 
   weak var delegate: ChapterPageCollectionViewDelegate?
@@ -77,8 +77,9 @@ class ChapterPageCollectionViewController: NSViewController {
       ~~> readingProgress.rx.text.orEmpty
       ==> disposeBag
 
-    vm.zoomScaleText
-      ~~> zoomScaleLabel.rx.text.orEmpty
+    vm.zoomScale
+      .asDriver(onErrorJustReturn: "")
+      ~~> zoomScale.rx.text.orEmpty
       ==> disposeBag
 
     vm.headerTitle
@@ -88,6 +89,17 @@ class ChapterPageCollectionViewController: NSViewController {
     vm.zoomScroll ~~> scroll ==> disposeBag
 
     vm.fetch() ==> disposeBag
+
+    zoomScale
+      .rx.controlEvent
+      .map { [weak self] in
+        self!.zoomScale.stringValue
+      }
+      .map(Double.init)
+      .filter {
+        $0 != nil
+      }
+      .map { $0! / 100 } ~~> vm.setZoomScale ==> disposeBag
   }
 
   func scroll(offset: ScrollOffset) {
