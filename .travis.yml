@@ -1,5 +1,5 @@
 before_install:
-  - brew unlink swiftlint && brew install swiftlint
+  - brew update && brew install swiftlint
   - curl -OlL "https://github.com/Carthage/Carthage/releases/download/0.18.1/Carthage.pkg"
   - sudo installer -pkg "Carthage.pkg" -target /
   - rm "Carthage.pkg"
@@ -8,12 +8,12 @@ matrix:
   include:
     - os: osx
       language: objective-c
-      osx_image: xcode8
+      osx_image: xcode8.1
       script: travis_retry make test
       env: JOB=CI_BUILD_TEST
     - os: osx
       language: objective-c
-      osx_image: xcode8
+      osx_image: xcode8.1
       script: travis_retry make package
       env: JOB=CI_BUILD_PACKAGE
 deploy:
