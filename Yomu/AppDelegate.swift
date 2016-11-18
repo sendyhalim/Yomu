@@ -10,8 +10,10 @@ import AppKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+  var mainWindow: NSWindow!
+
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    let mainWindow = NSApplication.shared().windows.first!
+    mainWindow = NSApplication.shared().windows.first!
     mainWindow.titleVisibility = NSWindowTitleVisibility.hidden
     mainWindow.titlebarAppearsTransparent = true
     mainWindow.styleMask = [NSFullSizeContentViewWindowMask, mainWindow.styleMask]
@@ -20,5 +22,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func applicationWillTerminate(_ aNotification: Notification) {
     // Insert code here to tear down your application
+  }
+
+  func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+    mainWindow.makeKeyAndOrderFront(sender)
+
+    return true
   }
 }
