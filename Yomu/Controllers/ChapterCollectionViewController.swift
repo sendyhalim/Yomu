@@ -57,7 +57,6 @@ class ChapterCollectionViewController: NSViewController {
 
     vm.reload ~~> collectionView.reloadData ==> disposeBag
     vm.fetching ~~> progressIndicator.animating ==> disposeBag
-    // vm.fetching ~~> collectionView.rx.isHidden ==> disposeBag
 
     chapterTitle
       .rx.text.orEmpty
@@ -140,12 +139,10 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
 
 extension ChapterCollectionViewController: MangaSelectionDelegate {
   func mangaDidSelected(_ manga: Manga) {
-    // Reset filter
-    // we need to reset it before setup subscriptions so that the selected manga's chapters
-    // won't get filtered
-    chapterTitle.stringValue = ""
-
     setupSubscriptions()
+
+    // Reset filter
+    chapterTitle.stringValue = ""
 
     // Scroll to the top everytime manga is selected
     if !vm.isEmpty {

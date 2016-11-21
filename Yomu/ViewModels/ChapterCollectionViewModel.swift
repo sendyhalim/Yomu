@@ -140,6 +140,7 @@ struct ChapterCollectionViewModel {
     _filteredChapters.value = List()
     _chapters.value = List()
     _ordering.value = .descending
+    filterPattern.onNext("")
   }
 
   subscript(index: Int) -> ChapterViewModel {
