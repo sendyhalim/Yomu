@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+/// Represents Manga object for `Realm` database
 class MangaRealm: Object {
   dynamic var id: String = ""
   dynamic var slug: String = ""
@@ -23,6 +24,11 @@ class MangaRealm: Object {
     return "id"
   }
 
+  ///  Convert the given `Manga` struct to `MangaRealm` object
+  ///
+  ///  - parameter manga: `Manga`
+  ///
+  ///  - returns: `MangaRealm`
   static func from(manga: Manga) -> MangaRealm {
     let mangaRealm = MangaRealm()
 
@@ -38,6 +44,11 @@ class MangaRealm: Object {
     return mangaRealm
   }
 
+  ///  Convert the given `MangaRealm` object to `Manga` struct
+  ///
+  ///  - parameter mangaRealm: `MangaRealm`
+  ///
+  ///  - returns: `Manga`
   static func from(mangaRealm: MangaRealm) -> Manga {
     let categories = mangaRealm
       .commaSeparatedCategories.characters

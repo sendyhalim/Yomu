@@ -31,6 +31,9 @@ enum BorderPosition {
 }
 
 extension NSView {
+  ///  Draw border based on the given `Border` spec
+  ///
+  ///  - parameter border: `Border` spec
   func drawBorder(_ border: Border) {
     wantsLayer = true
 
@@ -55,6 +58,11 @@ extension NSView {
     }
   }
 
+  ///  Draw a border (rectangle) at left
+  ///
+  ///  - parameter borderWidth: Border width in point
+  ///  - parameter radius:      Border radius
+  ///  - parameter color:       Border color
   fileprivate func drawBorderAtLeft(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
     let borderFrame = CGRect(
       x: 0,
@@ -66,6 +74,11 @@ extension NSView {
     drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
   }
 
+  ///  Draw a border (rectangle) at top
+  ///
+  ///  - parameter borderWidth: Border width in point
+  ///  - parameter radius:      Border radius
+  ///  - parameter color:       Border color
   fileprivate func drawBorderAtTop(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
     let borderFrame = CGRect(
       x: 0,
@@ -77,6 +90,11 @@ extension NSView {
     drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
   }
 
+  ///  Draw a border (rectangle) at right
+  ///
+  ///  - parameter borderWidth: Border width in point
+  ///  - parameter radius:      Border radius
+  ///  - parameter color:       Border color
   fileprivate func drawBorderAtRight(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
     let borderFrame = CGRect(
       x: frame.size.width - borderWidth,
@@ -88,6 +106,11 @@ extension NSView {
     drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
   }
 
+  ///  Draw a border (rectangle) at bottom
+  ///
+  ///  - parameter borderWidth: Border width in point
+  ///  - parameter radius:      Border radius
+  ///  - parameter color:       Border color
   fileprivate func drawBorderAtBottom(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
     let borderFrame = CGRect(
       x: 0,
@@ -99,6 +122,12 @@ extension NSView {
     drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
   }
 
+  ///  Draw border based on the given frame, will use layer to draw the border.
+  ///
+  ///  - parameter borderFrame: Border layer frame
+  ///  - parameter borderWidth: Border width in point
+  ///  - parameter radius:      Border radius
+  ///  - parameter color:       Border color
   fileprivate func drawBorder(
     frame borderFrame: CGRect,
     width: CGFloat,

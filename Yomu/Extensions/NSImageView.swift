@@ -12,6 +12,13 @@ import Kingfisher
 private var centerPointKey: Void?
 
 extension NSImageView {
+  /// Center point of `NSImageView` in its parent view coordinate system
+  fileprivate var centerPoint: CGPoint? {
+    let value = objc_getAssociatedObject(self, &centerPointKey) as? NSValue
+
+    return value?.pointValue
+  }
+
   ///  An abstraction for Kingfisher.
   ///  It helps to provide accurate arity thus it can be used with RxCocoa's `drive` easily
   ///  `someUrl.drive(onNext: imageView.setImageUrl)`
@@ -21,12 +28,9 @@ extension NSImageView {
     kf.setImage(with: url)
   }
 
-  fileprivate var centerPoint: CGPoint? {
-    let value = objc_getAssociatedObject(self, &centerPointKey) as? NSValue
-
-    return value?.pointValue
-  }
-
+  ///  Set center point of `NSImageView` in its parent view coordinate system
+  ///
+  ///  - parameter point: Center Point
   fileprivate func setCenterPoint(_ point: CGPoint) {
     objc_setAssociatedObject(self, &centerPointKey, NSValue(point: point), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
   }
