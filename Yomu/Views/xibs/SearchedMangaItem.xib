@@ -8,10 +8,10 @@
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="MangaItem" customModule="Yomu" customModuleProvider="target"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="SearchedMangaItem" customModule="Yomu" customModuleProvider="target"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" userLabel="Manga Item View">
+        <customView id="c22-O7-iKe" userLabel="Searched Manga Item View">
             <rect key="frame" x="0.0" y="0.0" width="280" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -82,7 +82,7 @@
             </constraints>
             <point key="canvasLocation" x="289" y="380"/>
         </customView>
-        <collectionViewItem id="mb3-6Q-snP" userLabel="Oh" customClass="MangaItem" customModule="Yomu" customModuleProvider="target">
+        <collectionViewItem id="mb3-6Q-snP" customClass="SearchedMangaItem" customModule="Yomu" customModuleProvider="target">
             <connections>
                 <outlet property="accessoryButton" destination="76s-Oa-UPa" id="j5Y-pK-SCg"/>
                 <outlet property="categoryTextField" destination="FpS-sV-RKO" id="R1s-Uz-IT0"/>

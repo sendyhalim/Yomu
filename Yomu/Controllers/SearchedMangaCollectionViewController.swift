@@ -97,9 +97,9 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
     itemForRepresentedObjectAt indexPath: IndexPath
   ) -> NSCollectionViewItem {
     let cell = collectionView.makeItem(
-      withIdentifier: "MangaItem",
+      withIdentifier: "SearchedMangaItem",
       for: indexPath
-    ) as! MangaItem
+    ) as! SearchedMangaItem
 
     let vm = collectionViewModel[(indexPath as NSIndexPath).item]
 
