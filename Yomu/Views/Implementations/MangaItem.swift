@@ -13,8 +13,8 @@ class MangaItem: NSCollectionViewItem {
   @IBOutlet weak var mangaImageView: NSImageView!
   @IBOutlet weak var titleContainerView: NSBox!
   @IBOutlet weak var titleTextField: NSTextField!
-  @IBOutlet weak var accessoryButton: NSButton!
   @IBOutlet weak var categoryTextField: NSTextField!
+  @IBOutlet weak var selectedIndicator: NSBox!
 
   var disposeBag = DisposeBag()
 

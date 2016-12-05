@@ -15,21 +15,32 @@
             <rect key="frame" x="0.0" y="0.0" width="280" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="lb9-Uc-qAi">
+                    <rect key="frame" x="0.0" y="0.0" width="3" height="70"/>
+                    <view key="contentView" id="Pex-pR-q1m">
+                        <rect key="frame" x="0.0" y="0.0" width="3" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="3" id="ODX-b3-caI"/>
+                    </constraints>
+                    <color key="fillColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                </box>
                 <imageView horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-eP-m62">
-                    <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
+                    <rect key="frame" x="8" y="0.0" width="50" height="70"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="fky-5s-8IN"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="k2U-9a-r5Z"/>
                 </imageView>
                 <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="89x-YM-u0k">
-                    <rect key="frame" x="70" y="0.0" width="210" height="70"/>
+                    <rect key="frame" x="78" y="0.0" width="202" height="70"/>
                     <view key="contentView" id="bYl-sR-kkV">
-                        <rect key="frame" x="0.0" y="0.0" width="210" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="202" height="70"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-mk-txx">
-                                <rect key="frame" x="-2" y="43" width="179" height="17"/>
+                                <rect key="frame" x="-2" y="43" width="77" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Manga Title" id="qHK-Rj-0lS">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -37,34 +48,21 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-sV-RKO">
-                                <rect key="frame" x="-2" y="10" width="174" height="13"/>
+                                <rect key="frame" x="-2" y="10" width="186" height="13"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Manga Categories" id="b8d-Ya-Cqz">
                                     <font key="font" metaFont="systemThin" size="10"/>
                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="76s-Oa-UPa">
-                                <rect key="frame" x="180" y="25" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="eqp-ct-Nm0"/>
-                                    <constraint firstAttribute="height" constant="20" id="pQX-wL-LuJ"/>
-                                </constraints>
-                                <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="RightArrow" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="o6r-qi-fqD">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="rIw-mk-txx" firstAttribute="leading" secondItem="bYl-sR-kkV" secondAttribute="leading" id="2Xe-QV-uCI"/>
                             <constraint firstItem="FpS-sV-RKO" firstAttribute="top" secondItem="rIw-mk-txx" secondAttribute="bottom" constant="20" id="E5H-aj-0JS"/>
                             <constraint firstItem="rIw-mk-txx" firstAttribute="top" secondItem="bYl-sR-kkV" secondAttribute="top" constant="10" id="GEp-v0-WJE"/>
-                            <constraint firstItem="76s-Oa-UPa" firstAttribute="trailing" secondItem="bYl-sR-kkV" secondAttribute="trailing" constant="-10" id="IWQ-Nc-ddT"/>
-                            <constraint firstItem="76s-Oa-UPa" firstAttribute="leading" secondItem="FpS-sV-RKO" secondAttribute="trailing" constant="10" id="bVc-To-puN"/>
-                            <constraint firstItem="76s-Oa-UPa" firstAttribute="leading" secondItem="rIw-mk-txx" secondAttribute="trailing" constant="5" id="gUE-in-GvC"/>
+                            <constraint firstAttribute="trailing" secondItem="rIw-mk-txx" secondAttribute="trailing" constant="129" id="d8C-lr-Djj"/>
+                            <constraint firstAttribute="trailing" secondItem="FpS-sV-RKO" secondAttribute="trailing" constant="20" symbolic="YES" id="dQt-2R-LtK"/>
                             <constraint firstAttribute="bottom" secondItem="FpS-sV-RKO" secondAttribute="bottom" constant="10" id="ruh-vS-2aR"/>
-                            <constraint firstItem="76s-Oa-UPa" firstAttribute="centerY" secondItem="bYl-sR-kkV" secondAttribute="centerY" id="sMd-mj-CRg"/>
                             <constraint firstItem="FpS-sV-RKO" firstAttribute="leading" secondItem="bYl-sR-kkV" secondAttribute="leading" id="u0e-3y-x49"/>
                         </constraints>
                     </view>
@@ -72,28 +70,28 @@
                 </box>
             </subviews>
             <constraints>
+                <constraint firstItem="lb9-Uc-qAi" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="3cf-gh-mvA"/>
                 <constraint firstItem="89x-YM-u0k" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="ARB-Je-akJ"/>
                 <constraint firstItem="89x-YM-u0k" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="JVS-DK-Ced"/>
-                <constraint firstItem="CHo-eP-m62" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="OZN-xP-mmg"/>
+                <constraint firstAttribute="bottom" secondItem="lb9-Uc-qAi" secondAttribute="bottom" id="MSy-vV-q2b"/>
                 <constraint firstItem="89x-YM-u0k" firstAttribute="leading" secondItem="CHo-eP-m62" secondAttribute="trailing" constant="20" symbolic="YES" id="PSJ-2W-4G9"/>
+                <constraint firstItem="CHo-eP-m62" firstAttribute="leading" secondItem="lb9-Uc-qAi" secondAttribute="trailing" constant="5" id="SPF-pC-J1f"/>
                 <constraint firstItem="CHo-eP-m62" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="TtO-2I-lN5"/>
                 <constraint firstItem="CHo-eP-m62" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="XpD-gl-scD"/>
                 <constraint firstItem="89x-YM-u0k" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="bkg-d6-ORp"/>
+                <constraint firstItem="lb9-Uc-qAi" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="xf5-ai-rb9"/>
             </constraints>
             <point key="canvasLocation" x="289" y="380"/>
         </customView>
-        <collectionViewItem id="mb3-6Q-snP" userLabel="Oh" customClass="MangaItem" customModule="Yomu" customModuleProvider="target">
+        <collectionViewItem id="mb3-6Q-snP" customClass="MangaItem" customModule="Yomu" customModuleProvider="target">
             <connections>
-                <outlet property="accessoryButton" destination="76s-Oa-UPa" id="j5Y-pK-SCg"/>
                 <outlet property="categoryTextField" destination="FpS-sV-RKO" id="R1s-Uz-IT0"/>
                 <outlet property="mangaImageView" destination="CHo-eP-m62" id="fsv-jP-dTv"/>
+                <outlet property="selectedIndicator" destination="lb9-Uc-qAi" id="SCF-J8-Ohj"/>
                 <outlet property="titleContainerView" destination="89x-YM-u0k" id="seC-Cx-N95"/>
                 <outlet property="titleTextField" destination="rIw-mk-txx" id="IGG-49-Z2T"/>
                 <outlet property="view" destination="c22-O7-iKe" id="Y9V-zn-zIE"/>
             </connections>
         </collectionViewItem>
     </objects>
-    <resources>
-        <image name="RightArrow" width="100" height="100"/>
-    </resources>
 </document>

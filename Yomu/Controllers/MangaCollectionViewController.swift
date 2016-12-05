@@ -81,7 +81,7 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
     mangaViewModel.title ~~> cell.titleTextField.rx.text.orEmpty ==> cell.disposeBag
     mangaViewModel.previewUrl ~~> cell.mangaImageView.setImageWithUrl ==> cell.disposeBag
     mangaViewModel.categoriesString ~~> cell.categoryTextField.rx.text.orEmpty ==> cell.disposeBag
-    mangaViewModel.selected.map(!) ~~> cell.accessoryButton.rx.isHidden ==> cell.disposeBag
+    mangaViewModel.selected.map(!) ~~> cell.selectedIndicator.rx.isHidden ==> cell.disposeBag
 
     return cell
   }
