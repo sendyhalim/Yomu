@@ -95,11 +95,9 @@ class ChapterPageCollectionViewController: NSViewController {
       .map { [weak self] in
         self!.zoomScale.stringValue
       }
-      .map(Double.init)
       .filter {
         $0 != nil
-      }
-      .map { $0! / 100 } ~~> vm.setZoomScale ==> disposeBag
+      } ~~> vm.setZoomScale ==> disposeBag
   }
 
   func scroll(offset: ScrollOffset) {

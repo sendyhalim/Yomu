@@ -39,8 +39,7 @@ internal struct IconName {
 internal struct ChapterPageSize {
   let width = 730
   let height = 1040
-  let maximumZoomScale = 1.5
-  let minimumZoomScale = 1.0
+  let minimumZoomScale = 0.1
   let zoomScaleStep = 0.1
 }
 

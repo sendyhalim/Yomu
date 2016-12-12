@@ -11,6 +11,36 @@ import RxMoya
 import RxSwift
 import Swiftz
 
+/// A data structure that represents zoom scale
+struct ZoomScale: CustomStringConvertible {
+  /// Scale in 1 based, 1 -> 100%
+  let scale: Double
+
+  /// String representation of zoom scale,
+  /// will automatically multiply the scale by 100
+  var description: String {
+    return String(Int(scale * 100))
+  }
+
+  ///  Normalize the given scale .
+  ///
+  ///  - parameter scale: Zoom scale, if the scale is greater than 10 then
+  ///    it's considered as 100 based scale (I believe no one wants to zoom in by 1000%)
+  ///
+  ///  - returns: zoom scale with base 1  (1 -> 100%)
+  static private func normalize(scale: Double) -> Double {
+    return scale > 10 ? (scale / 100) : scale
+  }
+
+  init(scale: Double) {
+    self.scale = ZoomScale.normalize(scale: scale)
+  }
+
+  init(scale: String) {
+    self.init(scale: Double(scale)!)
+  }
+}
+
 struct PageSizeMargin {
   let previousSize: CGSize
   let currentSize: CGSize
@@ -66,7 +96,7 @@ struct ChapterPageCollectionViewModel {
     width: Config.chapterPageSize.width,
     height: Config.chapterPageSize.height
   ))
-  fileprivate let _zoomScale = Variable<Double>(1.0)
+  fileprivate let _zoomScale = Variable(ZoomScale(scale: 1.0))
   fileprivate let chapterVM: ChapterViewModel
 
   init(chapterViewModel: ChapterViewModel) {
@@ -89,29 +119,26 @@ struct ChapterPageCollectionViewModel {
       .map { "\($0) / \(_chapterPages.value.count) Pages" }
 
     zoomIn
-      .filter {
-        _zoomScale.value < Config.chapterPageSize.maximumZoomScale
-      }
       .map {
-        _zoomScale.value + Config.chapterPageSize.zoomScaleStep
+        ZoomScale(scale: _zoomScale.value.scale + Config.chapterPageSize.zoomScaleStep)
       }
       .bindTo(_zoomScale) ==> disposeBag
 
     zoomOut
       .filter {
-        _zoomScale.value > Config.chapterPageSize.minimumZoomScale
+        (_zoomScale.value.scale - Config.chapterPageSize.zoomScaleStep) > Config.chapterPageSize.minimumZoomScale
       }
       .map {
-        _zoomScale.value - Config.chapterPageSize.zoomScaleStep
+        ZoomScale(scale: _zoomScale.value.scale - Config.chapterPageSize.zoomScaleStep)
       }
       .bindTo(_zoomScale) ==> disposeBag
 
     _zoomScale
       .asObservable()
-      .map { scale in
+      .map { zoom in
         CGSize(
-          width: Int(Double(Config.chapterPageSize.width) * scale),
-          height: Int(Double(Config.chapterPageSize.height) * scale)
+          width: Int(Double(Config.chapterPageSize.width) * zoom.scale),
+          height: Int(Double(Config.chapterPageSize.height) * zoom.scale)
         )
       }
       .bindTo(_pageSize) ==> disposeBag
@@ -119,8 +146,7 @@ struct ChapterPageCollectionViewModel {
 
     zoomScale = _zoomScale
       .asDriver()
-      .map { $0 * 100 }
-      .map(String.init)
+      .map { $0.description }
 
     invalidateLayout = _zoomScale
       .asDriver()
@@ -168,7 +194,7 @@ struct ChapterPageCollectionViewModel {
     _currentPageIndex.value = index
   }
 
-  func setZoomScale(_ scale: Double) {
-    _zoomScale.value = scale
+  func setZoomScale(_ scale: String) {
+    _zoomScale.value = ZoomScale(scale: scale)
   }
 }
