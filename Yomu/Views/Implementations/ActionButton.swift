@@ -18,7 +18,7 @@ class ActionButton: NSButton {
     attributedTitle = NSAttributedString(string: title, attributes: [
       NSForegroundColorAttributeName: Config.style.actionButtonColor,
       NSParagraphStyleAttributeName: paragraphStyle,
-      NSFontAttributeName: NSFont.systemFont(ofSize: 13, weight: NSFontWeightThin),
+      NSFontAttributeName: NSFont.systemFont(ofSize: 13, weight: NSFontWeightThin)
     ])
   }
 }

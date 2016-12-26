@@ -15,4 +15,12 @@ class ChapterPageItem: NSCollectionViewItem {
       pageImageView.kf.indicatorType = .activity
     }
   }
+
+  var disposeBag = DisposeBag()
+
+  func setup(withViewModel viewModel: ChapterPageViewModel) {
+    disposeBag = DisposeBag()
+
+    viewModel.imageUrl ~~> pageImageView.setImageWithUrl ==> disposeBag
+  }
 }

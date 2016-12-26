@@ -76,12 +76,7 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
       for: indexPath
     ) as! MangaItem
 
-    let mangaViewModel = vm[(indexPath as NSIndexPath).item]
-
-    mangaViewModel.title ~~> cell.titleTextField.rx.text.orEmpty ==> cell.disposeBag
-    mangaViewModel.previewUrl ~~> cell.mangaImageView.setImageWithUrl ==> cell.disposeBag
-    mangaViewModel.categoriesString ~~> cell.categoryTextField.rx.text.orEmpty ==> cell.disposeBag
-    mangaViewModel.selected.map(!) ~~> cell.selectedIndicator.rx.isHidden ==> cell.disposeBag
+		cell.setup(withViewModel: vm[(indexPath as NSIndexPath).item])
 
     return cell
   }
@@ -162,7 +157,6 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
 extension MangaCollectionViewController: CollectionViewMenuSource {
   func menu(for event: NSEvent) -> NSMenu? {
     let menu = NSMenu()
-
 
     let point = mangaCollectionView.convert(event.locationInWindow, from: nil)
 

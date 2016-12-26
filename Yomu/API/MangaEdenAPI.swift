@@ -15,7 +15,6 @@ enum MangaEdenAPI {
   case chapterPages(String)
 }
 
-
 extension MangaEdenAPI: TargetType {
   var baseURL: URL { return URL(string: "http://www.mangaeden.com/api")! }
 

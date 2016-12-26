@@ -6,7 +6,6 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
-
 import AppKit
 import RxSwift
 import Swiftz
@@ -128,11 +127,7 @@ extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
       for: indexPath
     ) as! ChapterPageItem
 
-    let pageViewModel = vm[(indexPath as NSIndexPath).item]
-
-    pageViewModel.imageUrl
-      ~~> cell.pageImageView.setImageWithUrl
-      ==> disposeBag
+    cell.setup(withViewModel: vm[(indexPath as NSIndexPath).item])
 
     return cell
   }

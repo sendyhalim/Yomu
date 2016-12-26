@@ -143,7 +143,6 @@ struct ChapterPageCollectionViewModel {
       }
       .bindTo(_pageSize) ==> disposeBag
 
-
     zoomScale = _zoomScale
       .asDriver()
       .map { $0.description }

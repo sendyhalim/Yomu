@@ -18,6 +18,15 @@ class MangaItem: NSCollectionViewItem {
 
   var disposeBag = DisposeBag()
 
+	func setup(withViewModel viewModel: MangaViewModel) {
+		disposeBag = DisposeBag()
+
+		viewModel.title ~~> titleTextField.rx.text.orEmpty ==> disposeBag
+		viewModel.previewUrl ~~> mangaImageView.setImageWithUrl ==> disposeBag
+		viewModel.categoriesString ~~> categoryTextField.rx.text.orEmpty ==> disposeBag
+		viewModel.selected.map(!) ~~> selectedIndicator.rx.isHidden ==> disposeBag
+	}
+
   override func viewDidLoad() {
     super.viewDidLoad()
 

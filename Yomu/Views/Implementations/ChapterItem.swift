@@ -28,6 +28,20 @@ class ChapterItem: NSCollectionViewItem {
     disposeBag = DisposeBag()
   }
 
+  func setup(withViewModel viewModel: ChapterViewModel) {
+    disposeBag = DisposeBag()
+
+    // Show activity indicator right now because fetch preview will
+    // fetch chapter pages first, after the pages are loaded, the first image of the pages
+    // will be fetched. Activity indicator will be removed automatically by kingfisher
+    // after image preview is fetched.
+    chapterPreview.kf.indicator?.startAnimatingView()
+    viewModel.fetchPreview() ==> disposeBag
+    viewModel.title ~~> chapterTitle.rx.text.orEmpty ==> disposeBag
+    viewModel.previewUrl ~~> chapterPreview.setImageWithUrl ==> disposeBag
+    viewModel.number ~~> chapterNumber.rx.text.orEmpty ==> disposeBag
+  }
+
   override func viewWillLayout() {
     let border = Border(position: .bottom, width: 1.0, color: Config.style.borderColor)
 

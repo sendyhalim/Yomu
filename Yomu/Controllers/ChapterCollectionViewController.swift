@@ -100,17 +100,7 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
       for: indexPath
     ) as! ChapterItem
 
-    let chapter = vm[(indexPath as NSIndexPath).item]
-
-    // Show activity indicator right now because fetch preview will
-    // fetch chapter pages first, after the pages are loaded, the first image of the pages
-    // will be fetched. Activity indicator will be removed automatically by kingfisher
-    // after image preview is fetched.
-    cell.chapterPreview.kf.indicator?.startAnimatingView()
-    chapter.fetchPreview() ==> cell.disposeBag
-    chapter.title ~~> cell.chapterTitle.rx.text.orEmpty ==> cell.disposeBag
-    chapter.previewUrl ~~> cell.chapterPreview.setImageWithUrl ==> cell.disposeBag
-    chapter.number ~~> cell.chapterNumber.rx.text.orEmpty ==> cell.disposeBag
+    cell.setup(withViewModel: vm[(indexPath as NSIndexPath).item])
 
     return cell
   }
