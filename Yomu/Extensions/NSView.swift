@@ -80,9 +80,10 @@ extension NSView {
   ///  - parameter radius:      Border radius
   ///  - parameter color:       Border color
   fileprivate func drawBorderAtTop(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
+    let yPosition = isFlipped ? 0 : frame.size.height - borderWidth
     let borderFrame = CGRect(
       x: 0,
-      y: frame.size.height - borderWidth,
+      y: yPosition,
       width: frame.size.width,
       height: borderWidth
     )
@@ -112,9 +113,10 @@ extension NSView {
   ///  - parameter radius:      Border radius
   ///  - parameter color:       Border color
   fileprivate func drawBorderAtBottom(width borderWidth: CGFloat, radius: CGFloat, color: NSColor) {
+    let yPosition = isFlipped ? frame.size.height - borderWidth : 0
     let borderFrame = CGRect(
       x: 0,
-      y: 0,
+      y: yPosition,
       width: frame.size.width,
       height: borderWidth
     )
@@ -133,7 +135,7 @@ extension NSView {
     width: CGFloat,
     radius: CGFloat,
     color: NSColor
-    ) {
+  ) {
     let borderLayer = CALayer()
 
     borderLayer.borderColor = color.cgColor
