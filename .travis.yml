@@ -8,12 +8,12 @@ matrix:
   include:
     - os: osx
       language: objective-c
-      osx_image: xcode8.1
+      osx_image: xcode8.2
       script: travis_retry make test
       env: JOB=CI_BUILD_TEST
     - os: osx
       language: objective-c
-      osx_image: xcode8.1
+      osx_image: xcode8.2
       script: travis_retry make package
       env: JOB=CI_BUILD_PACKAGE
 deploy:
