@@ -1030,6 +1030,7 @@
 				<string>799695961D5786C100DE46BB</string>
 				<string>79AB8FFA1D4BB8F4000FB47D</string>
 				<string>796F743C1DA0A31C00357D55</string>
+				<string>79E16B981E03125700157D46</string>
 				<string>79346A311D44FC6C00206487</string>
 				<string>798866181D11AB4300093761</string>
 				<string>799695931D57840400DE46BB</string>
@@ -1779,6 +1780,7 @@
 				<string>792A07491D5A349C009390D6</string>
 				<string>798865E91D11A1A400093761</string>
 				<string>79E912F91D771FED0082AA20</string>
+				<string>79E16B971E03125700157D46</string>
 				<string>7983E9131D5B9E190001A46C</string>
 			</array>
 			<key>isa</key>
@@ -3267,6 +3269,26 @@ fi</string>
 		<dict>
 			<key>fileRef</key>
 			<string>79D75CB31D675EBA00906F01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>79E16B971E03125700157D46</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>TextInput.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>79E16B981E03125700157D46</key>
+		<dict>
+			<key>fileRef</key>
+			<string>79E16B971E03125700157D46</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>

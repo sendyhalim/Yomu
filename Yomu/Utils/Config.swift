@@ -15,6 +15,7 @@ private let info = bundle.infoDictionary!
 internal struct Style {
   let actionButtonColor = NSColor(hex: "#2674A8")
   let borderColor = NSColor(hex: "#F0F0F0")
+  let inputBorderColor = NSColor(hex: "#D0D0D0")
   let buttonBackgroundColor = NSColor(hex: "#FFFFFF")
   let cornerRadius = CGFloat(7.0)
   let darkenBackgroundColor = NSColor(hex: "#F4F4F4")
