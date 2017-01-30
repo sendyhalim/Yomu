@@ -1,7 +1,7 @@
-github "onevcat/Kingfisher" "master"
+github "onevcat/Kingfisher" ~> 3.3.2
 github "typelift/Swiftz" "master"
-github "ReactiveX/RxSwift" ~> 3.0.1
-github "Moya/Moya" "master"
+github "ReactiveX/RxSwift" ~> 3.1.0
+github "Moya/Moya" ~> 8.0.1
 github "Thoughtbot/Argo" "master"
 github "Thoughtbot/Curry" "master"
 github "Quick/Quick" "master"
