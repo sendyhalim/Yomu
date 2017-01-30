@@ -31,18 +31,18 @@ struct Database {
 
       // This block will be called automatically when opening a Realm with
       // a schema version lower than the one set above
-      migrationBlock: { migration, oldSchemaVersion in
+      migrationBlock: { migration, _ in
         var maxIndex = -1
 
         // The enumerateObjects(ofType:_:) method iterates
         // over every Person object stored in the Realm file
-        migration.enumerateObjects(ofType: MangaRealm.className()) { oldObject, newObject in
+        migration.enumerateObjects(ofType: MangaRealm.className()) { _, _ in
           maxIndex = maxIndex + 1
         }
 
         // The enumerateObjects(ofType:_:) method iterates
         // over every Person object stored in the Realm file
-        migration.enumerateObjects(ofType: MangaRealm.className()) { oldObject, newObject in
+        migration.enumerateObjects(ofType: MangaRealm.className()) { _, newObject in
           newObject!["position"] = maxIndex
           maxIndex = maxIndex - 1
         }

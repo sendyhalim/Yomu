@@ -12,7 +12,7 @@ import Curry
 import Runes
 
 ///  JSON mapping of Manga Eden API.
-///  Example: https://www.mangaeden.com/api/manga/4e70ea90c092255ef70074a7
+///  Example: http://www.mangaeden.com/api/manga/4e70ea6ac092255ef7006a52/
 private struct MangaJSONMapping {
   static let id = "i"
   static let slug = "alias"

@@ -6,9 +6,10 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
+import Foundation
+import Moya
 import RxSwift
 import RxMoya
-import Moya
 
 enum MangaEdenAPI {
   case mangaDetail(String)
@@ -30,6 +31,10 @@ extension MangaEdenAPI: TargetType {
 
   var method: Moya.Method {
     return .get
+  }
+
+  var parameterEncoding: ParameterEncoding {
+    return URLEncoding.default
   }
 
   var parameters: [String: Any]? {

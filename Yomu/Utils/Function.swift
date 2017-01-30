@@ -8,6 +8,6 @@
 
 import Foundation
 
-func void<T>(arg: T) -> Void {
+func void<T>(arg: T) {
   return Void()
 }

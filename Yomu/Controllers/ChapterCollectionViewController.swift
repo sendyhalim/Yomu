@@ -137,7 +137,7 @@ extension ChapterCollectionViewController: MangaSelectionDelegate {
     // Scroll to the top everytime manga is selected
     if !vm.isEmpty {
       let index = IndexPath(item: 0, section: 0)
-      let indexPaths = Set(arrayLiteral: index)
+      let indexPaths: Set = [index]
       collectionView.scrollToItems(at: indexPaths, scrollPosition: .top)
     }
 

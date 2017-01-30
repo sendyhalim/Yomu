@@ -6,9 +6,10 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
+import Foundation
+import Moya
 import RxMoya
 import RxSwift
-import Moya
 
 enum YomuAPI {
   case search(String)
@@ -26,6 +27,10 @@ extension YomuAPI: TargetType {
 
   var method: Moya.Method {
     return .get
+  }
+
+  var parameterEncoding: ParameterEncoding {
+    return URLEncoding.default
   }
 
   var parameters: [String: Any]? {

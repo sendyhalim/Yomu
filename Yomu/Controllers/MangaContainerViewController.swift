@@ -13,7 +13,7 @@ import RxSwift
 class MangaContainerViewController: NSViewController {
   @IBOutlet weak var mangaContainerView: NSView!
   @IBOutlet weak var chapterContainerView: NSView!
-  @IBOutlet weak var chapterPageContainerView: NSView!
+  @IBOutlet weak var chapterPageContainer: NSView!
   @IBOutlet weak var searchMangaButtonContainer: NSView!
   @IBOutlet weak var searchMangaContainer: NSView!
 
@@ -66,38 +66,35 @@ class MangaContainerViewController: NSViewController {
     ]))
 
     Router.register(route: YomuRoute.chapterPage([
-      chapterPageContainerView
+      chapterPageContainer
     ]))
   }
 
   func setupConstraints() {
-    constrain(mangaCollectionVC.view, mangaContainerView) {
-      mangaCollectionView, mangaContainerView in
-      mangaCollectionView.top == mangaContainerView.top
-      mangaCollectionView.bottom == mangaContainerView.bottom
-      mangaCollectionView.trailing == mangaContainerView.trailing
+    constrain(mangaCollectionVC.view, mangaContainerView) { mangaCollection, mangaContainerView in
+      mangaCollection.top == mangaContainerView.top
+      mangaCollection.bottom == mangaContainerView.bottom
+      mangaCollection.trailing == mangaContainerView.trailing
 
-      mangaCollectionView.width >= 300
-      mangaCollectionView.height >= 300
+      mangaCollection.width >= 300
+      mangaCollection.height >= 300
     }
 
-    constrain(searchedMangaVC.view, searchMangaContainer) {
-      searchMangaCollectionView, searchMangaContainer in
-      searchMangaCollectionView.top == searchMangaContainer.top
-      searchMangaCollectionView.bottom == searchMangaContainer.bottom
-      searchMangaCollectionView.trailing == searchMangaContainer.trailing
-      searchMangaCollectionView.leading == searchMangaContainer.leading
+    constrain(searchedMangaVC.view, searchMangaContainer) { searchMangaCollection, searchMangaContainer in
+      searchMangaCollection.top == searchMangaContainer.top
+      searchMangaCollection.bottom == searchMangaContainer.bottom
+      searchMangaCollection.trailing == searchMangaContainer.trailing
+      searchMangaCollection.leading == searchMangaContainer.leading
     }
 
-    constrain(chapterCollectionVC.view, chapterContainerView) {
-      chapterCollectionView, chapterContainerView in
-      chapterCollectionView.top == chapterContainerView.top
-      chapterCollectionView.bottom == chapterContainerView.bottom
-      chapterCollectionView.trailing == chapterContainerView.trailing
-      chapterCollectionView.leading == chapterContainerView.leading
+    constrain(chapterCollectionVC.view, chapterContainerView) { chapterCollection, chapterContainerView in
+      chapterCollection.top == chapterContainerView.top
+      chapterCollection.bottom == chapterContainerView.bottom
+      chapterCollection.trailing == chapterContainerView.trailing
+      chapterCollection.leading == chapterContainerView.leading
 
-      chapterCollectionView.width >= 470
-      chapterCollectionView.height >= 300
+      chapterCollection.width >= 470
+      chapterCollection.height >= 300
     }
   }
 
@@ -115,19 +112,18 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
     let pageVM = ChapterPageCollectionViewModel(chapterViewModel: ChapterViewModel(chapter: chapter))
     chapterPageCollectionVC = ChapterPageCollectionViewController(viewModel: pageVM)
     chapterPageCollectionVC!.delegate = self
-    chapterPageContainerView.addSubview(chapterPageCollectionVC!.view)
+    chapterPageContainer.addSubview(chapterPageCollectionVC!.view)
 
     setupChapterPageCollectionConstraints()
     Router.moveTo(id: YomuRouteId.ChapterPage)
   }
 
   func setupChapterPageCollectionConstraints() {
-    constrain(chapterPageCollectionVC!.view, chapterPageContainerView) {
-      chapterPageCollectionView, chapterPageContainerView in
-      chapterPageCollectionView.top == chapterPageContainerView.top
-      chapterPageCollectionView.bottom == chapterPageContainerView.bottom
-      chapterPageCollectionView.left == chapterPageContainerView.left
-      chapterPageCollectionView.right == chapterPageContainerView.right
+    constrain(chapterPageCollectionVC!.view, chapterPageContainer) { chapterPageCollection, chapterPageContainer in
+      chapterPageCollection.top == chapterPageContainer.top
+      chapterPageCollection.bottom == chapterPageContainer.bottom
+      chapterPageCollection.left == chapterPageContainer.left
+      chapterPageCollection.right == chapterPageContainer.right
     }
   }
 }
