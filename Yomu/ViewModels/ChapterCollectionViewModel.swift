@@ -113,8 +113,6 @@ struct ChapterCollectionViewModel {
   }
 
   func fetch(id: String) -> Disposable {
-    reset()
-
     let api = MangaEdenAPI.mangaDetail(id)
     let request = MangaEden.request(api).share()
 
