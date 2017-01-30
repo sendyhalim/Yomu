@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ChapterCollectionViewController" customModule="Yomu" customModuleProvider="target">
@@ -18,22 +19,22 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe" userLabel="Chapter Collection View">
-            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
             <subviews>
                 <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="L0b-P3-rH2">
-                    <rect key="frame" x="0.0" y="248" width="450" height="52"/>
+                    <rect key="frame" x="0.0" y="248" width="500" height="52"/>
                     <view key="contentView" id="Y9d-9v-y0n" customClass="StickyHeader" customModule="Yomu" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="52"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="52"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="aOQ-Ca-TU5" userLabel="Search Chapter Container" customClass="TextInputContainer" customModule="Yomu" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="371" height="32"/>
+                                <rect key="frame" x="10" y="10" width="421" height="32"/>
                                 <view key="contentView" id="wKo-Iq-4Ka">
-                                    <rect key="frame" x="0.0" y="0.0" width="371" height="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="421" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l5t-Wm-gb8">
-                                            <rect key="frame" x="30" y="7" width="331" height="17"/>
+                                            <rect key="frame" x="30" y="7" width="381" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Search Chapters" drawsBackground="YES" id="6zw-KD-Aui">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -60,7 +61,7 @@
                                 <color key="fillColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="4QI-1m-9b2">
-                                <rect key="frame" x="390" y="16" width="50" height="20"/>
+                                <rect key="frame" x="440" y="16" width="50" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Ifu-ze-KHp"/>
                                     <constraint firstAttribute="width" constant="50" id="XCY-My-o1q"/>
@@ -86,22 +87,22 @@
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </box>
                 <box boxType="custom" borderType="none" title="Chapter Collection Container" translatesAutoresizingMaskIntoConstraints="NO" id="yhl-30-M9X">
-                    <rect key="frame" x="0.0" y="0.0" width="450" height="248"/>
+                    <rect key="frame" x="0.0" y="0.0" width="500" height="248"/>
                     <view key="contentView" id="ZH4-eO-g9a">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="248"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="248"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOx-C6-3Tl">
-                                <rect key="frame" x="10" y="0.0" width="430" height="248"/>
+                                <rect key="frame" x="10" y="0.0" width="480" height="248"/>
                                 <clipView key="contentView" drawsBackground="NO" id="gHa-tB-PY2">
-                                    <rect key="frame" x="0.0" y="0.0" width="430" height="248"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="480" height="248"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView selectable="YES" id="dfe-Ib-Wgi">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="27"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="480" height="27"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10000" minimumLineSpacing="10" id="LbZ-xK-IQ1">
-                                                <size key="itemSize" width="228.5" height="325"/>
+                                                <size key="itemSize" width="450" height="325"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </collectionView>
@@ -128,7 +129,7 @@
                     <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="sZd-Q7-Lk4">
-                    <rect key="frame" x="217" y="116" width="16" height="16"/>
+                    <rect key="frame" x="242" y="116" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
             <constraints>

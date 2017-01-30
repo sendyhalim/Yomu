@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -18,7 +19,7 @@
             </connections>
         </collectionViewItem>
         <customView id="3mi-IM-HZU" userLabel="Chapter Item View">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="88"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="88"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vLh-9l-vEe">
@@ -30,7 +31,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Aqs-zV-WH8"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9R-o0-cPD">
-                    <rect key="frame" x="44" y="51" width="358" height="17"/>
+                    <rect key="frame" x="44" y="51" width="308" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="ipY-I8-nhd"/>
                     </constraints>
@@ -41,7 +42,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Pn-ex-pYb">
-                    <rect key="frame" x="44" y="26" width="358" height="17"/>
+                    <rect key="frame" x="44" y="26" width="308" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Chapter title" id="Ggw-Mh-NxT">
                         <font key="font" metaFont="systemThin" size="13"/>
                         <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
