@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -674,7 +676,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="770" height="372"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box title="Box" boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="PHi-SR-OkI">
+                            <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="PHi-SR-OkI">
                                 <rect key="frame" x="0.0" y="320" width="300" height="52"/>
                                 <view key="contentView" id="blz-E3-99x">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="52"/>
@@ -701,7 +703,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="Esu-Gg-jJY"/>
                                 </constraints>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ieg-Qo-7il" userLabel="Manga Collection Container">
@@ -751,7 +752,7 @@
                         <outlet property="chapterPageContainerView" destination="s5e-FU-OMp" id="YZx-69-Ji8"/>
                         <outlet property="mangaContainerView" destination="ieg-Qo-7il" id="nvc-go-Rdh"/>
                         <outlet property="searchMangaButtonContainer" destination="PHi-SR-OkI" id="4mG-Fg-SMq"/>
-                        <outlet property="searchMangaContainer" destination="1gj-c6-gQ6" id="yLD-S1-LEi"/>
+                        <outlet property="searchMangaContainerView" destination="1gj-c6-gQ6" id="5kS-pH-Pj4"/>
                     </connections>
                 </viewController>
                 <customObject id="uPc-1X-fYj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
