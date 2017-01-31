@@ -18,7 +18,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Yomu" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About testyo" id="5kV-Vb-QxS">
+                                        <menuItem title="About Yomu" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
