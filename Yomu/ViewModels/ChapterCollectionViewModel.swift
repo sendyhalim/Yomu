@@ -26,6 +26,10 @@ struct ChapterCollectionViewModel {
     return count == 0
   }
 
+  var ordering: SortOrder {
+    return _ordering.value
+  }
+
   // MARK: Input
   let filterPattern = PublishSubject<String>()
   let toggleSort = PublishSubject<Void>()
@@ -143,5 +147,71 @@ struct ChapterCollectionViewModel {
 
   subscript(index: Int) -> ChapterViewModel {
     return _filteredChapters.value[UInt(index)]
+  }
+}
+
+struct ChapterNavigator {
+  let collection: ChapterCollectionViewModel
+  var currentIndex: Int
+
+  init(collection: ChapterCollectionViewModel, currentIndex: Int) {
+    self.collection = collection
+    self.currentIndex = currentIndex
+  }
+
+  mutating func previous() -> ChapterViewModel? {
+    if collection.ordering == .descending {
+      let vm = peekNext()
+      currentIndex -= 1
+
+      return vm
+    } else {
+      let vm = peekPrevious()
+      currentIndex += 1
+
+      return vm
+    }
+  }
+
+  mutating func next() -> (ChapterNavigator, ChapterViewModel)? {
+    if collection.ordering == .descending {
+      guard let vm = peekPrevious() else {
+        return nil
+      }
+
+      return (
+        ChapterNavigator(collection: collection, currentIndex: currentIndex - 1),
+        vm
+      )
+    } else {
+      guard let vm = peekNext() else {
+        return nil
+      }
+
+      return (
+        ChapterNavigator(collection: collection, currentIndex: currentIndex + 1),
+        vm
+      )
+    }
+  }
+
+  func peekPrevious() -> ChapterViewModel? {
+    let previousIndex = currentIndex - 1
+
+    guard previousIndex > -1 else {
+      return nil
+    }
+
+    return collection[previousIndex]
+  }
+
+  func peekNext() -> ChapterViewModel? {
+    let nextIndex = currentIndex + 1
+
+    guard nextIndex < collection.count else {
+      return nil
+    }
+
+    return collection[nextIndex]
   }
 }
