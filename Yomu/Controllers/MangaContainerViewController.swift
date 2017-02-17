@@ -104,14 +104,15 @@ class MangaContainerViewController: NSViewController {
 }
 
 extension MangaContainerViewController: ChapterSelectionDelegate {
-  func chapterDidSelected(_ chapter: Chapter) {
+  func chapterDidSelected(_ chapter: Chapter, navigator: ChapterNavigator) {
     if chapterPageCollectionVC != nil {
       chapterPageCollectionVC!.view.removeFromSuperview()
     }
 
     let pageVM = ChapterPageCollectionViewModel(chapterViewModel: ChapterViewModel(chapter: chapter))
-    chapterPageCollectionVC = ChapterPageCollectionViewController(viewModel: pageVM)
+    chapterPageCollectionVC = ChapterPageCollectionViewController(viewModel: pageVM, navigator: navigator)
     chapterPageCollectionVC!.delegate = self
+    chapterPageCollectionVC!.chapterSelectionDelegate = self
     chapterPageContainerView.addSubview(chapterPageCollectionVC!.view)
 
     setupChapterPageCollectionConstraints()

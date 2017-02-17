@@ -159,21 +159,29 @@ struct ChapterNavigator {
     self.currentIndex = currentIndex
   }
 
-  mutating func previous() -> ChapterViewModel? {
+  func previous() -> (ChapterNavigator, ChapterViewModel)? {
     if collection.ordering == .descending {
-      let vm = peekNext()
-      currentIndex -= 1
+      guard let vm = peekNext() else {
+        return nil
+      }
 
-      return vm
+      return (
+        ChapterNavigator(collection: collection, currentIndex: currentIndex + 1),
+        vm
+      )
     } else {
-      let vm = peekPrevious()
-      currentIndex += 1
+      guard let vm = peekPrevious() else {
+        return nil
+      }
 
-      return vm
+      return (
+        ChapterNavigator(collection: collection, currentIndex: currentIndex - 1),
+        vm
+      )
     }
   }
 
-  mutating func next() -> (ChapterNavigator, ChapterViewModel)? {
+  func next() -> (ChapterNavigator, ChapterViewModel)? {
     if collection.ordering == .descending {
       guard let vm = peekPrevious() else {
         return nil

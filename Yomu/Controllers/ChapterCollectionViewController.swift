@@ -13,7 +13,7 @@ import RxCocoa
 import Swiftz
 
 protocol ChapterSelectionDelegate: class {
-  func chapterDidSelected(_ chapter: Chapter)
+  func chapterDidSelected(_ chapter: Chapter, navigator: ChapterNavigator)
 }
 
 class ChapterCollectionViewController: NSViewController {
@@ -113,9 +113,10 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
   ) {
     let index = (indexPaths.first! as NSIndexPath).item
     let chapterVm = vm[index]
+    let navigator = ChapterNavigator(collection: vm, currentIndex: index)
 
     collectionView.deselectAll(self)
-    chapterSelectionDelegate?.chapterDidSelected(chapterVm.chapter)
+    chapterSelectionDelegate?.chapterDidSelected(chapterVm.chapter, navigator: navigator)
   }
 
   func collectionView(

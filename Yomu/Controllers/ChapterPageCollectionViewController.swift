@@ -22,14 +22,19 @@ class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var zoomOut: NSButton!
   @IBOutlet weak var zoomScale: NSTextField!
   @IBOutlet weak var headerTitle: NSTextField!
+  @IBOutlet weak var nextChapterButton: NSButton!
+  @IBOutlet weak var previousChapterButton: NSButton!
 
   weak var delegate: ChapterPageCollectionViewDelegate?
+  weak var chapterSelectionDelegate: ChapterSelectionDelegate?
 
   var vm: ChapterPageCollectionViewModel
+  var navigator: ChapterNavigator
   var disposeBag = DisposeBag()
 
-  init(viewModel: ChapterPageCollectionViewModel) {
-    vm = viewModel
+  init(viewModel: ChapterPageCollectionViewModel, navigator: ChapterNavigator) {
+    self.vm = viewModel
+    self.navigator = navigator
 
     super.init(nibName: "ChapterPageCollection", bundle: nil)!
   }
@@ -62,9 +67,39 @@ class ChapterPageCollectionViewController: NSViewController {
       .rx.tap
       .bindTo(vm.zoomOut) ==> disposeBag
 
-    delegate?.closeChapterPage
-      >>- { close.rx.tap.subscribe(onNext: $0) }
-      ~>> disposeBag
+    close
+      .rx.tap
+      .subscribe(onNext: { [weak self] in
+        self?.delegate?.closeChapterPage()
+      }) ==> disposeBag
+
+    nextChapterButton
+      .rx.tap
+      .subscribe(onNext: { [weak self] in
+        guard let `self` = self else {
+          return
+        }
+
+        guard let (navigator, nextChapterVM) = self.navigator.next() else {
+          return
+        }
+
+        self.chapterSelectionDelegate?.chapterDidSelected(nextChapterVM.chapter, navigator: navigator)
+      }) ==> disposeBag
+
+    previousChapterButton
+      .rx.tap
+      .subscribe(onNext: { [weak self] in
+        guard let `self` = self else {
+          return
+        }
+
+        guard let (navigator, previousChapterVM) = self.navigator.previous() else {
+          return
+        }
+
+        self.chapterSelectionDelegate?.chapterDidSelected(previousChapterVM.chapter, navigator: navigator)
+      }) ==> disposeBag
 
     vm.reload ~~> collectionView.reloadData ==> disposeBag
 
