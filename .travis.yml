@@ -9,12 +9,15 @@ matrix:
     - os: osx
       language: objective-c
       osx_image: xcode8.2
-      script: travis_retry make test
+      script:
+        - travis_retry make bootstrap
+        - make test
       env: JOB=CI_BUILD_TEST
     - os: osx
       language: objective-c
       osx_image: xcode8.2
-      script: travis_retry make package
+      script:
+        - travis_retry make package
       env: JOB=CI_BUILD_PACKAGE
 deploy:
   provider: releases
