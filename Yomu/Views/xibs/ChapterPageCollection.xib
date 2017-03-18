@@ -14,7 +14,7 @@
                 <outlet property="headerTitle" destination="5l1-IJ-UVG" id="IWO-FR-7AU"/>
                 <outlet property="nextChapterButton" destination="FZR-ij-u6b" id="kdk-PO-lRL"/>
                 <outlet property="previousChapterButton" destination="iOD-h6-QOG" id="BAe-II-b1t"/>
-                <outlet property="readingProgress" destination="E5O-V0-gGw" id="SzI-wp-FqL"/>
+                <outlet property="readingProgress" destination="OsJ-kq-iDe" id="TVE-lV-BER"/>
                 <outlet property="view" destination="c22-O7-iKe" id="TTh-Zp-q8q"/>
                 <outlet property="zoomIn" destination="IQq-oC-6uB" id="Mi7-9e-ylO"/>
                 <outlet property="zoomOut" destination="vOW-VQ-cxA" id="R6G-Yj-hUt"/>
@@ -113,12 +113,12 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OsJ-kq-iDe">
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OsJ-kq-iDe" customClass="TextInput" customModule="Yomu" customModuleProvider="target">
                                 <rect key="frame" x="152" y="20" width="25" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="fKe-2d-uoL"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="right" placeholderString="1" drawsBackground="YES" id="fgN-Rw-YSW">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="right" placeholderString="1" drawsBackground="YES" id="fgN-Rw-YSW">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
