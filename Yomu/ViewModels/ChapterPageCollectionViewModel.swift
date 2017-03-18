@@ -89,6 +89,7 @@ struct ChapterPageCollectionViewModel {
   let zoomScale: Driver<String>
   let headerTitle: Driver<String>
   let readingProgress: Driver<String>
+  let pageCount: Driver<String>
   let zoomScroll: Driver<ScrollOffset>
   let disposeBag = DisposeBag()
 
@@ -109,7 +110,6 @@ struct ChapterPageCollectionViewModel {
     let _currentPageIndex = self._currentPageIndex
 
     chapterVM = chapterViewModel
-
     chapterPages = _chapterPages.asDriver()
 
     reload = chapterPages
@@ -119,6 +119,10 @@ struct ChapterPageCollectionViewModel {
     readingProgress = _currentPageIndex
       .asDriver()
       .map { String($0 + 1) }
+
+    pageCount = _chapterPages
+      .asDriver()
+      .map { "\($0.count) pages" }
 
     zoomIn
       .map {
@@ -197,5 +201,9 @@ struct ChapterPageCollectionViewModel {
 
   func setZoomScale(_ scale: String) {
     _zoomScale.value = ZoomScale(scale: scale)
+  }
+
+  func chapterIndexIsValid(index: Int) -> Bool {
+    return 0 ... (count - 1) ~= index
   }
 }

@@ -18,6 +18,7 @@ class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var collectionView: NSCollectionView!
   @IBOutlet weak var close: NSButton!
   @IBOutlet weak var readingProgress: NSTextField!
+  @IBOutlet weak var pageCount: NSTextField!
   @IBOutlet weak var zoomIn: NSButton!
   @IBOutlet weak var zoomOut: NSButton!
   @IBOutlet weak var zoomScale: NSTextField!
@@ -73,6 +74,15 @@ class ChapterPageCollectionViewController: NSViewController {
         self?.delegate?.closeChapterPage()
       }) ==> disposeBag
 
+    readingProgress
+      .rx.controlEvent
+      .map { [weak self] in
+        Int(self!.readingProgress.stringValue) ?? -1
+      }
+      .map { $0 - 1 }
+      .filter(vm.chapterIndexIsValid)
+      .subscribe(onNext: scrollToChapter) ==> disposeBag
+
     nextChapterButton
       .rx.tap
       .subscribe(onNext: { [weak self] in
@@ -111,6 +121,10 @@ class ChapterPageCollectionViewController: NSViewController {
       ~~> readingProgress.rx.text.orEmpty
       ==> disposeBag
 
+    vm.pageCount
+      ~~> pageCount.rx.text.orEmpty
+      ==> disposeBag
+
     vm.zoomScale
       .asDriver(onErrorJustReturn: "")
       ~~> zoomScale.rx.text.orEmpty
@@ -138,6 +152,13 @@ class ChapterPageCollectionViewController: NSViewController {
     let targetRect = collectionView.visibleRect.offsetBy(dx: 0, dy: offset.deltaY)
 
     collectionView.scrollToVisible(targetRect)
+  }
+
+  func scrollToChapter(atIndex index: Int) {
+    vm.setCurrentPageIndex(index)
+
+    let set: Set<IndexPath> = [IndexPath(item: index, section: 0)]
+    collectionView.scrollToItems(at: set, scrollPosition: NSCollectionViewScrollPosition.top)
   }
 }
 
