@@ -39,14 +39,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E5O-V0-gGw" customClass="NoteLabel" customModule="Yomu" customModuleProvider="target">
-                                <rect key="frame" x="156" y="20" width="71" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1/20 Pages" id="OA0-QP-hHW">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="vOW-VQ-cxA">
                                 <rect key="frame" x="20" y="16" width="25" height="25"/>
                                 <constraints>
@@ -70,7 +62,7 @@
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5l1-IJ-UVG">
-                                <rect key="frame" x="352.5" y="20" width="94" height="17"/>
+                                <rect key="frame" x="353" y="20" width="94" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="YT1-XC-PRa"/>
                                 </constraints>
@@ -100,7 +92,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iOD-h6-QOG">
-                                <rect key="frame" x="306.5" y="16" width="40" height="25"/>
+                                <rect key="frame" x="307" y="16" width="40" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="9LF-oZ-LLm"/>
                                     <constraint firstAttribute="height" constant="25" id="xDF-9C-D5v"/>
@@ -111,7 +103,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FZR-ij-u6b">
-                                <rect key="frame" x="452.5" y="16" width="40" height="25"/>
+                                <rect key="frame" x="453" y="16" width="40" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="DqD-Yl-KSb"/>
                                     <constraint firstAttribute="height" constant="25" id="W48-xE-qih"/>
@@ -121,11 +113,32 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OsJ-kq-iDe">
+                                <rect key="frame" x="152" y="20" width="25" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="fKe-2d-uoL"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="right" placeholderString="1" drawsBackground="YES" id="fgN-Rw-YSW">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E5O-V0-gGw" customClass="NoteLabel" customModule="Yomu" customModuleProvider="target">
+                                <rect key="frame" x="180" y="20" width="69" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/ 20 Pages" id="OA0-QP-hHW">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="OsJ-kq-iDe" firstAttribute="centerY" secondItem="E5O-V0-gGw" secondAttribute="centerY" id="1E2-X1-XEk"/>
                             <constraint firstItem="vOW-VQ-cxA" firstAttribute="centerY" secondItem="hYB-6H-HIJ" secondAttribute="centerY" id="5dm-Ly-MLr"/>
                             <constraint firstItem="dUb-A3-K4U" firstAttribute="leading" secondItem="IQq-oC-6uB" secondAttribute="trailing" constant="8" id="AJp-aq-68i"/>
                             <constraint firstItem="FZR-ij-u6b" firstAttribute="leading" secondItem="5l1-IJ-UVG" secondAttribute="trailing" constant="8" symbolic="YES" id="Ae5-vJ-bQ8"/>
+                            <constraint firstItem="OsJ-kq-iDe" firstAttribute="leading" secondItem="CPV-le-Tg2" secondAttribute="trailing" constant="8" id="DjA-EP-8OY"/>
                             <constraint firstAttribute="bottom" secondItem="hYB-6H-HIJ" secondAttribute="bottom" constant="20" symbolic="YES" id="FNL-NL-7Zo"/>
                             <constraint firstItem="IQq-oC-6uB" firstAttribute="centerY" secondItem="hYB-6H-HIJ" secondAttribute="centerY" id="Glq-5s-iMD"/>
                             <constraint firstItem="IQq-oC-6uB" firstAttribute="leading" secondItem="vOW-VQ-cxA" secondAttribute="trailing" constant="10" symbolic="YES" id="KYr-Am-KZ7"/>
@@ -136,10 +149,10 @@
                             <constraint firstItem="5l1-IJ-UVG" firstAttribute="centerX" secondItem="gbb-gT-ROi" secondAttribute="centerX" id="T5W-nF-Kfd"/>
                             <constraint firstItem="FZR-ij-u6b" firstAttribute="centerY" secondItem="5l1-IJ-UVG" secondAttribute="centerY" id="WPX-fW-89q"/>
                             <constraint firstItem="hYB-6H-HIJ" firstAttribute="trailing" secondItem="gbb-gT-ROi" secondAttribute="trailing" constant="-20" id="XeB-dg-Xdd"/>
+                            <constraint firstItem="E5O-V0-gGw" firstAttribute="leading" secondItem="OsJ-kq-iDe" secondAttribute="trailing" constant="5" id="lFF-cP-uqZ"/>
                             <constraint firstItem="E5O-V0-gGw" firstAttribute="centerY" secondItem="hYB-6H-HIJ" secondAttribute="centerY" id="qGV-aG-6Xu"/>
                             <constraint firstItem="dUb-A3-K4U" firstAttribute="centerY" secondItem="hYB-6H-HIJ" secondAttribute="centerY" id="qQa-A9-5RQ"/>
                             <constraint firstItem="vOW-VQ-cxA" firstAttribute="leading" secondItem="gbb-gT-ROi" secondAttribute="leading" constant="20" symbolic="YES" id="rGO-aV-ICF"/>
-                            <constraint firstItem="E5O-V0-gGw" firstAttribute="leading" secondItem="dUb-A3-K4U" secondAttribute="trailing" constant="30" id="uEJ-MO-sBG"/>
                             <constraint firstItem="5l1-IJ-UVG" firstAttribute="centerY" secondItem="hYB-6H-HIJ" secondAttribute="centerY" id="z4p-oF-x71"/>
                         </constraints>
                     </view>

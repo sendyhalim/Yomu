@@ -63,14 +63,17 @@ struct ScrollOffset {
 
 struct ChapterPageCollectionViewModel {
   // MARK: Public
+  /// Chapter image
   var chapterImage: ImageUrl? {
     return _chapterPages.value.isEmpty ? .none : _chapterPages.value.first!.image
   }
 
+  /// Number of pages in one chapter
   var count: Int {
     return _chapterPages.value.count
   }
 
+  /// Chapter page size based on config
   var pageSize: CGSize {
     return _pageSize.value
   }
@@ -115,8 +118,7 @@ struct ChapterPageCollectionViewModel {
 
     readingProgress = _currentPageIndex
       .asDriver()
-      .map { $0 + 1 }
-      .map { "\($0) / \(_chapterPages.value.count) Pages" }
+      .map { String($0 + 1) }
 
     zoomIn
       .map {
