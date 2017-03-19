@@ -122,7 +122,7 @@ struct ChapterPageCollectionViewModel {
 
     pageCount = _chapterPages
       .asDriver()
-      .map { "\($0.count) pages" }
+      .map { "/ \($0.count) pages" }
 
     zoomIn
       .map {
