@@ -29,7 +29,6 @@ internal struct Style {
 internal struct Icon {
   let plus: NSImage = #imageLiteral(resourceName: "Plus")
   let pin: NSImage = #imageLiteral(resourceName: "Pin")
-  let rightArrow: NSImage = #imageLiteral(resourceName: "RightArrow")
 }
 
 internal struct IconName {
