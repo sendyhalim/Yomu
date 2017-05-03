@@ -62,4 +62,9 @@ public struct Config {
 
     return _icon
   }
+
+  enum KeyboardEvent: String {
+    case nextChapter = "l"
+    case previousChapter = "h"
+  }
 }
