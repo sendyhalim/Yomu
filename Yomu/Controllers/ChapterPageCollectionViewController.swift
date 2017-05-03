@@ -85,31 +85,11 @@ class ChapterPageCollectionViewController: NSViewController {
 
     nextChapterButton
       .rx.tap
-      .subscribe(onNext: { [weak self] in
-        guard let `self` = self else {
-          return
-        }
-
-        guard let (navigator, nextChapterVM) = self.navigator.next() else {
-          return
-        }
-
-        self.chapterSelectionDelegate?.chapterDidSelected(nextChapterVM.chapter, navigator: navigator)
-      }) ==> disposeBag
+      .subscribe(onNext: moveToNextChapter) ==> disposeBag
 
     previousChapterButton
       .rx.tap
-      .subscribe(onNext: { [weak self] in
-        guard let `self` = self else {
-          return
-        }
-
-        guard let (navigator, previousChapterVM) = self.navigator.previous() else {
-          return
-        }
-
-        self.chapterSelectionDelegate?.chapterDidSelected(previousChapterVM.chapter, navigator: navigator)
-      }) ==> disposeBag
+      .subscribe(onNext: moveToPreviousChapter) ==> disposeBag
 
     vm.reload ~~> collectionView.reloadData ==> disposeBag
 
@@ -160,6 +140,22 @@ class ChapterPageCollectionViewController: NSViewController {
     let set: Set<IndexPath> = [IndexPath(item: index, section: 0)]
     collectionView.scrollToItems(at: set, scrollPosition: NSCollectionViewScrollPosition.top)
   }
+
+  func moveToPreviousChapter() {
+    guard let (navigator, previousChapterVM) = navigator.previous() else {
+      return
+    }
+
+    chapterSelectionDelegate?.chapterDidSelected(previousChapterVM.chapter, navigator: navigator)
+  }
+
+  func moveToNextChapter() {
+    guard let (navigator, nextChapterVM) = navigator.next() else {
+      return
+    }
+
+    chapterSelectionDelegate?.chapterDidSelected(nextChapterVM.chapter, navigator: navigator)
+  }
 }
 
 extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
@@ -204,5 +200,21 @@ extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayou
     sizeForItemAt indexPath: IndexPath
   ) -> NSSize {
     return vm.pageSize
+  }
+}
+
+extension ChapterPageCollectionViewController: ChapterPageContainerDelegate {
+  override func keyDown(with event: NSEvent) {
+
+    guard
+      let characters = event.characters,
+      let key = Config.KeyboardEvent(rawValue: characters) else {
+      return
+    }
+
+    switch key {
+    case Config.KeyboardEvent.nextChapter: moveToNextChapter()
+    case Config.KeyboardEvent.previousChapter: moveToPreviousChapter()
+    }
   }
 }

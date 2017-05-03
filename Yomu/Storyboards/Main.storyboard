@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -705,21 +705,21 @@
                                 </constraints>
                                 <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
-                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ieg-Qo-7il" userLabel="Manga Collection Container">
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="ieg-Qo-7il" userLabel="Manga Container">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="c2K-2S-zoD"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="oV6-fm-nUs"/>
                                 </constraints>
                             </containerView>
-                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="k9q-VZ-e6L" userLabel="Chapter Collection Container">
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="k9q-VZ-e6L" userLabel="Chapter Container">
                                 <rect key="frame" x="300" y="0.0" width="470" height="372"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="470" id="aEh-EW-JUp"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="uH0-pQ-1v4"/>
                                 </constraints>
                             </containerView>
-                            <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5e-FU-OMp" userLabel="Chapter Page Collection Container">
+                            <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5e-FU-OMp" userLabel="Chapter Page Container" customClass="ChapterPageContainer" customModule="Yomu" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="770" height="372"/>
                             </containerView>
                             <containerView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gj-c6-gQ6" userLabel="Search Manga Container">
