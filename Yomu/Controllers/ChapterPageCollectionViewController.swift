@@ -142,19 +142,15 @@ class ChapterPageCollectionViewController: NSViewController {
   }
 
   func moveToPreviousChapter() {
-    guard let (navigator, previousChapterVM) = navigator.previous() else {
-      return
+    navigator.previous() >>- { [weak self] (navigator, previousChapterVM) in
+      self?.chapterSelectionDelegate?.chapterDidSelected(previousChapterVM.chapter, navigator: navigator)
     }
-
-    chapterSelectionDelegate?.chapterDidSelected(previousChapterVM.chapter, navigator: navigator)
   }
 
   func moveToNextChapter() {
-    guard let (navigator, nextChapterVM) = navigator.next() else {
-      return
+    navigator.next() >>- { [weak self] (navigator, nextChapterVM) in
+      self?.chapterSelectionDelegate?.chapterDidSelected(nextChapterVM.chapter, navigator: navigator)
     }
-
-    chapterSelectionDelegate?.chapterDidSelected(nextChapterVM.chapter, navigator: navigator)
   }
 }
 
@@ -205,7 +201,6 @@ extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayou
 
 extension ChapterPageCollectionViewController: ChapterPageContainerDelegate {
   override func keyDown(with event: NSEvent) {
-
     guard
       let characters = event.characters,
       let key = Config.KeyboardEvent(rawValue: characters) else {
