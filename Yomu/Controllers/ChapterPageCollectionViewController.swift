@@ -208,8 +208,23 @@ extension ChapterPageCollectionViewController: ChapterPageContainerDelegate {
     }
 
     switch key {
-    case Config.KeyboardEvent.nextChapter: moveToNextChapter()
-    case Config.KeyboardEvent.previousChapter: moveToPreviousChapter()
+    case Config.KeyboardEvent.nextChapter:
+      moveToNextChapter()
+
+    case Config.KeyboardEvent.previousChapter:
+      moveToPreviousChapter()
+
+    case Config.KeyboardEvent.scrollDown:
+      scrollBy(dx: 0, dy: CGFloat(Config.scrollOffsetPerEvent))
+
+    case Config.KeyboardEvent.scrollUp:
+      scrollBy(dx: 0, dy: -CGFloat(Config.scrollOffsetPerEvent))
     }
+  }
+
+  private func scrollBy(dx: CGFloat, dy: CGFloat) {
+    let nextRect = collectionView.visibleRect.offsetBy(dx: dx, dy: dy)
+    let clipView = collectionView.enclosingScrollView!.contentView
+    clipView.animator().setBoundsOrigin(nextRect.origin)
   }
 }
