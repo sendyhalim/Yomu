@@ -58,7 +58,7 @@ struct SearchedMangaCollectionViewModel {
         $0.map(SearchedMangaViewModel.init)
       }
       .map(List<SearchedMangaViewModel>.init)
-      .bindTo(_mangas)
+      .bind(to: _mangas)
 
     return CompositeDisposable(fetchingDisposable, resultDisposable)
   }

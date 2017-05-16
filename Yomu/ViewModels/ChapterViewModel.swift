@@ -61,6 +61,6 @@ struct ChapterViewModel {
           .first!
           .image
       }
-      .bindTo(_previewUrl)
+      .bind(to: _previewUrl)
   }
 }

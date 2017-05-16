@@ -61,11 +61,11 @@ class ChapterCollectionViewController: NSViewController {
     chapterTitle
       .rx.text.orEmpty
       .throttle(0.5, scheduler: MainScheduler.instance)
-      .bindTo(vm.filterPattern) ==> disposeBag
+      .bind(to: vm.filterPattern) ==> disposeBag
 
     toggleSort
       .rx.tap
-      .bindTo(vm.toggleSort) ==> disposeBag
+      .bind(to: vm.toggleSort) ==> disposeBag
 
     vm.orderingIconName.drive(onNext: { [weak self] in
       self?.toggleSort.image = Config.icon(name: $0)
