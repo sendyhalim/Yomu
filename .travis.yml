@@ -15,7 +15,7 @@ matrix:
       env: JOB=CI_BUILD_TEST
     - os: osx
       language: objective-c
-      osx_image: xcode8.2
+      osx_image: xcode8.3
       script:
         - travis_retry make package
       env: JOB=CI_BUILD_PACKAGE
