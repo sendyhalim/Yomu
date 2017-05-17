@@ -29,7 +29,6 @@ internal struct Style {
 internal struct Icon {
   let plus: NSImage = #imageLiteral(resourceName: "Plus")
   let pin: NSImage = #imageLiteral(resourceName: "Pin")
-  let rightArrow: NSImage = #imageLiteral(resourceName: "RightArrow")
 }
 
 internal struct IconName {
@@ -50,6 +49,7 @@ public struct Config {
   static let icon = Icon()
   static let iconName = IconName()
   static let chapterPageSize = ChapterPageSize()
+  static let scrollOffsetPerEvent = 100.0
 
   static fileprivate var iconByName: [String: NSImage] = [:]
 
@@ -62,5 +62,12 @@ public struct Config {
     iconByName[name] = _icon
 
     return _icon
+  }
+
+  enum KeyboardEvent: String {
+    case nextChapter = "l"
+    case previousChapter = "h"
+    case scrollDown = "j"
+    case scrollUp = "k"
   }
 }

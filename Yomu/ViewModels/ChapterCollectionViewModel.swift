@@ -56,7 +56,7 @@ struct ChapterCollectionViewModel {
 
     chapters
       .asObservable()
-      .bindTo(_filteredChapters) ==> disposeBag
+      .bind(to: _filteredChapters) ==> disposeBag
 
     reload = _filteredChapters
       .asDriver()
@@ -77,14 +77,14 @@ struct ChapterCollectionViewModel {
             }
           }
       }
-      .bindTo(_filteredChapters) ==> disposeBag
+      .bind(to: _filteredChapters) ==> disposeBag
 
     // MARK: Sorting chapters
     toggleSort
       .map {
         _ordering.value == .descending ? .ascending : .descending
       }
-      .bindTo(_ordering) ==> disposeBag
+      .bind(to: _ordering) ==> disposeBag
 
     orderingIconName = _ordering
       .asDriver()
@@ -104,7 +104,7 @@ struct ChapterCollectionViewModel {
         // sort method need to be flipped too, the easiest way is to flip it
         order == .ascending ? curry(<) : flip(curry(<))
       }
-      .map { (compare: (Int) -> (Int) -> Bool) in
+      .map { (compare: @escaping (Int) -> (Int) -> Bool) in
         let sorted = filteredChapters.value.sorted {
           let (left, right) = $0
 
@@ -113,7 +113,7 @@ struct ChapterCollectionViewModel {
 
         return List(fromArray: sorted)
       }
-      .bindTo(_filteredChapters) ==> disposeBag
+      .bind(to: _filteredChapters) ==> disposeBag
   }
 
   func fetch(id: String) -> Disposable {
@@ -133,7 +133,7 @@ struct ChapterCollectionViewModel {
         $0.map(ChapterViewModel.init)
       }
       .map(List<ChapterViewModel>.init)
-      .bindTo(_chapters)
+      .bind(to: _chapters)
 
     return CompositeDisposable(fetchingDisposable, resultDisposable)
   }

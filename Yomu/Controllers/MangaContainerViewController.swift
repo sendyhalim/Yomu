@@ -13,7 +13,7 @@ import RxSwift
 class MangaContainerViewController: NSViewController {
   @IBOutlet weak var mangaContainerView: NSView!
   @IBOutlet weak var chapterContainerView: NSView!
-  @IBOutlet weak var chapterPageContainerView: NSView!
+  @IBOutlet weak var chapterPageContainerView: ChapterPageContainer!
   @IBOutlet weak var searchMangaButtonContainer: NSView!
   @IBOutlet weak var searchMangaContainerView: NSView!
 
@@ -114,6 +114,7 @@ extension MangaContainerViewController: ChapterSelectionDelegate {
     chapterPageCollectionVC!.delegate = self
     chapterPageCollectionVC!.chapterSelectionDelegate = self
     chapterPageContainerView.addSubview(chapterPageCollectionVC!.view)
+    chapterPageContainerView.delegate = chapterPageCollectionVC
 
     setupChapterPageCollectionConstraints()
     Router.moveTo(id: YomuRouteId.ChapterPage)

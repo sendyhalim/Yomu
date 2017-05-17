@@ -37,7 +37,7 @@ class MangaRealm: Object {
     mangaRealm.title = manga.title
     mangaRealm.author = manga.author
     mangaRealm.imageEndpoint = manga.image.endpoint
-    mangaRealm.releasedYear = manga.releasedYear
+    mangaRealm.releasedYear = manga.releasedYear ?? 0
     mangaRealm.commaSeparatedCategories = manga.categories.joined(separator: ",")
     mangaRealm.position = manga.position
 

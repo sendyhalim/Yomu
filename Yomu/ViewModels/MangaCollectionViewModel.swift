@@ -71,7 +71,7 @@ struct MangaCollectionViewModel {
 
         return List(fromArray: viewModels)
       }
-      .bindTo(mangaViewModels) ==> disposeBag
+      .bind(to: mangaViewModels) ==> disposeBag
 
     _mangas
       .asObservable()

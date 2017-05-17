@@ -62,11 +62,11 @@ class ChapterPageCollectionViewController: NSViewController {
 
     zoomIn
       .rx.tap
-      .bindTo(vm.zoomIn) ==> disposeBag
+      .bind(to: vm.zoomIn) ==> disposeBag
 
     zoomOut
       .rx.tap
-      .bindTo(vm.zoomOut) ==> disposeBag
+      .bind(to: vm.zoomOut) ==> disposeBag
 
     close
       .rx.tap
@@ -85,31 +85,11 @@ class ChapterPageCollectionViewController: NSViewController {
 
     nextChapterButton
       .rx.tap
-      .subscribe(onNext: { [weak self] in
-        guard let `self` = self else {
-          return
-        }
-
-        guard let (navigator, nextChapterVM) = self.navigator.next() else {
-          return
-        }
-
-        self.chapterSelectionDelegate?.chapterDidSelected(nextChapterVM.chapter, navigator: navigator)
-      }) ==> disposeBag
+      .subscribe(onNext: moveToNextChapter) ==> disposeBag
 
     previousChapterButton
       .rx.tap
-      .subscribe(onNext: { [weak self] in
-        guard let `self` = self else {
-          return
-        }
-
-        guard let (navigator, previousChapterVM) = self.navigator.previous() else {
-          return
-        }
-
-        self.chapterSelectionDelegate?.chapterDidSelected(previousChapterVM.chapter, navigator: navigator)
-      }) ==> disposeBag
+      .subscribe(onNext: moveToPreviousChapter) ==> disposeBag
 
     vm.reload ~~> collectionView.reloadData ==> disposeBag
 
@@ -160,6 +140,18 @@ class ChapterPageCollectionViewController: NSViewController {
     let set: Set<IndexPath> = [IndexPath(item: index, section: 0)]
     collectionView.scrollToItems(at: set, scrollPosition: NSCollectionViewScrollPosition.top)
   }
+
+  func moveToPreviousChapter() {
+    navigator.previous() >>- { [weak self] (navigator, previousChapterVM) in
+      self?.chapterSelectionDelegate?.chapterDidSelected(previousChapterVM.chapter, navigator: navigator)
+    }
+  }
+
+  func moveToNextChapter() {
+    navigator.next() >>- { [weak self] (navigator, nextChapterVM) in
+      self?.chapterSelectionDelegate?.chapterDidSelected(nextChapterVM.chapter, navigator: navigator)
+    }
+  }
 }
 
 extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
@@ -204,5 +196,35 @@ extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayou
     sizeForItemAt indexPath: IndexPath
   ) -> NSSize {
     return vm.pageSize
+  }
+}
+
+extension ChapterPageCollectionViewController: ChapterPageContainerDelegate {
+  override func keyDown(with event: NSEvent) {
+    guard
+      let characters = event.characters,
+      let key = Config.KeyboardEvent(rawValue: characters) else {
+      return
+    }
+
+    switch key {
+    case Config.KeyboardEvent.nextChapter:
+      moveToNextChapter()
+
+    case Config.KeyboardEvent.previousChapter:
+      moveToPreviousChapter()
+
+    case Config.KeyboardEvent.scrollDown:
+      scrollBy(dx: 0, dy: CGFloat(Config.scrollOffsetPerEvent))
+
+    case Config.KeyboardEvent.scrollUp:
+      scrollBy(dx: 0, dy: -CGFloat(Config.scrollOffsetPerEvent))
+    }
+  }
+
+  private func scrollBy(dx: CGFloat, dy: CGFloat) {
+    let nextRect = collectionView.visibleRect.offsetBy(dx: dx, dy: dy)
+    let clipView = collectionView.enclosingScrollView!.contentView
+    clipView.animator().setBoundsOrigin(nextRect.origin)
   }
 }

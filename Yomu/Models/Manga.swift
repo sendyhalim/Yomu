@@ -37,7 +37,7 @@ struct Manga {
   let title: String
   let author: String
   let image: ImageUrl
-  let releasedYear: Int
+  var releasedYear: Int?
   let description: String
   let categories: [String]
 
@@ -65,7 +65,7 @@ extension Manga: Decodable {
       <*> json <| MangaJSONMapping.title
       <*> json <| MangaJSONMapping.author
       <*> json <| MangaJSONMapping.image
-      <*> json <| MangaJSONMapping.releasedYear
+      <*> json <|? MangaJSONMapping.releasedYear
       <*> json <| MangaJSONMapping.description
       <*> json <|| MangaJSONMapping.categories
   }

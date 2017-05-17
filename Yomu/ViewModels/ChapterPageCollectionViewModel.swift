@@ -128,7 +128,7 @@ struct ChapterPageCollectionViewModel {
       .map {
         ZoomScale(scale: _zoomScale.value.scale + Config.chapterPageSize.zoomScaleStep)
       }
-      .bindTo(_zoomScale) ==> disposeBag
+      .bind(to: _zoomScale) ==> disposeBag
 
     zoomOut
       .filter {
@@ -137,7 +137,7 @@ struct ChapterPageCollectionViewModel {
       .map {
         ZoomScale(scale: _zoomScale.value.scale - Config.chapterPageSize.zoomScaleStep)
       }
-      .bindTo(_zoomScale) ==> disposeBag
+      .bind(to: _zoomScale) ==> disposeBag
 
     _zoomScale
       .asObservable()
@@ -147,7 +147,7 @@ struct ChapterPageCollectionViewModel {
           height: Int(Double(Config.chapterPageSize.height) * zoom.scale)
         )
       }
-      .bindTo(_pageSize) ==> disposeBag
+      .bind(to: _pageSize) ==> disposeBag
 
     zoomScale = _zoomScale
       .asDriver()
