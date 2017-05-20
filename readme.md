@@ -19,6 +19,13 @@ Latest yomu installer can be found [here](https://github.com/sendyhalim/yomu/rel
 3. Open the directory, there will be a yomu installer `Yomu.pkg`
 4. Double click `Yomu.pkg`
 
+## Navigation
+There are 4 keyboard navigation event handlers on chapter collection view
+- `h` Go to previous chapter
+- `l` Go to next chapter
+- `j` Scroll down
+- `k` Scroll up
+
 ## Libraries
 - [Argo](https://github.com/thoughtbot/Argo)
 - [Cartography](https://github.com/robb/Cartography)
