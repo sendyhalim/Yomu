@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
+import OrderedSet
 import class RealmSwift.Realm
 import RxCocoa
 import RxMoya

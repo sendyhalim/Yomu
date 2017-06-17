@@ -10,3 +10,4 @@ github "realm/realm-cocoa" ~> 2.7.0
 github "RxSwiftCommunity/RxRealm" "master"
 github "hyperoslo/Hue" ~> 2.0.1
 github "robb/Cartography" ~> 1.1.0
+github "sendyhalim/OrderedSet" ~> 0.0.3

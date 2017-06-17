@@ -14,7 +14,7 @@ struct Database {
   static fileprivate var _realm: Realm!
 
   static func realm() -> Realm {
-    guard let _ = _realm else {
+    guard _realm != nil else {
       Database.migrate()
 
       _realm = try! Realm()

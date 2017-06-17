@@ -29,13 +29,13 @@ extension YomuRouteId: RouteId {
 extension YomuRoute: Route {
   var id: RouteId {
     switch self {
-    case .main(_):
+    case .main:
       return YomuRouteId.Main
 
-    case .searchManga(_):
+    case .searchManga:
       return YomuRouteId.SearchManga
 
-    case .chapterPage(_):
+    case .chapterPage:
       return YomuRouteId.ChapterPage
     }
   }

@@ -20,7 +20,7 @@ extension YomuAPI: TargetType {
 
   var path: String {
     switch self {
-    case .search(_):
+    case .search:
       return "/search"
     }
   }
