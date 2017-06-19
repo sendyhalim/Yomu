@@ -34,6 +34,7 @@ There are 4 keyboard navigation event handlers on chapter collection view
 - [King Fisher](https://github.com/onevcat/Kingfisher)
 - [Moya](https://github.com/Moya/Moya)
 - [Nimble](https://github.com/Quick/Nimble)
+- [OrderedSet](https://github.com/sendyhalim/OrderedSet)
 - [Quick](https://github.com/Quick/Quick)
 - [Realm](https://github.com/realm/realm-cocoa)
 - [RxRealm](https://github.com/RxSwiftCommunity/RxRealm)
