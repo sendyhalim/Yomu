@@ -1,7 +1,7 @@
 ## <img src="https://raw.githubusercontent.com/sendyhalim/Yomu/master/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-512%402x.png" width="30">Yomu 
 Manga Reader App for Mac OS, feel free to request new features on [issue tracker](https://github.com/sendyhalim/yomu/issues)
 
-[![Build Status](https://api.travis-ci.org/sendyhalim/Yomu.svg)](https://travis-ci.org/sendyhalim/Yomu) [![GitHub release](https://img.shields.io/github/release/sendyhalim/yomu.svg)]()
+[![Build Status](https://img.shields.io/travis/sendyhalim/Yomu.svg?style=flat-square)](https://travis-ci.org/sendyhalim/Yomu) [![GitHub release](https://img.shields.io/github/release/sendyhalim/yomu.svg?style=flat-square)]()
 
 <img width="800" alt="Yomu screenshot" src="https://raw.githubusercontent.com/sendyhalim/Yomu/master/Resources/screenshot.png">
 
