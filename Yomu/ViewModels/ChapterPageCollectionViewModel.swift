@@ -88,6 +88,7 @@ struct ChapterPageCollectionViewModel {
   let invalidateLayout: Driver<Void>
   let zoomScale: Driver<String>
   let headerTitle: Driver<String>
+  let chapterTitle: Driver<String>
   let readingProgress: Driver<String>
   let pageCount: Driver<String>
   let zoomScroll: Driver<ScrollOffset>
@@ -172,6 +173,7 @@ struct ChapterPageCollectionViewModel {
       }
 
     headerTitle = chapterVM.number
+    chapterTitle = chapterVM.title
   }
 
   subscript(index: Int) -> ChapterPageViewModel {

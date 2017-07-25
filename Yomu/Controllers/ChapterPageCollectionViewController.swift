@@ -25,6 +25,7 @@ class ChapterPageCollectionViewController: NSViewController {
   @IBOutlet weak var headerTitle: NSTextField!
   @IBOutlet weak var nextChapterButton: NSButton!
   @IBOutlet weak var previousChapterButton: NSButton!
+  @IBOutlet weak var chapterTitle: NSTextField!
 
   weak var delegate: ChapterPageCollectionViewDelegate?
   weak var chapterSelectionDelegate: ChapterSelectionDelegate?
@@ -112,6 +113,10 @@ class ChapterPageCollectionViewController: NSViewController {
 
     vm.headerTitle
       ~~> headerTitle.rx.text.orEmpty
+      ==> disposeBag
+
+    vm.chapterTitle
+      ~~> chapterTitle.rx.text.orEmpty
       ==> disposeBag
 
     vm.zoomScroll ~~> scroll ==> disposeBag
