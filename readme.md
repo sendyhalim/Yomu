@@ -48,6 +48,8 @@ Just for hobby
 ## Acknowledgements
 Free icons used in this app are provided by [icons8](https://icons8.com)
 
+Content provided by [Manga Eden](http://www.mangaeden.com/api) (I do not host the content)
+
 ## License
 MIT ~
 
