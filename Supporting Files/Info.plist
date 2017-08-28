@@ -38,6 +38,6 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>YomuAPI</key>
-	<string>http://139.59.194.59/yomu/api</string>
+	<string>https://yomu-server.herokuapp.com/api</string>
 </dict>
 </plist>
