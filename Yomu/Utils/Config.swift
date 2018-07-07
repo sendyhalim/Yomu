@@ -58,7 +58,7 @@ public struct Config {
       return icon
     }
 
-    let _icon = bundle.image(forResource: name)!
+    let _icon = bundle.image(forResource: NSImage.Name(rawValue: name))!
     iconByName[name] = _icon
 
     return _icon

@@ -13,11 +13,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var mainWindow: NSWindow!
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    mainWindow = NSApplication.shared().windows.first!
-    mainWindow.titleVisibility = NSWindowTitleVisibility.hidden
+    mainWindow = NSApplication.shared.windows.first!
+    mainWindow.titleVisibility = NSWindow.TitleVisibility.hidden
     mainWindow.titlebarAppearsTransparent = true
     mainWindow.styleMask = [NSFullSizeContentViewWindowMask, mainWindow.styleMask]
-    mainWindow.setFrame(NSScreen.main()!.frame, display: true)
+    mainWindow.setFrame(NSScreen.main!.frame, display: true)
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
