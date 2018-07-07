@@ -27,7 +27,7 @@ struct ImageUrl: CustomStringConvertible {
   }
 }
 
-extension ImageUrl: Decodable {
+extension ImageUrl: Argo.Decodable {
   static func decode(_ json: JSON) -> Decoded<ImageUrl> {
     switch json {
     case JSON.string(let endpoint):

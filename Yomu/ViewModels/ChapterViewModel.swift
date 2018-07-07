@@ -37,7 +37,7 @@ struct ChapterViewModel {
 
     previewUrl = _previewUrl
       .asDriver()
-      .filter { $0.endpoint.characters.count != 0 }
+      .filter { $0.endpoint.count != 0 }
       .map { $0.url }
   }
 

@@ -11,19 +11,6 @@ import Argo
 import Curry
 import Runes
 
-///  JSON mapping of Manga Eden API.
-///  Example: http://www.mangaeden.com/api/manga/4e70ea6ac092255ef7006a52/
-private struct MangaJSONMapping {
-  static let id = "i"
-  static let slug = "alias"
-  static let title = "title"
-  static let author = "author"
-  static let image = "image"
-  static let releasedYear = "released"
-  static let description = "description"
-  static let categories = "categories"
-}
-
 enum MangaPosition: Int {
   case undefined = -1
 }
@@ -56,18 +43,18 @@ struct Manga {
   }
 }
 
-extension Manga: Decodable {
+extension Manga: Argo.Decodable {
   static func decode(_ json: JSON) -> Decoded<Manga> {
 
     return curry(Manga.init)(MangaPosition.undefined.rawValue)
-      <^> json <|? MangaJSONMapping.id
-      <*> json <| MangaJSONMapping.slug
-      <*> json <| MangaJSONMapping.title
-      <*> json <| MangaJSONMapping.author
-      <*> json <| MangaJSONMapping.image
-      <*> json <|? MangaJSONMapping.releasedYear
-      <*> json <| MangaJSONMapping.description
-      <*> json <|| MangaJSONMapping.categories
+      <^> json["i"]
+      <*> json["alias"]
+      <*> json["title"]
+      <*> json["author"]
+      <*> json["image"]
+      <*> json["released"]
+      <*> json["description"]
+      <*> json["categories"]
   }
 }
 

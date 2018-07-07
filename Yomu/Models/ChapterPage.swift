@@ -31,7 +31,7 @@ struct ChapterPage {
   let height: Int
 }
 
-extension ChapterPage: Decodable {
+extension ChapterPage: Argo.Decodable {
   static func decode(_ json: JSON) -> Decoded<ChapterPage> {
     switch json {
     case .array(let details):

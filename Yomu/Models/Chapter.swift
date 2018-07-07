@@ -29,7 +29,7 @@ struct Chapter {
   let title: String
 }
 
-extension Chapter: Decodable {
+extension Chapter: Argo.Decodable {
   static func decode(_ json: JSON) -> Decoded<Chapter> {
     switch json {
     case JSON.array(var jsonStrings):

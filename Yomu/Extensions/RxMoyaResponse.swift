@@ -17,7 +17,7 @@ extension Response {
   ///  - throws: Decoding error message
   ///
   ///  - returns: Transformed data from response
-  func map<T: Decodable>() throws -> T where T == T.DecodedType {
+  func map<T: Argo.Decodable>() throws -> T where T == T.DecodedType {
     let json = try mapJSON()
     let decoded: Decoded<T> = decode(json)
 
@@ -31,7 +31,7 @@ extension Response {
   ///  - throws: Decoding error message
   ///
   ///  - returns: Transformed data from response
-  func map<T: Decodable>(withRootKey rootKey: String) throws -> T where T == T.DecodedType {
+  func map<T: Argo.Decodable>(withRootKey rootKey: String) throws -> T where T == T.DecodedType {
     let dict = try mapDictionary()
     let decoded: Decoded<T> = decode(dict, rootKey: rootKey)
 
@@ -45,7 +45,7 @@ extension Response {
   ///  - throws: Decoding error message
   ///
   ///  - returns: Transformed data from response
-  func mapArray<T: Decodable>(
+  func mapArray<T: Argo.Decodable>(
     withRootKey rootKey: String
   ) throws -> [T] where T == T.DecodedType {
     let dict = try mapDictionary()
@@ -84,13 +84,13 @@ extension Response {
 }
 
 extension ObservableType where E == Response {
-  func map<T: Decodable>(_ type: T.Type) -> Observable<T> where T == T.DecodedType {
+  func map<T: Argo.Decodable>(_ type: T.Type) -> Observable<T> where T == T.DecodedType {
     return map {
       try $0.map()
     }
   }
 
-  func map<T: Decodable>(
+  func map<T: Argo.Decodable>(
     _ type: T.Type,
     withRootKey rootKey: String
   ) -> Observable<T> where T == T.DecodedType {
@@ -99,7 +99,7 @@ extension ObservableType where E == Response {
     }
   }
 
-  func mapArray<T: Decodable>(
+  func mapArray<T: Argo.Decodable>(
     _ type: T.Type,
     withRootKey rootKey: String
   ) -> Observable<[T]> where T == T.DecodedType {

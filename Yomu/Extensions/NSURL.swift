@@ -9,7 +9,7 @@
 import Argo
 import Swiftz
 
-extension URL: Decodable {
+extension URL: Argo.Decodable {
   public static func decode(_ json: JSON) -> Decoded<URL> {
     switch json {
     case JSON.string(let url):
