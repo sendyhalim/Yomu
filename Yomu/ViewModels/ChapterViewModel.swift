@@ -54,9 +54,7 @@ struct ChapterViewModel {
       .map { chapters in
         chapters
           .sorted {
-            let (x, y) = $0
-
-            return x.number < y.number
+            return $0.number < $1.number
           }
           .first!
           .image
