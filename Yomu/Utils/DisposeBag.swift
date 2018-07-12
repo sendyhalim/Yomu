@@ -18,7 +18,7 @@ precedencegroup YomuAddToDisposeBagPrecedence {
 infix operator ==> : YomuAddToDisposeBagPrecedence
 
 func ==> (disposable: Disposable, disposeBag: DisposeBag) {
-  disposable.addDisposableTo(disposeBag)
+  disposable.disposed(by: disposeBag)
 }
 
 infix operator ~>> : YomuAddToDisposeBagPrecedence

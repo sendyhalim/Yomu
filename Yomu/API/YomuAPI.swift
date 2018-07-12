@@ -56,7 +56,7 @@ extension YomuAPI: TargetType {
 struct Yomu {
   fileprivate static let provider = MoyaProvider<YomuAPI>()
 
-  static func request(_ api: YomuAPI) -> Observable<Response> {
-    return provider.request(api)
+  static func request(_ api: YomuAPI) -> Single<Response> {
+    return provider.rx.request(api)
   }
 }

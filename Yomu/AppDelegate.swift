@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     mainWindow = NSApplication.shared.windows.first!
     mainWindow.titleVisibility = NSWindow.TitleVisibility.hidden
     mainWindow.titlebarAppearsTransparent = true
-    mainWindow.styleMask = [NSFullSizeContentViewWindowMask, mainWindow.styleMask]
+    mainWindow.styleMask = [NSWindow.StyleMask.fullSizeContentView, mainWindow.styleMask]
     mainWindow.setFrame(NSScreen.main!.frame, display: true)
   }
 

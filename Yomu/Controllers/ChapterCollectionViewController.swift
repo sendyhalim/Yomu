@@ -30,7 +30,7 @@ class ChapterCollectionViewController: NSViewController {
   init(viewModel: ChapterCollectionViewModel) {
     vm = viewModel
 
-    super.init(nibName: "ChapterCollection", bundle: nil)!
+    super.init(nibName: NSNib.Name(rawValue: "ChapterCollection"), bundle: nil)
   }
 
   required init?(coder: NSCoder) {
@@ -96,7 +96,7 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     itemForRepresentedObjectAt indexPath: IndexPath
   ) -> NSCollectionViewItem {
     let cell = collectionView.makeItem(
-      withIdentifier: "ChapterItem",
+      withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ChapterItem"),
       for: indexPath
     ) as! ChapterItem
 

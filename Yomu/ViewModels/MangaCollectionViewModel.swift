@@ -68,7 +68,7 @@ struct MangaCollectionViewModel {
     _mangas
       .asObservable()
       .map {
-        let viewModels = $0.flatMap(MangaViewModel.init)
+        let viewModels = $0.compactMap(MangaViewModel.init)
 
         return List(fromArray: viewModels)
       }
@@ -89,11 +89,10 @@ struct MangaCollectionViewModel {
   func fetch(id: String) -> Disposable {
     let api = MangaEdenAPI.mangaDetail(id)
 
-    let request = MangaEden.request(api).share()
+    let request = MangaEden.request(api)
 
     let fetchingDisposable = request
       .map(const(false))
-      .startWith(true)
       .asDriver(onErrorJustReturn: false)
       .drive(_fetching)
 
@@ -110,7 +109,7 @@ struct MangaCollectionViewModel {
       .filter {
         return !self._mangas.value.contains($0)
       }
-      .subscribe(onNext: {
+      .subscribe(onSuccess: {
         self._mangas.value.append(element: $0)
       })
 

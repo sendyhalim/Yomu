@@ -106,9 +106,7 @@ struct ChapterCollectionViewModel {
       }
       .map { (compare: @escaping (Int) -> (Int) -> Bool) in
         let sorted = filteredChapters.value.sorted {
-          let (left, right) = $0
-
-          return compare(left.chapter.number)(right.chapter.number)
+          compare($0.chapter.number)($1.chapter.number)
         }
 
         return List(fromArray: sorted)
@@ -118,22 +116,22 @@ struct ChapterCollectionViewModel {
 
   func fetch(id: String) -> Disposable {
     let api = MangaEdenAPI.mangaDetail(id)
-    let request = MangaEden.request(api).share()
+    let request = MangaEden.request(api)
 
     let fetchingDisposable = request
       .map(const(false))
-      .startWith(true)
       .asDriver(onErrorJustReturn: false)
       .drive(_fetching)
 
     let resultDisposable = request
       .filterSuccessfulStatusCodes()
       .mapArray(Chapter.self, withRootKey: "chapters")
+      .asDriver(onErrorJustReturn: [])
       .map {
         $0.map(ChapterViewModel.init)
       }
       .map(List<ChapterViewModel>.init)
-      .bind(to: _chapters)
+      .drive(_chapters)
 
     return CompositeDisposable(fetchingDisposable, resultDisposable)
   }

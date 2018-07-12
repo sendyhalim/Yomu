@@ -51,6 +51,7 @@ struct ChapterViewModel {
     return MangaEden
       .request(MangaEdenAPI.chapterPages(id))
       .mapArray(ChapterPage.self, withRootKey: "images")
+      .asDriver(onErrorJustReturn: [])
       .map { chapters in
         chapters
           .sorted {
@@ -59,6 +60,6 @@ struct ChapterViewModel {
           .first!
           .image
       }
-      .bind(to: _previewUrl)
+      .drive(_previewUrl)
   }
 }

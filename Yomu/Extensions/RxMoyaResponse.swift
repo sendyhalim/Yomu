@@ -83,8 +83,8 @@ extension Response {
   }
 }
 
-extension ObservableType where E == Response {
-  func map<T: Argo.Decodable>(_ type: T.Type) -> Observable<T> where T == T.DecodedType {
+extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Response {
+  func map<T: Argo.Decodable>(_ type: T.Type) -> PrimitiveSequence<SingleTrait, T> where T == T.DecodedType {
     return map {
       try $0.map()
     }
@@ -93,7 +93,7 @@ extension ObservableType where E == Response {
   func map<T: Argo.Decodable>(
     _ type: T.Type,
     withRootKey rootKey: String
-  ) -> Observable<T> where T == T.DecodedType {
+  ) -> PrimitiveSequence<SingleTrait, T> where T == T.DecodedType {
     return map {
       try $0.map(withRootKey: rootKey)
     }
@@ -102,7 +102,7 @@ extension ObservableType where E == Response {
   func mapArray<T: Argo.Decodable>(
     _ type: T.Type,
     withRootKey rootKey: String
-  ) -> Observable<[T]> where T == T.DecodedType {
+  ) -> PrimitiveSequence<SingleTrait, [T]> where T == T.DecodedType {
     return map {
       return try $0.mapArray(withRootKey: rootKey)
     }

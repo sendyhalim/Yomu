@@ -27,7 +27,7 @@ class MangaCollectionViewController: NSViewController {
   init(viewModel: MangaCollectionViewModel) {
     vm = viewModel
 
-    super.init(nibName: "MangaCollection", bundle: nil)!
+    super.init(nibName: NSNib.Name(rawValue: "MangaCollection"), bundle: nil)
   }
 
   required init?(coder: NSCoder) {
@@ -40,7 +40,7 @@ class MangaCollectionViewController: NSViewController {
     mangaCollectionView.menuSource = self
     mangaCollectionView.dataSource = self
     mangaCollectionView.delegate = self
-    mangaCollectionView.register(forDraggedTypes: [NSPasteboardTypePNG, NSPasteboardTypeString])
+    mangaCollectionView.registerForDraggedTypes([NSPasteboard.PasteboardType.png, NSPasteboard.PasteboardType.string])
 
     vm.reload ~~> mangaCollectionView.reloadData ==> disposeBag
   }
@@ -72,7 +72,7 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
     itemForRepresentedObjectAt indexPath: IndexPath
   ) -> NSCollectionViewItem {
     let cell = collectionView.makeItem(
-      withIdentifier: "MangaItem",
+      withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MangaItem"),
       for: indexPath
     ) as! MangaItem
 
@@ -107,7 +107,7 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     // We need to set this value
     // to satisfy collectionView(_:validateDrop:proposedIndexPath:dropOperation:)
     // https://developer.apple.com/reference/appkit/nscollectionviewdelegate/1525471-collectionview
-    item.setString(mangaViewModel.id, forType: NSPasteboardTypeString)
+    item.setString(mangaViewModel.id, forType: NSPasteboard.PasteboardType.string)
 
     return item
   }
@@ -116,7 +116,7 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     _ collectionView: NSCollectionView,
     validateDrop draggingInfo: NSDraggingInfo,
     proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>,
-    dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionViewDropOperation>
+    dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>
   ) -> NSDragOperation {
     return NSDragOperation.move
   }
@@ -143,7 +143,7 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     _ collectionView: NSCollectionView,
     acceptDrop draggingInfo: NSDraggingInfo,
     indexPath: IndexPath,
-    dropOperation: NSCollectionViewDropOperation
+    dropOperation: NSCollectionView.DropOperation
   ) -> Bool {
     let fromIndexPath = currentlyDraggedIndexPaths.first!
 
@@ -185,13 +185,13 @@ extension MangaCollectionViewController: CollectionViewMenuSource {
     return menu
   }
 
-  func deleteManga(item: NSMenuItem) {
+  @objc func deleteManga(item: NSMenuItem) {
     let indexPath = item.representedObject as! IndexPath
 
     vm.remove(mangaIndex: indexPath.item)
   }
 
-  func showChapters(item: NSMenuItem) {
+  @objc func showChapters(item: NSMenuItem) {
     let indexPath = item.representedObject as! IndexPath
 
     collectionView(mangaCollectionView, didSelectItemsAt: Set([indexPath]))

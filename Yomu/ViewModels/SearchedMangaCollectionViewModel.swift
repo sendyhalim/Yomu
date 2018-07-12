@@ -8,6 +8,7 @@
 
 import RxCocoa
 import RxMoya
+import RxMoya_ModelMapper
 import RxSwift
 import Swiftz
 
@@ -43,22 +44,22 @@ struct SearchedMangaCollectionViewModel {
 
   func search(term: String) -> Disposable {
     let api = YomuAPI.search(term)
-    let request = Yomu.request(api).share()
+    let request = Yomu.request(api)
 
     let fetchingDisposable = request
       .map(const(false))
-      .startWith(true)
       .asDriver(onErrorJustReturn: false)
       .drive(_fetching)
 
     let resultDisposable = request
       .filterSuccessfulStatusCodes()
       .mapArray(SearchedManga.self, withRootKey: "mangas")
+      .asDriver(onErrorJustReturn: [])
       .map {
         $0.map(SearchedMangaViewModel.init)
       }
       .map(List<SearchedMangaViewModel>.init)
-      .bind(to: _mangas)
+      .drive(_mangas)
 
     return CompositeDisposable(fetchingDisposable, resultDisposable)
   }

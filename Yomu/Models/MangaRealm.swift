@@ -11,14 +11,14 @@ import RealmSwift
 
 /// Represents Manga object for `Realm` database
 class MangaRealm: Object {
-  dynamic var id: String = ""
-  dynamic var slug: String = ""
-  dynamic var title: String = ""
-  dynamic var author: String = ""
-  dynamic var imageEndpoint: String = ""
-  dynamic var releasedYear: Int = 0
-  dynamic var commaSeparatedCategories: String = ""
-  dynamic var position: Int = MangaPosition.undefined.rawValue
+  @objc dynamic var id: String = ""
+  @objc dynamic var slug: String = ""
+  @objc dynamic var title: String = ""
+  @objc dynamic var author: String = ""
+  @objc dynamic var imageEndpoint: String = ""
+  @objc dynamic var releasedYear: Int = 0
+  @objc dynamic var commaSeparatedCategories: String = ""
+  @objc dynamic var position: Int = MangaPosition.undefined.rawValue
 
   override static func primaryKey() -> String? {
     return "id"
@@ -51,7 +51,7 @@ class MangaRealm: Object {
   ///  - returns: `Manga`
   static func from(mangaRealm: MangaRealm) -> Manga {
     let categories = mangaRealm
-      .commaSeparatedCategories.characters
+      .commaSeparatedCategories
       .split {
         $0 == ","
       }

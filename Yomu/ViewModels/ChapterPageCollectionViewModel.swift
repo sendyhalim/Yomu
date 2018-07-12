@@ -186,10 +186,8 @@ struct ChapterPageCollectionViewModel {
     return MangaEden
       .request(MangaEdenAPI.chapterPages(chapterVM.chapter.id))
       .mapArray(ChapterPage.self, withRootKey: "images")
-      .subscribe(onNext: {
-        let sortedPages = $0.sorted {
-          let (x, y) = $0
-
+      .subscribe(onSuccess: {
+        let sortedPages = $0.sorted { x, y in
           return x.number < y.number
         }
 

@@ -30,7 +30,7 @@ class SearchedMangaCollectionViewController: NSViewController {
   init(viewModel: SearchedMangaCollectionViewModel) {
     collectionViewModel = viewModel
 
-    super.init(nibName: "SearchedMangaCollection", bundle: nil)!
+    super.init(nibName: NSNib.Name(rawValue: "SearchedMangaCollection"), bundle: nil)
   }
 
   required init?(coder: NSCoder) {
@@ -46,7 +46,7 @@ class SearchedMangaCollectionViewController: NSViewController {
     mangaTitle
       .rx.text.orEmpty
       .filter {
-        $0.characters.count > 2
+        $0.count > 2
       }
       .throttle(1.0, scheduler: MainScheduler.instance)
       .distinctUntilChanged()
@@ -97,7 +97,7 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
     itemForRepresentedObjectAt indexPath: IndexPath
   ) -> NSCollectionViewItem {
     let cell = collectionView.makeItem(
-      withIdentifier: "SearchedMangaItem",
+      withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SearchedMangaItem"),
       for: indexPath
     ) as! SearchedMangaItem
 

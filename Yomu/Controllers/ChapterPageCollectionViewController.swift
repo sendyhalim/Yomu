@@ -38,7 +38,7 @@ class ChapterPageCollectionViewController: NSViewController {
     self.vm = viewModel
     self.navigator = navigator
 
-    super.init(nibName: "ChapterPageCollection", bundle: nil)!
+    super.init(nibName: NSNib.Name(rawValue: "ChapterPageCollection"), bundle: nil)
   }
 
   required init?(coder: NSCoder) {
@@ -127,9 +127,6 @@ class ChapterPageCollectionViewController: NSViewController {
       .rx.controlEvent
       .map { [weak self] in
         self!.zoomScale.stringValue
-      }
-      .filter {
-        $0 != nil
       } ~~> vm.setZoomScale ==> disposeBag
   }
 
@@ -143,7 +140,7 @@ class ChapterPageCollectionViewController: NSViewController {
     vm.setCurrentPageIndex(index)
 
     let set: Set<IndexPath> = [IndexPath(item: index, section: 0)]
-    collectionView.scrollToItems(at: set, scrollPosition: NSCollectionViewScrollPosition.top)
+    collectionView.scrollToItems(at: set, scrollPosition: NSCollectionView.ScrollPosition.top)
   }
 
   func moveToPreviousChapter() {
@@ -176,7 +173,7 @@ extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
     itemForRepresentedObjectAt indexPath: IndexPath
   ) -> NSCollectionViewItem {
     let cell = collectionView.makeItem(
-      withIdentifier: "ChapterPageItem",
+      withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ChapterPageItem"),
       for: indexPath
     ) as! ChapterPageItem
 
