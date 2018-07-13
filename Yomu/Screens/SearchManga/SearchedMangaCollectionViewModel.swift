@@ -8,7 +8,6 @@
 
 import RxCocoa
 import RxMoya
-import RxMoya_ModelMapper
 import RxSwift
 import Swiftz
 
