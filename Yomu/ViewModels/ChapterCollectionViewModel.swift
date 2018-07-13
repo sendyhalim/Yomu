@@ -121,6 +121,7 @@ struct ChapterCollectionViewModel {
     let fetchingDisposable = request
       .map(const(false))
       .asDriver(onErrorJustReturn: false)
+      .startWith(true)
       .drive(_fetching)
 
     let resultDisposable = request

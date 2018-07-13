@@ -36,10 +36,30 @@ class ChapterItem: NSCollectionViewItem {
     // will be fetched. Activity indicator will be removed automatically by kingfisher
     // after image preview is fetched.
     chapterPreview.kf.indicator?.startAnimatingView()
-    viewModel.fetchPreview() ==> disposeBag
-    viewModel.title ~~> chapterTitle.rx.text.orEmpty ==> disposeBag
-    viewModel.previewUrl ~~> chapterPreview.setImageWithUrl ==> disposeBag
-    viewModel.number ~~> chapterNumber.rx.text.orEmpty ==> disposeBag
+
+    viewModel
+      .fetchPreview()
+      .disposed(by: disposeBag)
+
+    viewModel.title
+      .drive(chapterTitle.rx.text.orEmpty)
+      .disposed(by: disposeBag)
+
+    viewModel.title
+      .drive(chapterTitle.rx.text.orEmpty)
+      .disposed(by: disposeBag)
+
+    viewModel
+      .previewUrl
+      .drive(onNext: { [weak self] url in
+        self?.chapterPreview.setImageWithUrl(url)
+        self?.chapterPreview.kf.indicator?.stopAnimatingView()
+      })
+      .disposed(by: disposeBag)
+
+    viewModel.number
+      .drive(chapterNumber.rx.text.orEmpty)
+      .disposed(by: disposeBag)
   }
 
   override func viewWillLayout() {
