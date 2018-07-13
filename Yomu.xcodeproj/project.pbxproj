@@ -434,6 +434,7 @@
 		793C799020F91C95005FBFDF /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				79C8B75F1D29756B0072F2D3 /* Main.storyboard */,
 				79C8B75D1D2962CD0072F2D3 /* MangaContainerViewController.swift */,
 				790ABFC81D550250004BAB8D /* Routes.swift */,
 				7995C6C11D717DE7008F02FD /* YomuWindowController.swift */,
@@ -500,7 +501,6 @@
 				798866161D11AB2100093761 /* API */,
 				793C799120F91CB0005FBFDF /* Common */,
 				793C798B20F91AA4005FBFDF /* Screens */,
-				79F7CF6F1D27A2F7005B135B /* Storyboards */,
 				798454C91D05CF3600BB7262 /* AppDelegate.swift */,
 			);
 			path = Yomu;
@@ -607,14 +607,6 @@
 				7983E9131D5B9E190001A46C /* TextInputContainer.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		79F7CF6F1D27A2F7005B135B /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				79C8B75F1D29756B0072F2D3 /* Main.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		79FDDE2A1D7DF38C00318E08 /* Supporting Files */ = {
