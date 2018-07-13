@@ -47,7 +47,7 @@ extension Manga: Argo.Decodable {
   static func decode(_ json: JSON) -> Decoded<Manga> {
 
     return curry(Manga.init)(MangaPosition.undefined.rawValue)
-      <^> json["i"]
+      <^> json[optional: "i"]
       <*> json["alias"]
       <*> json["title"]
       <*> json["author"]

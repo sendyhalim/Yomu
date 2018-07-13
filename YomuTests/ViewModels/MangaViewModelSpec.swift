@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import RxSwift
+import RxCocoa
 import RxTest
 
 @testable import Yomu
