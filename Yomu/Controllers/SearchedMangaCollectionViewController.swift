@@ -105,12 +105,15 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
       withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SearchedMangaItem"),
       for: indexPath
     ) as! SearchedMangaItem
-
     let searchedMangaViewModel = viewModel[(indexPath as NSIndexPath).item]
 
     searchedMangaViewModel
       .title
       .drive(cell.titleTextField.rx.text.orEmpty) ==> cell.disposeBag
+
+    searchedMangaViewModel
+      .categoriesString
+      .drive(cell.categoryTextField.rx.text.orEmpty) ==> cell.disposeBag
 
     searchedMangaViewModel
       .previewUrl

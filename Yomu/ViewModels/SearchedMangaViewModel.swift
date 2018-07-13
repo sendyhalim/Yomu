@@ -14,6 +14,7 @@ struct SearchedMangaViewModel {
   let previewUrl: Driver<URL>
   let title: Driver<String>
   let apiId: Driver<String>
+  let categoriesString: Driver<String>
 
   // MARK: Private
   fileprivate let manga: Variable<SearchedManga>
@@ -32,5 +33,11 @@ struct SearchedMangaViewModel {
     apiId = self.manga
       .asDriver()
       .map { $0.apiId }
+
+    categoriesString = self.manga
+      .asDriver()
+      .map {
+        $0.categories.joined(separator: ", ")
+      }
   }
 }

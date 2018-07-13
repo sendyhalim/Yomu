@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -12,31 +12,31 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" userLabel="Searched Manga Item View">
-            <rect key="frame" x="0.0" y="0.0" width="280" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-eP-m62">
-                    <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="fky-5s-8IN"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="k2U-9a-r5Z"/>
                 </imageView>
                 <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="89x-YM-u0k">
-                    <rect key="frame" x="70" y="0.0" width="210" height="70"/>
+                    <rect key="frame" x="70" y="0.0" width="210" height="60"/>
                     <view key="contentView" id="bYl-sR-kkV">
-                        <rect key="frame" x="0.0" y="0.0" width="210" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-mk-txx">
-                                <rect key="frame" x="-2" y="43" width="179" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-mk-txx">
+                                <rect key="frame" x="-2" y="33" width="179" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Manga Title" id="qHK-Rj-0lS">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-sV-RKO">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-sV-RKO">
                                 <rect key="frame" x="-2" y="10" width="174" height="13"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Manga Categories" id="b8d-Ya-Cqz">
                                     <font key="font" metaFont="systemThin" size="10"/>
@@ -45,7 +45,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="76s-Oa-UPa">
-                                <rect key="frame" x="180" y="25" width="20" height="20"/>
+                                <rect key="frame" x="180" y="20" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="eqp-ct-Nm0"/>
                                     <constraint firstAttribute="height" constant="20" id="pQX-wL-LuJ"/>
@@ -58,7 +58,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="rIw-mk-txx" firstAttribute="leading" secondItem="bYl-sR-kkV" secondAttribute="leading" id="2Xe-QV-uCI"/>
-                            <constraint firstItem="FpS-sV-RKO" firstAttribute="top" secondItem="rIw-mk-txx" secondAttribute="bottom" constant="20" id="E5H-aj-0JS"/>
+                            <constraint firstItem="FpS-sV-RKO" firstAttribute="top" secondItem="rIw-mk-txx" secondAttribute="bottom" constant="10" id="E5H-aj-0JS"/>
                             <constraint firstItem="rIw-mk-txx" firstAttribute="top" secondItem="bYl-sR-kkV" secondAttribute="top" constant="10" id="GEp-v0-WJE"/>
                             <constraint firstItem="76s-Oa-UPa" firstAttribute="trailing" secondItem="bYl-sR-kkV" secondAttribute="trailing" constant="-10" id="IWQ-Nc-ddT"/>
                             <constraint firstItem="76s-Oa-UPa" firstAttribute="leading" secondItem="FpS-sV-RKO" secondAttribute="trailing" constant="10" id="bVc-To-puN"/>
@@ -80,7 +80,7 @@
                 <constraint firstItem="CHo-eP-m62" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="XpD-gl-scD"/>
                 <constraint firstItem="89x-YM-u0k" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="bkg-d6-ORp"/>
             </constraints>
-            <point key="canvasLocation" x="289" y="380"/>
+            <point key="canvasLocation" x="94" y="299"/>
         </customView>
         <collectionViewItem id="mb3-6Q-snP" customClass="SearchedMangaItem" customModule="Yomu" customModuleProvider="target">
             <connections>
