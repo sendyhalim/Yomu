@@ -33,19 +33,19 @@ extension YomuAPI: TargetType {
     return URLEncoding.default
   }
 
-  var parameters: [String: Any]? {
-    switch self {
-    case .search(let titlePattern):
-      return ["term": titlePattern as AnyObject]
-    }
-  }
-
   var headers: [String: String]? {
     return nil
   }
 
   var task: Task {
-    return Task.requestPlain
+    switch self {
+    case .search(let searchTerm):
+      let parameters = [
+        "term": searchTerm
+      ]
+
+      return Task.requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+    }
   }
 
   var sampleData: Data {
