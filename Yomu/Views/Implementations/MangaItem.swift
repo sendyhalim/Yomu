@@ -21,10 +21,22 @@ class MangaItem: NSCollectionViewItem {
 	func setup(withViewModel viewModel: MangaViewModel) {
 		disposeBag = DisposeBag()
 
-		viewModel.title ~~> titleTextField.rx.text.orEmpty ==> disposeBag
-		viewModel.previewUrl ~~> mangaImageView.setImageWithUrl ==> disposeBag
-		viewModel.categoriesString ~~> categoryTextField.rx.text.orEmpty ==> disposeBag
-		viewModel.selected.map(!) ~~> selectedIndicator.rx.isHidden ==> disposeBag
+		viewModel
+      .title
+      .drive(titleTextField.rx.text.orEmpty) ==> disposeBag
+
+		viewModel
+      .previewUrl
+      .drive(onNext: mangaImageView.setImageWithUrl) ==> disposeBag
+
+		viewModel
+      .categoriesString
+      .drive(categoryTextField.rx.text.orEmpty) ==> disposeBag
+
+		viewModel
+      .selected
+      .map(!)
+      .drive(selectedIndicator.rx.isHidden) ==> disposeBag
 	}
 
   override func viewDidLoad() {

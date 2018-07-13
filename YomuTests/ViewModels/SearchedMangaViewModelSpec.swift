@@ -26,17 +26,16 @@ class SearchedMangaViewModelSpec: QuickSpec {
       categories: []
     )
 
-    let vm = SearchedMangaViewModel(manga: manga)
+    let viewModel = SearchedMangaViewModel(manga: manga)
 
     describe(".previewUrl") {
       let observer = scheduler.createObserver(String.self)
 
       beforeEach {
-        vm
+        viewModel
           .previewUrl
           .map { $0.description }
-          .drive(observer)
-          .addDisposableTo(disposeBag)
+          .drive(observer) ==> disposeBag
 
         scheduler.start()
       }
@@ -50,10 +49,9 @@ class SearchedMangaViewModelSpec: QuickSpec {
       let observer = scheduler.createObserver(String.self)
 
       beforeEach {
-        vm
+        viewModel
           .title
-          .drive(observer)
-          .addDisposableTo(disposeBag)
+          .drive(observer) ==> disposeBag
 
         scheduler.start()
       }
@@ -67,10 +65,9 @@ class SearchedMangaViewModelSpec: QuickSpec {
       let observer = scheduler.createObserver(String.self)
 
       beforeEach {
-        vm
+        viewModel
           .apiId
-          .drive(observer)
-          .addDisposableTo(disposeBag)
+          .drive(observer) ==> disposeBag
 
         scheduler.start()
       }

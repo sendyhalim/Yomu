@@ -30,12 +30,12 @@ class ChapterPageCollectionViewController: NSViewController {
   weak var delegate: ChapterPageCollectionViewDelegate?
   weak var chapterSelectionDelegate: ChapterSelectionDelegate?
 
-  var vm: ChapterPageCollectionViewModel
+  var viewModel: ChapterPageCollectionViewModel
   var navigator: ChapterNavigator
   var disposeBag = DisposeBag()
 
   init(viewModel: ChapterPageCollectionViewModel, navigator: ChapterNavigator) {
-    self.vm = viewModel
+    self.viewModel = viewModel
     self.navigator = navigator
 
     super.init(nibName: NSNib.Name(rawValue: "ChapterPageCollection"), bundle: nil)
@@ -63,11 +63,11 @@ class ChapterPageCollectionViewController: NSViewController {
 
     zoomIn
       .rx.tap
-      .bind(to: vm.zoomIn) ==> disposeBag
+      .bind(to: viewModel.zoomIn) ==> disposeBag
 
     zoomOut
       .rx.tap
-      .bind(to: vm.zoomOut) ==> disposeBag
+      .bind(to: viewModel.zoomOut) ==> disposeBag
 
     close
       .rx.tap
@@ -81,7 +81,7 @@ class ChapterPageCollectionViewController: NSViewController {
         Int(self!.readingProgress.stringValue) ?? -1
       }
       .map { $0 - 1 }
-      .filter(vm.chapterIndexIsValid)
+      .filter(viewModel.chapterIndexIsValid)
       .subscribe(onNext: scrollToChapter) ==> disposeBag
 
     nextChapterButton
@@ -92,42 +92,47 @@ class ChapterPageCollectionViewController: NSViewController {
       .rx.tap
       .subscribe(onNext: moveToPreviousChapter) ==> disposeBag
 
-    vm.reload ~~> collectionView.reloadData ==> disposeBag
+    viewModel
+      .reload
+      .drive(onNext: collectionView.reloadData) ==> disposeBag
 
-    vm.invalidateLayout
-      ~~> collectionView.collectionViewLayout!.invalidateLayout
-      ==> disposeBag
+    viewModel
+      .invalidateLayout
+      .drive(onNext: collectionView.collectionViewLayout!.invalidateLayout) ==> disposeBag
 
-    vm.readingProgress
-      ~~> readingProgress.rx.text.orEmpty
-      ==> disposeBag
+    viewModel
+      .readingProgress
+      .drive(readingProgress.rx.text.orEmpty) ==> disposeBag
 
-    vm.pageCount
-      ~~> pageCount.rx.text.orEmpty
-      ==> disposeBag
+    viewModel
+      .pageCount
+      .drive(pageCount.rx.text.orEmpty) ==> disposeBag
 
-    vm.zoomScale
+    viewModel
+      .zoomScale
       .asDriver(onErrorJustReturn: "")
-      ~~> zoomScale.rx.text.orEmpty
-      ==> disposeBag
+      .drive(zoomScale.rx.text.orEmpty) ==> disposeBag
 
-    vm.headerTitle
-      ~~> headerTitle.rx.text.orEmpty
-      ==> disposeBag
+    viewModel
+      .headerTitle
+      .drive(headerTitle.rx.text.orEmpty) ==> disposeBag
 
-    vm.chapterTitle
-      ~~> chapterTitle.rx.text.orEmpty
-      ==> disposeBag
+    viewModel
+      .chapterTitle
+      .drive(chapterTitle.rx.text.orEmpty) ==> disposeBag
 
-    vm.zoomScroll ~~> scroll ==> disposeBag
+    viewModel
+      .zoomScroll
+      .drive(onNext: scroll) ==> disposeBag
 
-    vm.fetch() ==> disposeBag
+    viewModel.fetch() ==> disposeBag
 
     zoomScale
       .rx.controlEvent
       .map { [weak self] in
         self!.zoomScale.stringValue
-      } ~~> vm.setZoomScale ==> disposeBag
+      }
+      .bind(onNext: viewModel.setZoomScale) ==> disposeBag
   }
 
   func scroll(offset: ScrollOffset) {
@@ -137,7 +142,7 @@ class ChapterPageCollectionViewController: NSViewController {
   }
 
   func scrollToChapter(atIndex index: Int) {
-    vm.setCurrentPageIndex(index)
+    viewModel.setCurrentPageIndex(index)
 
     let set: Set<IndexPath> = [IndexPath(item: index, section: 0)]
     collectionView.scrollToItems(at: set, scrollPosition: NSCollectionView.ScrollPosition.top)
@@ -165,7 +170,7 @@ extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
     _ collectionView: NSCollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
-    return vm.count
+    return viewModel.count
   }
 
   func collectionView(
@@ -177,7 +182,7 @@ extension ChapterPageCollectionViewController: NSCollectionViewDataSource {
       for: indexPath
     ) as! ChapterPageItem
 
-    cell.setup(withViewModel: vm[(indexPath as NSIndexPath).item])
+    cell.setup(withViewModel: viewModel[(indexPath as NSIndexPath).item])
 
     return cell
   }
@@ -189,7 +194,7 @@ extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayou
     willDisplay item: NSCollectionViewItem,
     forRepresentedObjectAt indexPath: IndexPath
   ) {
-    vm.setCurrentPageIndex((indexPath as NSIndexPath).item)
+    viewModel.setCurrentPageIndex((indexPath as NSIndexPath).item)
   }
 
   func collectionView(
@@ -197,7 +202,7 @@ extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayou
     layout collectionViewLayout: NSCollectionViewLayout,
     sizeForItemAt indexPath: IndexPath
   ) -> NSSize {
-    return vm.pageSize
+    return viewModel.pageSize
   }
 }
 

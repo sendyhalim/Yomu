@@ -19,13 +19,13 @@ class MangaCollectionViewController: NSViewController {
 
   weak var mangaSelectionDelegate: MangaSelectionDelegate?
 
-  let vm: MangaCollectionViewModel
+  let viewModel: MangaCollectionViewModel
   let disposeBag = DisposeBag()
 
   var currentlyDraggedIndexPaths = Set<IndexPath>()
 
   init(viewModel: MangaCollectionViewModel) {
-    vm = viewModel
+    self.viewModel = viewModel
 
     super.init(nibName: NSNib.Name(rawValue: "MangaCollection"), bundle: nil)
   }
@@ -42,7 +42,9 @@ class MangaCollectionViewController: NSViewController {
     mangaCollectionView.delegate = self
     mangaCollectionView.registerForDraggedTypes([NSPasteboard.PasteboardType.png, NSPasteboard.PasteboardType.string])
 
-    vm.reload ~~> mangaCollectionView.reloadData ==> disposeBag
+    viewModel
+      .reload
+      .drive(onNext: mangaCollectionView.reloadData) ==> disposeBag
   }
 
   override func viewWillLayout() {
@@ -64,7 +66,7 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
     _ collectionView: NSCollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
-    return vm.count
+    return viewModel.count
   }
 
   func collectionView(
@@ -76,7 +78,7 @@ extension MangaCollectionViewController: NSCollectionViewDataSource {
       for: indexPath
     ) as! MangaItem
 
-		cell.setup(withViewModel: vm[(indexPath as NSIndexPath).item])
+		cell.setup(withViewModel: viewModel[(indexPath as NSIndexPath).item])
 
     return cell
   }
@@ -88,10 +90,10 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     didSelectItemsAt indexPaths: Set<IndexPath>
   ) {
     let index = (indexPaths.first! as NSIndexPath).item
-    let viewModel = vm[index]
+    let mangaViewModel = viewModel[index]
 
-    vm.setSelectedIndex(index)
-    mangaSelectionDelegate?.mangaDidSelected(viewModel.manga)
+    viewModel.setSelectedIndex(index)
+    mangaSelectionDelegate?.mangaDidSelected(mangaViewModel.manga)
   }
 
   // MARK: Drag and drop operation
@@ -102,7 +104,7 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     pasteboardWriterForItemAt indexPath: IndexPath
   ) -> NSPasteboardWriting? {
     let item = NSPasteboardItem()
-    let mangaViewModel = vm[indexPath.item]
+    let mangaViewModel = viewModel[indexPath.item]
 
     // We need to set this value
     // to satisfy collectionView(_:validateDrop:proposedIndexPath:dropOperation:)
@@ -148,7 +150,7 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     let fromIndexPath = currentlyDraggedIndexPaths.first!
 
     collectionView.animator().moveItem(at: fromIndexPath, to: indexPath)
-    vm.move(fromIndex: fromIndexPath.item, toIndex: indexPath.item)
+    viewModel.move(fromIndex: fromIndexPath.item, toIndex: indexPath.item)
 
     return true
   }
@@ -188,7 +190,7 @@ extension MangaCollectionViewController: CollectionViewMenuSource {
   @objc func deleteManga(item: NSMenuItem) {
     let indexPath = item.representedObject as! IndexPath
 
-    vm.remove(mangaIndex: indexPath.item)
+    viewModel.remove(mangaIndex: indexPath.item)
   }
 
   @objc func showChapters(item: NSMenuItem) {

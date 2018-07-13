@@ -24,11 +24,11 @@ class ChapterCollectionViewController: NSViewController {
 
   weak var chapterSelectionDelegate: ChapterSelectionDelegate?
 
-  let vm: ChapterCollectionViewModel
+  let viewModel: ChapterCollectionViewModel
   var disposeBag = DisposeBag()
 
   init(viewModel: ChapterCollectionViewModel) {
-    vm = viewModel
+    self.viewModel = viewModel
 
     super.init(nibName: NSNib.Name(rawValue: "ChapterCollection"), bundle: nil)
   }
@@ -53,23 +53,30 @@ class ChapterCollectionViewController: NSViewController {
   func setupSubscriptions() {
     // Cleanup everytime we setup subscriptions
     disposeBag = DisposeBag()
-    vm.reset()
+    viewModel.reset()
 
-    vm.reload ~~> collectionView.reloadData ==> disposeBag
-    vm.fetching ~~> progressIndicator.animating ==> disposeBag
+    viewModel
+      .reload
+      .drive(onNext: collectionView.reloadData) ==> disposeBag
+
+    viewModel
+      .fetching
+      .drive(onNext: progressIndicator.animating) ==> disposeBag
 
     chapterTitle
       .rx.text.orEmpty
       .throttle(0.5, scheduler: MainScheduler.instance)
-      .bind(to: vm.filterPattern) ==> disposeBag
+      .bind(to: viewModel.filterPattern) ==> disposeBag
 
     toggleSort
       .rx.tap
-      .bind(to: vm.toggleSort) ==> disposeBag
+      .bind(to: viewModel.toggleSort) ==> disposeBag
 
-    vm.orderingIconName.drive(onNext: { [weak self] in
-      self?.toggleSort.image = Config.icon(name: $0)
-    }) ==> disposeBag
+    viewModel
+      .orderingIconName
+      .drive(onNext: { [weak self] in
+        self?.toggleSort.image = Config.icon(name: $0)
+      }) ==> disposeBag
   }
 }
 
@@ -78,7 +85,7 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
     _ collectionView: NSCollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
-    return vm.count
+    return viewModel.count
   }
 
   @objc(collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:) func collectionView(
@@ -100,7 +107,7 @@ extension ChapterCollectionViewController: NSCollectionViewDataSource {
       for: indexPath
     ) as! ChapterItem
 
-    cell.setup(withViewModel: vm[(indexPath as NSIndexPath).item])
+    cell.setup(withViewModel: viewModel[(indexPath as NSIndexPath).item])
 
     return cell
   }
@@ -112,8 +119,8 @@ extension ChapterCollectionViewController: NSCollectionViewDelegateFlowLayout {
     didSelectItemsAt indexPaths: Set<IndexPath>
   ) {
     let index = (indexPaths.first! as NSIndexPath).item
-    let chapterVm = vm[index]
-    let navigator = ChapterNavigator(collection: vm, currentIndex: index)
+    let chapterVm = viewModel[index]
+    let navigator = ChapterNavigator(collection: viewModel, currentIndex: index)
 
     collectionView.deselectAll(self)
     chapterSelectionDelegate?.chapterDidSelected(chapterVm.chapter, navigator: navigator)
@@ -136,13 +143,13 @@ extension ChapterCollectionViewController: MangaSelectionDelegate {
     chapterTitle.stringValue = ""
 
     // Scroll to the top everytime manga is selected
-    if !vm.isEmpty {
+    if !viewModel.isEmpty {
       let index = IndexPath(item: 0, section: 0)
       let indexPaths: Set = [index]
       collectionView.scrollToItems(at: indexPaths, scrollPosition: .top)
     }
 
     // At this point we are sure that manga.id will 100% available
-    vm.fetch(id: manga.id!) ==> disposeBag
+    viewModel.fetch(id: manga.id!) ==> disposeBag
   }
 }

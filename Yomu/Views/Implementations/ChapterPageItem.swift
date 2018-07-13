@@ -21,6 +21,8 @@ class ChapterPageItem: NSCollectionViewItem {
   func setup(withViewModel viewModel: ChapterPageViewModel) {
     disposeBag = DisposeBag()
 
-    viewModel.imageUrl ~~> pageImageView.setImageWithUrl ==> disposeBag
+    viewModel.imageUrl
+      .drive(onNext: pageImageView.setImageWithUrl)
+      .disposed(by: disposeBag)
   }
 }

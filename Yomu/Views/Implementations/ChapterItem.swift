@@ -38,28 +38,23 @@ class ChapterItem: NSCollectionViewItem {
     chapterPreview.kf.indicator?.startAnimatingView()
 
     viewModel
-      .fetchPreview()
-      .disposed(by: disposeBag)
+      .fetchPreview() ==> disposeBag
 
     viewModel.title
-      .drive(chapterTitle.rx.text.orEmpty)
-      .disposed(by: disposeBag)
+      .drive(chapterTitle.rx.text.orEmpty) ==> disposeBag
 
     viewModel.title
-      .drive(chapterTitle.rx.text.orEmpty)
-      .disposed(by: disposeBag)
+      .drive(chapterTitle.rx.text.orEmpty) ==> disposeBag
 
     viewModel
       .previewUrl
       .drive(onNext: { [weak self] url in
         self?.chapterPreview.setImageWithUrl(url)
         self?.chapterPreview.kf.indicator?.stopAnimatingView()
-      })
-      .disposed(by: disposeBag)
+      }) ==> disposeBag
 
     viewModel.number
-      .drive(chapterNumber.rx.text.orEmpty)
-      .disposed(by: disposeBag)
+      .drive(chapterNumber.rx.text.orEmpty) ==> disposeBag
   }
 
   override func viewWillLayout() {

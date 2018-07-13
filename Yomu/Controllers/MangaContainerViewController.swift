@@ -138,13 +138,14 @@ extension MangaContainerViewController: ChapterPageCollectionViewDelegate {
 
 extension MangaContainerViewController: SearchedMangaDelegate {
   func searchedMangaDidSelected(_ viewModel: SearchedMangaViewModel) {
-    viewModel.apiId ~~> { [weak self] in
-      guard let `self` = self else {
-        return
-      }
+    viewModel.apiId
+      .drive(onNext: { [weak self] in
+        guard let `self` = self else {
+          return
+        }
 
-      self.mangaCollectionVM.fetch(id: $0) ==> self.disposeBag
-    } ==> self.disposeBag
+        self.mangaCollectionVM.fetch(id: $0) ==> self.disposeBag
+      }) ==> self.disposeBag
 
     Router.moveTo(id: YomuRouteId.Main)
   }

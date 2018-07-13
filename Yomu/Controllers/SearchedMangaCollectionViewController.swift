@@ -23,12 +23,12 @@ class SearchedMangaCollectionViewController: NSViewController {
 
   weak var delegate: SearchedMangaDelegate?
 
-  var collectionViewModel: SearchedMangaCollectionViewModel
+  var viewModel: SearchedMangaCollectionViewModel
 
   let disposeBag = DisposeBag()
 
   init(viewModel: SearchedMangaCollectionViewModel) {
-    collectionViewModel = viewModel
+    self.viewModel = viewModel
 
     super.init(nibName: NSNib.Name(rawValue: "SearchedMangaCollection"), bundle: nil)
   }
@@ -56,12 +56,17 @@ class SearchedMangaCollectionViewController: NSViewController {
         }
 
         // Cancel previous request
-        self.collectionViewModel.disposeBag = DisposeBag()
-        self.collectionViewModel.search(term: $0) ==> self.collectionViewModel.disposeBag
+        self.viewModel.disposeBag = DisposeBag()
+        self.viewModel.search(term: $0) ==> self.viewModel.disposeBag
       }) ==> disposeBag
 
-    collectionViewModel.reload ~~> collectionView.reloadData ==> disposeBag
-    collectionViewModel.fetching ~~> progressIndicator.animating ==> disposeBag
+    viewModel
+      .reload
+      .drive(onNext: collectionView.reloadData) ==> disposeBag
+
+    viewModel
+      .fetching
+      .drive(onNext: progressIndicator.animating) ==> disposeBag
 
     backButton
       .rx.tap
@@ -89,7 +94,7 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
     _ collectionView: NSCollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
-    return collectionViewModel.count
+    return viewModel.count
   }
 
   func collectionView(
@@ -101,10 +106,16 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
       for: indexPath
     ) as! SearchedMangaItem
 
-    let vm = collectionViewModel[(indexPath as NSIndexPath).item]
+    let searchedMangaViewModel = viewModel[(indexPath as NSIndexPath).item]
 
-    vm.title ~~> cell.titleTextField.rx.text.orEmpty ==> cell.disposeBag
-    vm.previewUrl ~~> cell.mangaImageView.setImageWithUrl ==> cell.disposeBag
+    searchedMangaViewModel
+      .title
+      .drive(cell.titleTextField.rx.text.orEmpty) ==> cell.disposeBag
+
+    searchedMangaViewModel
+      .previewUrl
+      .drive(onNext: cell.mangaImageView.setImageWithUrl) ==> cell.disposeBag
+
     cell.accessoryButton.image = Config.icon.pin
 
     return cell
@@ -118,6 +129,6 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDelegateFlowLay
   ) {
     let index = (indexPaths.first! as NSIndexPath).item
 
-    delegate?.searchedMangaDidSelected(collectionViewModel[index])
+    delegate?.searchedMangaDidSelected(viewModel[index])
   }
 }
