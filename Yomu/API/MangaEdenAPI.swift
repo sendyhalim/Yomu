@@ -37,12 +37,12 @@ extension MangaEdenAPI: TargetType {
     return URLEncoding.default
   }
 
-  var parameters: [String: Any]? {
-    return [:]
+  var headers: [String: String]? {
+    return nil
   }
 
   var task: Task {
-    return .request
+    return Task.requestPlain
   }
 
   var sampleData: Data {
@@ -51,9 +51,9 @@ extension MangaEdenAPI: TargetType {
 }
 
 struct MangaEden {
-  fileprivate static let provider = RxMoyaProvider<MangaEdenAPI>()
+  fileprivate static let provider = MoyaProvider<MangaEdenAPI>()
 
-  static func request(_ api: MangaEdenAPI) -> Observable<Response> {
-    return provider.request(api)
+  static func request(_ api: MangaEdenAPI) -> Single<Response> {
+    return provider.rx.request(api)
   }
 }

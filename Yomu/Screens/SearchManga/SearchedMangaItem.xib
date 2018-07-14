@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SearchedMangaItem" customModule="Yomu" customModuleProvider="target"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" userLabel="Searched Manga Item View">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-eP-m62">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="fky-5s-8IN"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="k2U-9a-r5Z"/>
+                </imageView>
+                <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="89x-YM-u0k">
+                    <rect key="frame" x="70" y="0.0" width="210" height="60"/>
+                    <view key="contentView" id="bYl-sR-kkV">
+                        <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="rIw-mk-txx">
+                                <rect key="frame" x="-2" y="33" width="179" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Manga Title" id="qHK-Rj-0lS">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-sV-RKO">
+                                <rect key="frame" x="-2" y="10" width="174" height="13"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Manga Categories" id="b8d-Ya-Cqz">
+                                    <font key="font" metaFont="systemThin" size="10"/>
+                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="76s-Oa-UPa">
+                                <rect key="frame" x="180" y="20" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="eqp-ct-Nm0"/>
+                                    <constraint firstAttribute="height" constant="20" id="pQX-wL-LuJ"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="Next" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="o6r-qi-fqD">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="rIw-mk-txx" firstAttribute="leading" secondItem="bYl-sR-kkV" secondAttribute="leading" id="2Xe-QV-uCI"/>
+                            <constraint firstItem="FpS-sV-RKO" firstAttribute="top" secondItem="rIw-mk-txx" secondAttribute="bottom" constant="10" id="E5H-aj-0JS"/>
+                            <constraint firstItem="rIw-mk-txx" firstAttribute="top" secondItem="bYl-sR-kkV" secondAttribute="top" constant="10" id="GEp-v0-WJE"/>
+                            <constraint firstItem="76s-Oa-UPa" firstAttribute="trailing" secondItem="bYl-sR-kkV" secondAttribute="trailing" constant="-10" id="IWQ-Nc-ddT"/>
+                            <constraint firstItem="76s-Oa-UPa" firstAttribute="leading" secondItem="FpS-sV-RKO" secondAttribute="trailing" constant="10" id="bVc-To-puN"/>
+                            <constraint firstItem="76s-Oa-UPa" firstAttribute="leading" secondItem="rIw-mk-txx" secondAttribute="trailing" constant="5" id="gUE-in-GvC"/>
+                            <constraint firstAttribute="bottom" secondItem="FpS-sV-RKO" secondAttribute="bottom" constant="10" id="ruh-vS-2aR"/>
+                            <constraint firstItem="76s-Oa-UPa" firstAttribute="centerY" secondItem="bYl-sR-kkV" secondAttribute="centerY" id="sMd-mj-CRg"/>
+                            <constraint firstItem="FpS-sV-RKO" firstAttribute="leading" secondItem="bYl-sR-kkV" secondAttribute="leading" id="u0e-3y-x49"/>
+                        </constraints>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstItem="89x-YM-u0k" firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="ARB-Je-akJ"/>
+                <constraint firstItem="89x-YM-u0k" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="JVS-DK-Ced"/>
+                <constraint firstItem="CHo-eP-m62" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="OZN-xP-mmg"/>
+                <constraint firstItem="89x-YM-u0k" firstAttribute="leading" secondItem="CHo-eP-m62" secondAttribute="trailing" constant="20" symbolic="YES" id="PSJ-2W-4G9"/>
+                <constraint firstItem="CHo-eP-m62" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="TtO-2I-lN5"/>
+                <constraint firstItem="CHo-eP-m62" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="XpD-gl-scD"/>
+                <constraint firstItem="89x-YM-u0k" firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="bkg-d6-ORp"/>
+            </constraints>
+            <point key="canvasLocation" x="94" y="299"/>
+        </customView>
+        <collectionViewItem id="mb3-6Q-snP" customClass="SearchedMangaItem" customModule="Yomu" customModuleProvider="target">
+            <connections>
+                <outlet property="accessoryButton" destination="76s-Oa-UPa" id="j5Y-pK-SCg"/>
+                <outlet property="categoryTextField" destination="FpS-sV-RKO" id="R1s-Uz-IT0"/>
+                <outlet property="mangaImageView" destination="CHo-eP-m62" id="fsv-jP-dTv"/>
+                <outlet property="titleContainerView" destination="89x-YM-u0k" id="seC-Cx-N95"/>
+                <outlet property="titleTextField" destination="rIw-mk-txx" id="IGG-49-Z2T"/>
+                <outlet property="view" destination="c22-O7-iKe" id="Y9V-zn-zIE"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+    <resources>
+        <image name="Next" width="100" height="100"/>
+    </resources>
+</document>

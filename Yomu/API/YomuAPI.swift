@@ -33,15 +33,19 @@ extension YomuAPI: TargetType {
     return URLEncoding.default
   }
 
-  var parameters: [String: Any]? {
-    switch self {
-    case .search(let titlePattern):
-      return ["term": titlePattern as AnyObject]
-    }
+  var headers: [String: String]? {
+    return nil
   }
 
   var task: Task {
-    return .request
+    switch self {
+    case .search(let searchTerm):
+      let parameters = [
+        "term": searchTerm
+      ]
+
+      return Task.requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+    }
   }
 
   var sampleData: Data {
@@ -50,9 +54,9 @@ extension YomuAPI: TargetType {
 }
 
 struct Yomu {
-  fileprivate static let provider = RxMoyaProvider<YomuAPI>()
+  fileprivate static let provider = MoyaProvider<YomuAPI>()
 
-  static func request(_ api: YomuAPI) -> Observable<Response> {
-    return provider.request(api)
+  static func request(_ api: YomuAPI) -> Single<Response> {
+    return provider.rx.request(api)
   }
 }

@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import RxSwift
+import RxCocoa
 import RxTest
 
 @testable import Yomu
@@ -35,10 +36,12 @@ class MangaViewModelSpec: QuickSpec {
       context("when categories is not empty") {
         let observer = scheduler.createObserver(String.self)
 
-        let vm = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
+        let viewModel = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
 
         beforeEach {
-          vm.categoriesString ~~> observer ==> disposeBag
+          viewModel
+            .categoriesString
+            .drive(observer) ==> disposeBag
 
           scheduler.start()
         }
@@ -50,10 +53,12 @@ class MangaViewModelSpec: QuickSpec {
 
       context("when categories is empty") {
         let observer = scheduler.createObserver(String.self)
-        let vm = MangaViewModel(manga: mangaWithCategories([]))
+        let viewModel = MangaViewModel(manga: mangaWithCategories([]))
 
         beforeEach {
-          vm.categoriesString ~~> observer ==> disposeBag
+          viewModel
+            .categoriesString
+            .drive(observer) ==> disposeBag
 
           scheduler.start()
         }
@@ -65,10 +70,12 @@ class MangaViewModelSpec: QuickSpec {
 
       context("when manga has 1 category") {
         let observer = scheduler.createObserver(String.self)
-        let vm = MangaViewModel(manga: mangaWithCategories(["action"]))
+        let viewModel = MangaViewModel(manga: mangaWithCategories(["action"]))
 
         beforeEach {
-          vm.categoriesString ~~> observer ==> disposeBag
+          viewModel
+            .categoriesString
+            .drive(observer) ==> disposeBag
 
           scheduler.start()
         }
@@ -82,10 +89,13 @@ class MangaViewModelSpec: QuickSpec {
     describe(".previewUrl") {
       let observer = scheduler.createObserver(String.self)
 
-      let vm = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
+      let viewModel = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
 
       beforeEach {
-        vm.previewUrl.map { $0.description } ~~> observer ==> disposeBag
+        viewModel
+          .previewUrl
+          .map { $0.description }
+          .drive(observer) ==> disposeBag
 
         scheduler.start()
       }
@@ -98,10 +108,12 @@ class MangaViewModelSpec: QuickSpec {
     describe(".title") {
       let observer = scheduler.createObserver(String.self)
 
-      let vm = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
+      let viewModel = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
 
       beforeEach {
-        vm.title ~~> observer ==> disposeBag
+        viewModel
+          .title
+          .drive(observer) ==> disposeBag
 
         scheduler.start()
       }
@@ -115,10 +127,12 @@ class MangaViewModelSpec: QuickSpec {
       context("when loaded for the first time") {
         let observer = scheduler.createObserver(Bool.self)
 
-        let vm = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
+        let viewModel = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
 
         beforeEach {
-          vm.selected ~~> observer ==> disposeBag
+          viewModel
+            .selected
+            .drive(observer) ==> disposeBag
 
           scheduler.start()
         }
@@ -131,12 +145,14 @@ class MangaViewModelSpec: QuickSpec {
       context("when manga is selected") {
         let observer = scheduler.createObserver(Bool.self)
 
-        let vm = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
+        let viewModel = MangaViewModel(manga: mangaWithCategories(["mystery", "action"]))
 
         beforeEach {
-          vm.selected ~~> observer ==> disposeBag
+          viewModel
+            .selected
+            .drive(observer) ==> disposeBag
 
-          vm.setSelected(true)
+          viewModel.setSelected(true)
 
           scheduler.start()
         }
