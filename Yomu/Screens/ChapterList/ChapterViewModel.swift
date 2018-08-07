@@ -52,8 +52,9 @@ struct ChapterViewModel {
       .request(MangaEdenAPI.chapterPages(id))
       .mapArray(ChapterPage.self, withRootKey: "images")
       .asDriver(onErrorJustReturn: [])
-      .map { chapters in
-        chapters
+      .filter { $0.count > 0 } // On some rare cases manga eden server return http 503 status code
+      .map { chapterPages in
+        return chapterPages
           .sorted {
             return $0.number < $1.number
           }
