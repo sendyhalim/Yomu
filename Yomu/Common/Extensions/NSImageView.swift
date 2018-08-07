@@ -55,4 +55,14 @@ extension NSImageView {
       setCenterPoint(newCenterPoint)
     }
   }
+
+  open override func viewDidHide() {
+    super.viewDidHide()
+
+    // Sometimes the indicator is still being showed.
+    // This could happen when there's a task to fetch image and indicator is shown,
+    // then the fetch task is cleaned and we haven't hidden the indicator yet,
+    // the indicator will be buggy (kept shown) if we're re-using the image view
+    kf.indicator?.stopAnimatingView()
+  }
 }
