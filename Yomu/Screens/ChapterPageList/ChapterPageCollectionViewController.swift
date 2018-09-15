@@ -33,6 +33,7 @@ class ChapterPageCollectionViewController: NSViewController {
   var viewModel: ChapterPageCollectionViewModel
   var navigator: ChapterNavigator
   var disposeBag = DisposeBag()
+  var keyDownEventMonitor: Any! = nil
 
   init(viewModel: ChapterPageCollectionViewModel, navigator: ChapterNavigator) {
     self.viewModel = viewModel
@@ -56,6 +57,18 @@ class ChapterPageCollectionViewController: NSViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
     setupSubscriptions()
+
+    // We need to return nill in the event handler to turn off "DOONG" sound when
+    // keyboard is pressed (used for navigation when reading chapter)
+    keyDownEventMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
+      self?.keyDown(with: event)
+
+      return nil
+    }
+  }
+
+  override func viewWillDisappear() {
+    NSEvent.removeMonitor(keyDownEventMonitor)
   }
 
   func setupSubscriptions() {
@@ -207,6 +220,7 @@ extension ChapterPageCollectionViewController: NSCollectionViewDelegateFlowLayou
 }
 
 extension ChapterPageCollectionViewController: ChapterPageContainerDelegate {
+
   override func keyDown(with event: NSEvent) {
     guard
       let characters = event.characters,

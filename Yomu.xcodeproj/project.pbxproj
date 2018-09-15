@@ -36,6 +36,7 @@
 		795C10BE1DB20DB400A7EFDE /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C10BD1DB20DB400A7EFDE /* Function.swift */; };
 		795C10BF1DB2174D00A7EFDE /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C10BD1DB20DB400A7EFDE /* Function.swift */; };
 		795C10C01DB2174D00A7EFDE /* MenuableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796F743B1DA0A31C00357D55 /* MenuableCollectionView.swift */; };
+		795DF069214D9946001FBD93 /* ChapterPageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF72291EB905A400F5E51A /* ChapterPageContainer.swift */; };
 		796048621D12FBEB006571B3 /* ChapterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796048611D12FBEB006571B3 /* ChapterCollectionViewController.swift */; };
 		796048651D13062E006571B3 /* DisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796048641D13062E006571B3 /* DisposeBag.swift */; };
 		796048691D130887006571B3 /* ChapterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796048681D130887006571B3 /* ChapterItem.swift */; };
@@ -434,6 +435,7 @@
 		793C799020F91C95005FBFDF /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				79AF72291EB905A400F5E51A /* ChapterPageContainer.swift */,
 				79C8B75F1D29756B0072F2D3 /* Main.storyboard */,
 				79C8B75D1D2962CD0072F2D3 /* MangaContainerViewController.swift */,
 				790ABFC81D550250004BAB8D /* Routes.swift */,
@@ -598,7 +600,6 @@
 			isa = PBXGroup;
 			children = (
 				790ABFC21D54F9AD004BAB8D /* ActionButton.swift */,
-				79AF72291EB905A400F5E51A /* ChapterPageContainer.swift */,
 				796F743B1DA0A31C00357D55 /* MenuableCollectionView.swift */,
 				7982A1F31D78A4D700850AFE /* NoteLabel.swift */,
 				792A07491D5A349C009390D6 /* SearchTextInput.swift */,
@@ -975,6 +976,7 @@
 				79932A0D1D4A79A90018370D /* AppDelegate.swift in Sources */,
 				79932A0E1D4A79A90018370D /* ChapterPageItem.swift in Sources */,
 				79932A0F1D4A79A90018370D /* RxMoyaResponse.swift in Sources */,
+				795DF069214D9946001FBD93 /* ChapterPageContainer.swift in Sources */,
 				79932A101D4A79A90018370D /* ChapterPageCollectionViewController.swift in Sources */,
 				79932A111D4A79A90018370D /* NSURL.swift in Sources */,
 				79932A121D4A79A90018370D /* ImageUrl.swift in Sources */,
