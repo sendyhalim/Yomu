@@ -119,7 +119,12 @@ extension SearchedMangaCollectionViewController: NSCollectionViewDataSource {
       .previewUrl
       .drive(onNext: cell.mangaImageView.setImageWithUrl) ==> cell.disposeBag
 
-    cell.accessoryButton.image = Config.icon.pin
+    searchedMangaViewModel
+      .apiId
+      .map(viewModel.isBookmarked)
+      .drive(onNext: { isBookmarked in
+        cell.accessoryButton.image = isBookmarked ? Config.icon.bookmarkOn : Config.icon.bookmarkOff
+      }) ==> cell.disposeBag
 
     return cell
   }

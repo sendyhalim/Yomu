@@ -27,13 +27,13 @@ internal struct Style {
 }
 
 internal struct Icon {
-  let plus: NSImage = #imageLiteral(resourceName: "Plus")
-  let pin: NSImage = #imageLiteral(resourceName: "Pin")
+  let bookmarkOff: NSImage = NSImage(imageLiteralResourceName: "bookmark-off")
+  let bookmarkOn: NSImage = NSImage(imageLiteralResourceName: "bookmark-on")
 }
 
 internal struct IconName {
-  let ascending = "Ascending"
-  let descending = "Descending"
+  let ascending = "ascending"
+  let descending = "descending"
 }
 
 internal struct ChapterPageSize {

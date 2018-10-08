@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,21 +32,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="421" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l5t-Wm-gb8">
-                                            <rect key="frame" x="30" y="7" width="381" height="17"/>
+                                        <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l5t-Wm-gb8">
+                                            <rect key="frame" x="30" y="8" width="381" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Search Chapters" drawsBackground="YES" id="6zw-KD-Aui">
                                                 <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bYi-SL-hON">
-                                            <rect key="frame" x="0.0" y="7" width="30" height="17"/>
+                                            <rect key="frame" x="0.0" y="8" width="30" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="HsZ-r3-WiG"/>
                                                 <constraint firstAttribute="height" constant="17" id="ww8-IG-hAz"/>
                                             </constraints>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Search" id="iKP-nS-oQi"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="search" id="iKP-nS-oQi"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -66,7 +65,7 @@
                                     <constraint firstAttribute="height" constant="20" id="Ifu-ze-KHp"/>
                                     <constraint firstAttribute="width" constant="50" id="XCY-My-o1q"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Descending" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="zYx-HV-G3k">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="descending" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="zYx-HV-G3k">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -94,13 +93,13 @@
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOx-C6-3Tl">
                                 <rect key="frame" x="10" y="0.0" width="480" height="248"/>
-                                <clipView key="contentView" drawsBackground="NO" id="gHa-tB-PY2">
+                                <clipView key="contentView" id="gHa-tB-PY2">
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="248"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView selectable="YES" id="dfe-Ib-Wgi">
                                             <rect key="frame" x="0.0" y="0.0" width="480" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10000" minimumLineSpacing="10" id="LbZ-xK-IQ1">
                                                 <size key="itemSize" width="450" height="325"/>
                                             </collectionViewFlowLayout>
@@ -109,11 +108,11 @@
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cnO-fh-RDf">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="cnO-fh-RDf">
                                     <rect key="frame" x="0.0" y="370" width="430" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oTb-F2-XU8">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oTb-F2-XU8">
                                     <rect key="frame" x="234" y="1" width="15" height="143"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -146,7 +145,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="Descending" width="100" height="100"/>
-        <image name="Search" width="100" height="100"/>
+        <image name="descending" width="100" height="100"/>
+        <image name="search" width="100" height="100"/>
     </resources>
 </document>

@@ -9,6 +9,8 @@
 import RxCocoa
 import RxMoya
 import RxSwift
+import class RealmSwift.Realm
+import RxRealm
 import Swiftz
 
 struct SearchedMangaCollectionViewModel {
@@ -27,6 +29,12 @@ struct SearchedMangaCollectionViewModel {
   fileprivate let _fetching = Variable(false)
   fileprivate let _showViewController = Variable(false)
   fileprivate let _mangas = Variable(List<SearchedMangaViewModel>())
+
+  fileprivate var mangaIds: Set<String> = {
+    let mangaIds = Database.queryMangas().map { $0.id! }
+
+    return Set(mangaIds)
+  }()
 
   init() {
     reload = _mangas
@@ -62,6 +70,10 @@ struct SearchedMangaCollectionViewModel {
       .drive(_mangas)
 
     return CompositeDisposable(fetchingDisposable, resultDisposable)
+  }
+
+  func isBookmarked(id: String) -> Bool {
+    return mangaIds.contains(id)
   }
 
   func hideViewController() {

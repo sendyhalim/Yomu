@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SearchedMangaItem" customModule="Yomu" customModuleProvider="target"/>
@@ -50,7 +48,7 @@
                                     <constraint firstAttribute="width" constant="20" id="eqp-ct-Nm0"/>
                                     <constraint firstAttribute="height" constant="20" id="pQX-wL-LuJ"/>
                                 </constraints>
-                                <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="Next" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="o6r-qi-fqD">
+                                <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="bookmark-off" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="o6r-qi-fqD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
@@ -94,6 +92,6 @@
         </collectionViewItem>
     </objects>
     <resources>
-        <image name="Next" width="100" height="100"/>
+        <image name="bookmark-off" width="25" height="25"/>
     </resources>
 </document>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -47,7 +46,7 @@
                                     <constraint firstAttribute="height" constant="25" id="2Wb-7F-JWy"/>
                                     <constraint firstAttribute="width" constant="25" id="KmU-xZ-5x4"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ZoomOut" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ze9-MN-hiy">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="zoom-out" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ze9-MN-hiy">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -58,7 +57,7 @@
                                     <constraint firstAttribute="width" constant="25" id="M18-PS-OH2"/>
                                     <constraint firstAttribute="height" constant="25" id="aRj-rn-7eK"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ZoomIn" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="4m5-9P-wuo">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="zoom-in" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="4m5-9P-wuo">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -81,7 +80,7 @@
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Zoom" drawsBackground="YES" id="Ks7-eZ-Te9">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -99,7 +98,7 @@
                                     <constraint firstAttribute="width" constant="40" id="9LF-oZ-LLm"/>
                                     <constraint firstAttribute="height" constant="25" id="xDF-9C-D5v"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="Previous" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="XpM-S6-Wkz">
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="previous" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="XpM-S6-Wkz">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -110,7 +109,7 @@
                                     <constraint firstAttribute="width" constant="40" id="DqD-Yl-KSb"/>
                                     <constraint firstAttribute="height" constant="25" id="W48-xE-qih"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="Next" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="CxR-fF-mFb">
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="next" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="CxR-fF-mFb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -122,7 +121,7 @@
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="right" placeholderString="1" drawsBackground="YES" id="fgN-Rw-YSW">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -134,8 +133,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYo-K8-hu4">
-                                <rect key="frame" x="356.5" y="42" width="87" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AYo-K8-hu4">
+                                <rect key="frame" x="357" y="42" width="87" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Chapter Title" id="0UF-AR-3eR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" red="0.75285834074020386" green="0.75298899412155151" blue="0.7528499960899353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -175,13 +174,13 @@
                 </box>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" maxMagnification="2" minMagnification="1" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TQ-NO-ws1">
                     <rect key="frame" x="0.0" y="0.0" width="800" height="975"/>
-                    <clipView key="contentView" drawsBackground="NO" id="2gG-07-Sgl">
+                    <clipView key="contentView" id="2gG-07-Sgl">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="975"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView id="IEp-r8-DMM">
                                 <rect key="frame" x="0.0" y="0.0" width="800" height="975"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10000" minimumLineSpacing="10" id="7LO-xd-Ucf">
                                     <size key="itemSize" width="730" height="1040"/>
                                     <edgeInsets key="sectionInset" left="10" right="10" top="10" bottom="10"/>
@@ -191,11 +190,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="spl-5U-Njf">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="spl-5U-Njf">
                         <rect key="frame" x="-100" y="-100" width="728" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mtm-Lg-qcF">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mtm-Lg-qcF">
                         <rect key="frame" x="-100" y="-100" width="15" height="984"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -214,9 +213,9 @@
         </customView>
     </objects>
     <resources>
-        <image name="Next" width="100" height="100"/>
-        <image name="Previous" width="100" height="100"/>
-        <image name="ZoomIn" width="200" height="200"/>
-        <image name="ZoomOut" width="200" height="200"/>
+        <image name="next" width="96" height="96"/>
+        <image name="previous" width="96" height="96"/>
+        <image name="zoom-in" width="200" height="200"/>
+        <image name="zoom-out" width="200" height="200"/>
     </resources>
 </document>
