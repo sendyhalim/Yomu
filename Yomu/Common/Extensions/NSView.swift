@@ -22,7 +22,7 @@ struct Border {
   }
 }
 
-enum BorderPosition {
+enum BorderPosition: String {
   case all
   case left
   case top
@@ -36,6 +36,7 @@ extension NSView {
   ///  - parameter border: `Border` spec
   func drawBorder(_ border: Border) {
     wantsLayer = true
+    layerContentsRedrawPolicy = .duringViewResize
 
     switch border.position {
     case .all:
@@ -71,7 +72,16 @@ extension NSView {
       height: frame.size.height
     )
 
-    drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
+    let borderLayer = CALayer()
+    borderLayer.name = "border.left"
+
+    drawBorder(
+      position: .left,
+      frame: borderFrame,
+      width: borderWidth,
+      radius: radius,
+      color: color
+    )
   }
 
   ///  Draw a border (rectangle) at top
@@ -88,7 +98,13 @@ extension NSView {
       height: borderWidth
     )
 
-    drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
+    drawBorder(
+      position: .top,
+      frame: borderFrame,
+      width: borderWidth,
+      radius: radius,
+      color: color
+    )
   }
 
   ///  Draw a border (rectangle) at right
@@ -104,7 +120,16 @@ extension NSView {
       height: frame.size.height
     )
 
-    drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
+    let borderLayer = CALayer()
+    borderLayer.name = "border.right"
+
+    drawBorder(
+      position: .right,
+      frame: borderFrame,
+      width: borderWidth,
+      radius: radius,
+      color: color
+    )
   }
 
   ///  Draw a border (rectangle) at bottom
@@ -121,7 +146,13 @@ extension NSView {
       height: borderWidth
     )
 
-    drawBorder(frame: borderFrame, width: borderWidth, radius: radius, color: color)
+    drawBorder(
+      position: .bottom,
+      frame: borderFrame,
+      width: borderWidth,
+      radius: radius,
+      color: color
+    )
   }
 
   ///  Draw border based on the given frame, will use layer to draw the border.
@@ -131,12 +162,14 @@ extension NSView {
   ///  - parameter radius:      Border radius
   ///  - parameter color:       Border color
   fileprivate func drawBorder(
+    position: BorderPosition,
     frame borderFrame: CGRect,
     width: CGFloat,
     radius: CGFloat,
     color: NSColor
-  ) {
-    let borderLayer = CALayer()
+    ) {
+    let borderLayerKey = position.rawValue
+    let borderLayer = layer?.value(forKey: borderLayerKey) as? CALayer ?? CALayer()
 
     borderLayer.borderColor = color.cgColor
     borderLayer.masksToBounds = true
@@ -145,5 +178,6 @@ extension NSView {
     borderLayer.frame = borderFrame
 
     layer?.addSublayer(borderLayer)
+    layer?.setValue(borderLayer, forKey: borderLayerKey)
   }
 }
