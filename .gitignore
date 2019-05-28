@@ -1,0 +1,7 @@
+# Carthage
+Carthage/
+
+# Accio dependency management
+Dependencies/
+.accio/
+.build/

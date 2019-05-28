@@ -1,11 +1,13 @@
-github "onevcat/Kingfisher" ~> 4.10.0
+github "onevcat/Kingfisher" ~> 5.5.0
 github "typelift/Swiftz" "master"
-github "ReactiveX/RxSwift" ~> 4.3.1
-github "Moya/Moya" ~> 11.0.2
+github "ReactiveX/RxSwift" "5.0.1"
+github "Moya/Moya" ~> 13.0.1
 github "Thoughtbot/Argo" "master"
 github "Thoughtbot/Curry" "master"
-github "realm/realm-cocoa" ~> 3.10.0
+github "realm/realm-cocoa" ~> 3.15.0
 github "RxSwiftCommunity/RxRealm" "master"
-github "hyperoslo/Hue" ~> 3.0.1
-github "robb/Cartography" ~> 3.1.0
-github "sendyhalim/OrderedSet" ~> 0.0.3
+github "hyperoslo/Hue" ~> 4.0.0
+github "robb/Cartography" ~> 4.0.0
+github "sendyhalim/OrderedSet" ~> 0.0.6
+github "tristanhimmelman/ObjectMapper" ~> 3.4.2
+github "bmoliveira/Moya-ObjectMapper" ~> 2.8
