@@ -8,7 +8,6 @@
 
 import Foundation
 import Argo
-import Curry
 import Runes
 
 ///  A data structure that represents searched manga from yomu API

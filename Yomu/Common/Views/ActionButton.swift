@@ -16,9 +16,9 @@ class ActionButton: NSButton {
     paragraphStyle.alignment = .center
 
     attributedTitle = NSAttributedString(string: title, attributes: [
-      NSAttributedStringKey.foregroundColor: Config.style.actionButtonColor,
-      NSAttributedStringKey.paragraphStyle: paragraphStyle,
-      NSAttributedStringKey.font: NSFont.systemFont(ofSize: 13, weight: NSFont.Weight.thin)
+      NSAttributedString.Key.foregroundColor: Config.style.actionButtonColor,
+      NSAttributedString.Key.paragraphStyle: paragraphStyle,
+      NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13, weight: NSFont.Weight.thin)
     ])
   }
 }

@@ -7,7 +7,6 @@
 //
 
 import Argo
-import Curry
 import Runes
 
 ///  Example chapter detail response

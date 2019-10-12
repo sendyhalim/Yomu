@@ -83,8 +83,8 @@ extension Response {
   }
 }
 
-extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Response {
-  func map<T: Argo.Decodable>(_ type: T.Type) -> PrimitiveSequence<SingleTrait, T> where T == T.DecodedType {
+extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
+  func map<T: Argo.Decodable>(_ type: T.Type) -> Single<T> where T == T.DecodedType {
     return map {
       try $0.map()
     }
@@ -93,7 +93,7 @@ extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Respo
   func map<T: Argo.Decodable>(
     _ type: T.Type,
     withRootKey rootKey: String
-  ) -> PrimitiveSequence<SingleTrait, T> where T == T.DecodedType {
+  ) -> Single<T> where T == T.DecodedType {
     return map {
       try $0.map(withRootKey: rootKey)
     }
@@ -102,7 +102,7 @@ extension PrimitiveSequence where TraitType == SingleTrait, ElementType == Respo
   func mapArray<T: Argo.Decodable>(
     _ type: T.Type,
     withRootKey rootKey: String
-  ) -> PrimitiveSequence<SingleTrait, [T]> where T == T.DecodedType {
+  ) -> Single<Array<T>> where T == T.DecodedType {
     return map {
       return try $0.mapArray(withRootKey: rootKey)
     }

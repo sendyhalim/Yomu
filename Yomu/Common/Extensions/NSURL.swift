@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
+import Foundation
 import Argo
 import Swiftz
 

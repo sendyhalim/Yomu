@@ -8,6 +8,7 @@
 
 import RxSwift
 import Swiftz
+import Operadics
 
 precedencegroup YomuAddToDisposeBagPrecedence {
   associativity: left
@@ -19,10 +20,4 @@ infix operator ==> : YomuAddToDisposeBagPrecedence
 
 func ==> (disposable: Disposable, disposeBag: DisposeBag) {
   disposable.disposed(by: disposeBag)
-}
-
-infix operator ~>> : YomuAddToDisposeBagPrecedence
-
-func ~>> (disposable: Disposable?, disposeBag: DisposeBag) {
-  disposable >>- { $0 ==> disposeBag }
 }

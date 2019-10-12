@@ -12,6 +12,7 @@ import RxSwift
 import class RealmSwift.Realm
 import RxRealm
 import Swiftz
+import Swiftx
 
 struct SearchedMangaCollectionViewModel {
   // MARK: Public

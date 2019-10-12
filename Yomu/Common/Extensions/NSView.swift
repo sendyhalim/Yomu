@@ -36,7 +36,6 @@ extension NSView {
   ///  - parameter border: `Border` spec
   func drawBorder(_ border: Border) {
     wantsLayer = true
-    layerContentsRedrawPolicy = .duringViewResize
 
     switch border.position {
     case .all:
@@ -71,9 +70,6 @@ extension NSView {
       width: borderWidth,
       height: frame.size.height
     )
-
-    let borderLayer = CALayer()
-    borderLayer.name = "border.left"
 
     drawBorder(
       position: .left,
@@ -120,9 +116,6 @@ extension NSView {
       height: frame.size.height
     )
 
-    let borderLayer = CALayer()
-    borderLayer.name = "border.right"
-
     drawBorder(
       position: .right,
       frame: borderFrame,
@@ -167,17 +160,18 @@ extension NSView {
     width: CGFloat,
     radius: CGFloat,
     color: NSColor
-    ) {
+   ) {
     let borderLayerKey = position.rawValue
-    let borderLayer = layer?.value(forKey: borderLayerKey) as? CALayer ?? CALayer()
+    let borderLayer = layer!.value(forKey: borderLayerKey) as? CALayer ?? CALayer()
 
+    borderLayer.autoresizingMask = [.layerWidthSizable, .layerHeightSizable]
     borderLayer.borderColor = color.cgColor
-    borderLayer.masksToBounds = true
     borderLayer.borderWidth = width
     borderLayer.cornerRadius = radius
     borderLayer.frame = borderFrame
+    borderLayer.zPosition = layer!.zPosition + 1.0
 
-    layer?.addSublayer(borderLayer)
-    layer?.setValue(borderLayer, forKey: borderLayerKey)
+    layer!.insertSublayer(borderLayer, above: layer?.sublayers?.last)
+    layer!.setValue(borderLayer, forKey: borderLayerKey)
   }
 }

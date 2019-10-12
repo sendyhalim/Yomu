@@ -30,7 +30,7 @@ class ChapterCollectionViewController: NSViewController {
   init(viewModel: ChapterCollectionViewModel) {
     self.viewModel = viewModel
 
-    super.init(nibName: NSNib.Name(rawValue: "ChapterCollection"), bundle: nil)
+    super.init(nibName: "ChapterCollection", bundle: nil)
   }
 
   required init?(coder: NSCoder) {
@@ -65,7 +65,7 @@ class ChapterCollectionViewController: NSViewController {
 
     chapterTitle
       .rx.text.orEmpty
-      .throttle(0.5, scheduler: MainScheduler.instance)
+      .throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
       .bind(to: viewModel.filterPattern) ==> disposeBag
 
     toggleSort

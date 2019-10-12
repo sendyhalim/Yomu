@@ -13,6 +13,7 @@ import RxMoya
 import RxSwift
 import RxRealm
 import Swiftz
+import Swiftx
 
 struct SelectedIndex {
   let previousIndex: Int
@@ -149,3 +150,4 @@ struct MangaCollectionViewModel {
     }
   }
 }
+

@@ -9,6 +9,7 @@
 import AppKit
 import RxSwift
 import Swiftz
+import Operadics
 
 protocol ChapterPageCollectionViewDelegate: class {
   func closeChapterPage()
@@ -39,7 +40,7 @@ class ChapterPageCollectionViewController: NSViewController {
     self.viewModel = viewModel
     self.navigator = navigator
 
-    super.init(nibName: NSNib.Name(rawValue: "ChapterPageCollection"), bundle: nil)
+    super.init(nibName: "ChapterPageCollection", bundle: nil)
   }
 
   required init?(coder: NSCoder) {
@@ -162,15 +163,19 @@ class ChapterPageCollectionViewController: NSViewController {
   }
 
   func moveToPreviousChapter() {
-    navigator.previous() >>- { [weak self] (navigator, previousChapterVM) in
-      self?.chapterSelectionDelegate?.chapterDidSelected(previousChapterVM.chapter, navigator: navigator)
+    guard let (navigator, previousChapterVM) = navigator.previous() else {
+      return
     }
+
+    self.chapterSelectionDelegate?.chapterDidSelected(previousChapterVM.chapter, navigator: navigator)
   }
 
   func moveToNextChapter() {
-    navigator.next() >>- { [weak self] (navigator, nextChapterVM) in
-      self?.chapterSelectionDelegate?.chapterDidSelected(nextChapterVM.chapter, navigator: navigator)
+    guard let (navigator, nextChapterVM) = navigator.next() else {
+      return
     }
+
+    self.chapterSelectionDelegate?.chapterDidSelected(nextChapterVM.chapter, navigator: navigator)
   }
 }
 

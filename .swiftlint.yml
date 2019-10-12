@@ -16,3 +16,4 @@ excluded: # paths to ignore during linting. overridden by `included`.
   - Pods
   - R.generated.swift
   - YomuTests/Utils/JSONFileReader.swift
+  - Yomu/Common/Utils/Function.swift

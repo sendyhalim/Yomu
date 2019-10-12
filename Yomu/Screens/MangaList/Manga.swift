@@ -6,9 +6,8 @@
 //  Copyright © 2016 Sendy Halim. All rights reserved.
 //
 
-import Foundation
 import Argo
-import Curry
+import Foundation
 import Runes
 
 enum MangaPosition: Int {
@@ -59,8 +58,8 @@ extension Manga: Argo.Decodable {
 }
 
 extension Manga: Hashable {
-  var hashValue: Int {
-    return id!.hashValue
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
   }
 }
 

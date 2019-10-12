@@ -27,7 +27,7 @@ class MangaCollectionViewController: NSViewController {
   init(viewModel: MangaCollectionViewModel) {
     self.viewModel = viewModel
 
-    super.init(nibName: NSNib.Name(rawValue: "MangaCollection"), bundle: nil)
+    super.init(nibName: "MangaCollection", bundle: nil)
   }
 
   required init?(coder: NSCoder) {
@@ -150,7 +150,7 @@ extension MangaCollectionViewController: NSCollectionViewDelegateFlowLayout {
     let fromIndexPath = currentlyDraggedIndexPaths.first!
 
     collectionView.animator().moveItem(at: fromIndexPath, to: indexPath)
-    viewModel.move(fromIndex: fromIndexPath.item, toIndex: indexPath.item)
+//    viewModel.move(fromIndex: fromIndexPath.item, toIndex: indexPath.item)
 
     return true
   }
@@ -190,7 +190,7 @@ extension MangaCollectionViewController: CollectionViewMenuSource {
   @objc func deleteManga(item: NSMenuItem) {
     let indexPath = item.representedObject as! IndexPath
 
-    viewModel.remove(mangaIndex: indexPath.item)
+//    viewModel.remove(mangaIndex: indexPath.item)
   }
 
   @objc func showChapters(item: NSMenuItem) {

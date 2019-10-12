@@ -7,7 +7,6 @@
 //
 
 import AppKit
-import Hue
 
 private let bundle = Bundle.main
 private let info = bundle.infoDictionary!
@@ -58,7 +57,7 @@ public struct Config {
       return icon
     }
 
-    let _icon = bundle.image(forResource: NSImage.Name(rawValue: name))!
+    let _icon = bundle.image(forResource: name)!
     iconByName[name] = _icon
 
     return _icon

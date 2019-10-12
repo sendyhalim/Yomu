@@ -10,6 +10,7 @@ import RxMoya
 import RxSwift
 import RxCocoa
 import Swiftz
+import Swiftx
 
 enum SortOrder {
   case ascending
@@ -97,21 +98,23 @@ struct ChapterCollectionViewModel {
         }
       }
 
-    _ordering
-      .asObservable()
-      .map { order in
-        // We cannot use (>) because the (>)'s arguments ordering in
-        // sort method need to be flipped too, the easiest way is to flip it
-        order == .ascending ? curry(<) : flip(curry(<))
-      }
-      .map { (compare: @escaping (Int) -> (Int) -> Bool) in
-        let sorted = filteredChapters.value.sorted {
-          compare($0.chapter.number)($1.chapter.number)
-        }
-
-        return List(fromArray: sorted)
-      }
-      .bind(to: _filteredChapters) ==> disposeBag
+//    _ordering
+//      .asObservable()
+//      .map { order in
+//        // We cannot use (>) because the (>)'s arguments ordering in
+//        // sort method need to be flipped too, the easiest way is to flip it
+//        order == .ascending ? curry(<) : flip(curry(<))
+//      }
+//      .map { (compare: @escaping (Int) -> (Int) -> Bool) -> List<ChapterViewModel> in
+//        let sorted = filteredChapters.value.sorted {
+//          compare($0.chapter.number)($1.chapter.number)
+//        }
+//
+//        return List(fromArray: sorted)
+//      }
+//      .bind(to: _filteredChapters)
+//  .
+//      .disposed(by: disposeBag)
   }
 
   func fetch(id: String) -> Disposable {

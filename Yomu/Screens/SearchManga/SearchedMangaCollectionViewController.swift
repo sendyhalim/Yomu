@@ -30,7 +30,7 @@ class SearchedMangaCollectionViewController: NSViewController {
   init(viewModel: SearchedMangaCollectionViewModel) {
     self.viewModel = viewModel
 
-    super.init(nibName: NSNib.Name(rawValue: "SearchedMangaCollection"), bundle: nil)
+    super.init(nibName: "SearchedMangaCollection", bundle: nil)
   }
 
   required init?(coder: NSCoder) {

@@ -75,6 +75,7 @@ class MangaContainerViewController: NSViewController {
       child.top == parent.top
       child.bottom == parent.bottom
       child.trailing == parent.trailing
+      child.leading == parent.leading
 
       child.width >= 300
       child.height >= 300
